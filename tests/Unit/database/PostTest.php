@@ -9,11 +9,11 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PostTest extends TestCase
 {
-	use DatabaseTransactions;
+    use DatabaseTransactions;
 
-	/** @var string $table Nombre de la tabla. */
+    /** @var string $table Nombre de la tabla. */
     protected $table = 'posts';
-    
+
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
         'id',
@@ -24,7 +24,7 @@ class PostTest extends TestCase
         'updated_at'
     ];
 
-	/**
+    /**
 	 * Verificar si existe la tabla.
 	 *
 	 * @return void

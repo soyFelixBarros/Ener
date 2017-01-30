@@ -19,7 +19,7 @@ class CreateHyperlinksTable extends Migration
             $table->string('title');
             $table->string('src');
             $table->string('summary');
-            $table->boolean('activated'); // true o false
+            $table->boolean('active'); // true o false
             $table->timestamps();
         });
     }

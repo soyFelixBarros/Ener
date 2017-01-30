@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Newspapers extends Model
+class Newspaper extends Model
 {
     /**
      * The table associated with the model.

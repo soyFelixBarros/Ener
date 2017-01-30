@@ -18,7 +18,7 @@ class CreateHyperlinksTable extends Migration
             $table->string('url');
             $table->string('title');
             $table->string('src');
-            $table->string('content');
+            $table->string('summary');
             $table->boolean('activated'); // true o false
             $table->timestamps();
         });

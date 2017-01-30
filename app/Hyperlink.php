@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Hyperlinks extends Model
+class Hyperlink extends Model
 {
     /**
      * The table associated with the model.

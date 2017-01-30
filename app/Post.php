@@ -13,11 +13,22 @@ class Post extends Model
      */
     protected $table = 'posts';
 
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'newspaper_id'
+    ];
+
     /**
      * Obtener la fuente del post.
      */
     public function newspaper()
     {
-        return $this->belongsTo('App\Newspaper');
+        return $this->belongsTo('App\Newspaper')
+                    ->select(['id', 'name']);
     }
 }

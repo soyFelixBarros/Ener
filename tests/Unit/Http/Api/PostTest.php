@@ -28,9 +28,11 @@ class PostTest extends TestCase
 
         $response = $this->get($this->api . '/post');
 
-        $response
-            ->assertStatus(200)
-            ->decodeResponseJson($posts);
+        $response->assertStatus(200);
+
+        $posts = $response->decodeResponseJson($posts);
+        
+        $response->assertExactJson($posts);
     }
 
     /**
@@ -44,8 +46,10 @@ class PostTest extends TestCase
 
         $response = $this->get($this->api . '/post/' . $post->id);
 
-        $response
-            ->assertStatus(200)
-            ->decodeResponseJson($post);
+        $response->assertStatus(200);
+        
+        $post = $response->decodeResponseJson($post);
+        
+        $response->assertExactJson($post);
     }
 }

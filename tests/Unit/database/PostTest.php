@@ -51,7 +51,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testInsertPost()
+    public function testCreatePost()
     {
     	$post = factory(Post::class)->create();
     	

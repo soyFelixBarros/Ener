@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Posts
 Route::group(['prefix' => 'post'], function () {
 	Route::get('/', 'Api\v1\PostController@all');
-	Route::get('/{id}', 'Api\v1\PostController@find');
+	Route::post('/', 'Api\v1\PostController@store');
+	Route::get('/{id}', 'Api\v1\PostController@find')->where('id', '[0-9]+');
 });

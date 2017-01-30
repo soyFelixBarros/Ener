@@ -25,16 +25,16 @@ class PostTest extends TestCase
     ];
 
     /**
-	 * Verificar si existe la tabla.
-	 *
-	 * @return void
-	 */
-	public function testHasPostTable()
-	{
-		$this->assertTrue(Schema::hasTable($this->table));
-	}
-
-	/**
+     * Verificar si existe la tabla.
+     *
+     * @return void
+     */
+    public function testHasPostTable()
+    {
+        $this->assertTrue(Schema::hasTable($this->table));
+    }
+    
+    /**
      * Verificar si existen las columnas en un tabla.
      *
      * @return void

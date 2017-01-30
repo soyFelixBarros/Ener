@@ -6,7 +6,7 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     	'newspaper_id' => function () {
     		return factory(App\Newspaper::class)->create()->id;
     	},
-        'title' => $faker->title,
+        'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
         'summary' => $faker->paragraph
     ];
 });

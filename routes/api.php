@@ -17,5 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/posts', 'Api\PostsController@all');
-Route::get('/posts/{id}', 'Api\PostsController@find');
+// Posts
+Route::group(['prefix' => 'post'], function () {
+	Route::get('/', 'Api\v1\PostController@all');
+	Route::get('/{id}', 'Api\v1\PostController@find');
+});

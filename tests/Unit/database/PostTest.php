@@ -53,19 +53,19 @@ class PostTest extends TestCase
      */
     public function testInsertPost()
     {
-    	$post = factory('App\Post')->create();
+    	$post = factory(Post::class)->create();
     	
     	$this->assertDatabaseHas($this->table, $post->toArray());
     }
 
     /**
-     * Avtualizar datos de un post.
+     * Actualizar datos de un post.
      *
      * @return void
      */
     public function testUpdatePost()
     {
-    	$post = factory('App\Post')->create();
+    	$post = factory(Post::class)->create();
 
     	$post = Post::find($post->id);
     	$post->title = 'New title';
@@ -82,7 +82,7 @@ class PostTest extends TestCase
      */
     public function testDeletePost()
     {
-    	$post = factory('App\Post')->create();
+    	$post = factory(Post::class)->create();
 
     	Post::destroy($post->id);
 

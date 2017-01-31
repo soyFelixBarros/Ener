@@ -52,4 +52,22 @@ class PostTest extends TestCase
         
         $response->assertExactJson($post);
     }
+
+    /**
+     * Eliminar un post segun el ID.
+     *
+     * @return void
+     */
+    public function testDeletePost()
+    {
+        $post = factory(Post::class)->create();
+
+        $response = $this->delete($this->api . '/post/' . $post->id);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'deleted' => true,
+            ]);
+    }
 }

@@ -22,4 +22,5 @@ Route::group(['prefix' => 'post'], function ($this) {
 	$this->get('/', 'Api\v1\PostController@all');
 	$this->post('/', 'Api\v1\PostController@store');
 	$this->get('/{id}', 'Api\v1\PostController@find');
+	$this->delete('/{id}', 'Api\v1\PostController@destroy');
 });

@@ -42,7 +42,22 @@ class PostController extends Controller
 		$post = Post::create($request->all());
 		
 		return response()->json([
-			'created' => true,
+			'created' => (boolean) $post,
+		]);
+	}
+
+	/**
+	 * Eliminar un post.
+	 *
+	 * @param  integer  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		$post = Post::where('id', '=', $id)->delete();
+
+		return response()->json([
+			'deleted' => (boolean) $post,
 		]);
 	}
 }

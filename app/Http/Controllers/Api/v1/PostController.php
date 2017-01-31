@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Post;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePost;
+use App\Http\Requests\StoreUpdatePost;
 use App\Http\Controllers\Controller;
 
 class PostController extends Controller
@@ -21,7 +21,22 @@ class PostController extends Controller
 	}
 
 	/**
-	 * Mostrar un post segun el ID.
+	 * Crear un nuevo post.
+	 *
+	 * @param  StoreUpdatePost  $request
+	 * @return Response
+	 */
+	public function store(StoreUpdatePost $request)
+	{
+		$post = Post::create($request->all());
+		
+		return response()->json([
+			'created' => (boolean) $post,
+		], 201);
+	}
+
+	/**
+	 * Mostrar los datos de un post.
 	 *
 	 * @param  integer  $id
 	 * @return Response
@@ -32,18 +47,18 @@ class PostController extends Controller
 	}
 
 	/**
-	 * Crear un nuevo post.
+	 * Actualizar los datos de un post.
 	 *
-	 * @param  StorePost  $request
+	 * @param  StoreUpdatePost  $request
 	 * @return Response
 	 */
-	public function store(StorePost $request)
+	public function update(StoreUpdatePost $request, $id)
 	{
-		$post = Post::create($request->all());
+		$post = Post::where('id', '=', $id)->update($request->all());
 		
 		return response()->json([
-			'created' => (boolean) $post,
-		], 201);
+			'updated' => (boolean) $post,
+		]);
 	}
 
 	/**

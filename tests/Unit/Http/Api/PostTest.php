@@ -57,7 +57,7 @@ class PostTest extends TestCase
     }
 
     /**
-     * Obtener un post segun el ID.
+     * Obtener un post.
      *
      * @return void
      */
@@ -72,6 +72,29 @@ class PostTest extends TestCase
         $post = $response->decodeResponseJson($post);
         
         $response->assertExactJson($post);
+    }
+
+    /**
+     * Actualizar los datos de un post.
+     *
+     * @return void
+     */
+    public function testPostUpdate()
+    {
+        $post = factory(Post::class)->create();
+
+        $update = array(
+            'title' => '¿Qué es Lorem Ipsum?',
+            'summary' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.',
+        );
+
+        $response = $this->json('PUT', $this->api . '/post/' . $post->id, $update);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'updated' => true,
+            ]);
     }
 
 

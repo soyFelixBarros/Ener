@@ -69,5 +69,7 @@ class PostTest extends TestCase
             ->assertJson([
                 'deleted' => true,
             ]);
+        
+        $this->assertDatabaseMissing($this->table, $post->toArray());
     }
 }

@@ -22,7 +22,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testGetPostAll()
+    public function testPostAll()
     {
         $posts = factory(Post::class, 10)->create();
 
@@ -40,7 +40,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testGetPostFind()
+    public function testPostFind()
     {
         $post = factory(Post::class)->create();
 
@@ -51,6 +51,27 @@ class PostTest extends TestCase
         $post = $response->decodeResponseJson($post);
         
         $response->assertExactJson($post);
+    }
+
+    /**
+     * Crear un nuevo post.
+     *
+     * @return void
+     */
+    public function testCreatePost()
+    {
+        $post = array(
+            'title' => '¿Qué es Lorem Ipsum?',
+            'summary' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.',
+        );
+
+        $response = $this->json('POST', $this->api . '/post', $post);
+
+        $response
+            ->assertStatus(201)
+            ->assertJson([
+                'created' => true,
+            ]);
     }
 
     /**

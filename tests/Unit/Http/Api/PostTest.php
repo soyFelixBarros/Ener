@@ -36,6 +36,27 @@ class PostTest extends TestCase
     }
 
     /**
+     * Crear un nuevo post.
+     *
+     * @return void
+     */
+    public function testPostStore()
+    {
+        $post = array(
+            'title' => '¿Qué es Lorem Ipsum?',
+            'summary' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.',
+        );
+
+        $response = $this->json('POST', $this->api . '/post', $post);
+
+        $response
+            ->assertStatus(201)
+            ->assertJson([
+                'created' => true,
+            ]);
+    }
+
+    /**
      * Obtener un post segun el ID.
      *
      * @return void
@@ -53,33 +74,13 @@ class PostTest extends TestCase
         $response->assertExactJson($post);
     }
 
-    /**
-     * Crear un nuevo post.
-     *
-     * @return void
-     */
-    public function testCreatePost()
-    {
-        $post = array(
-            'title' => '¿Qué es Lorem Ipsum?',
-            'summary' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.',
-        );
-
-        $response = $this->json('POST', $this->api . '/post', $post);
-
-        $response
-            ->assertStatus(201)
-            ->assertJson([
-                'created' => true,
-            ]);
-    }
 
     /**
      * Eliminar un post segun el ID.
      *
      * @return void
      */
-    public function testDeletePost()
+    public function testPostDestroy()
     {
         $post = factory(Post::class)->create();
 

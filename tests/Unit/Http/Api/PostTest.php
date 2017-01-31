@@ -26,7 +26,7 @@ class PostTest extends TestCase
     {
         $posts = factory(Post::class, 10)->create();
 
-        $response = $this->get($this->api . '/post');
+        $response = $this->json('GET', $this->api . '/post');
 
         $response->assertStatus(200);
 
@@ -44,7 +44,7 @@ class PostTest extends TestCase
     {
         $post = factory(Post::class)->create();
 
-        $response = $this->get($this->api . '/post/' . $post->id);
+        $response = $this->json('GET', $this->api . '/post/' . $post->id);
 
         $response->assertStatus(200);
         
@@ -83,7 +83,7 @@ class PostTest extends TestCase
     {
         $post = factory(Post::class)->create();
 
-        $response = $this->delete($this->api . '/post/' . $post->id);
+        $response = $this->json('DELETE', $this->api . '/post/' . $post->id);
 
         $response
             ->assertStatus(200)

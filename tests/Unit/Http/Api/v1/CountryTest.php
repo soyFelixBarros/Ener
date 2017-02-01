@@ -42,10 +42,7 @@ class CountryTest extends TestCase
      */
     public function testCountryStore()
     {
-        $country = array(
-            'name' => 'Argentina',
-            'code' => 'ARG',
-        );
+        $country = array('name' => 'Argentina');
 
         $response = $this->json('POST', $this->api . '/country', $country);
 
@@ -83,10 +80,7 @@ class CountryTest extends TestCase
     {
         $country = factory(Country::class)->create();
 
-        $update = array(
-            'name' => 'Argentina',
-            'code' => 'ARG',
-        );
+        $update = array('name' => 'Argentina');
 
         $response = $this->json('PUT', $this->api . '/country/' . $country->id, $update);
 

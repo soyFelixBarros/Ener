@@ -18,7 +18,6 @@ class CountryTest extends TestCase
     protected $columns = [
         'id',
         'name',
-        'code',
     ];
 
     /**

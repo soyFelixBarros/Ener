@@ -97,9 +97,8 @@ class PostTest extends TestCase
             ]);
     }
 
-
     /**
-     * Eliminar un post segun el ID.
+     * Eliminar un post.
      *
      * @return void
      */

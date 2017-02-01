@@ -12,4 +12,14 @@ class Link extends Model
      * @var string
      */
     protected $table = 'links';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'url',
+        'active',
+    ];
 }

@@ -24,3 +24,12 @@ Route::group(['prefix' => 'newspaper', 'namespace' => 'Api\v1'], function ($this
 	$this->put('/{id}', 'NewspaperController@update');
 	$this->delete('/{id}', 'NewspaperController@destroy');
 });
+
+// Link
+Route::group(['prefix' => 'link', 'namespace' => 'Api\v1'], function ($this) {
+	$this->get('/', 'LinkController@all');
+	$this->post('/', 'LinkController@store');
+	$this->get('/{id}', 'LinkController@find');
+	$this->put('/{id}', 'LinkController@update');
+	$this->delete('/{id}', 'LinkController@destroy');
+});

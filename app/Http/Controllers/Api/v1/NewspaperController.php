@@ -44,4 +44,19 @@ class NewspaperController extends Controller
 	{
 		return Newspaper::where('id', '=', $id)->get();
 	}
+
+	/**
+	 * Actualizar los datos de un newspaper.
+	 *
+	 * @param  StoreUpdateNewspaper  $request
+	 * @return Response
+	 */
+	public function update(StoreUpdateNewspaper $request, $id)
+	{
+		$newspaper = Newspaper::where('id', '=', $id)->update($request->all());
+		
+		return response()->json([
+			'updated' => (boolean) $newspaper,
+		]);
+	}
 }

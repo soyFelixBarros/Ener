@@ -21,4 +21,5 @@ Route::group(['prefix' => 'newspaper', 'namespace' => 'Api\v1'], function ($this
 	$this->get('/', 'NewspaperController@all');
 	$this->post('/', 'NewspaperController@store');
 	$this->get('/{id}', 'NewspaperController@find');
+	$this->put('/{id}', 'NewspaperController@update');
 });

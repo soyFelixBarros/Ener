@@ -73,4 +73,27 @@ class NewspaperTest extends TestCase
         
         $response->assertExactJson($newspaper);
     }
+
+    /**
+     * Actualizar los datos de un newspaper.
+     *
+     * @return void
+     */
+    public function testNewspaperUpdate()
+    {
+        $newspaper = factory(Newspaper::class)->create();
+
+        $update = array(
+            'name' => 'Felix News',
+            'website' => 'felix.news',
+        );
+
+        $response = $this->json('PUT', $this->api . '/newspaper/' . $newspaper->id, $update);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'updated' => true,
+            ]);
+    }
 }

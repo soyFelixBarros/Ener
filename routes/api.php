@@ -33,3 +33,12 @@ Route::group(['prefix' => 'link', 'namespace' => 'Api\v1'], function ($this) {
 	$this->put('/{id}', 'LinkController@update');
 	$this->delete('/{id}', 'LinkController@destroy');
 });
+
+// Country
+Route::group(['prefix' => 'country', 'namespace' => 'Api\v1'], function ($this) {
+	$this->get('/', 'CountryController@all');
+	$this->post('/', 'CountryController@store');
+	$this->get('/{id}', 'CountryController@find');
+	$this->put('/{id}', 'CountryController@update');
+	$this->delete('/{id}', 'CountryController@destroy');
+});

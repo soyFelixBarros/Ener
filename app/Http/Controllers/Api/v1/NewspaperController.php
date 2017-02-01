@@ -33,4 +33,15 @@ class NewspaperController extends Controller
 			'created' => (boolean) $newspaper,
 		], 201);
 	}
+
+	/**
+	 * Mostrar los datos de un newspaper.
+	 *
+	 * @param  integer  $id
+	 * @return Response
+	 */
+	public function find($id)
+	{
+		return Newspaper::where('id', '=', $id)->get();
+	}
 }

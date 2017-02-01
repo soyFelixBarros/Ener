@@ -55,4 +55,22 @@ class NewspaperTest extends TestCase
                 'created' => true,
             ]);
     }
+
+    /**
+     * Obtener un newspaper.
+     *
+     * @return void
+     */
+    public function testNewspaperFind()
+    {
+        $newspaper = factory(Newspaper::class)->create();
+
+        $response = $this->json('GET', $this->api . '/newspaper/' . $newspaper->id);
+
+        $response->assertStatus(200);
+
+        $newspaper = $response->decodeResponseJson($newspaper);
+        
+        $response->assertExactJson($newspaper);
+    }
 }

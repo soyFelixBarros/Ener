@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Country;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreUpdateCountry;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateCountry;
 
 class CountryController extends Controller
 {

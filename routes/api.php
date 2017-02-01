@@ -42,3 +42,12 @@ Route::group(['prefix' => 'country', 'namespace' => 'Api\v1'], function ($this) 
 	$this->put('/{id}', 'CountryController@update');
 	$this->delete('/{id}', 'CountryController@destroy');
 });
+
+// Province
+Route::group(['prefix' => 'province', 'namespace' => 'Api\v1'], function ($this) {
+	$this->get('/', 'ProvinceController@all');
+	$this->post('/', 'ProvinceController@store');
+	$this->get('/{id}', 'ProvinceController@find');
+	$this->put('/{id}', 'ProvinceController@update');
+	$this->delete('/{id}', 'ProvinceController@destroy');
+});

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Newspaper;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreUpdateNewspaper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateNewspaper;
 
 class NewspaperController extends Controller
 {

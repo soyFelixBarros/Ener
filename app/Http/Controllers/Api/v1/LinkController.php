@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Link;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreUpdateLink;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateLink;
 
 class LinkController extends Controller
 {

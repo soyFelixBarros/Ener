@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Post;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreUpdatePost;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdatePost;
 
 class PostController extends Controller
 {

@@ -23,4 +23,12 @@ class Link extends Model
         'url',
         'active',
     ];
+
+    /**
+     * Obtener el diario del link.
+     */
+    public function newspaper()
+    {
+        return $this->belongsTo('App\Newspaper');
+    }
 }

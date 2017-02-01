@@ -15,3 +15,8 @@ Route::group(['prefix' => 'post', 'namespace' => 'Api\v1'], function ($this) {
 	$this->put('/{id}', 'Postcontroller@update');
 	$this->delete('/{id}', 'PostController@destroy');
 });
+
+// Newspaper
+Route::group(['prefix' => 'newspaper', 'namespace' => 'Api\v1'], function ($this) {
+	$this->get('/', 'NewspaperController@all');
+});

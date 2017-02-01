@@ -59,4 +59,19 @@ class NewspaperController extends Controller
 			'updated' => (boolean) $newspaper,
 		]);
 	}
+
+	/**
+	 * Eliminar un newspaper.
+	 *
+	 * @param  integer  $id
+	 * @return Response
+	 */
+	public function destroy($id)
+	{
+		$newspaper = Newspaper::where('id', '=', $id)->delete();
+
+		return response()->json([
+			'deleted' => (boolean) $newspaper,
+		]);
+	}
 }

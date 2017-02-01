@@ -96,4 +96,24 @@ class NewspaperTest extends TestCase
                 'updated' => true,
             ]);
     }
+
+    /**
+     * Eliminar un newspaper.
+     *
+     * @return void
+     */
+    public function testNewspaperDestroy()
+    {
+        $newspaper = factory(Newspaper::class)->create();
+
+        $response = $this->json('DELETE', $this->api . '/newspaper/' . $newspaper->id);
+
+        $response
+            ->assertStatus(200)
+            ->assertJson([
+                'deleted' => true,
+            ]);
+        
+        $this->assertDatabaseMissing($this->table, $newspaper->toArray());
+    }
 }

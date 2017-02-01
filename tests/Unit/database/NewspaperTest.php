@@ -44,7 +44,7 @@ class NewspaperTest extends TestCase
     }
 
     /**
-     * Crear un post.
+     * Crear un newspaper.
      *
      * @return void
      */
@@ -56,7 +56,7 @@ class NewspaperTest extends TestCase
     }
 
     /**
-     * Actualizar datos de un post.
+     * Actualizar datos de un newspaper.
      *
      * @return void
      */
@@ -73,7 +73,7 @@ class NewspaperTest extends TestCase
     }
 
     /**
-     * Eliminar un post.
+     * Eliminar un newspaper.
      *
      * @return void
      */

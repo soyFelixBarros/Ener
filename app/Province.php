@@ -29,4 +29,12 @@ class Province extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Obtener todos los diario de una provincia.
+     */
+    public function newspapers()
+    {
+        return $this->hasManyThrough('App\Post', 'App\Newspaper');
+    }
 }

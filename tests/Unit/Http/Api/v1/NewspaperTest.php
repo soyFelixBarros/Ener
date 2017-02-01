@@ -42,7 +42,10 @@ class NewspaperTest extends TestCase
      */
     public function testNewspaperStore()
     {
+        $province = factory('App\Province')->create();
+
         $newspaper = array(
+            'province_id' => $province->id,
             'name' => 'Felix News',
             'website' => 'felix.news',
         );

@@ -14,6 +14,13 @@ class Newspaper extends Model
     protected $table = 'newspapers';
 
     /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * Obtener todos los posts de un diario.
      */
     public function posts()

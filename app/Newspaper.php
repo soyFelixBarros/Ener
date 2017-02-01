@@ -37,4 +37,12 @@ class Newspaper extends Model
     {
         return $this->hasMany('App\Post');
     }
+
+    /**
+     * Obtener todos los links de un diario.
+     */
+    public function links()
+    {
+        return $this->hasMany('App\Link');
+    }
 }

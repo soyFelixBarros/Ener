@@ -17,6 +17,7 @@ class LinkTest extends TestCase
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
         'id',
+        'newspaper_id',
         'url',
         'active'
     ];

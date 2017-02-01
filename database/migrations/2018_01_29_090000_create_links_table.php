@@ -15,9 +15,11 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('newspaper_id')->nullable();
             $table->string('url');
             $table->boolean('active'); // true o false
             $table->timestamps();
+            $table->foreign('newspaper_id')->references('id')->on('newspapers');
         });
     }
 

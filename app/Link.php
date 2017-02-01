@@ -19,6 +19,7 @@ class Link extends Model
      * @var array
      */
     protected $fillable = [
+        'newspaper_id',
         'url',
         'active',
     ];

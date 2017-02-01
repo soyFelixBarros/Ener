@@ -35,6 +35,14 @@ class Post extends Model
     ];
 
     /**
+     * Obtener el link del post.
+     */
+    public function link()
+    {
+        return $this->hasOne('App\Link');
+    }
+
+    /**
      * Obtener la fuente del post.
      */
     public function newspaper()

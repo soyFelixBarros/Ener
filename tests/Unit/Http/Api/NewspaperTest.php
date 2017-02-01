@@ -34,4 +34,25 @@ class NewspaperTest extends TestCase
         
         $response->assertExactJson($newspapers);
     }
+
+    /**
+     * Crear un nuevo newspaper.
+     *
+     * @return void
+     */
+    public function testNewspaperStore()
+    {
+        $newspaper = array(
+            'name' => 'Felix News',
+            'website' => 'felix.news',
+        );
+
+        $response = $this->json('POST', $this->api . '/newspaper', $newspaper);
+
+        $response
+            ->assertStatus(201)
+            ->assertJson([
+                'created' => true,
+            ]);
+    }
 }

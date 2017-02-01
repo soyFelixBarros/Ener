@@ -16,8 +16,7 @@ class CreateNewspapersTable extends Migration
         Schema::create('newspapers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('website');
-            $table->timestamps();
+            $table->string('website')->nullable();
         });
     }
 

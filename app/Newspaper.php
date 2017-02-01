@@ -14,6 +14,16 @@ class Newspaper extends Model
     protected $table = 'newspapers';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'website',
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

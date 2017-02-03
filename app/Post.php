@@ -50,4 +50,12 @@ class Post extends Model
         return $this->belongsTo('App\Newspaper')
                     ->select(['id', 'name']);
     }
+
+    /**
+     * Obtener todos los tags del posts.
+     */
+    public function tags()
+    {
+        return $this->morphToMany('App\Tag', 'taggable');
+    }
 }

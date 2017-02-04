@@ -27,7 +27,7 @@ class LinkTest extends TestCase
      *
      * @return void
      */
-    public function testHasLinkTable()
+    public function testHasLinksTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -37,7 +37,7 @@ class LinkTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInLinkTable()
+    public function testHasColumnsInLinksTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -69,7 +69,9 @@ class LinkTest extends TestCase
     	$link->url = 'http://felix.barros';
     	$link->save();
 
-    	$this->assertDatabaseHas($this->table, ['url' => 'http://felix.barros']);
+    	$this->assertDatabaseHas($this->table, [
+            'url' => $link->url,
+        ]);
 
     }
 

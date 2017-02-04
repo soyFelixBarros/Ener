@@ -27,7 +27,7 @@ class NewspaperTest extends TestCase
      *
      * @return void
      */
-    public function testHasNewspaperTable()
+    public function testHasNewspapersTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -37,7 +37,7 @@ class NewspaperTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInNewspaperTable()
+    public function testHasColumnsInNewspapersTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -69,7 +69,9 @@ class NewspaperTest extends TestCase
     	$newspaper->name = 'New title';
     	$newspaper->save();
 
-    	$this->assertDatabaseHas($this->table, ['name' => 'New title']);
+    	$this->assertDatabaseHas($this->table, [
+            'name' => $newspaper->name,
+        ]);
 
     }
 
@@ -82,7 +84,7 @@ class NewspaperTest extends TestCase
     {
     	$newspaper = factory(Newspaper::class)->create();
 
-    	newspaper::destroy($newspaper->id);
+    	Newspaper::destroy($newspaper->id);
 
     	$this->assertDatabaseMissing($this->table, $newspaper->toArray());
     }

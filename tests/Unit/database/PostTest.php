@@ -29,7 +29,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testHasPostTable()
+    public function testHasPostsTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -39,7 +39,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInPostTable()
+    public function testHasColumnsInPostsTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -71,8 +71,9 @@ class PostTest extends TestCase
     	$post->title = 'New title';
     	$post->save();
 
-    	$this->assertDatabaseHas($this->table, ['title' => 'New title']);
-
+    	$this->assertDatabaseHas($this->table, [
+            'title' => $post->title,
+        ]);
     }
 
     /**

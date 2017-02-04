@@ -68,7 +68,7 @@ class TagTest extends TestCase
 
     	$tag = Tag::find($tag->id);
     	$tag->name = 'My tag';
-        $tag->slug = str_slug('My tag', '-');
+        $tag->slug = str_slug('My tag');
     	$tag->save();
         
     	$this->assertDatabaseHas($this->table, [

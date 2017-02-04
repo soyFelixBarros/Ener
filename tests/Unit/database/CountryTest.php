@@ -25,7 +25,7 @@ class CountryTest extends TestCase
      *
      * @return void
      */
-    public function testHasCountryTable()
+    public function testHasCountriesTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -35,7 +35,7 @@ class CountryTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInCountryTable()
+    public function testHasColumnsInCountriesTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -67,7 +67,9 @@ class CountryTest extends TestCase
     	$country->name = 'Argentina';
     	$country->save();
 
-    	$this->assertDatabaseHas($this->table, ['name' => 'Argentina']);
+    	$this->assertDatabaseHas($this->table, [
+            'name' => $country->name,
+        ]);
 
     }
 

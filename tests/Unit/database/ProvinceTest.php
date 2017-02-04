@@ -26,7 +26,7 @@ class ProvinceTest extends TestCase
      *
      * @return void
      */
-    public function testHasProvinceTable()
+    public function testHasProvincesTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -36,7 +36,7 @@ class ProvinceTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInProvinceTable()
+    public function testHasColumnsInProvincesTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -68,8 +68,9 @@ class ProvinceTest extends TestCase
     	$province->name = 'Chaco';
     	$province->save();
 
-    	$this->assertDatabaseHas($this->table, ['name' => 'Chaco']);
-
+    	$this->assertDatabaseHas($this->table, [
+            'name' => $province->name,
+        ]);
     }
 
     /**

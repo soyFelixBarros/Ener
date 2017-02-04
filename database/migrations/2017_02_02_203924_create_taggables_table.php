@@ -15,9 +15,11 @@ class CreateTaggablesTable extends Migration
     {
         Schema::create('taggables', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->unsignedInteger('tag_id');
             $table->unsignedInteger('taggable_id');
             $table->string('taggable_type');
+            $table->timestamps();
+            $table->index(['tag_id', 'taggable_id', 'taggable_type',]);
         });
     }
 

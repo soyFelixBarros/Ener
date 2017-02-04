@@ -23,11 +23,4 @@ class Taggable extends Model
         'taggable_id',
         'taggable_type',
     ];
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
 }

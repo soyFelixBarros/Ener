@@ -20,14 +20,8 @@ class Tag extends Model
      */
     protected $fillable = [
         'name',
+        'slug',
     ];
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
 
     /**
      * Obtener los posts de un tag.

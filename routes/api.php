@@ -51,3 +51,12 @@ Route::group(['prefix' => 'province', 'namespace' => 'Api\v1'], function ($this)
 	$this->put('/{id}', 'ProvinceController@update');
 	$this->delete('/{id}', 'ProvinceController@destroy');
 });
+
+// Tag
+Route::group(['prefix' => 'tag', 'namespace' => 'Api\v1'], function ($this) {
+	$this->get('/', 'TagController@all');
+	$this->post('/', 'TagController@store');
+	$this->get('/{id}', 'TagController@find');
+	$this->put('/{id}', 'TagController@update');
+	$this->delete('/{id}', 'TagController@destroy');
+});

@@ -16,7 +16,9 @@ class LinkController extends Controller
 	 */
 	public function all()
 	{
-		return Link::latest()->get();
+		$links = Link::latest()->get();
+		
+		return response()->json($links);
 	}
 
 	/**
@@ -42,7 +44,9 @@ class LinkController extends Controller
 	 */
 	public function find($id)
 	{
-		return Link::where('id', '=', $id)->get();
+		$link = Link::find($id);
+
+		return response()->json($link);
 	}
 
 	/**

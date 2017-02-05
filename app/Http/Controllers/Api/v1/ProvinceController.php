@@ -16,7 +16,9 @@ class ProvinceController extends Controller
 	 */
 	public function all()
 	{
-		return Province::latest('name')->get();
+		$provinces = Province::latest('name')->get();
+
+		return response()->json($provinces);
 	}
 
 	/**
@@ -42,7 +44,9 @@ class ProvinceController extends Controller
 	 */
 	public function find($id)
 	{
-		return Province::where('id', '=', $id)->get();
+		$province = Province::find($id);
+
+		return response()->json($province);
 	}
 
 	/**

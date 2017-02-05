@@ -16,7 +16,9 @@ class TagController extends Controller
 	 */
 	public function all()
 	{
-		return Tag::latest('name')->get();
+		$tags = Tag::latest('name')->get();
+		
+		return response()->json($tags);
 	}
 
 	/**
@@ -47,7 +49,9 @@ class TagController extends Controller
 	 */
 	public function find($id)
 	{
-		return Tag::where('id', '=', $id)->get();
+		$tag = Tag::find($id);
+		
+		return response()->json($tag);
 	}
 
 	/**

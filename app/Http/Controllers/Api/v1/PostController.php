@@ -16,7 +16,9 @@ class PostController extends Controller
 	 */
 	public function all()
 	{
-		return Post::latest()->with('newspaper')->get();
+		$posts = Post::latest()->with('newspaper')->get();
+
+		return response()->json($posts);
 	}
 
 	/**
@@ -42,7 +44,9 @@ class PostController extends Controller
 	 */
 	public function find($id)
 	{
-		return Post::where('id', '=', $id)->with('newspaper')->get();
+		$post = Post::where('id', '=', $id)->with('newspaper')->get();
+
+		return response()->json($post);
 	}
 
 	/**

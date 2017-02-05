@@ -16,7 +16,9 @@ class CountryController extends Controller
 	 */
 	public function all()
 	{
-		return Country::latest('name')->get();
+		$countries = Country::latest('name')->get();
+
+		return response()->json($countries);
 	}
 
 	/**
@@ -42,7 +44,9 @@ class CountryController extends Controller
 	 */
 	public function find($id)
 	{
-		return Country::where('id', '=', $id)->get();
+		$country = Country::find($id);
+
+		return response()->json($country);
 	}
 
 	/**

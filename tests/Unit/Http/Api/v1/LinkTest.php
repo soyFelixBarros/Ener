@@ -26,7 +26,7 @@ class LinkTest extends TestCase
     {
         $links = factory(Link::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/link');
+        $response = $this->json('GET', $this->api . '/links');
 
         $response->assertStatus(200);
 

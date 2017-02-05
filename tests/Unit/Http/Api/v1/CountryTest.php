@@ -26,7 +26,7 @@ class CountryTest extends TestCase
     {
         $country = factory(Country::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/country');
+        $response = $this->json('GET', $this->api . '/countries');
 
         $response->assertStatus(200);
 

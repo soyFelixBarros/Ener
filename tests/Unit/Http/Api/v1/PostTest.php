@@ -26,7 +26,7 @@ class PostTest extends TestCase
     {
         $posts = factory(Post::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/post');
+        $response = $this->json('GET', $this->api . '/posts');
 
         $response->assertStatus(200);
 

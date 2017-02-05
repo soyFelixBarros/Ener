@@ -42,7 +42,7 @@ class NewspaperController extends Controller
 	 * @param  integer  $id
 	 * @return Response
 	 */
-	public function find($id)
+	public function find($id = null)
 	{
 		$newspaper = Newspaper::find($id);
 

@@ -42,7 +42,7 @@ class CountryController extends Controller
 	 * @param  integer  $id
 	 * @return Response
 	 */
-	public function find($id)
+	public function find($id = null)
 	{
 		$country = Country::find($id);
 

@@ -26,7 +26,7 @@ class NewspaperTest extends TestCase
     {
         $newspapers = factory(Newspaper::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/newspaper');
+        $response = $this->json('GET', $this->api . '/newspapers');
 
         $response->assertStatus(200);
 

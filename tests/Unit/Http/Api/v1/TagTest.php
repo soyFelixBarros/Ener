@@ -25,7 +25,7 @@ class TagTest extends TestCase
     {
         $tags = factory('App\Tag', 10)->create();
 
-        $response = $this->json('GET', $this->api . '/tag');
+        $response = $this->json('GET', $this->api . '/tags');
 
         $response->assertStatus(200);
 

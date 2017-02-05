@@ -26,7 +26,7 @@ class ProvinceTest extends TestCase
     {
         $province = factory(Province::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/province');
+        $response = $this->json('GET', $this->api . '/provinces');
 
         $response->assertStatus(200);
 

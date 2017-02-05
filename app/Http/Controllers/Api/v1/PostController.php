@@ -42,7 +42,7 @@ class PostController extends Controller
 	 * @param  integer  $id
 	 * @return Response
 	 */
-	public function find($id)
+	public function find($id = null)
 	{
 		$post = Post::where('id', '=', $id)->with('newspaper')->get();
 

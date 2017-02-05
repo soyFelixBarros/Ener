@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class NewspapersSeeder extends Seeder
+class NewspaperSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class NewspapersSeeder extends Seeder
     		['DataChaco.com', 'http://www.datachaco.com'],
     		['Chaco Dia Por Dia', 'http://www.chacodiapordia.com'],
     		['Diario TAG', 'https://www.diariotag.com'],
-    		['diario21.tv', 'http://www.diario21.tv/notix2/'],
+    		['diario21.tv', 'http://www.diario21.tv/notix2'],
     		['Primera Línea', 'http://www.diarioprimeralinea.com.ar'],
     	];
 

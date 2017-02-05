@@ -17,7 +17,7 @@ class CreateLinksTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('newspaper_id')->nullable();
             $table->string('url');
-            $table->boolean('active'); // true o false
+            $table->boolean('active')->default(true); // true o false
             $table->timestamps();
             $table->foreign('newspaper_id')->references('id')->on('newspapers');
         });

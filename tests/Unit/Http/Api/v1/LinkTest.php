@@ -44,7 +44,6 @@ class LinkTest extends TestCase
     {
         $link = array(
             'url' => 'http://felix.barros',
-            'active' => true,
         );
 
         $response = $this->json('POST', $this->api . '/link', $link);

@@ -19,9 +19,17 @@ class Link extends Model
      * @var array
      */
     protected $fillable = [
-        'newspaper_id',
         'url',
         'active',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'newspaper_id'
     ];
 
     /**
@@ -29,6 +37,7 @@ class Link extends Model
      */
     public function newspaper()
     {
-        return $this->belongsTo('App\Newspaper');
+        return $this->belongsTo('App\Newspaper')
+                    ->select(['id', 'name']);
     }
 }

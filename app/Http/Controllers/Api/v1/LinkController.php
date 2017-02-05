@@ -16,7 +16,7 @@ class LinkController extends Controller
 	 */
 	public function all()
 	{
-		$links = Link::latest()->get();
+		$links = Link::latest()->with('newspaper')->get();
 		
 		return response()->json($links);
 	}

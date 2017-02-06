@@ -42,7 +42,10 @@ class CountryTest extends TestCase
      */
     public function testCountryStore()
     {
-        $country = array('name' => 'Argentina');
+        $country = array(
+            'code' => 'AR',
+            'name' => 'Argentina',
+        );
 
         $response = $this->json('POST', $this->api . '/country', $country);
 

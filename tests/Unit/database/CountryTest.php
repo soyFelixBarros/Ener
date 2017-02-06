@@ -17,6 +17,7 @@ class CountryTest extends TestCase
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
         'id',
+        'code',
         'name',
     ];
 

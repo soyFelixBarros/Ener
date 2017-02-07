@@ -12051,40 +12051,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = {
+    data: function data() {
+        return {};
+    },
     mounted: function mounted() {
         console.log('Component mounted.');
     }
@@ -31712,34 +31683,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('table', {
-    staticClass: "table is-narrow"
-  }, [_c('thead', [_c('tr', [_c('th', [_vm._v("Newspaper")]), _vm._v(" "), _c('th', [_vm._v("Post")]), _vm._v(" "), _c('th', [_vm._v("Published")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("Diario TAG")]), _vm._v(" "), _c('td', [_c('a', {
-    attrs: {
-      "href": "#",
-      "target": "_blank"
-    }
-  }, [_vm._v("Peppo proyectó una agenda de obras públicas y reactivación para 2017")])]), _vm._v(" "), _c('td', [_vm._v("hace unos 23 minutos")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Chaco Dia Por Dia")]), _vm._v(" "), _c('td', [_c('a', {
-    attrs: {
-      "href": "#",
-      "target": "_blank"
-    }
-  }, [_vm._v("Ciclista murió tras ser atropellado por un camión; el conductor está prófugo")])]), _vm._v(" "), _c('td', [_vm._v("hace unos 23 minutos")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Diario TAG")]), _vm._v(" "), _c('td', [_c('a', {
-    attrs: {
-      "href": "#",
-      "target": "_blank"
-    }
-  }, [_vm._v("Peppo proyectó una agenda de obras públicas y reactivación para 2017")])]), _vm._v(" "), _c('td', [_vm._v("hace unos 23 minutos")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Chaco Dia Por Dia")]), _vm._v(" "), _c('td', [_c('a', {
-    attrs: {
-      "href": "#",
-      "target": "_blank"
-    }
-  }, [_vm._v("Ciclista murió tras ser atropellado por un camión; el conductor está prófugo")])]), _vm._v(" "), _c('td', [_vm._v("hace unos 23 minutos")])])])])])])])
+    staticClass: "col-md-6 col-md-offset-3"
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {

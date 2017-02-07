@@ -11182,25 +11182,12 @@ module.exports = g;
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 __webpack_require__(31);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example', __webpack_require__(34));
+Vue.component('posts', __webpack_require__(34));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
 });
 
 /***/ }),
@@ -12056,6 +12043,30 @@ module.exports = function spread(callback) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -31620,9 +31631,9 @@ var Component = __webpack_require__(35)(
   /* cssModules */
   null
 )
-Component.options.__file = "E:\\Projects\\Ener\\resources\\assets\\js\\components\\Example.vue"
+Component.options.__file = "E:\\Projects\\Ener\\resources\\assets\\js\\components\\Posts.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] Posts.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -31631,9 +31642,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-77fe73a2", Component.options)
+    hotAPI.createRecord("data-v-cf61acea", Component.options)
   } else {
-    hotAPI.reload("data-v-77fe73a2", Component.options)
+    hotAPI.reload("data-v-cf61acea", Component.options)
   }
 })()}
 
@@ -31706,19 +31717,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_vm._v("Example Component")]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_vm._v("\n                    I'm an example component!\n                ")])])])])])
+  }, [_c('table', {
+    staticClass: "table is-narrow"
+  }, [_c('thead', [_c('tr', [_c('th', [_vm._v("Newspaper")]), _vm._v(" "), _c('th', [_vm._v("Post")]), _vm._v(" "), _c('th', [_vm._v("Published")])])]), _vm._v(" "), _c('tbody', [_c('tr', [_c('td', [_vm._v("Diario TAG")]), _vm._v(" "), _c('td', [_c('a', {
+    attrs: {
+      "href": "#",
+      "target": "_blank"
+    }
+  }, [_vm._v("Peppo proyectó una agenda de obras públicas y reactivación para 2017")])]), _vm._v(" "), _c('td', [_vm._v("hace unos 23 minutos")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Chaco Dia Por Dia")]), _vm._v(" "), _c('td', [_c('a', {
+    attrs: {
+      "href": "#",
+      "target": "_blank"
+    }
+  }, [_vm._v("Ciclista murió tras ser atropellado por un camión; el conductor está prófugo")])]), _vm._v(" "), _c('td', [_vm._v("hace unos 23 minutos")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Diario TAG")]), _vm._v(" "), _c('td', [_c('a', {
+    attrs: {
+      "href": "#",
+      "target": "_blank"
+    }
+  }, [_vm._v("Peppo proyectó una agenda de obras públicas y reactivación para 2017")])]), _vm._v(" "), _c('td', [_vm._v("hace unos 23 minutos")])]), _vm._v(" "), _c('tr', [_c('td', [_vm._v("Chaco Dia Por Dia")]), _vm._v(" "), _c('td', [_c('a', {
+    attrs: {
+      "href": "#",
+      "target": "_blank"
+    }
+  }, [_vm._v("Ciclista murió tras ser atropellado por un camión; el conductor está prófugo")])]), _vm._v(" "), _c('td', [_vm._v("hace unos 23 minutos")])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-77fe73a2", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-cf61acea", module.exports)
   }
 }
 

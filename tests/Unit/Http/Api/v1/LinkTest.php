@@ -5,6 +5,7 @@ namespace Tests\Unit\Http\Api\v1;
 use App\Link;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class LinkTest extends TestCase

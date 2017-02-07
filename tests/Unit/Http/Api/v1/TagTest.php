@@ -4,7 +4,9 @@ namespace Tests\Unit\Http\Api\v1;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+
 
 class TagTest extends TestCase
 {

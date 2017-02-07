@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(NewspaperSeeder::class);
         $this->call(LinkSeeder::class);
         $this->call(CountrySeeder::class);
+        $this->call(ProvinceSeeder::class);
     }
 }

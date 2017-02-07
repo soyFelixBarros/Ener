@@ -29,4 +29,12 @@ class Country extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Obtener todas las provincias de un país.
+     */
+    public function provinces()
+    {
+        return $this->hasMany('App\Province');
+    }
 }

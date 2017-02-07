@@ -37,4 +37,12 @@ class Province extends Model
     {
         return $this->hasManyThrough('App\Post', 'App\Newspaper');
     }
+
+    /**
+     * Obtener el país de la provincia.
+     */
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
+    }
 }

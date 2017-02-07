@@ -5,6 +5,7 @@ namespace Tests\Unit\Http\Api\v1;
 use App\Post;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PostTest extends TestCase

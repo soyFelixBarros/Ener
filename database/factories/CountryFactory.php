@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Country::class, function (Faker\Generator $faker) {
     return [
-        'code' => $faker->countryCode,
+        'code' => $faker->unique()->countryCode,
         'name' => $faker->country,
     ];
 });

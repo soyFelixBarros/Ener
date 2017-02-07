@@ -12,6 +12,7 @@ class LinkSeeder extends Seeder
     public function run()
     {
         $links = [
+        
             // Diario Chaco
     		[1, 'http://www.diariochaco.com/secciones/cultura'],
             [1, 'http://www.diariochaco.com/secciones/policiales-y-judiciales'],

@@ -1,5 +1,18 @@
-# Ener
+# Recurso Ener API
 
-## License
+Se trata de una API de estilo REST que utiliza la autenticación serializada JSON y OAuth2.
 
-The Ener is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## Códigos de respuesta
+
+* `200` OK
+* `201` Created
+* `204` No Content
+* `401` Unauthorized
+* `403` Forbidden
+* `404` Not Found
+* `422` Unprocessable Entity
+* `5xx` Resource Guru is having trouble
+
+## Endpoints
+
+* [Posts](./docs/posts.md)

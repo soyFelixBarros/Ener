@@ -46,7 +46,7 @@ class ProvinceController extends Controller
 	 */
 	public function find($id = null)
 	{
-		$province = Province::find($id)
+		$province = Province::where('id', $id)
 							->with('country')
 							->get();
 

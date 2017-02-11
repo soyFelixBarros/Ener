@@ -19,6 +19,7 @@ class Newspaper extends Model
      * @var array
      */
     protected $fillable = [
+        'province_code',
         'name',
         'website',
     ];

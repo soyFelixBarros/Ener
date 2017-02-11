@@ -36,6 +36,7 @@ http://api.ejemplo.com/v1/posts
 		}
 	}
 ]
+```
 
 Key | Type | Description
 --- | --- | ---
@@ -46,6 +47,7 @@ created_at | string | Fecha y hora de creación del post.
 updated_at | string | Fecha y hora de actualización del post.
 
 #### Newspaper Key
+
 Key | Type | Description
 --- | --- | ---
 id | integer | Identificador único del diario.

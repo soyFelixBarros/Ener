@@ -46,7 +46,8 @@ class ProvinceTest extends TestCase
         $country = factory('App\Country')->create();
         
         $province = array(
-            'country_id' => $country->id,
+            'country_code' => $country->code,
+            'code' => 'AR-H',
             'name' => 'Chaco',
         );
 

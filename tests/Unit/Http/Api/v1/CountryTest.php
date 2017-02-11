@@ -42,7 +42,7 @@ class CountryTest extends TestCase
      * @return void
      */
     public function testCountryStore()
-    {
+    {        
         $country = array(
             'code' => 'AR',
             'name' => 'Argentina',

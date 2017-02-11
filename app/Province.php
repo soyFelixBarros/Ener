@@ -19,7 +19,8 @@ class Province extends Model
      * @var array
      */
     protected $fillable = [
-    	'country_id',
+    	'country_code',
+        'code',
         'name',
     ];
 
@@ -43,6 +44,14 @@ class Province extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Country');
+        return $this->belongsTo('App\Country', 'code', 'country_code');
+    }
+
+    /**
+     * Obtener todos los diarios de una provincia.
+     */
+    public function newspapers()
+    {
+        return $this->hasMany('App\Newspaper', 'province_code', 'code');
     }
 }

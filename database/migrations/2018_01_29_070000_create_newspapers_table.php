@@ -15,10 +15,10 @@ class CreateNewspapersTable extends Migration
     {
         Schema::create('newspapers', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('province_id')->nullable();
+            $table->string('province_code');
             $table->string('name');
             $table->string('website');
-            $table->foreign('province_id')->references('id')->on('provinces');
+            $table->foreign('province_code')->references('code')->on('provinces');
         });
     }
 

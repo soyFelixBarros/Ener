@@ -19,9 +19,17 @@ class Newspaper extends Model
      * @var array
      */
     protected $fillable = [
-        'province_code',
         'name',
         'website',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'province_code',
     ];
 
     /**
@@ -52,6 +60,7 @@ class Newspaper extends Model
      */
     public function province()
     {
-        return $this->belongsTo('App\Province', 'code', 'province_code');
+        return $this->belongsTo('App\Province', 'province_code', 'code')
+                    ->select(['code', 'name']);
     }
 }

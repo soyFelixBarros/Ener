@@ -16,7 +16,7 @@ class NewspaperController extends Controller
 	 */
 	public function all()
 	{
-		$newspapers = Newspaper::latest('name')->get();
+		$newspapers = Newspaper::latest('name')->with('province')->get();
 
 		return response()->json($newspapers);
 	}
@@ -44,7 +44,9 @@ class NewspaperController extends Controller
 	 */
 	public function find($id = null)
 	{
-		$newspaper = Newspaper::find($id);
+		$newspaper = Newspaper::find($id)
+							  ->with('province')
+							  ->get();
 
 		return response()->json($newspaper);
 	}

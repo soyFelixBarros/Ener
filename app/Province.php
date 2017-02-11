@@ -19,9 +19,17 @@ class Province extends Model
      * @var array
      */
     protected $fillable = [
-    	'country_code',
         'code',
         'name',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'country_code',
     ];
 
     /**
@@ -44,7 +52,8 @@ class Province extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Country', 'code', 'country_code');
+        return $this->belongsTo('App\Country',  'country_code', 'code')
+                    ->select(['code', 'name']);
     }
 
     /**

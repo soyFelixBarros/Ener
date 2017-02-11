@@ -1,14 +1,15 @@
 # Post
 
-## Get Posts
+## All posts
 
-* `GET /v1/posts` Devuelve un `Array` con **Posts Activos**.
+* `GET` /v1/posts - Devuelve un `Array` con **Posts Activos**.
 
 **Ejemplo:**
 
 ```
 http://api.ejemplo.com/v1/posts
 ```
+
 ### Respuesta
 
 ```json

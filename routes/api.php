@@ -60,3 +60,8 @@ Route::group(['namespace' => 'Api\v1'], function ($this) {
 	$this->put('/tag/{id}', 'TagController@update');
 	$this->delete('/tag/{id}', 'TagController@destroy');
 });
+
+// Search
+Route::group(['namespace' => 'Api\v1'], function ($this) {
+	$this->get('/search/posts', 'SearchController@posts');
+});

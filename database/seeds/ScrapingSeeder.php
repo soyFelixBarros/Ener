@@ -49,7 +49,7 @@ class ScrapingSeeder extends Seeder
 
             // diario21.tv
             [
-                '#col-main > div.bloque-noticias > div:nth-child(2) > a.cn-titulolistado',
+                '//html/body/div[3]/div/div[2]/div[3]/div[2]/div[1]/a',
                 '//div[@class="imgNota"]/a/@href',
                 '//*[@id="col-main"]/div[2]/div[7]/p[1]//text()',
             ],

@@ -2,26 +2,24 @@
 
 namespace Tests\Unit\database;
 
-use App\Link;
+use App\Scraping;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class LinkTest extends TestCase
+class ScrapingTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @var string $table Nombre de la tabla. */
-    protected $table = 'links';
+    protected $table = 'scrapings';
 
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
         'id',
-        'newspaper_id',
-        'url',
-        'active',
-        'created_at',
-        'updated_at',
+        'title',
+        'src',
+        'content',
     ];
 
     /**
@@ -29,7 +27,7 @@ class LinkTest extends TestCase
      *
      * @return void
      */
-    public function testHasLinksTable()
+    public function testHasScrapingsTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -39,7 +37,7 @@ class LinkTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInLinksTable()
+    public function testHasColumnsInScrapingsTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -47,47 +45,46 @@ class LinkTest extends TestCase
     }
 
     /**
-     * Crear un link.
+     * Agregar un scraping.
      *
      * @return void
      */
-    public function testCreateLink()
+    public function testCreateScraping()
     {
-    	$link = factory(Link::class)->create();
+    	$scraping = factory(Scraping::class)->create();
     	
-    	$this->assertDatabaseHas($this->table, $link->toArray());
+    	$this->assertDatabaseHas($this->table, $scraping->toArray());
     }
 
     /**
-     * Actualizar datos de un link.
+     * Actualizar datos de un scraping.
      *
      * @return void
      */
-    public function testUpdateLink()
+    public function testUpdateScraping()
     {
-    	$link = factory(Link::class)->create();
+    	$scraping = factory(Scraping::class)->create();
 
-    	$link = Link::find($link->id);
-    	$link->url = 'http://felix.barros';
-    	$link->save();
+    	$scraping = Scraping::find($scraping->id);
+    	$scraping->title = '/buscar/';
+    	$scraping->save();
 
     	$this->assertDatabaseHas($this->table, [
-            'url' => $link->url,
+            'title' => $scraping->title,
         ]);
-
     }
 
     /**
-     * Eliminar un link.
+     * Eliminar un scraping
      *
      * @return void
      */
-    public function testDeleteLink()
+    public function testDeleteScraping()
     {
-    	$link = factory(Link::class)->create();
+    	$scraping = factory(Scraping::class)->create();
 
-    	Link::destroy($link->id);
+    	Scraping::destroy($scraping->id);
 
-    	$this->assertDatabaseMissing($this->table, $link->toArray());
+    	$this->assertDatabaseMissing($this->table, $scraping->toArray());
     }
 }

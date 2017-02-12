@@ -21,6 +21,8 @@ class Link extends Model
     protected $fillable = [
         'url',
         'active',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -30,6 +32,7 @@ class Link extends Model
      */
     protected $hidden = [
         'newspaper_id',
+        'scraping_id',
     ];
 
     /**
@@ -38,6 +41,15 @@ class Link extends Model
     public function newspaper()
     {
         return $this->belongsTo('App\Newspaper')
-                    ->select(['id', 'name']);
+                    ->select(['id', 'name', 'website']);
+    }
+
+    /**
+     * Obtener el scraping del link.
+     */
+    public function scraping()
+    {
+        return $this->belongsTo('App\Scraping')
+                    ->select(['id', 'title', 'src', 'content']);
     }
 }

@@ -60,6 +60,7 @@ class LinkSeeder extends Seeder
     	for ($i = 0; count($links) > $i; $i++) {
     		DB::table('links')->insert([
                 'newspaper_id' => $links[$i][0],
+                'scraping_id' => $links[$i][0],
     			'url' => $links[$i][1],
     		]);
     	}

@@ -51,6 +51,7 @@ class LinkController extends Controller
 		} else {
 			$link = Link::oldest('updated_at')
 						->with('newspaper')
+						->with('scraping')
 						->first();
 		}
 
@@ -65,7 +66,8 @@ class LinkController extends Controller
 	 */
 	public function update(StoreUpdateLink $request, $id)
 	{
-		$link = Link::where('id', '=', $id)->update($request->all());
+		$link = Link::where('id', $id)
+					->update($request->all());
 		
 		return response()->json([
 			'updated' => (boolean) $link,
@@ -80,7 +82,8 @@ class LinkController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$link = Link::where('id', '=', $id)->delete();
+		$link = Link::where('id', $id)
+					->delete();
 
 		return response()->json([
 			'deleted' => (boolean) $link,

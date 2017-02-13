@@ -8,7 +8,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Post
-Route::group(['namespace' => 'Api\v1'], function ($this) {
+Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/posts', 'PostController@all');
 	$this->post('/post', 'PostController@store');
 	$this->get('/post/{id?}', 'PostController@find');
@@ -17,7 +17,7 @@ Route::group(['namespace' => 'Api\v1'], function ($this) {
 });
 
 // Newspaper
-Route::group(['namespace' => 'Api\v1'], function ($this) {
+Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/newspapers', 'NewspaperController@all');
 	$this->post('/newspaper', 'NewspaperController@store');
 	$this->get('/newspaper/{id?}', 'NewspaperController@find');
@@ -26,7 +26,7 @@ Route::group(['namespace' => 'Api\v1'], function ($this) {
 });
 
 // Link
-Route::group(['namespace' => 'Api\v1'], function ($this) {
+Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/links', 'LinkController@all');
 	$this->post('/link', 'LinkController@store');
 	$this->get('/link/{id?}', 'LinkController@find');
@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Api\v1'], function ($this) {
 });
 
 // Country
-Route::group(['namespace' => 'Api\v1'], function ($this) {
+Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/countries', 'CountryController@all');
 	$this->post('/country', 'CountryController@store');
 	$this->get('/country/{id?}', 'CountryController@find');
@@ -44,7 +44,7 @@ Route::group(['namespace' => 'Api\v1'], function ($this) {
 });
 
 // Province
-Route::group(['namespace' => 'Api\v1'], function ($this) {
+Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/provinces', 'ProvinceController@all');
 	$this->post('/province', 'ProvinceController@store');
 	$this->get('/province/{id?}', 'ProvinceController@find');
@@ -53,7 +53,7 @@ Route::group(['namespace' => 'Api\v1'], function ($this) {
 });
 
 // Tag
-Route::group(['namespace' => 'Api\v1'], function ($this) {
+Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/tags', 'TagController@all');
 	$this->post('/tag', 'TagController@store');
 	$this->get('/tag/{id?}', 'TagController@find');
@@ -62,6 +62,6 @@ Route::group(['namespace' => 'Api\v1'], function ($this) {
 });
 
 // Search
-Route::group(['namespace' => 'Api\v1'], function ($this) {
+Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/search/posts', 'SearchController@posts');
 });

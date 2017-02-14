@@ -57,7 +57,8 @@ class CountryController extends Controller
 	 */
 	public function update(StoreUpdateCountry $request, $id)
 	{
-		$country = Country::where('id', '=', $id)->update($request->all());
+		$country = Country::where('id', '=', $id)
+						  ->update($request->all());
 		
 		return response()->json([
 			'updated' => (boolean) $country,

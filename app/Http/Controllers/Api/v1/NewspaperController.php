@@ -63,7 +63,8 @@ class NewspaperController extends Controller
 	 */
 	public function update(StoreUpdateNewspaper $request, $id)
 	{
-		$newspaper = Newspaper::where('id', '=', $id)->update($request->all());
+		$newspaper = Newspaper::where('id', '=', $id)
+							  ->update($request->all());
 		
 		return response()->json([
 			'updated' => (boolean) $newspaper,
@@ -78,7 +79,8 @@ class NewspaperController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$newspaper = Newspaper::where('id', '=', $id)->delete();
+		$newspaper = Newspaper::where('id', '=', $id)
+							  ->delete();
 
 		return response()->json([
 			'deleted' => (boolean) $newspaper,

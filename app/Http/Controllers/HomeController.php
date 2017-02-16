@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Newspaper;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +29,13 @@ class HomeController extends Controller
                      ->with('newspaper')
                      ->get();
 
-        return $posts;
-        // return view('home', ['posts' => $posts]);
+        $newspapers = Newspaper::latest('name')
+                               ->with('posts')
+                               ->get();
+
+        return view('home', array(
+            'posts' => $posts,
+            'newspapers' => $newspapers,
+        ));
     }
 }

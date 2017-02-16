@@ -16,7 +16,8 @@ class TagController extends Controller
 	 */
 	public function all()
 	{
-		$tags = Tag::latest('name')->get();
+		$tags = Tag::latest('name')
+				   ->get();
 		
 		return response()->json($tags);
 	}

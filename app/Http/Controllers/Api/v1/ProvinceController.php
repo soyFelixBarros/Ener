@@ -61,7 +61,8 @@ class ProvinceController extends Controller
 	 */
 	public function update(StoreUpdateProvince $request, $id)
 	{
-		$province = Province::where('id', '=', $id)->update($request->all());
+		$province = Province::where('id', '=', $id)
+							->update($request->all());
 		
 		return response()->json([
 			'updated' => (boolean) $province,
@@ -76,7 +77,8 @@ class ProvinceController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$province = Province::where('id', '=', $id)->delete();
+		$province = Province::where('id', '=', $id)
+							->delete();
 
 		return response()->json([
 			'deleted' => (boolean) $province,

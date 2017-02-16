@@ -16,7 +16,9 @@ class PostController extends Controller
 	 */
 	public function all()
 	{
-		$posts = Post::latest()->with('newspaper')->get();
+		$posts = Post::latest()
+					 ->with('newspaper')
+					 ->get();
 
 		return response()->json($posts);
 	}
@@ -44,7 +46,9 @@ class PostController extends Controller
 	 */
 	public function find($id = null)
 	{
-		$post = Post::where('id', '=', $id)->with('newspaper')->get();
+		$post = Post::where('id', '=', $id)
+					->with('newspaper')
+					->get();
 
 		return response()->json($post);
 	}
@@ -57,7 +61,8 @@ class PostController extends Controller
 	 */
 	public function update(StoreUpdatePost $request, $id)
 	{
-		$post = Post::where('id', '=', $id)->update($request->all());
+		$post = Post::where('id', '=', $id)
+					->update($request->all());
 		
 		return response()->json([
 			'updated' => (boolean) $post,
@@ -72,7 +77,8 @@ class PostController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$post = Post::where('id', '=', $id)->delete();
+		$post = Post::where('id', '=', $id)
+					->delete();
 
 		return response()->json([
 			'deleted' => (boolean) $post,

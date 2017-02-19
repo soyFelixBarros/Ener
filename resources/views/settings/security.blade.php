@@ -1,6 +1,6 @@
-@extends('layouts.settings')
+@extends('layouts.base')
 @section('title', 'Security')
-@section('content.settings')
+@section('content.base')
 <div class="panel panel-default">
 	<div class="panel-heading">Update Password</div>
 	<div class="panel-body">

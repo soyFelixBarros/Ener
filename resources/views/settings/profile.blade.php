@@ -1,6 +1,6 @@
-@extends('layouts.settings')
+@extends('layouts.base')
 @section('title', 'Profile')
-@section('content.settings')
+@section('content.base')
 <div class="panel panel-default">
     <div class="panel-heading">Contact Information</div>
     <div class="panel-body">

@@ -38,7 +38,7 @@ class SettingsController extends Controller
 		$user = User::where('id', Auth::user()->id)
 					->update($data);
 
-		return redirect()->route('profile');
+		return redirect()->route('profile')->with('status', 'Profile updated!');
 	}
 
 	/**
@@ -66,7 +66,7 @@ class SettingsController extends Controller
 
             Auth::logout();
             
-            return redirect()->route('login');
+            return redirect()->route('login')->with('status', 'Password updated!');
         }
 	}
 }

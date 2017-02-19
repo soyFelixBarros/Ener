@@ -8,4 +8,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/settings', 'SettingController@index');
+// Settings
+Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {
+	$this->get('/', 'SettingsController@profile');
+	$this->get('/profile', 'SettingsController@profile');
+	$this->get('/security', 'SettingsController@security');
+});

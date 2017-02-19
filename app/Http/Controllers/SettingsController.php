@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateUser;
 
 class SettingsController extends Controller
 {
@@ -14,7 +17,26 @@ class SettingsController extends Controller
 	 */
 	public function profile()
 	{
-		return view('settings.profile');
+		$user = Auth::user();
+
+		return view('settings.profile', array(
+			'user' => $user,
+		));
+	}
+
+	/**
+	 * Actualizar los datos de un usuario.
+	 *
+	 * @return Response
+	 */
+	public function updateProfile(StoreUpdateUser $request)
+	{
+		$data = $request->except('_token');
+
+		$user = User::where('id', Auth::user()->id)
+					->update($data);
+
+		return redirect()->route('profile');
 	}
 
 	/**

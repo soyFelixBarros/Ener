@@ -53,11 +53,17 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li class="dropdown-header"><i class="fa fa-fw fa-btn fa-cog"></i> Settings</li>
+                                    <li>
+                                        <a href="/settings/profile">Profile</a>
+                                        <a href="/settings/security">Security</a>
+                                    </li>
+                                    <li class="divider"></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            <i class="fa fa-fw fa-btn fa-sign-out"></i>Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

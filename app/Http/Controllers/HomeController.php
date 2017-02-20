@@ -29,9 +29,7 @@ class HomeController extends Controller
                      ->with('newspaper')
                      ->get();
 
-        $newspapers = Newspaper::latest('name')
-                               ->with('posts')
-                               ->get();
+        $newspapers = Newspaper::latest('name')->get();
 
         return view('home', array(
             'posts' => $posts,

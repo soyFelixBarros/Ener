@@ -6,7 +6,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');;
 
 // Settings
 Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {

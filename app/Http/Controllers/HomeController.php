@@ -30,7 +30,7 @@ class HomeController extends Controller
                      ->get();
 
         $newspapers = Newspaper::latest('name')->get();
-
+        
         return view('home', array(
             'posts' => $posts,
             'newspapers' => $newspapers,

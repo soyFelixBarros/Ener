@@ -15,13 +15,16 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('post_id')->nullable();
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->unsignedInteger('newspaper_id')->nullable();
+            $table->foreign('newspaper_id')->references('id')->on('newspapers');
             $table->unsignedInteger('scraping_id')->nullable();
+            $table->foreign('scraping_id')->references('id')->on('scrapings');
             $table->string('url', 255);
+            $table->string('scraping', 50)->nullable();
             $table->boolean('active')->default(true); // true o false
             $table->timestamps();
-            $table->foreign('newspaper_id')->references('id')->on('newspapers');
-            $table->foreign('scraping_id')->references('id')->on('scrapings');
         });
     }
 

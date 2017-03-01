@@ -1,0 +1,24 @@
+.posts {
+	article {
+		font-size: 14px;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		.title {
+			font-size: 14px;
+		    font-weight: 600;
+			a {
+			    color: #292F33;
+			}
+		}
+		.summary {
+			color: #333;
+		}
+		.newspaper {
+			font-size: 13px;
+			color: #8899A6;
+			max-height: 1.3em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+}

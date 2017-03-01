@@ -3,19 +3,22 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="posts col-md-8">
+            @if (count($posts) > 0)
+            @foreach ($posts as $post)
             <div class="panel panel-default">
                 <div class="panel-body">
-                @if (count($posts) > 0)
-                @foreach ($posts as $post)
-                    <article class="media">
-                        <h4 class="media-heading"><a href="#">{{ $post->title }}</a></h4>
-                        <span class="text-muted">{{ $post->newspaper->name }} - {{ $post->created_at }}</span>
+                    <article class="media post">
+                        <h2 class="title media-heading"><a href="{{ $post->link->url }}" target="_blank">{{ $post->title }}</a></h2>
+                        @if ($post->summary)
+                        <p class="summary">{{ $post->summary }}</p>
+                        @endif
+                        <span class="newspaper">{{ $post->newspaper->name }}</span>
                     </article>
-                @endforeach
-                @endif
                 </div>
             </div>
+            @endforeach
+            @endif
         </div>
     </div><!-- .row -->
 </div><!-- .container -->

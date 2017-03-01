@@ -19,7 +19,10 @@ class Link extends Model
      * @var array
      */
     protected $fillable = [
+        'newspaper_id',
+        'scraping_id',
         'url',
+        'scraping',
         'active',
         'created_at',
         'updated_at',
@@ -34,6 +37,14 @@ class Link extends Model
         'newspaper_id',
         'scraping_id',
     ];
+
+    /**
+     * Obtener el post que posee el link.
+     */
+    public function post()
+    {
+        return $this->belongsTo('App\Post');
+    }
 
     /**
      * Obtener el diario del link.

@@ -16,10 +16,10 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('newspaper_id')->nullable();
+            $table->foreign('newspaper_id')->references('id')->on('newspapers');
             $table->string('title');
             $table->text('summary')->nullable();
             $table->timestamps();
-            $table->foreign('newspaper_id')->references('id')->on('newspapers');
         });
     }
 

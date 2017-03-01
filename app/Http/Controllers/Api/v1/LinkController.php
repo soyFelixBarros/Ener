@@ -44,17 +44,25 @@ class LinkController extends Controller
 	 * @param  integer  $id
 	 * @return Response
 	 */
-	public function find($id = null)
+	public function find(Request $request, $id = null)
 	{
 		if ($id !== null) {
 			$link = Link::where('id', $id)
 						->with('newspaper')
 						->get();
 		} else {
-			$link = Link::oldest('updated_at')
-						->with('newspaper')
-						->with('scraping')
-						->first();
+			$data = $request->all();
+			if (isset($data['scraping'])) {
+				$link = Link::where('scraping', $data['scraping'])
+							->with('scraping')
+							->first();
+			} else {
+				$link = Link::where('scraping', null)
+							->oldest('updated_at')
+							->with('newspaper')
+							->with('scraping')
+							->first();
+			}
 		}
 
 		return response()->json($link);

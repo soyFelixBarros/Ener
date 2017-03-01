@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()
+        $posts = Post::whereDay('created_at', '=', date('d'))
+                     ->latest()
                      ->with('newspaper')
                      ->get();
 

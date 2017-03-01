@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Post;
+use App\Link;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePost;
@@ -31,10 +32,23 @@ class PostController extends Controller
 	 */
 	public function store(StoreUpdatePost $request)
 	{
-		$post = Post::create($request->all());
+		$data = $request->all();
+
+		$post = Post::create($data);
+
+		$link = new Link([
+			'post_id' => $post->id,
+			'newspaper_id' => $data['newspaper_id'],
+			'scraping_id' => $data['scraping_id'],
+			'url' => $data['url'],
+			'scraping' => $data['scraping'],
+		]);
+
+		$post->link()->save($link);
 		
 		return response()->json([
 			'created' => (boolean) $post,
+			'data' => $post,
 		], 201);
 	}
 

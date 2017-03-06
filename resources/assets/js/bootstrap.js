@@ -8,7 +8,8 @@ window._ = require('lodash');
  */
 
 window.$ = window.jQuery = require('jquery');
-
+require('selectize');
+require('timeago');
 require('bootstrap-sass');
 
 /**

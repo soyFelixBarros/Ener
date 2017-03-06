@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Taggable extends Model
+class PostTag extends Model
 {
-    /**
+
+	/**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'taggables';
+    protected $table = 'post_tag';
     
     /**
      * The attributes that are mass assignable.
@@ -19,8 +20,7 @@ class Taggable extends Model
      * @var array
      */
     protected $fillable = [
+        'post_id',
         'tag_id',
-        'taggable_id',
-        'taggable_type',
     ];
 }

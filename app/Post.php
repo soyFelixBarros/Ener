@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
 	/**
      * The table associated with the model.
      *
@@ -54,10 +55,10 @@ class Post extends Model
     }
 
     /**
-     * Obtener todos los tags del posts.
+     * Obtener todos los tags de un post.
      */
     public function tags()
     {
-        return $this->morphToMany('App\Tag', 'taggable');
+        return $this->belongsToMany('App\Tag');
     }
 }

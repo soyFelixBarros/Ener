@@ -12,7 +12,7 @@ class Tag extends Model
      * @var string
      */
     protected $table = 'tags';
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,10 +24,15 @@ class Tag extends Model
     ];
 
     /**
-     * Obtener los posts de un tag.
+     * Obtener todos los posts de un tag.
      */
     public function posts()
     {
-        return $this->morphedByMany('App\Post', 'taggable');
+        return $this->belongsToMany('App\Post');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

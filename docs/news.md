@@ -1,13 +1,13 @@
-# Post
+# News
 
-## All posts
+## All news
 
-* `GET` /v1/posts - Devuelve un `Array` con **Posts Activos**.
+* `GET` /v1/news - Devuelve un `Array` con las **noticias activas**.
 
 **Ejemplo:**
 
 ```
-http://api.ejemplo.com/v1/posts
+http://ejemplo.com/api/v1/news
 ```
 
 ### Respuesta
@@ -41,12 +41,12 @@ http://api.ejemplo.com/v1/posts
 
 Key | Type | Description
 --- | --- | ---
-id | integer | Identificador único de un post.
-title | string | Titulo de una post.
-summary | string | Bajada de un post.
-created_at | timestamp | Fecha y hora de creación del post.
-updated_at | timestamp | Fecha y hora de actualización del post.
-newspaper | hash | Diario del post.
+id | integer | Identificador único de la noticia.
+title | string | Titulo de la noticia.
+summary | string | Bajada de la noticia.
+created_at | timestamp | Fecha y hora de creación de la noticia.
+updated_at | timestamp | Fecha y hora de actualización de lan noticia.
+newspaper | hash | Diario de la noticia.
 
 #### Newspaper Key
 

@@ -1,7 +1,3 @@
-# Recurso Ener API
-
-Se trata de una API de estilo REST que utiliza la autenticación serializada JSON y OAuth2.
-
 ## Códigos de respuesta
 
 * `200` OK
@@ -15,4 +11,4 @@ Se trata de una API de estilo REST que utiliza la autenticación serializada JSO
 
 ## Endpoints
 
-* [Posts](./docs/posts.md)
+* [News](./docs/news.md)

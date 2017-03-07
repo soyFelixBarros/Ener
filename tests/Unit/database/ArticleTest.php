@@ -2,17 +2,17 @@
 
 namespace Tests\Unit\database;
 
-use App\Post;
+use App\Article;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class PostTest extends TestCase
+class ArticleTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @var string $table Nombre de la tabla. */
-    protected $table = 'posts';
+    protected $table = 'articles';
 
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
@@ -29,7 +29,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testHasPostsTable()
+    public function testHasTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -39,7 +39,7 @@ class PostTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInPostsTable()
+    public function testHasColumnsInTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -47,46 +47,46 @@ class PostTest extends TestCase
     }
 
     /**
-     * Crear un post.
+     * Crear un article.
      *
      * @return void
      */
-    public function testCreatePost()
+    public function testCreateArticle()
     {
-    	$post = factory(Post::class)->create();
+    	$article = factory(Article::class)->create();
     	
-    	$this->assertDatabaseHas($this->table, $post->toArray());
+    	$this->assertDatabaseHas($this->table, $article->toArray());
     }
 
     /**
-     * Actualizar datos de un post.
+     * Actualizar datos de un artículo.
      *
      * @return void
      */
-    public function testUpdatePost()
+    public function testUpdateArticle()
     {
-    	$post = factory(Post::class)->create();
+    	$article = factory(Article::class)->create();
 
-    	$post = Post::find($post->id);
-    	$post->title = 'New title';
-    	$post->save();
+    	$article = Article::find($article->id);
+    	$article->title = 'New title';
+    	$article->save();
 
     	$this->assertDatabaseHas($this->table, [
-            'title' => $post->title,
+            'title' => $article->title,
         ]);
     }
 
     /**
-     * Eliminar un post.
+     * Eliminar un artículo.
      *
      * @return void
      */
-    public function testDeletePost()
+    public function testDeleteArticle()
     {
-    	$post = factory(Post::class)->create();
+    	$Article = factory(Article::class)->create();
 
-    	Post::destroy($post->id);
+    	Article::destroy($article->id);
 
-    	$this->assertDatabaseMissing($this->table, $post->toArray());
+    	$this->assertDatabaseMissing($this->table, $article->toArray());
     }
 }

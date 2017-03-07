@@ -7,13 +7,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Post
+// Articles
 Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/posts', 'PostController@all');
-	$this->post('/post', 'PostController@store');
-	$this->get('/post/{id?}', 'PostController@find');
-	$this->put('/post/{id}', 'Postcontroller@update');
-	$this->delete('/post/{id}', 'PostController@destroy');
+	$this->get('/articles', 'ArticlesController@all');
+	$this->post('/articles', 'ArticlesController@store');
+	$this->get('/articles/{id?}', 'ArticlesController@find');
+	$this->put('/articles/{id}', 'Articlescontroller@update');
+	$this->delete('/articles/{id}', 'ArticlesController@destroy');
 });
 
 // Newspaper
@@ -63,5 +63,5 @@ Route::group(['namespace' => 'Api\v1'], function () {
 
 // Search
 Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/search/posts', 'SearchController@posts');
+	$this->get('/search/articles', 'SearchController@articles');
 });

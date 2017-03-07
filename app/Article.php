@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Article extends Model
 {
 
 	/**
@@ -12,7 +12,7 @@ class Post extends Model
      *
      * @var string
      */
-    protected $table = 'posts';
+    protected $table = 'articles';
     
     /**
      * The attributes that are mass assignable.
@@ -38,7 +38,7 @@ class Post extends Model
     ];
 
     /**
-     * Obtener el link del post.
+     * Obtener el link de un artículo.
      */
     public function link()
     {
@@ -46,7 +46,7 @@ class Post extends Model
     }
 
     /**
-     * Obtener la fuente del post.
+     * Obtener la fuente del artículo.
      */
     public function newspaper()
     {

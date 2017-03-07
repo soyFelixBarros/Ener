@@ -11,4 +11,4 @@
 
 ## Endpoints
 
-* [News](./docs/news.md)
+* [Articles](./docs/articles.md)

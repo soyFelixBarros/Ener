@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Post;
+use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,24 +10,24 @@ class SearchController extends Controller
 {
 
 	/**
-	 * Buscar posts.
+	 * Buscar artículos.
 	 *
 	 * @param  string  $q
 	 * @return Response
 	 */
-	public function posts(Request $request)
+	public function articles(Request $request)
 	{
 		$parameter = $request->all();
 
 		if (isset($parameter['scraping'])) {
-			$posts = Post::where('scraping', $parameter['scraping'])->first();
+			$articles = Post::where('scraping', $parameter['scraping'])->first();
 		} else {
-			$posts = Post::where('newspaper_id', $parameter['newspaper_id'], 'and')
+			$articles = Post::where('newspaper_id', $parameter['newspaper_id'], 'and')
 						 ->where('title', 'LIKE', $parameter['q'] . '%', 'and')
 						 ->whereDate('created_at', $parameter['date'])
 						 ->get();
 		}
 
-		return response()->json($posts);
+		return response()->json($articles);
 	}
 }

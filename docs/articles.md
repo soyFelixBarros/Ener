@@ -1,13 +1,13 @@
-# News
+# Articles
 
-## All news
+## All articles
 
-* `GET` /v1/news - Devuelve un `Array` con las **noticias activas**.
+* `GET` /v1/articles - Devuelve un `Array` con los **artículos activos**.
 
 **Ejemplo:**
 
 ```
-http://ejemplo.com/api/v1/news
+http://ejemplo.com/api/v1/articles
 ```
 
 ### Respuesta
@@ -41,12 +41,12 @@ http://ejemplo.com/api/v1/news
 
 Key | Type | Description
 --- | --- | ---
-id | integer | Identificador único de la noticia.
-title | string | Titulo de la noticia.
-summary | string | Bajada de la noticia.
-created_at | timestamp | Fecha y hora de creación de la noticia.
-updated_at | timestamp | Fecha y hora de actualización de lan noticia.
-newspaper | hash | Diario de la noticia.
+id | integer | Identificador único del artículo.
+title | string | Titulo del artículo.
+summary | string | Bajada del artículo.
+created_at | timestamp | Fecha y hora de creación del artículo.
+updated_at | timestamp | Fecha y hora de actualización del artículo.
+newspaper | hash | Diario del artículo.
 
 #### Newspaper Key
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Article;
 use App\Newspaper;
 use Illuminate\Http\Request;
 
@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::whereDay('created_at', '>', (date('j') - 3))
+        $articles = Article::whereDay('created_at', '>', (date('j') - 3))
                      ->latest()
                      ->with('newspaper')
                      ->get();
@@ -33,7 +33,7 @@ class HomeController extends Controller
         $newspapers = Newspaper::latest('name')->get();
         
         return view('home', array(
-            'posts' => $posts,
+            'articles' => $articles,
             'newspapers' => $newspapers,
         ));
     }

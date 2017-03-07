@@ -15,10 +15,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 	// Tags
 	$this->get('/tags', 'TagsController@index')->name('tags');
 
-	// Posts
-	$this->get('/posts', 'PostsController@index')->name('post');
-	$this->get('/post/{id}/edit', 'PostsController@edit')->name('post_edit');
-	$this->post('/post/{id}/edit', 'PostsController@update');
+	// Articles
+	$this->get('/articles', 'ArticlesController@index')->name('article');
+	$this->get('/articles/{id}/edit', 'ArticlesController@edit')->name('article_edit');
+	$this->post('/articles/{id}/edit', 'ArticlesController@update');
 });
 
 // Settings

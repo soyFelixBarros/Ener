@@ -67,12 +67,12 @@ class TaggableTest extends TestCase
     {
         $taggable = factory(Taggable::class)->create();
     	$tag = factory('App\Tag')->create();
-        $post = factory('App\Post')->create();
+        $article = factory('App\Article')->create();
 
     	$taggable = Taggable::find($taggable->id);
     	$taggable->tag_id = $tag->id;
-        $taggable->taggable_id = $post->id;
-        $taggable->taggable_type = 'App\Post';
+        $taggable->taggable_id = $article->id;
+        $taggable->taggable_type = 'App\Article';
     	$taggable->save();
         
     	$this->assertDatabaseHas($this->table, [

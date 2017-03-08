@@ -21,7 +21,7 @@ class HomeController extends Controller
                      ->latest()
                      ->paginate(15);
 
-        $newspapers = Newspaper::latest('name')->get();
+        $newspapers = Newspaper::oldest('name')->get();
         
         return view('home', array(
             'tags' => $tags,

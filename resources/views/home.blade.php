@@ -3,6 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col-md-3">
+            @if (count($newspapers) > 0)
+            <div class="panel panel-default panel-flush">
+                <div class="panel-heading">Diarios</div>
+                <ul class="nav settings-stacked-tabs">
+                    <li{{ Request::is('/') ? ' class=active' : '' }}><a href="{{ route('home') }}">Todos</a></li>
+                    @foreach ($newspapers as $newspaper)
+                    <li{{ Request::is('newspaper/*') ? ' class=active' : '' }}><a href="{{ route('newspaper_show', ['newspaper' => $newspaper->id]) }}">{{ $newspaper->name }}</a></li>
+                    @endforeach
+                </ul>
+            </div><!-- .panel -->
+            @endif
+        </div>
         <div class="posts col-md-9">
             @if (count($articles) > 0)
             @foreach ($articles as $article)
@@ -33,19 +46,6 @@
             <div class="text-center">
                 {{ $articles->links() }}
             </div>
-            @endif
-        </div>
-        <div class="col-md-3">
-            @if (count($newspapers) > 0)
-            <div class="panel panel-default panel-flush">
-                <div class="panel-heading">Diarios</div>
-                <ul class="nav settings-stacked-tabs">
-                    <li{{ Request::is('/') ? ' class=active' : '' }}><a href="{{ route('home') }}">Todos</a></li>
-                    @foreach ($newspapers as $newspaper)
-                    <li{{ Request::is('newspaper/*') ? ' class=active' : '' }}><a href="{{ route('newspaper_show', ['newspaper' => $newspaper->id]) }}">{{ $newspaper->name }}</a></li>
-                    @endforeach
-                </ul>
-            </div><!-- .panel -->
             @endif
         </div>
     </div><!-- .row -->

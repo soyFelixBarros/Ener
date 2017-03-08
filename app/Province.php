@@ -41,11 +41,11 @@ class Province extends Model
     public $timestamps = false;
 
     /**
-     * Obtener todos los posts de una provincia.
+     * Obtener todos los artículos de una provincia.
      */
-    public function posts()
+    public function articles()
     {
-        return $this->hasManyThrough('App\Post', 'App\Newspaper');
+        return $this->hasManyThrough('App\Article', 'App\Newspaper');
     }
 
     /**

@@ -6,6 +6,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/tag/{tag}', 'TagsController@show')->name('tag_show');
 
+Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
+
 // Admin
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 	// Tags

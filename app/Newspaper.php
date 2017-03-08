@@ -41,11 +41,11 @@ class Newspaper extends Model
     public $timestamps = false;
 
     /**
-     * Obtener todos los posts de un diario.
+     * Obtener todos los artículos de un diario.
      */
-    public function posts()
+    public function articles()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany('App\Article');
     }
 
     /**

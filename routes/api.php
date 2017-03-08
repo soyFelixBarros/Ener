@@ -16,7 +16,7 @@ Route::group(['namespace' => 'Api\v1'], function () {
 	$this->delete('/articles/{id}', 'ArticlesController@destroy');
 });
 
-// Newspaper
+// Newspapers
 Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/newspapers', 'NewspaperController@all');
 	$this->post('/newspaper', 'NewspaperController@store');
@@ -25,7 +25,7 @@ Route::group(['namespace' => 'Api\v1'], function () {
 	$this->delete('/newspaper/{id}', 'NewspaperController@destroy');
 });
 
-// Link
+// Links
 Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/links', 'LinkController@all');
 	$this->post('/link', 'LinkController@store');
@@ -34,7 +34,7 @@ Route::group(['namespace' => 'Api\v1'], function () {
 	$this->delete('/link/{id}', 'LinkController@destroy');
 });
 
-// Country
+// Countries
 Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/countries', 'CountryController@all');
 	$this->post('/country', 'CountryController@store');
@@ -43,7 +43,7 @@ Route::group(['namespace' => 'Api\v1'], function () {
 	$this->delete('/country/{id}', 'CountryController@destroy');
 });
 
-// Province
+// Provinces
 Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/provinces', 'ProvinceController@all');
 	$this->post('/province', 'ProvinceController@store');
@@ -52,7 +52,7 @@ Route::group(['namespace' => 'Api\v1'], function () {
 	$this->delete('/province/{id}', 'ProvinceController@destroy');
 });
 
-// Tag
+// Tags
 Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/tags', 'TagController@all');
 	$this->post('/tag', 'TagController@store');

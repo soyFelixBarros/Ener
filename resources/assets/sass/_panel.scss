@@ -1,0 +1,11 @@
+.panel {
+    border: 1px solid lighten($laravel-border-color, 5%);
+    border-radius: 0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
+
+    .panel-heading {
+    	color: #222;
+    	background-color: #f6f8fa;
+    	border-color: transparent;
+    }
+}

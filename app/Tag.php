@@ -24,11 +24,11 @@ class Tag extends Model
     ];
 
     /**
-     * Obtener todos los posts de un tag.
+     * Obtener todos los artículos de un tag.
      */
-    public function posts()
+    public function articles()
     {
-        return $this->belongsToMany('App\Post');
+        return $this->belongsToMany('App\Article');
     }
 
     public function getRouteKeyName()

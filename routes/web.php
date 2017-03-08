@@ -1,12 +1,8 @@
 <?php
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/tag/{tag}', 'TagsController@show')->name('tag_show');
 
@@ -26,6 +22,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {
 	$this->get('/', 'SettingsController@profile');
 	$this->get('/profile', 'SettingsController@profile')->name('profile');
 	$this->post('/profile', 'SettingsController@updateProfile');
-	$this->get('/security', 'SettingsController@security');
+	$this->get('/security', 'SettingsController@security')->name('security');
 	$this->post('security', 'SettingsController@updatePassword');
 });

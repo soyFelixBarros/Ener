@@ -14,7 +14,7 @@ class TagsController extends Controller
 
 	public function show(Tag $tag)
 	{
-		$posts = $tag->posts;
+		$posts = $tag->articles;
 
 		return $posts;
 	}

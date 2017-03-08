@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="">
-    <title>{{ config('app.name', 'Ener') }}</title>
+    <title>Chaco noticias</title>
     <link href="/css/app.css" rel="stylesheet">
     <script>
         window.Laravel = {!! json_encode([
@@ -29,17 +29,10 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Ener') }}
-                    </a>
+                    <a class="navbar-brand" href="{{ url('/') }}">Chaco</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

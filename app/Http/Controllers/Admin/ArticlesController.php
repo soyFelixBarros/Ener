@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Tag;
 use App\Article;
@@ -17,10 +17,10 @@ class ArticlesController extends Controller
 	 */
 	public function index(Article $article)
 	{
-		$articles = $article->orderBy('created_at', 'DESC')
+		$articles = $article->latest()
 							->paginate(15);
 
-		return view('articles.index', array(
+		return view('admin.articles.list', array(
 			'articles' => $articles,
 		));
 	}
@@ -37,7 +37,7 @@ class ArticlesController extends Controller
 		$tags = Tag::all();
 		$newspapers = Newspaper::all();
 
-		return view('articles.edit', array(
+		return view('admin.articles.edit', array(
 			'article' => $article,
 			'articleTags' => $articleTags,
 			'tags' => $tags,
@@ -61,7 +61,7 @@ class ArticlesController extends Controller
 		$article->update($data);
 
 		return redirect()
-			   ->route('article_edit', ['id' => $id])
+			   ->route('admin.article_edit', ['id' => $id])
 			   ->with('status', 'Article updated!');
 	}
 

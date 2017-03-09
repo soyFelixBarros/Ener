@@ -1,6 +1,6 @@
-@extends('layouts.base')
+@extends('layouts.admin')
 @section('title', 'Edit post')
-@section('content.base')
+@section('content.admin')
 <div class="panel panel-default">
     <div class="panel-heading"><span class="glyphicon glyphicon-edit"></span> Edit article</div>
     <div class="panel-body">

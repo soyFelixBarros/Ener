@@ -18,6 +18,7 @@ class CreateNewspapersTable extends Migration
             $table->string('province_code');
             $table->string('name');
             $table->string('website');
+            $table->string('slug')->unique();
             $table->foreign('province_code')->references('code')->on('provinces');
         });
     }

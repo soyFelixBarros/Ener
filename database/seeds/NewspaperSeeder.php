@@ -26,6 +26,7 @@ class NewspaperSeeder extends Seeder
                 'province_code' => $newspapers[$i][0],
     			'name' => $newspapers[$i][1],
     			'website' => $newspapers[$i][2],
+                'slug' => str_slug($newspapers[$i][1]),
     		]);
     	}
     }

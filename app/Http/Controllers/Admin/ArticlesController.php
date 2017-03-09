@@ -61,7 +61,7 @@ class ArticlesController extends Controller
 		$article->update($data);
 
 		return redirect()
-			   ->route('admin.article_edit', ['id' => $id])
+			   ->route('admin_article_edit', ['id' => $id])
 			   ->with('status', 'Article updated!');
 	}
 

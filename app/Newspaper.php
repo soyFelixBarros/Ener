@@ -22,6 +22,7 @@ class Newspaper extends Model
         'province_code',
         'name',
         'website',
+        'slug',
     ];
 
     /**
@@ -63,5 +64,10 @@ class Newspaper extends Model
     {
         return $this->belongsTo('App\Province', 'province_code', 'code')
                     ->select(['code', 'name']);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

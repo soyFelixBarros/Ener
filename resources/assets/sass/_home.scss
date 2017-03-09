@@ -20,9 +20,11 @@
 			color: #333;
 			font-size: 14px;
 		}
-		> footer {
-			font-size: 11px;
-			color: #8899A6;
+		footer {
+			.newspaper-datetime {
+				font-size: 11px;
+				color: #8899A6;
+			}
 		}
 	}
 }

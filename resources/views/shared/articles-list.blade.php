@@ -18,14 +18,14 @@
                 <p class="summary">{{ $article->summary }}</p>
                 @endif
                 <footer class="row">
-                    <div class="col-md-10">
+                    <div class="newspaper-datetime col-md-10">
                         <span>{{ $article->newspaper->name }}</span> -
                         <time class="timeago" datetime="{{ $article->created_at }}"></time>
                     </div>
                     @if (Auth::check())
                     <div class="col-md-2 text-right">
-                        <a href="{{ route('article_edit', ['id' => $article->id]) }}" role="button" class="btn btn-default btn-xs">
-                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Editar
+                        <a href="{{ route('admin_article_edit', ['id' => $article->id]) }}">
+                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                         </a>
                     </div>
                     @endif

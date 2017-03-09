@@ -8,13 +8,13 @@
                 <div class="panel-heading">Administración</div>
                 <ul class="nav settings-stacked-tabs">
                     <li{{ Request::is('admin/tags*') ? ' class=active' : '' }}>
-                        <a href="#">Tags</a>
+                        <a href="{{ route('admin_tag') }}">Tags</a>
                     </li>
                     <li{{ Request::is('admin/newspapers*') ? ' class=active' : '' }}>
                         <a href="#">Newspapers</a>
                     </li>
                     <li{{ Request::is('admin/articles*') ? ' class=active' : '' }}>
-                        <a href="{{ route('article') }}">Articles</a>
+                        <a href="{{ route('admin_article') }}">Articles</a>
                     </li>
                 </ul>
             </div><!-- .panel -->

@@ -27,11 +27,11 @@ Route::group(['namespace' => 'Api\v1'], function () {
 
 // Links
 Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/links', 'LinkController@all');
-	$this->post('/link', 'LinkController@store');
-	$this->get('/link/{id?}', 'LinkController@find');
-	$this->put('/link/{id}', 'LinkController@update');
-	$this->delete('/link/{id}', 'LinkController@destroy');
+	$this->get('/links', 'LinksController@all');
+	$this->post('/links', 'LinksController@store');
+	$this->get('/link/{id?}', 'LinksController@find');
+	$this->put('/link/{id}', 'LinksController@update');
+	$this->delete('/link/{id}', 'LinksController@destroy');
 });
 
 // Countries

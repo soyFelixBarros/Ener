@@ -20,9 +20,9 @@ class SearchController extends Controller
 		$parameter = $request->all();
 
 		if (isset($parameter['scraping'])) {
-			$articles = Post::where('scraping', $parameter['scraping'])->first();
+			$articles = Article::where('scraping', $parameter['scraping'])->first();
 		} else {
-			$articles = Post::where('newspaper_id', $parameter['newspaper_id'], 'and')
+			$articles = Article::where('newspaper_id', $parameter['newspaper_id'], 'and')
 						 ->where('title', 'LIKE', $parameter['q'] . '%', 'and')
 						 ->whereDate('created_at', $parameter['date'])
 						 ->get();

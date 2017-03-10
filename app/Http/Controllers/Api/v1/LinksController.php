@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateLink;
 
-class LinkController extends Controller
+class LinksController extends Controller
 {
 	/**
 	 * Mostrar todos los links.

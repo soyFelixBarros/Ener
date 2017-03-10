@@ -34,7 +34,7 @@ class ArticlesController extends Controller
 	{
 		$data = $request->all();
 
-		$article = Post::create($data);
+		$article = Article::create($data);
 
 		$link = new Link([
 			'article_id' => $article->id,

@@ -18,7 +18,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {
 });
 
 // Admin
-Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 	// Tags
 	$this->get('/tags', 'TagsController@index')->name('admin_tag');
 	$this->get('/tags/create', 'TagsController@create')->name('admin_tag_create');

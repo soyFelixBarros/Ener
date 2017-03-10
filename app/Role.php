@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Role extends Model
 {
-	/**
+   /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'tags';
+    protected $table = 'roles';
 
     /**
      * The attributes that are mass assignable.
@@ -24,18 +24,9 @@ class Tag extends Model
     ];
 
     /**
-     * Obtener todos los artículos de un tag.
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
      */
-    public function articles()
-    {
-        return $this->belongsToMany('App\Article');
-    }
-
-    /**
-     * Campturar el slug.
-     */
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+    public $timestamps = false;
 }

@@ -66,6 +66,9 @@ class Newspaper extends Model
                     ->select(['code', 'name']);
     }
 
+    /**
+     * Capturar el slug.
+     */
     public function getRouteKeyName()
     {
         return 'slug';

@@ -15,7 +15,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'role_id',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -26,4 +29,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Obtener todos los roles del usuario.
+     */
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+    /**
+     * Verificar el rol del usuario.
+     */
+    public function hasRole($slug)
+    {
+        if (is_string($slug) && $this->role !== null) {
+            return $this->role->slug === $slug;
+        }
+
+        return false;
+    }
 }

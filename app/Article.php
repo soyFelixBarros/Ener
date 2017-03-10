@@ -34,7 +34,7 @@ class Article extends Model
      * @var array
      */
     protected $hidden = [
-        'newspaper_id'
+        'newspaper_id',
     ];
 
     /**

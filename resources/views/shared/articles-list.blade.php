@@ -22,7 +22,7 @@
                         <span>{{ $article->newspaper->name }}</span> -
                         <time class="timeago" datetime="{{ $article->created_at }}"></time>
                     </div>
-                    @if (Auth::check())
+                    @if (Auth::user()->hasRole('admin'))
                     <div class="col-md-2 text-right">
                         <a href="{{ route('admin_article_edit', ['id' => $article->id]) }}">
                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>

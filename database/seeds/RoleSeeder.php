@@ -13,6 +13,7 @@ class RoleSeeder extends Seeder
     {
         $roles = [
     		['Admin'],
+            ['Suscriptor']
     	];
 
     	for ($i = 0; count($roles) > $i; $i++) {

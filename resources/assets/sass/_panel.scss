@@ -4,8 +4,8 @@
     box-shadow: 0 1px 1px rgba(0, 0, 0, .02);
 
     .panel-heading {
-    	color: #222;
-    	background-color: #f6f8fa;
-    	border-color: transparent;
+    	border-radius: 0;
+    	background-color: #fafafa;
+    	border-bottom: 1px solid #eaeaea;
     }
 }

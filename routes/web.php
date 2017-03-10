@@ -20,14 +20,17 @@ Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {
 // Admin
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 	// Tags
-	$this->get('/tags', 'TagsController@index')->name('admin_tag');
+	$this->get('/tags', 'TagsController@index')->name('admin_tags');
 	$this->get('/tags/create', 'TagsController@create')->name('admin_tag_create');
 	$this->post('/tags/create', 'TagsController@store');
 	$this->get('/tags/{id}/edit', 'TagsController@edit')->name('admin_tag_edit');
 	$this->post('/tags/{id}/edit', 'TagsController@update');
 	
 	// Articles
-	$this->get('/articles', 'ArticlesController@index')->name('admin_article');
+	$this->get('/articles', 'ArticlesController@index')->name('admin_articles');
 	$this->get('/articles/{id}/edit', 'ArticlesController@edit')->name('admin_article_edit');
 	$this->post('/articles/{id}/edit', 'ArticlesController@update');
+
+	// Users
+	$this->get('/users', 'UsersController@index')->name('admin_users');
 });

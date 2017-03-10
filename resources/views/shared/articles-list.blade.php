@@ -4,14 +4,14 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <article class="media">
-                <header>
                     @if (count($article->tags) > 0)
                     <ul class="tags list-inline">
-                    @foreach ($article->tags as $tag)
-                    <li><a href="{{ route('tag_show', ['tag' => $tag->slug]) }}">{{ $tag->name }}</a></li>
-                    @endforeach
+                        @foreach ($article->tags as $tag)
+                        <li><a href="{{ route('tag_show', ['tag' => $tag->slug]) }}">{{ $tag->name }}</a></li>
+                        @endforeach
                     </ul>
                     @endif
+                <header>
                     <h1 class="title media-heading"><a href="{{ $article->link->url }}" target="_blank">{{ $article->title }}</a></h1>
                 </header>
                 @if ($article->summary)
@@ -19,15 +19,20 @@
                 @endif
                 <footer class="row">
                     <div class="newspaper-datetime col-md-10">
-                        <span>{{ $article->newspaper->name }}</span> -
-                        <time class="timeago" datetime="{{ $article->created_at }}"></time>
+                        {{ $article->newspaper->name }} -
+                        <time class="timeago" datetime="{{ $article->created_at }}">{{ $article->created_at }}</time>
                     </div>
-                    @if (Auth::user()->hasRole('admin'))
+                    @if (Auth::check())
                     <div class="col-md-2 text-right">
-                        <a href="{{ route('admin_article_edit', ['id' => $article->id]) }}">
-                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        <a href="{{ route('admin_article_edit', ['id' => $article->id]) }}" class="text-muted text-right" title="Read later">
+                            <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
                         </a>
-                    </div>
+                        @if (Auth::user()->hasRole('admin'))
+                            <a href="{{ route('admin_article_edit', ['id' => $article->id]) }}">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        @endif
                     @endif
                 </footer>
             </article>

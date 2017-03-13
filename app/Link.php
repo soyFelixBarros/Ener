@@ -52,7 +52,7 @@ class Link extends Model
     public function newspaper()
     {
         return $this->belongsTo('App\Newspaper')
-                    ->select(['id', 'name', 'website']);
+                    ->with('province');
     }
 
     /**

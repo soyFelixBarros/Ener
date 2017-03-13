@@ -45,7 +45,10 @@ class Province extends Model
      */
     public function articles()
     {
-        return $this->hasManyThrough('App\Article', 'App\Newspaper');
+        return $this->hasManyThrough(
+            'App\Article', 'App\Newspaper',
+            'province_code', 'newspaper_id', 'id'
+        );
     }
 
     /**
@@ -53,7 +56,7 @@ class Province extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Country',  'country_code', 'code')
+        return $this->belongsTo('App\Country', 'country_code', 'code')
                     ->select(['code', 'name']);
     }
 

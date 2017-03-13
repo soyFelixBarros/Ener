@@ -20,6 +20,7 @@ class Article extends Model
      * @var array
      */
     protected $fillable = [
+        'province_code',
         'newspaper_id',
         'title',
         'summary',
@@ -38,6 +39,14 @@ class Article extends Model
     ];
 
     /**
+     * Obtener la provincia del artículo.
+     */
+    public function province()
+    {
+        return $this->belongsTo('App\Province', 'province_code', 'code');
+    }
+
+    /**
      * Obtener el link de un artículo.
      */
     public function link()
@@ -51,7 +60,7 @@ class Article extends Model
     public function newspaper()
     {
         return $this->belongsTo('App\Newspaper')
-                    ->select(['id', 'name']);
+                    ->with('province');
     }
 
     /**

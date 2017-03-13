@@ -10,24 +10,43 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index($province = null)
+    public function index(Request $request)
     {
-        $dateJ = date('j') - 2;
+        // $ip = $request->ip();
+        if (! $request->session()->has('user')) {
+            $ip = '190.183.93.172';
+            $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
-        $tags = Tag::whereDay('updated_at', '>', $dateJ)
-                   ->latest('name')
-                   ->get();
+            if (isset($query) && $query['status'] == 'success') {
 
-        $articles = Article::whereDay('created_at', '>', $dateJ)
-                     ->latest()
-                     ->paginate(15);
+                session(['user' => [
+                    'country_code' => $query['countryCode'],
+                    'province_code' => $query['countryCode'].'-'.$query['region'],
+                    'state' => $query['regionName'],
+                    'country' => $query['country'],
+                ]]);
+            }
+        }
 
-        $newspapers = Newspaper::oldest('name')->get();
-        
+        $newspapers = null;
+        $articles = null;
+
+        $user = $request->session()->get('user');
+
+        $newspapers = Newspaper::where('province_code', $user['province_code'])
+                               ->oldest('name')
+                               ->get();
+
+        $articles = Article::where('province_code', $user['province_code'])
+                           ->whereDay('created_at', '>', date('j') - 2)
+                           ->latest()
+                           ->paginate(20);
+
         return view('home', array(
-            'tags' => $tags,
-            'articles' => $articles,
+            'state' => $user['state'],
+            'country' => $user['country'],
             'newspapers' => $newspapers,
+            'articles' => $articles,
         ));
     }
 }

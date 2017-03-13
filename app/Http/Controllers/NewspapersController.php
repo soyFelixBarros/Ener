@@ -9,8 +9,15 @@ class NewspapersController extends Controller
 {
 	public function show(Newspaper $newspaper)
 	{
-		$articles = $newspaper->articles;
+		$newspapers = $newspaper->oldest('name')->get();
+		
+		$articles = $newspaper->articles()
+							  ->latest()
+							  ->paginate(15);
 
-		return $articles;
+		return view('newspapers.show', array(
+			'newspapers' => $newspapers,
+			'articles' => $articles,
+		));
 	}
 }

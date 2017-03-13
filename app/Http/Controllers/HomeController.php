@@ -12,9 +12,8 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // $ip = $request->ip();
         if (! $request->session()->has('user')) {
-            $ip = '190.183.93.172';
+            $ip = $request->ip();
             $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
             if (isset($query) && $query['status'] == 'success') {

@@ -32,7 +32,7 @@ class HomeController extends Controller
         $articles = null;
 
         $user = $request->session()->get('user');
-
+        
         $newspapers = Newspaper::where('province_code', $user['province_code'])
                                ->oldest('name')
                                ->get();

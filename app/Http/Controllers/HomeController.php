@@ -13,21 +13,18 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $ip = $request->ip();
-        // if (! $request->session()->has('user')) {
-            // $ip = $request->ip();
-            // $ip = file_get_contents('https://api.ipify.org');
-            $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+        // $ip = file_get_contents('https://api.ipify.org');
+        $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
-            if (isset($query) && $query['status'] == 'success') {
+        if (isset($query) && $query['status'] == 'success') {
 
-                session(['user' => [
-                    'country_code' => $query['countryCode'],
-                    'province_code' => $query['countryCode'].'-'.$query['region'],
-                    'state' => $query['regionName'],
-                    'country' => $query['country'],
-                ]]);
-            }
-        // }
+            session(['user' => [
+                'country_code' => $query['countryCode'],
+                'province_code' => $query['countryCode'].'-'.$query['region'],
+                'state' => $query['regionName'],
+                'country' => $query['country'],
+            ]]);
+        }
 
         $newspapers = null;
         $articles = null;

@@ -12,9 +12,11 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
+        $ip = $request->ip();
+        dd($ip);
         if (! $request->session()->has('user')) {
             // $ip = $request->ip();
-            $ip = file_get_contents('https://api.ipify.org');
+            // $ip = file_get_contents('https://api.ipify.org');
             $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
             if (isset($query) && $query['status'] == 'success') {

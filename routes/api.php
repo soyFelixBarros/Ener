@@ -12,7 +12,7 @@ Route::group(['namespace' => 'Api\v1'], function () {
 	$this->get('/articles', 'ArticlesController@all');
 	$this->post('/articles', 'ArticlesController@store');
 	$this->get('/articles/{id?}', 'ArticlesController@find');
-	$this->put('/articles/{id}', 'Articlescontroller@update');
+	$this->put('/articles/{id}', 'ArticlesController@update');
 	$this->delete('/articles/{id}', 'ArticlesController@destroy');
 });
 

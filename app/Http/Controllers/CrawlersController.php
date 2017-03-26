@@ -109,16 +109,15 @@ class CrawlersController extends Controller
                     'url' => $url,
                     'status' => 'summary',
                 ]);
-                return redirect('/crawlers/summary/'.$post->id);
             }
         }
     }
 
-    public function summary(Post $post)
+    public function summary()
     {
-        // $post = Post::where('status', 'summary')
-        //             ->oldest('updated_at')
-        //             ->first();
+        $post = Post::where('status', 'summary')
+                    ->oldest('updated_at')
+                    ->first();
 
         if (count($post) > 0) {
 

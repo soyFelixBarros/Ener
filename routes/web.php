@@ -6,7 +6,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/crawlers', 'CrawlersController@index');
 Route::get('/crawlers/title', 'CrawlersController@title');
-Route::get('/crawlers/summary/{post}', 'CrawlersController@summary');
+Route::get('/crawlers/summary', 'CrawlersController@summary');
 
 Route::get('/tag/{tag}', 'TagsController@show')->name('tag_show');
 

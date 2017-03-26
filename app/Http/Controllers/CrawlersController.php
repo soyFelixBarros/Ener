@@ -49,7 +49,7 @@ class CrawlersController extends Controller
      */
     public function index(Request $request)
     {
-        // Obtner un link
+        // Obtener un link
         $link = Link::where('post_id', null)
                     ->oldest('updated_at')
                     ->with('newspaper')
@@ -64,33 +64,40 @@ class CrawlersController extends Controller
 
         Link::where('id', $link->id)->update(['active' => true]);
         
-        // Crear o actualizar artículo en el casp de que exista.
-        $post = Post::updateOrCreate([
-            'province_code' => $link->newspaper->province->code,
-            'newspaper_id' => $link->newspaper->id,
-            'title' => $content->text(),
-        ]);
+        if ($content->count() > 0) {            
+            // Crear o actualizar artículo en el casp de que exista.
+            $post = Post::updateOrCreate([
+                'province_code' => $link->newspaper->province->code,
+                'newspaper_id' => $link->newspaper->id,
+                'title' => $content->text(),
+            ]);
 
-        $link = new Link([
-            'article_id' => $post->id,
-            'newspaper_id' => $post->newspaper_id,
-            'scraping_id' => $link->scraping->id,
-            'url' => $this->prepareLink($content->attr('href'), $link->newspaper->website),
-        ]);
+            $link = new Link([
+                'article_id' => $post->id,
+                'newspaper_id' => $post->newspaper_id,
+                'scraping_id' => $link->scraping->id,
+                'url' => $this->prepareLink($content->attr('href'), $link->newspaper->website),
+            ]);
 
-        $post->link()->save($link);
+            $post->link()->save($link);
 
-        dd($post);
+            dd($content->text());
+        } else {
+            dd($content);
+        }
         // return view('crawlers.index')->with('post', $post);
     }
 
-    public function demo()
+    public function demo(Request $request)
     {
+        $url = $request->input('url');
+        $xpath = $request->input('xpath');
+        
         $content = $this->toScrape([
-            'http://www.diarioprimeralinea.com.ar/politica/',
-            '//div[1]/div[2]/h5/a',
+            $url,
+            $xpath,
         ]);
-
-        return $content->text();
+        
+        dd($content);
     }
 }

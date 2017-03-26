@@ -8,8 +8,8 @@
             <div class="panel panel-default panel-flush">
                 <div class="panel-heading">Admin</div>
                 <ul class="nav settings-stacked-tabs">
-                    <li{{ Request::is('admin/articles') ? ' class=active' : '' }}>
-                        <a href="{{ route('article') }}">Articles</a>
+                    <li{{ Request::is('admin/posts') ? ' class=active' : '' }}>
+                        <a href="{{ route('admin_posts') }}">Posts</a>
                     </li>
                 </ul>
             </div><!-- .panel -->

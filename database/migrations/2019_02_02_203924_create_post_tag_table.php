@@ -13,12 +13,12 @@ class CreatePostTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_tag', function (Blueprint $table) {
-            $table->unsignedInteger('article_id');
-            $table->foreign('article_id')->references('id')->on('articles');
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->unsignedInteger('post_id');
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->unsignedInteger('tag_id');
             $table->foreign('tag_id')->references('id')->on('tags');
-            $table->primary(['article_id', 'tag_id']);
+            $table->primary(['post_id', 'tag_id']);
         });
     }
 

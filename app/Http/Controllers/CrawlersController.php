@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Link;
-use App\Article;
+use App\Post;
 use Illuminate\Http\Request;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -50,7 +50,7 @@ class CrawlersController extends Controller
     public function index(Request $request)
     {
         // Obtner un link
-        $link = Link::where('article_id', null)
+        $link = Link::where('post_id', null)
                     ->oldest('updated_at')
                     ->with('newspaper')
                     ->with('scraping')
@@ -65,22 +65,22 @@ class CrawlersController extends Controller
         Link::where('id', $link->id)->update(['active' => true]);
         
         // Crear o actualizar artículo en el casp de que exista.
-        $article = Article::updateOrCreate([
+        $post = Post::updateOrCreate([
             'province_code' => $link->newspaper->province->code,
             'newspaper_id' => $link->newspaper->id,
             'title' => $content->text(),
         ]);
 
         $link = new Link([
-            'article_id' => $article->id,
-            'newspaper_id' => $article->newspaper_id,
+            'article_id' => $post->id,
+            'newspaper_id' => $post->newspaper_id,
             'scraping_id' => $link->scraping->id,
             'url' => $this->prepareLink($content->attr('href'), $link->newspaper->website),
         ]);
 
-        $article->link()->save($link);
+        $post->link()->save($link);
 
-        dd($article);
+        dd($post);
         // return view('crawlers.index')->with('post', $post);
     }
 }

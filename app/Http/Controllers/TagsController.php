@@ -9,7 +9,7 @@ class TagsController extends Controller
 {
 	public function show(Tag $tag)
 	{
-		$posts = $tag->articles;
+		$posts = $tag->posts;
 
 		return $posts;
 	}

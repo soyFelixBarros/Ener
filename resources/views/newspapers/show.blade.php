@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-        @include('shared.articles', ['articles' => $articles])
+        @include('shared.posts', ['posts' => $posts])
         </div>
         <div class="col-sm-3">
         @if (count($newspapers) > 0)

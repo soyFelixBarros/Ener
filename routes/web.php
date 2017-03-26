@@ -28,10 +28,10 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 	$this->get('/tags/{id}/edit', 'TagsController@edit')->name('admin_tag_edit');
 	$this->post('/tags/{id}/edit', 'TagsController@update');
 	
-	// Articles
-	$this->get('/articles', 'ArticlesController@index')->name('admin_articles');
-	$this->get('/articles/{id}/edit', 'ArticlesController@edit')->name('admin_article_edit');
-	$this->post('/articles/{id}/edit', 'ArticlesController@update');
+	// Posts
+	$this->get('/posts', 'PostsController@index')->name('admin_posts');
+	$this->get('/posts/{id}/edit', 'PostsController@edit')->name('admin_posts_edit');
+	$this->post('/posts/{id}/edit', 'PostsController@update');
 
 	// Users
 	$this->get('/users', 'UsersController@index')->name('admin_users');

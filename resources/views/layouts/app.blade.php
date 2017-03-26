@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::user()->hasRole('admin'))
-                        <li><a href="{{ route('admin_articles') }}">Administración</a></li>
+                        <li><a href="{{ route('admin_posts') }}">Administración</a></li>
                         @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

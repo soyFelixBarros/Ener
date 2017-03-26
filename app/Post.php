@@ -4,15 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Post extends Model
 {
-
 	/**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'articles';
+    protected $table = 'posts';
     
     /**
      * The attributes that are mass assignable.
@@ -27,7 +26,6 @@ class Article extends Model
         'created_at',
         'updated_at',
     ];
-
 
     /**
      * The attributes that should be hidden for arrays.

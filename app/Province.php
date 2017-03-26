@@ -41,12 +41,12 @@ class Province extends Model
     public $timestamps = false;
 
     /**
-     * Obtener todos los artículos de una provincia.
+     * Obtener todos las entradas de una provincia.
      */
-    public function articles()
+    public function posts()
     {
         return $this->hasManyThrough(
-            'App\Article', 'App\Newspaper',
+            'App\Post', 'App\Newspaper',
             'province_code', 'newspaper_id', 'id'
         );
     }

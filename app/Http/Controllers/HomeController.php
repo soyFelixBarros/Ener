@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tag;
-use App\Article;
+use App\Post;
 use App\Province;
 use App\Newspaper;
 use Illuminate\Http\Request;
@@ -12,37 +12,20 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        // $ip = $request->ip();
-        // $ip = file_get_contents('https://api.ipify.org');
-        // $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+        $province_code = 'AR-H';
 
-        // if (isset($query) && $query['status'] == 'success') {
-
-        //     session(['user' => [
-        //         'country_code' => $query['countryCode'],
-        //         'province_code' => $query['countryCode'].'-'.$query['region'],
-        //         'state' => $query['regionName'],
-        //         'country' => $query['country'],
-        //     ]]);
-        // }
-
-        $newspapers = null;
-        $articles = null;
-
-        // $user = $request->session()->get('user');
-        
-        $newspapers = Newspaper::where('province_code', 'AR-H')
+        $newspapers = Newspaper::where('province_code', $province_code)
                                ->oldest('name')
                                ->get();
 
-        $articles = Article::where('province_code', 'AR-H')
+        $posts = Post::where('province_code', $province_code)
                            ->whereDay('created_at', '>', date('j') - 2)
                            ->latest()
                            ->paginate(20);
 
         return view('home', array(
             'newspapers' => $newspapers,
-            'articles' => $articles,
+            'posts' => $posts,
         ));
     }
 }

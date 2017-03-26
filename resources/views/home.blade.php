@@ -5,9 +5,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        @if (count($articles) > 0)
+        @if (count($posts) > 0)
         <div class="col-sm-9">
-        	@include('shared.articles', ['articles' => $articles])
+        	@include('shared.posts', ['posts' => $posts])
         </div>
         <div class="col-sm-3">
         @if (count($newspapers) > 0)
@@ -16,7 +16,7 @@
         </div>
         @else
         <div class="col-md-8 col-md-offset-2">
-        	<p class="lead">No hay noticias para {{ $state }}, {{ $country }}</p>
+        	<p class="lead">No hay entradas públicadas.</p>
         </div>
         @endif
     </div><!-- .row -->

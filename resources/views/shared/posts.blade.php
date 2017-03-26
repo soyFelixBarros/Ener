@@ -1,31 +1,31 @@
 <div class="posts">
-    @foreach ($articles as $article)
+    @foreach ($posts as $post)
     <div class="panel panel-default">
         <div class="panel-body">
             <article class="media">
                 <div class="media-body"> 
-                @if (count($article->tags) > 0)
+                @if (count($post->tags) > 0)
                 <ul class="tags list-inline">
-                    @foreach ($article->tags as $tag)
+                    @foreach ($post->tags as $tag)
                     <li><a href="{{ route('tag_show', ['tag' => $tag->slug]) }}">{{ $tag->name }}</a></li>
                     @endforeach
                 </ul>
                 @endif
                 <header>
-                    <h1 class="title media-heading"><a href="{{ $article->link->url }}" target="_blank">{{ $article->title }}</a></h1>
+                    <h1 class="title media-heading"><a href="{{ $post->link->url }}" target="_blank">{{ $post->title }}</a></h1>
                 </header>
-                @if ($article->summary)
-                <p class="summary">{{ $article->summary }}</p>
+                @if ($post->summary)
+                <p class="summary">{{ $post->summary }}</p>
                 @endif
                 <footer class="row">
                     <div class="newspaper-datetime col-md-10">
-                        {{ $article->newspaper->name }} -
-                        <time class="timeago" datetime="{{ $article->created_at }}">{{ $article->created_at }}</time>
+                        {{ $post->newspaper->name }} -
+                        <time class="timeago" datetime="{{ $post->created_at }}">{{ $post->created_at }}</time>
                     </div>
                     @if (Auth::check())
                     <div class="col-md-2 text-right">
                         @if (Auth::user()->hasRole('admin'))
-                            <a href="{{ route('admin_article_edit', ['id' => $article->id]) }}">
+                            <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}">
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             </a>
                         </div>
@@ -39,5 +39,5 @@
     @endforeach
 </div>
 <div class="text-center">
-    {{ $articles->links() }}
+    {{ $posts->links() }}
 </div>

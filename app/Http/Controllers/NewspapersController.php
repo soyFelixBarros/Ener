@@ -11,13 +11,13 @@ class NewspapersController extends Controller
 	{
 		$newspapers = $newspaper->oldest('name')->get();
 		
-		$articles = $newspaper->articles()
-							  ->latest()
-							  ->paginate(15);
+		$posts = $newspaper->posts()
+						   ->latest()
+						   ->paginate(15);
 
 		return view('newspapers.show', array(
 			'newspapers' => $newspapers,
-			'articles' => $articles,
+			'posts' => $posts,
 		));
 	}
 }

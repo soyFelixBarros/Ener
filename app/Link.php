@@ -38,11 +38,11 @@ class Link extends Model
     ];
 
     /**
-     * Obtener el artículo que posée el link.
+     * Obtener la entrada que posée el link.
      */
-    public function article()
+    public function post()
     {
-        return $this->belongsTo('App\Article');
+        return $this->belongsTo('App\Post');
     }
 
     /**

@@ -24,11 +24,11 @@ class Tag extends Model
     ];
 
     /**
-     * Obtener todos los artículos de un tag.
+     * Obtener todas las entradas de un tag.
      */
-    public function articles()
+    public function posts()
     {
-        return $this->belongsToMany('App\Article');
+        return $this->belongsToMany('App\Post');
     }
 
     /**

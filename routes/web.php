@@ -5,6 +5,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/crawlers', 'CrawlersController@index');
+Route::get('/crawlers/demo', 'CrawlersController@demo');
 
 Route::get('/tag/{tag}', 'TagsController@show')->name('tag_show');
 

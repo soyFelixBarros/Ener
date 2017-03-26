@@ -83,4 +83,14 @@ class CrawlersController extends Controller
         dd($post);
         // return view('crawlers.index')->with('post', $post);
     }
+
+    public function demo()
+    {
+        $content = $this->toScrape([
+            'http://www.diarioprimeralinea.com.ar/politica/',
+            '//div[1]/div[2]/h5/a',
+        ]);
+
+        return $content->text();
+    }
 }

@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('title', 'Noticas')
-@section('sub-title', $state.', '.$country)
 
 @section('content')
 <div class="container">

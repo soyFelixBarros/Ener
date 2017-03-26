@@ -4,6 +4,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/crawlers', 'CrawlersController@index');
+
 Route::get('/tag/{tag}', 'TagsController@show')->name('tag_show');
 
 Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');

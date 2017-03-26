@@ -22,7 +22,6 @@ class Link extends Model
         'newspaper_id',
         'scraping_id',
         'url',
-        'scraping',
         'active',
         'created_at',
         'updated_at',

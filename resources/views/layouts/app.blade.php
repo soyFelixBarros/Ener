@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ url('/') }}">Noticias</a>
-                    <p class="navbar-text">@yield('sub-title')</p>
+                    <p class="navbar-text">Chaco, Argentina</p>
                 </div>
 
                 @if (Auth::check())

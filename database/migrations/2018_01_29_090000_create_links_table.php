@@ -22,7 +22,7 @@ class CreateLinksTable extends Migration
             $table->unsignedInteger('scraping_id')->nullable();
             $table->foreign('scraping_id')->references('id')->on('scrapings');
             $table->string('url', 255);
-            $table->string('scraping', 50)->nullable();
+            // $table->string('scraping', 50)->nullable();
             $table->boolean('active')->default(true); // true o false
             $table->timestamps();
         });

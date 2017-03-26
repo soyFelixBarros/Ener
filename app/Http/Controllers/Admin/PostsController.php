@@ -58,7 +58,7 @@ class PostsController extends Controller
 		$post->update($data);
 
 		return redirect()
-			   ->route('admin_post_edit', ['id' => $id])
+			   ->route('admin_posts_edit', ['id' => $id])
 			   ->with('status', 'Post updated!');
 	}
 

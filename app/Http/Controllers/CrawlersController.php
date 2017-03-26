@@ -42,11 +42,7 @@ class CrawlersController extends Controller
         }
         return $href;
     }
-
-    /**
-     * Mostrar una vista con información del crawler.
-     *
-     */
+    
     public function index(Request $request)
     {
         // Obtener un link

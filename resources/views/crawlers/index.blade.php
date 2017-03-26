@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h3><a href="{{ $post->link }}">{{ $post->title }}</a></h3>
+            <h3><a href="{{ $post->url }}">{{ $post->title }}</a></h3>
         </div>
     </div><!-- .row -->
 </div><!-- .container -->

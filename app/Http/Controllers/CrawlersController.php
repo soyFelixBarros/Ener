@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Link;
 use App\Post;
+use App\Newspaper;
 use Illuminate\Http\Request;
 use Symfony\Component\DomCrawler\Crawler;
 
 class CrawlersController extends Controller
 {
+    public function index()
+    {
+        return redirect('/crawlers/title');
+    }
+
     private function toScrape($settings)
     {
         $settings = (array) $settings;
@@ -20,7 +26,7 @@ class CrawlersController extends Controller
 
             // Transmite un fichero entero a una cadena
             $html = file_get_contents($url);
-            
+
             if ($html !== false) {
                 // Buscamos el contenido en el html
                 $crawler = new Crawler($html);
@@ -42,58 +48,100 @@ class CrawlersController extends Controller
         }
         return $href;
     }
+
+    /**
+     * Buscar por el título si existe en la base de datos. 
+     * 
+     * @param string $title Título del post.
+     * @param int $day Día en número para reducir la busqueda.
+     * 
+     * @return object|boolean
+     */
+    private function hasPostNow($newspaper_id, $title)
+    {
+        $post = Post::where('newspaper_id', $newspaper_id, 'and')
+                    ->where('title', 'LIKE', $title . '%', 'and')
+                    ->whereDay('created_at', date('j'))
+                    ->first();
+        return $post;
+    }
     
-    public function index(Request $request)
+    public function title()
     {
         // Obtener un link
-        $link = Link::where('post_id', null)
-                    ->oldest('updated_at')
-                    ->with('newspaper')
-                    ->with('scraping')
-                    ->first();
-                    
+        $link = Link::oldest('updated_at')->first();
+        
+        $link->update(['status' => 'scraping']);
+
         // Obterner el contenido
         $content = $this->toScrape([
             $link->url,
-            $link->scraping->title,
+            $link->newspaper->scraping->title,
         ]);
 
-        Link::where('id', $link->id)->update(['active' => true]);
-        
-        if ($content->count() > 0) {            
-            // Crear o actualizar artículo en el casp de que exista.
-            $post = Post::updateOrCreate([
-                'province_code' => $link->newspaper->province->code,
-                'newspaper_id' => $link->newspaper->id,
-                'title' => $content->text(),
-            ]);
+        $link->update(['status' => 'pending']);
 
-            $link = new Link([
-                'article_id' => $post->id,
-                'newspaper_id' => $post->newspaper_id,
-                'scraping_id' => $link->scraping->id,
-                'url' => $this->prepareLink($content->attr('href'), $link->newspaper->website),
-            ]);
+        if ($content->count() > 0) {    
+            // Filtros
+            $title = trim($content->text());
+            $url = $this->prepareLink($content->attr('href'), $link->newspaper->website);
 
-            $post->link()->save($link);
+            // Buscar si el post existe
+            $post = $this->hasPostNow($link->newspaper->id, $title);
 
-            dd($content->text());
-        } else {
-            dd($content);
+            if (count($post) > 0) {
+
+                // Comparamos los títulos
+                $levenshtein = levenshtein($title, $post->title);
+
+                // Si el título se modifico, lo actualizamos
+                if ($levenshtein > 0 && $levenshtein < 20) {
+                    $post = Post::where('id', $post->id)->update([
+                        'title' => $title,
+                        'url' => $url,
+                    ]);
+                }
+            } else {
+                $post = Post::create([
+                    'province_code' => $link->newspaper->province->code,
+                    'newspaper_id' => $link->newspaper->id,
+                    'title' => $title,
+                    'url' => $url,
+                    'status' => 'summary',
+                ]);
+                return redirect('/crawlers/summary/'.$post->id);
+            }
         }
-        // return view('crawlers.index')->with('post', $post);
     }
 
-    public function demo(Request $request)
+    public function summary(Post $post)
     {
-        $url = $request->input('url');
-        $xpath = $request->input('xpath');
-        
-        $content = $this->toScrape([
-            $url,
-            $xpath,
-        ]);
-        
-        dd($content);
+        // $post = Post::where('status', 'summary')
+        //             ->oldest('updated_at')
+        //             ->first();
+
+        if (count($post) > 0) {
+
+            $post->update(['status' => 'pending']);
+            
+            // Obterner el contenido
+            $content = $this->toScrape([
+                $post->url,
+                $post->newspaper->scraping->content,
+            ]);
+
+            if ($content->count() > 0) { 
+                $summary = trim(html_entity_decode($content->text()));
+                $summary = str_replace("\xc2\xa0", '', $summary);
+
+                $post->update([
+                    'summary' => ($summary !== '') ? $summary : null,
+                ]);
+            }
+
+            $post->update(['status' => 'publish']);
+
+            return $post->summary;
+        }
     }
 }

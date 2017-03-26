@@ -12,7 +12,7 @@
                 </ul>
                 @endif
                 <header>
-                    <h1 class="title media-heading"><a href="{{ $post->link->url }}" target="_blank">{{ $post->title }}</a></h1>
+                    <h1 class="title media-heading"><a href="{{ $post->url }}" target="_blank">{{ $post->title }}</a></h1>
                 </header>
                 @if ($post->summary)
                 <p class="summary">{{ $post->summary }}</p>

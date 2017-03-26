@@ -20,9 +20,8 @@ class Link extends Model
      */
     protected $fillable = [
         'newspaper_id',
-        'scraping_id',
         'url',
-        'active',
+        'status',
         'created_at',
         'updated_at',
     ];
@@ -34,17 +33,8 @@ class Link extends Model
      */
     protected $hidden = [
         'newspaper_id',
-        'scraping_id',
     ];
-
-    /**
-     * Obtener la entrada que posée el link.
-     */
-    public function post()
-    {
-        return $this->belongsTo('App\Post');
-    }
-
+    
     /**
      * Obtener el diario del link.
      */

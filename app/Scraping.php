@@ -19,6 +19,7 @@ class Scraping extends Model
      * @var array
      */
     protected $fillable = [
+        'newspaper_id',
         'title',
         'src',
         'content',
@@ -38,4 +39,12 @@ class Scraping extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Obtener el diario que posee del scraping.
+     */
+    public function newspaper()
+    {
+        return $this->belongsTo('App\Newspaper');
+    }
 }

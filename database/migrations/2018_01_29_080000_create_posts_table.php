@@ -21,6 +21,8 @@ class CreatePostsTable extends Migration
             $table->foreign('newspaper_id')->references('id')->on('newspapers');
             $table->string('title');
             $table->text('summary')->nullable();
+            $table->string('url')->nullable();
+            $table->string('status', 20)->default('publish');
             $table->timestamps();
         });
     }

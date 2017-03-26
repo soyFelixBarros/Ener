@@ -23,6 +23,8 @@ class Post extends Model
         'newspaper_id',
         'title',
         'summary',
+        'url',
+        'status',
         'created_at',
         'updated_at',
     ];
@@ -42,14 +44,6 @@ class Post extends Model
     public function province()
     {
         return $this->belongsTo('App\Province', 'province_code', 'code');
-    }
-
-    /**
-     * Obtener el link de un artículo.
-     */
-    public function link()
-    {
-        return $this->hasOne('App\Link');
     }
 
     /**

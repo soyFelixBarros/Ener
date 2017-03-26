@@ -43,7 +43,8 @@ class LinkSeeder extends Seeder
             [4, 'http://www.chacodiapordia.com/deportes'],
 
             // Diario TAG
-            [5, 'https://www.diariotag.com/seccion/policiales'],
+            [5, 'https://www.diariotag.com/tag/chaco'],
+            [5, 'https://www.diariotag.com/tag/resistencia'],
             [5, 'https://www.diariotag.com/seccion/locales'],
             [5, 'https://www.diariotag.com/seccion/interior'],
 
@@ -51,16 +52,15 @@ class LinkSeeder extends Seeder
             [6, 'http://www.diario21.tv/notix2/noticias/1/chaco.html'],
 
             // Primera Línea
-            [7, 'http://www.diarioprimeralinea.com.ar/politica/'],
-            [7, 'http://www.diarioprimeralinea.com.ar/informacion-general/'],
-            [7, 'http://www.diarioprimeralinea.com.ar/policiales/'],
-            [7, 'http://www.diarioprimeralinea.com.ar/cultura-espectaculos/'],
+            [7, 'http://www.diarioprimeralinea.com.ar/politica/interior/'],
+            [7, 'http://www.diarioprimeralinea.com.ar/politica/gran-resistencia/'],
+            [7, 'http://www.diarioprimeralinea.com.ar/informacion-general/interior/'],
+            [7, 'http://www.diarioprimeralinea.com.ar/informacion-general/gran-resistencia/'],
     	];
 
     	for ($i = 0; count($links) > $i; $i++) {
     		DB::table('links')->insert([
                 'newspaper_id' => $links[$i][0],
-                'scraping_id' => $links[$i][0],
     			'url' => $links[$i][1],
     		]);
     	}

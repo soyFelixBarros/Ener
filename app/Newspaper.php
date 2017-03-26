@@ -42,6 +42,14 @@ class Newspaper extends Model
     public $timestamps = false;
 
     /**
+     * Obtener los xpath del diario.
+     */
+    public function scraping()
+    {
+        return $this->hasOne('App\Scraping');
+    }
+
+    /**
      * Obtener todas las entradas de un diario.
      */
     public function posts()

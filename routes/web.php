@@ -29,6 +29,9 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 	$this->post('/tags/create', 'TagsController@store');
 	$this->get('/tags/{id}/edit', 'TagsController@edit')->name('admin_tag_edit');
 	$this->post('/tags/{id}/edit', 'TagsController@update');
+
+	// Newspapers
+	$this->get('/newspapers', 'NewspapersController@index')->name('admin_newspapers');
 	
 	// Posts
 	$this->get('/posts', 'PostsController@index')->name('admin_posts');

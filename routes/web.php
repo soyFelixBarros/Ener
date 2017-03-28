@@ -32,6 +32,8 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 
 	// Newspapers
 	$this->get('/newspapers', 'NewspapersController@index')->name('admin_newspapers');
+	$this->get('/newspapers/{id}/edit', 'NewspapersController@edit')->name('admin_newspapers_edit');
+	$this->post('/newspapers/{id}/edit', 'NewspapersController@update');
 	
 	// Posts
 	$this->get('/posts', 'PostsController@index')->name('admin_posts');

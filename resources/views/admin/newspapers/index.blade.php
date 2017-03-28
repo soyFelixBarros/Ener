@@ -31,7 +31,7 @@
 						<td>{{ $newspaper->name }}</td>
 						<th scope=row class="text-center">{{ count($newspaper->posts) }}</th>
 						<td>{{ $newspaper->province->name }}</td>
-						<th class="text-right"><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></th>
+						<th class="text-right"><a href="{{ route('admin_newspapers_edit', ['id' => $newspaper->id]) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></th>
 					</tr>
 					@endforeach
 				</tbody>

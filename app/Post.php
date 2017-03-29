@@ -23,6 +23,7 @@ class Post extends Model
         'newspaper_id',
         'title',
         'summary',
+        'image',
         'url',
         'status',
         'created_at',

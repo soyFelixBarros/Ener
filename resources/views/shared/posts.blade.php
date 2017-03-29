@@ -3,6 +3,12 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <article class="media">
+
+                @if ($post->image !== null)
+                <div class="media-left">
+                    <a href="{{ $post->url }}" target="_blank"><img class="media-object" src="{{ $post->image }}"></a>
+                </div>
+                @endif
                 <div class="media-body"> 
                 @if (count($post->tags) > 0)
                 <ul class="tags list-inline">

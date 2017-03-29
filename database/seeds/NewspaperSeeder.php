@@ -17,7 +17,7 @@ class NewspaperSeeder extends Seeder
     		['AR-H', 'DataChaco.com', 'http://www.datachaco.com'],
     		['AR-H', 'Chaco Dia Por Dia', 'http://www.chacodiapordia.com'],
     		['AR-H', 'Diario TAG', 'https://www.diariotag.com'],
-    		['AR-H', 'diario21.tv', 'http://www.diario21.tv/notix2'],
+    		['AR-H', 'diario21.tv', 'http://www.diario21.tv/notix2/'],
     		['AR-H', 'Primera Línea', 'http://www.diarioprimeralinea.com.ar'],
     	];
 

@@ -7,6 +7,7 @@ use App\Post;
 use App\Newspaper;
 use Illuminate\Http\Request;
 use Symfony\Component\DomCrawler\Crawler;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CrawlersController extends Controller
 {
@@ -110,6 +111,7 @@ class CrawlersController extends Controller
                     'status' => 'summary',
                 ]);
             }
+            return $post;
         }
     }
 
@@ -138,9 +140,43 @@ class CrawlersController extends Controller
                 ]);
             }
 
-            $post->update(['status' => 'publish']);
+            $post->update(['status' => 'image']);
 
             return $post->summary;
+        }
+    }
+
+    public function image()
+    {
+        $post = Post::where('status', 'image')
+                    ->oldest('updated_at')
+                    ->first();
+
+        if (count($post) > 0) {
+            
+            $post->update(['status' => 'pending']);
+
+            // Obterner el contenido
+            $content = $this->toScrape([
+                $post->url,
+                $post->newspaper->scraping->src,
+            ]);
+
+            if ($content->count() > 0) {
+                $src = $this->prepareLink($content->text(), $post->newspaper->website);
+                
+                $image = Image::make($src)
+                                  ->fit(68)
+                                  ->sharpen(6)
+                                  ->encode('data-url', 75);
+                $post->update([
+                    'image' => (string) $image->encoded,
+                ]);
+            }
+
+            $post->update(['status' => 'publish']);
+
+            return $post->image;
         }
     }
 }

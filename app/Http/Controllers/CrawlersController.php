@@ -166,7 +166,7 @@ class CrawlersController extends Controller
                 $src = $this->prepareLink($content->text(), $post->newspaper->website);
                 
                 $image = Image::make($src)
-                                  ->fit(68)
+                                  ->fit(100, 80)
                                   ->sharpen(6)
                                   ->encode('data-url', 75);
                 $post->update([

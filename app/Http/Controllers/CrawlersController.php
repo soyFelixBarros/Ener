@@ -111,7 +111,10 @@ class CrawlersController extends Controller
                     'status' => 'summary',
                 ]);
             }
-            return $post;
+            return array(
+                'newspaper' => $post->newspaper->name,
+                'title' => $post->title
+            );
         }
     }
 
@@ -166,9 +169,10 @@ class CrawlersController extends Controller
                 $src = $this->prepareLink($content->text(), $post->newspaper->website);
                 
                 $image = Image::make($src)
-                                  ->fit(350, 225)
-                                  ->sharpen(8)
-                                  ->encode('data-url', 80);
+                              ->fit(350, 225)
+                              ->sharpen(6)
+                              ->encode('data-url', 80);
+
                 $post->update([
                     'image' => (string) $image->encoded,
                 ]);

@@ -53,7 +53,7 @@ class LinkSeeder extends Seeder
 
             // Primera Línea
             [7, 'http://www.diarioprimeralinea.com.ar/politica/interior/'],
-            [7, 'http://www.diarioprimeralinea.com.ar/politica/gran-resistencia/'],
+            // [7, 'http://www.diarioprimeralinea.com.ar/politica/gran-resistencia/'],
             [7, 'http://www.diarioprimeralinea.com.ar/informacion-general/interior/'],
             [7, 'http://www.diarioprimeralinea.com.ar/informacion-general/gran-resistencia/'],
     	];

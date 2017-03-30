@@ -56,7 +56,7 @@ class ScrapingSeeder extends Seeder
             [
                 6,
                 '//div[@class="rela-titu"]/a',
-                '//*[@id="slider"]/div/ul/li[1]/a/@href',
+                '//div[@id="slider"]//img[1]/@src',
                 '//div[@class="vol-des"]',
             ],
 
@@ -64,7 +64,7 @@ class ScrapingSeeder extends Seeder
             [
                 7,
                 '//div[1]/div[2]/h5/a',
-                '//div[@id="w620"]/img/@src | //div[@class="w300"]/div/img/@src',
+                '//div[@class="caja"]/div/div/*/img/@src',
                 '//h3[@itemprop="description"]',
             ],
     	];

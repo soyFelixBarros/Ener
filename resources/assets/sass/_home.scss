@@ -1,5 +1,10 @@
 .posts {
 	article {
+		padding-bottom: 15px;
+
+		.image {
+			margin-top: 15px;
+		}
 		.tags {
 			margin-bottom: 3px;
 			> li {
@@ -13,6 +18,9 @@
 		.title {
 			font-size: 16px;
 		    font-weight: 600;
+		    line-height: 1.35em;
+		    margin-top: 15px;
+		    margin-bottom: 5px;
 			a {
 			    color: #0366d6;
 			}

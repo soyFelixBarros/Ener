@@ -1,15 +1,15 @@
 <div class="posts">
     @foreach ($posts as $post)
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <article class="media">
+            <article class="panel panel-default clearfix">
 
                 @if ($post->image !== null)
-                <div class="media-left">
-                    <a href="{{ $post->url }}" target="_blank"><img class="media-object" src="{{ $post->image }}"></a>
+                <div class="col-sm-3 image">
+                    <a href="{{ $post->url }}" target="_blank"><img src="{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
                 </div>
-                @endif
-                <div class="media-body"> 
+                <div class="col-sm-9">
+                @else
+                <div class="col-sm-12">
+                @endif 
                 @if (count($post->tags) > 0)
                 <ul class="tags list-inline">
                     @foreach ($post->tags as $tag)
@@ -18,10 +18,10 @@
                 </ul>
                 @endif
                 <header>
-                    <h1 class="title media-heading"><a href="{{ $post->url }}" target="_blank">{{ $post->title }}</a></h1>
+                    <h1 class="title"><a href="{{ $post->url }}" target="_blank">{{ $post->title }}</a></h1>
                 </header>
                 @if ($post->summary)
-                <p class="summary">{{ $post->summary }}</p>
+                <p class="summary hidden-xs">{{ $post->summary }}</p>
                 @endif
                 <footer class="row">
                     <div class="newspaper-datetime col-md-10">
@@ -40,8 +40,6 @@
                 </footer>
                 </div>
             </article>
-        </div>
-    </div>
     @endforeach
 </div>
 <div class="text-center">

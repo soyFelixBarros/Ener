@@ -1,7 +1,8 @@
 .panel {
     border: 1px solid #eaeaea;
     border-radius: 2px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .03);
+    // box-shadow: 0 1px 1px rgba(0, 0, 0, .03);
+    box-shadow: none;
 
     .panel-heading {
     	border-radius: 0;
@@ -11,7 +12,7 @@
     	h3 {
     		font-size: 18px;
     		margin-top: 7px;
-    		margin-bottom: 3.5;
+    		margin-bottom: 5px;
     	}
     }
 }

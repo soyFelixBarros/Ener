@@ -111,9 +111,11 @@ class CrawlersController extends Controller
                     'status' => 'summary',
                 ]);
             }
+
             return array(
                 'newspaper' => $post->newspaper->name,
-                'title' => $post->title
+                'title' => $post->title,
+                'url' => $post->url
             );
         }
     }
@@ -180,7 +182,11 @@ class CrawlersController extends Controller
 
             $post->update(['status' => 'publish']);
 
-            return $post->image;
+            return array(
+                'newspaper' => $post->newspaper->name,
+                'title' => $post->title,
+                'url' => $post->url
+            );
         }
     }
 }

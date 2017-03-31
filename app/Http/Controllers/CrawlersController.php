@@ -62,7 +62,7 @@ class CrawlersController extends Controller
     {
         $post = Post::where('newspaper_id', $newspaper_id, 'and')
                     ->where('title', 'LIKE', $title . '%', 'and')
-                    ->whereDay('created_at', date('j'))
+                    ->whereMonth('created_at', date('m'))
                     ->first();
         return $post;
     }

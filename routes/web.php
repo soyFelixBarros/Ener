@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 	$this->get('/posts', 'PostsController@index')->name('admin_posts');
 	$this->get('/posts/{id}/edit', 'PostsController@edit')->name('admin_posts_edit');
 	$this->post('/posts/{id}/edit', 'PostsController@update');
+	$this->get('/posts/{post}/delete', 'PostsController@delete')->name('admin_posts_delete');
+	$this->post('/posts/{post}/delete', 'PostsController@destroy');
 
 	// Users
 	$this->get('/users', 'UsersController@index')->name('admin_users');

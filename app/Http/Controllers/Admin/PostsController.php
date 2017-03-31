@@ -62,4 +62,27 @@ class PostsController extends Controller
 			   ->with('status', 'Post updated!');
 	}
 
+	/**
+	 * Vista con el formulario para eliminar un post.
+	 *
+	 * @return object
+	 */
+	public function delete(Post $post)
+	{
+		return view('admin.posts.delete')->with('post', $post);
+	}
+
+	/**
+	 * Metodo para eliminar una entrada.
+	 *
+	 * @return object
+	 */
+	public function destroy(Post $post)
+	{
+		$post->delete();
+
+		return redirect()
+			   ->route('admin_posts')
+			   ->with('status', 'Post deleted!');
+	}
 }

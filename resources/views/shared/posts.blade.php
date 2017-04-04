@@ -1,6 +1,6 @@
-<div class="posts">
+<div class="posts panel panel-default ">
     @foreach ($posts as $post)
-    <article class="panel panel-default clearfix">
+    <article class="clearfix">
         @if ($post->image !== null)
         <div class="col-sm-3 image">
             <a href="{{ $post->url }}" target="_blank"><img src="{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
@@ -23,12 +23,12 @@
         <p class="summary hidden-xs">{{ $post->summary }}</p>
         @endif
         <footer class="row">
-            <div class="newspaper-datetime col-md-8">
+            <div class="newspaper-datetime col-xs-8">
                 {{ $post->newspaper->name }} -
                 <time class="timeago" datetime="{{ $post->created_at }}">{{ $post->created_at }}</time>
             </div>
             @if (Auth::check())
-            <div class="action col-md-4 text-right">
+            <div class="action col-xs-4 text-right">
                 @if (Auth::user()->hasRole('admin'))
                 <ul class="list-inline">
                     <li><a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}">

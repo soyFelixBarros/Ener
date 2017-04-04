@@ -16,13 +16,9 @@
 	li:last-child a {
 		border-bottom: 0;
 	}
-	
-	li a:active, li a:hover, li a:link, li a:visited {
+    li.active a {
 		background-color: #fff;
-	}
-
-	li.active a {
-		color: $brand-primary;
-		border-left: 2px solid $brand-primary;
+        color: $brand-primary;
+        border-left: 2px solid $brand-primary;
 	}
 }

@@ -1,9 +1,10 @@
 .posts {
 	article {
-		padding-bottom: 15px;
+		border-bottom: 1px solid #eaeaea;
+		padding-bottom: 18px;
 
 		.image {
-			margin-top: 15px;
+			margin: 0 -15px;
 		}
 		.tags {
 			margin-bottom: 3px;
@@ -38,6 +39,21 @@
 				ul {
 					margin-bottom: 0;
 				}
+			}
+		}
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+}
+
+/* Small devices (tablets, 768px and up) */
+@media #{$tablets} {
+	.posts {
+		article {
+			.image {
+				margin: 18px 0 0;
+				img { border: 1px solid #eee; }
 			}
 		}
 	}

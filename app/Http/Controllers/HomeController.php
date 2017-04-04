@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Tag;
 use App\Post;
-use App\Province;
 use App\Newspaper;
 use Illuminate\Http\Request;
 
@@ -20,7 +19,7 @@ class HomeController extends Controller
 
         $posts = Post::where('province_code', $province_code, 'and')
                      ->where('status', 'publish', 'and')
-                     ->whereDay('created_at', '>', date('j') - 2)
+                     ->whereDay('created_at', '>', date('j') - 1)
                      ->latest()
                      ->paginate(20);
 

@@ -4,14 +4,17 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/crawlers', 'CrawlersController@index');
-Route::get('/crawlers/title', 'CrawlersController@title');
-Route::get('/crawlers/summary', 'CrawlersController@summary');
-Route::get('/crawlers/image', 'CrawlersController@image');
-
 Route::get('/tag/{tag}', 'TagsController@show')->name('tag_show');
 
 Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
+
+// Crawlers
+Route::group(['prefix' => 'crawlers'], function() {
+	$this->get('/', 'CrawlersController@index');
+	$this->get('/title', 'CrawlersController@title');
+	$this->get('/summary', 'CrawlersController@summary');
+	$this->get('/image', 'CrawlersController@image');
+});
 
 // Settings
 Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {

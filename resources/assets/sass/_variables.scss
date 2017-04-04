@@ -38,3 +38,6 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #f2f8fa;
+
+$tablets: "(min-width: 768px)";
+$desktops: "(min-width: 992px)";

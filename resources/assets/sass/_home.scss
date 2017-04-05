@@ -1,6 +1,7 @@
 .posts {
+	border: none;
 	article {
-		border-bottom: 5px solid #eaeaea;
+		border-bottom: 10px solid #f9f7f6;
 		padding-bottom: 18px;
 
 		.image {
@@ -12,14 +13,13 @@
 				font-size: 13px;
 				> a {
 					color: #e36209;
-					// color: #777;
 				}
 			}
 		}
 		.title {
 			font-size: 16px;
 		    font-weight: 600;
-		    line-height: 1.35em;
+		    line-height: 1.25em;
 		    margin-top: 15px;
 		    margin-bottom: 5px;
 			a {
@@ -50,6 +50,7 @@
 /* Small devices (tablets, 768px and up) */
 @media #{$tablets} {
 	.posts {
+		border: 1px solid #eaeaea;
 		article {
 			border-bottom: 1px solid #eaeaea;
 			.image {

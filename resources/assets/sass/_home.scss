@@ -1,6 +1,6 @@
 .posts {
 	article {
-		border-bottom: 1px solid #eaeaea;
+		border-bottom: 5px solid #eaeaea;
 		padding-bottom: 18px;
 
 		.image {
@@ -51,6 +51,7 @@
 @media #{$tablets} {
 	.posts {
 		article {
+			border-bottom: 1px solid #eaeaea;
 			.image {
 				margin: 18px 0 0;
 				img { border: 1px solid #eee; }

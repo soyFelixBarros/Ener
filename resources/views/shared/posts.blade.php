@@ -3,7 +3,7 @@
     <article class="clearfix">
         @if ($post->image !== null)
         <div class="col-sm-3 image">
-            <a href="{{ $post->url }}" target="_blank"><img src="{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
+            <a href="{{ $post->url }}" target="_blank"><img src="/uploads/images/{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
         </div>
         <div class="col-sm-9">
         @else

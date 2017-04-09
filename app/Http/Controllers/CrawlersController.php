@@ -153,6 +153,7 @@ class CrawlersController extends Controller
 
     public function image()
     {
+
         $post = Post::where('status', 'image')
                     ->oldest('updated_at')
                     ->first();
@@ -169,24 +170,20 @@ class CrawlersController extends Controller
 
             if ($content->count() > 0) {
                 $src = $this->prepareLink($content->text(), $post->newspaper->website);
-                
+                $file = $post->id.'-'.str_slug($post->title).'.jpg';
+                $path = '/uploads/images/';
+
                 $image = Image::make($src)
-                              ->fit(390, 235)
+                              ->fit(420, 250)
                               ->sharpen(8)
-                              ->encode('data-url', 75);
+                              ->save(public_path($path).$file, 75);
 
                 $post->update([
-                    'image' => (string) $image->encoded,
+                    'image' => $file,
                 ]);
             }
-
             $post->update(['status' => 'publish']);
-
-            return array(
-                'newspaper' => $post->newspaper->name,
-                'title' => $post->title,
-                'url' => $post->url
-            );
+            return $post->image;
         }
     }
 }

@@ -1,13 +1,13 @@
-# Articles
+# Posts
 
-## All articles
+## All posts
 
-* `GET` /v1/articles - Devuelve un `Array` con los **artículos activos**.
+* `GET` /v1/posts - Devuelve un `Array` con los **posts activos**.
 
 **Ejemplo:**
 
 ```
-http://ejemplo.com/api/v1/articles
+http://ejemplo.com/api/v1/posts
 ```
 
 ### Respuesta
@@ -41,12 +41,12 @@ http://ejemplo.com/api/v1/articles
 
 Key | Type | Description
 --- | --- | ---
-id | integer | Identificador único del artículo.
-title | string | Titulo del artículo.
-summary | string | Bajada del artículo.
-created_at | timestamp | Fecha y hora de creación del artículo.
-updated_at | timestamp | Fecha y hora de actualización del artículo.
-newspaper | hash | Diario del artículo.
+id | integer | Identificador único del post.
+title | string | Titulo del post.
+summary | string | Bajada del post.
+created_at | timestamp | Fecha y hora de creación del post.
+updated_at | timestamp | Fecha y hora de actualización del post.
+newspaper | hash | Diario del post.
 
 #### Newspaper Key
 

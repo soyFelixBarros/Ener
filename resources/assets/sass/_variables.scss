@@ -23,7 +23,7 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: Arial, sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.5;
-$text-color: #333;
+$text-color: #444;
 
 // Navbar
 $navbar-default-bg: #fff;
@@ -32,7 +32,7 @@ $navbar-default-bg: #fff;
 $btn-default-color: $text-color;
 
 // Inputs
-$input-border: lighten($text-color, 40%);
+$input-border: lighten($text-color, 45%);
 $input-border-focus: lighten($brand-primary, 35%);
 $input-color-placeholder: lighten($text-color, 30%);
 

@@ -172,11 +172,16 @@ class CrawlersController extends Controller
                 $src = $this->prepareLink($content->text(), $post->newspaper->website);
                 $file = $post->id.'-'.str_slug($post->title).'.jpg';
                 $path = '/uploads/images/';
+                $position = 'center';
+                $image = Image::make($src);
 
-                $image = Image::make($src)
-                              ->fit(420, 250, null, 'top')
-                              ->sharpen(8)
-                              ->save(public_path($path).$file, 75);
+                if ($image->width() > $image->height()) {
+                    $position = 'top';
+                }
+
+                $image->fit(420, 360, null, $position)
+                      ->sharpen(8)
+                      ->save(public_path($path).$file, 75);
 
                 $post->update([
                     'image' => $file,

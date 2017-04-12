@@ -24,7 +24,7 @@
         @endif
         <footer class="row">
             <div class="newspaper-datetime col-xs-10">
-                {{ $post->newspaper->name }} -
+                {{ $post->newspaper->name }} &bull;
                 <time class="timeago" datetime="{{ $post->created_at }}">{{ $post->created_at }}</time>
             </div>
             @if (Auth::check())

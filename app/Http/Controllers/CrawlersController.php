@@ -179,9 +179,9 @@ class CrawlersController extends Controller
                     $position = 'top';
                 }
 
-                $image->fit(420, 360, null, $position)
-                      ->sharpen(8)
-                      ->save(public_path($path).$file, 75);
+                $image->fit(500, 360, null, $position)
+                      ->sharpen(10)
+                      ->save(public_path($path).$file, 85);
 
                 $post->update([
                     'image' => $file,

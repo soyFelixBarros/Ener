@@ -1,9 +1,10 @@
 .panel {
     border: 1px solid #C9C9C9;
-    border-radius: 2px;
+    border-radius: 0;
     // box-shadow: 0 1px 1px rgba(0, 0, 0, .03);
     box-shadow: none;
-
+    margin-bottom: 10px;
+    
     .panel-heading {
     	border-radius: 0;
     	background-color: #f9fbfd;
@@ -14,5 +15,11 @@
     		margin-top: 7px;
     		margin-bottom: 5px;
     	}
+    }
+}
+
+@media #{$tablets} {
+    .panel {
+        margin-bottom: 20px;
     }
 }

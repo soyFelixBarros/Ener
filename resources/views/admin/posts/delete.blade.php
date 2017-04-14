@@ -7,7 +7,7 @@
         <div class="media">
             @if ($post->image !== null)
             <div class="media-left">
-                <img class="media-object" src="{{ $post->image }}" width="180" height="115">
+                <img class="media-object" src="/uploads/images/{{ $post->image }}" width="200" height="150">
             </div>
             @endif
             <div class="media-body">

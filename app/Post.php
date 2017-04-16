@@ -22,6 +22,7 @@ class Post extends Model
         'parent_id',
         'province_code',
         'newspaper_id',
+        'category_id',
         'title',
         'summary',
         'image',
@@ -41,7 +42,7 @@ class Post extends Model
     ];
 
     /**
-     * Obtener la provincia del artículo.
+     * Obtener la provincia del post.
      */
     public function province()
     {
@@ -49,12 +50,20 @@ class Post extends Model
     }
 
     /**
-     * Obtener la fuente del artículo.
+     * Obtener el diario del post.
      */
     public function newspaper()
     {
         return $this->belongsTo('App\Newspaper')
                     ->with('province');
+    }
+
+    /**
+     * Obtener la categoria del post.
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
     }
 
     /**

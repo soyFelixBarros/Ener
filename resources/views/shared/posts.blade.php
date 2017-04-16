@@ -1,4 +1,4 @@
-<div class="posts panel panel-default ">
+<div class="posts panel panel-default">
     @foreach ($posts as $post)
     @if($post->parent_id === null)
     <article class="clearfix">
@@ -13,7 +13,12 @@
         <header>
             <hgroup>
                 <h1 class="title"><a href="{{ $post->url }}" target="_blank">{{ $post->title }}</a></h1>
-                <h6 class="newspaper-datetime">{{ $post->newspaper->name }} &bull; <time class="timeago" datetime="{{ $post->created_at }}">{{ $post->created_at }}</time></h6>
+                <h6 class="newspaper-datetime">
+                    <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}">{{ $post->newspaper->name }}</a> - <time class="timeago" datetime="{{ $post->created_at }}">{{ $post->created_at }}</time>
+                @if ($post->category_id !== null)
+                 en <a href="{{ route('category_show', ['category' => $post->category->slug]) }}" class="category {{ $post->category->slug }}">{{ $post->category->name }}</a>
+                @endif
+                </h6>
             </hgroup>
         </header>
         @if ($post->summary)

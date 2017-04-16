@@ -16,6 +16,7 @@ class NewspapersController extends Controller
 						   ->paginate(15);
 
 		return view('newspapers.show', array(
+			'title' => $newspaper->name,
 			'newspapers' => $newspapers,
 			'posts' => $posts,
 		));

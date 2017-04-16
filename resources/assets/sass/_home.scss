@@ -2,9 +2,9 @@
 	border: none;
 	article {
 		border-bottom: 15px solid $body-bg;
-		padding-bottom: 18px;
+		padding: 16px 0 15px 0;
 		.image {
-			margin: 0 -15px;
+			margin: -16px -15px 15px -15px;
 		}
 		.tags {
 			margin-bottom: 3px;
@@ -19,7 +19,7 @@
 			font-size: 16px;
 		    font-weight: 600;
 		    line-height: 1.25em;
-		    margin-top: 18px;
+		    margin-top: 0;
 		    margin-bottom: 6px;
 		    white-space: pre-wrap;
 		    overflow: hidden;
@@ -32,8 +32,10 @@
 			color: #657786;
 			margin-top: 0;
 			margin-bottom: 0;
-			white-space: pre-wrap;
 			word-wrap: break-word;
+			a {
+				color: #657786;
+			}
 		}
 		.summary {
 			color: #14171a;
@@ -42,7 +44,7 @@
 			word-wrap: break-word;
 			display: block;
 		    -webkit-margin-before: 6px;
-		    -webkit-margin-after: 6px;
+		    -webkit-margin-after: 0;
 		    -webkit-margin-start: 0px;
 		    -webkit-margin-end: 0px;
 		}
@@ -64,9 +66,9 @@
 	.posts {
 		article {
 			border-bottom: 1px solid #eaeaea;
-			padding-bottom: 18px;
+			padding: 19px 0;
 			.image {
-				margin: 20px -15px 0 0;
+				margin: 0;
 				img { border: 1px solid #ccc; }
 			}
 		}

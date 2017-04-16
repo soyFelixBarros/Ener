@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="Rastreador de noticias">
     <title>@yield('title')</title>
@@ -25,23 +25,27 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url('/') }}">News Tracker</a>
-                    <p class="navbar-text">Chaco, Argentina</p>
+                    <a class="navbar-brand" href="{{ url('/') }}">Chaco, Argentina</a>
                 </div>
 
-                @if (Auth::check())
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        @if (Auth::user()->hasRole('admin'))
-                        <li><a href="{{ route('admin_posts') }}">Administración</a></li>
-                        @endif
-                        <li><a href="{{ route('favorites') }}">Favorites</a></li>
+                        <li{{ Request::is('/') ? ' class=active' : '' }}><a href="{{ url('/') }}">Inicio</a></li>
+                        <li{{ Request::is('category/politica') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'politica']) }}">Política</a></li>
+                        <li{{ Request::is('category/policiales') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'policiales']) }}">Policiales</a></li>
+                        <li{{ Request::is('category/cultura') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'cultura']) }}">Cultura</a></li>
+                        @if (Auth::check())
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                @if (Auth::user()->hasRole('admin'))
+                                <li><a href="{{ route('admin_posts') }}">Administración</a></li>
+                                @endif
+                                <li><a href="{{ route('favorites') }}">Favorities</a></li>
+                                <li class="divider"></li>
                                 <li class="dropdown-header"><i class="fa fa-fw fa-btn fa-cog"></i> Settings</li>
                                 <li>
                                     <a href="{{ route('profile') }}">Profile</a>
@@ -61,12 +65,14 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
                     </ul>
                 </div>
-                @endif
             </div>
         </nav>
+        <div class="container">
         @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->

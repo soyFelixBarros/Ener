@@ -61,7 +61,7 @@ class CrawlersController extends Controller
     private function hasPostNow($newspaper_id, $title)
     {
         $post = Post::where('newspaper_id', $newspaper_id, 'and')
-                    ->where('title', 'LIKE', $title . '%', 'and')
+                    ->where('title', 'LIKE', '%'.$title.'%', 'and')
                     ->whereMonth('created_at', date('m'))
                     ->first();
         return $post;
@@ -106,6 +106,7 @@ class CrawlersController extends Controller
                 $post = Post::create([
                     'province_code' => $link->newspaper->province->code,
                     'newspaper_id' => $link->newspaper->id,
+                    'category_id' => $link->category_id,
                     'title' => $title,
                     'url' => $url,
                     'status' => 'summary',
@@ -174,9 +175,9 @@ class CrawlersController extends Controller
                 $path = public_path('/uploads/images/');
 
                 $image = Image::make($src)
-                              ->fit(510, 320, null, 'top')
+                              ->fit(510, 340, null, 'top')
                               ->sharpen(10)
-                              ->save($path.$file, 75);
+                              ->save($path.$file, 80);
 
                 $post->update([
                     'image' => $file,

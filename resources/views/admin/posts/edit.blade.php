@@ -26,12 +26,30 @@
             </div>
 
             <div class="form-group">
-                <label>Newspaper</label>
-                <select name="newspaper_id" class="form-control">
-                    <option value="{{ $post->newspaper->id }}" selected="selected">{{ $post->newspaper->name }}</option>
-                    @foreach ($newspapers as $newspaper)
-                        @if ($post->newspaper->id != $newspaper->id)
-                        <option value="{{ $newspaper->id}}">{{ $newspaper->name }}</option>
+                <label>Provinces</label>
+                <select name="province_code" class="form-control">
+                    <option value="">None</option>
+                    @if($post->province_code != null)
+                    <option value="{{ $post->province->code }}" selected="selected">{{ $post->province->name }}</option>
+                    @endif
+                    @foreach ($provinces as $province)
+                        @if ($post->province_code != $province->code)
+                        <option value="{{ $province->code }}">{{ $province->name }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select name="category_id" class="form-control">
+                    <option value="" selected="selected">None</option>
+                    @if($post->category_id != null)
+                    <option value="{{ $post->category->id }}" selected="selected">{{ $post->category->name }}</option>
+                    @endif
+                    @foreach ($categories as $category)
+                        @if ($post->category_id != $category->id)
+                        <option value="{{ $category->id}}">{{ $category->name }}</option>
                         @endif
                     @endforeach
                 </select>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Tag;
 use App\Post;
+use App\Province;
+use App\Category;
 use App\Newspaper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,13 +35,15 @@ class PostsController extends Controller
 		$post = Post::find($id);
 		$postTags = $post->tags->pluck('name')->toArray();
 		$tags = Tag::all();
-		$newspapers = Newspaper::all();
+		$categories = Category::all();
+		$provinces = Province::all();
 
 		return view('admin.posts.edit', array(
 			'post' => $post,
 			'postTags' => $postTags,
 			'tags' => $tags,
-			'newspapers' => $newspapers,
+			'provinces' => $provinces,
+			'categories' => $categories,
 		));
 	}
 

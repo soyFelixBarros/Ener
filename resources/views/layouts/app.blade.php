@@ -35,6 +35,7 @@
                         @if (Auth::user()->hasRole('admin'))
                         <li><a href="{{ route('admin_posts') }}">Administración</a></li>
                         @endif
+                        <li><a href="{{ route('favorites') }}">Favorites</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>

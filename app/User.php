@@ -49,4 +49,12 @@ class User extends Authenticatable
 
         return false;
     }
+
+    /**
+     * Obtenga todas las publicaciones favoritas para el usuario.
+     */
+    public function favorites()
+    {
+        return $this->belongsToMany('App\Post', 'favorites', 'user_id', 'post_id')->withTimeStamps();
+    }
 }

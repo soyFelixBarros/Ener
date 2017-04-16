@@ -1,9 +1,8 @@
 .posts {
 	border: none;
 	article {
-		border-bottom: 20px solid $body-bg;
+		border-bottom: 15px solid $body-bg;
 		padding-bottom: 18px;
-
 		.image {
 			margin: 0 -15px;
 		}
@@ -20,21 +19,34 @@
 			font-size: 16px;
 		    font-weight: 600;
 		    line-height: 1.25em;
-		    margin-top: 15px;
-		    margin-bottom: 5px;
+		    margin-top: 18px;
+		    margin-bottom: 6px;
+		    white-space: pre-wrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
 			a {
 			    color: #0366d6;
 			}
 		}
+		.newspaper-datetime {
+			color: #657786;
+			margin-top: 0;
+			margin-bottom: 0;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+		}
 		.summary {
-			// color: #333;
+			color: #14171a;
 			font-size: 14px;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			display: block;
+		    -webkit-margin-before: 6px;
+		    -webkit-margin-after: 6px;
+		    -webkit-margin-start: 0px;
+		    -webkit-margin-end: 0px;
 		}
 		footer {
-			.newspaper-datetime {
-				font-size: 12px;
-				color: #8899A6;
-			}
 			.action {
 				ul {
 					margin-bottom: 0;
@@ -52,9 +64,10 @@
 	.posts {
 		article {
 			border-bottom: 1px solid #eaeaea;
+			padding-bottom: 18px;
 			.image {
-				margin: 18px 0 0;
-				img { border: 1px solid #eee; }
+				margin: 20px -15px 0 0;
+				img { border: 1px solid #ccc; }
 			}
 		}
 	}

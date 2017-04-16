@@ -19,6 +19,7 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
+        'parent_id',
         'province_code',
         'newspaper_id',
         'title',
@@ -62,5 +63,15 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Tag');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Post', 'id', 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany('App\Post', 'parent_id', 'id');
     }
 }

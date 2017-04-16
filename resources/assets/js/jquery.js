@@ -4,7 +4,7 @@ $( document ).ready(function() {
 
 // Spanish
 jQuery.timeago.settings.strings = {
-   prefixAgo: "hace",
+   prefixAgo: "Hace",
    prefixFromNow: "dentro de",
    suffixAgo: "",
    suffixFromNow: "",

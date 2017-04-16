@@ -25,6 +25,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {
 	$this->post('security', 'SettingsController@updatePassword');
 });
 
+// Favorites
+Route::group(['middleware' => 'auth', 'prefix' => 'favorites'], function () {
+	$this->get('/', 'FavoritesController@posts')->name('favorites');
+});
+
 // Admin
 Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 	// Tags
@@ -45,6 +50,7 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 	$this->post('/posts/{id}/edit', 'PostsController@update');
 	$this->get('/posts/{post}/delete', 'PostsController@delete')->name('admin_posts_delete');
 	$this->post('/posts/{post}/delete', 'PostsController@destroy');
+	$this->get('/posts/{post}/favorite', 'PostsController@favorite')->name('admin_posts_favorite');
 
 	// Users
 	$this->get('/users', 'UsersController@index')->name('admin_users');

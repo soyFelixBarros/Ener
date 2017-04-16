@@ -6,6 +6,7 @@ use App\Tag;
 use App\Post;
 use App\Newspaper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
@@ -84,5 +85,16 @@ class PostsController extends Controller
 		return redirect()
 			   ->route('admin_posts')
 			   ->with('status', 'Post deleted!');
+	}
+
+	/**
+	 * Método para agregar un post a favoritos.
+	 *
+	 * @return object
+	 */
+	public function favorite(Post $post)
+	{
+		Auth::user()->favorites()->toggle($post->id);
+		return back();
 	}
 }

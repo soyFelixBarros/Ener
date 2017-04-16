@@ -19,7 +19,7 @@ class HomeController extends Controller
 
         $posts = Post::where('province_code', $province_code, 'and')
                      ->where('status', 'publish', 'and')
-                     ->whereDay('created_at', '>', date('j') - 1)
+                     ->whereDay('created_at', '>', date('j') - 2)
                      ->latest()
                      ->paginate(20);
 

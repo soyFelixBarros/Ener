@@ -2,8 +2,17 @@
 @section('title', 'Tags')
 @section('content.admin')
 <div class="panel panel-default">
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-10">
+				<h3>Tags</h3>
+			</div>
+			<div class="col-md-2 text-right">
+				<a href="{{ route('admin_tag_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>	
+			</div>
+		</div>
+	</div>
 	<div class="panel-body">
-		<a href="{{ route('admin_tag_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>
 		@if (count($tags) > 0)
 		<div class="table-responsive">
 			<table class=table>

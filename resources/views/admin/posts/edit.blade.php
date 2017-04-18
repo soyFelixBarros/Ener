@@ -2,7 +2,7 @@
 @section('title', 'Edit post')
 @section('content.admin')
 <div class="panel panel-default">
-    <div class="panel-heading"><span class="glyphicon glyphicon-edit"></span> Edit post</div>
+    <div class="panel-heading">Edit post</div>
     <form role="form" method="POST">
         <div class="panel-body">
             {{ csrf_field() }}
@@ -14,15 +14,6 @@
             <div class="form-group{{ $errors->has('summary') ? ' has-error' : '' }}">
                 <label>Summary</label>
                 <textarea name="summary" rows="3" class="form-control">{{ $post->summary }}</textarea>
-            </div>
-            
-            <div class="form-group">
-                <label>Tags</label>
-                <select name="tags" class="form-control" multiple="multiple">
-                    @foreach ($tags as $tag)
-                        <option value="{{ $tag->id }}" {{ (in_array($tag->name, $postTags)) ? 'selected': '' }}>{{ $tag->name }}</option>
-                    @endforeach
-                </select>
             </div>
 
             <div class="form-group">
@@ -55,9 +46,15 @@
                 </select>
             </div>
             </div><!-- .panel-body -->
-        <div class="panel-footer text-right">
-            <a href="{{ route('admin_posts') }}" type="submit" class="btn btn-default">Cancel</a>
-            <button type="submit" class="btn btn-primary">Update</button>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="{{ route('admin_posts_delete', ['id' => $post->id]) }}" type="submit" class="btn btn-danger">Delete</a>
+                </div>
+                <div class="col-xs-8 text-right">
+                    <a href="{{ route('admin_posts') }}" type="submit" class="btn btn-default">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
         </div><!-- .panel-footer -->
     </form>
 </div><!-- .panel -->

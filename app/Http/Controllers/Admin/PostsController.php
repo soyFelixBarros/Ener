@@ -20,7 +20,7 @@ class PostsController extends Controller
 	 */
 	public function index(Post $post)
 	{
-		$posts = Post::latest()->paginate(15);
+		$posts = Post::withoutGlobalScopes()->latest()->paginate(15);
 
 		return view('admin.posts.list')->with('posts', $posts);
 	}
@@ -32,16 +32,12 @@ class PostsController extends Controller
 	 */
 	public function edit(Request $request, $id)
 	{
-		$post = Post::find($id);
-		$postTags = $post->tags->pluck('name')->toArray();
-		$tags = Tag::all();
+		$post = Post::withoutGlobalScopes()->find($id);
 		$categories = Category::all();
 		$provinces = Province::all();
 
 		return view('admin.posts.edit', array(
 			'post' => $post,
-			'postTags' => $postTags,
-			'tags' => $tags,
 			'provinces' => $provinces,
 			'categories' => $categories,
 		));
@@ -56,9 +52,7 @@ class PostsController extends Controller
 	{
 		$data = $request->except(['_token']);
 
-		$post = Post::find($id);
-
-		$post->tags()->toggle($request->tags);
+		$post = Post::withoutGlobalScopes()->find($id);
 
 		$post->update($data);
 

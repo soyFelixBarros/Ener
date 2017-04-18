@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Scopes\LocationScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -40,6 +41,18 @@ class Post extends Model
     protected $hidden = [
         'newspaper_id',
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new LocationScope);
+    }
 
     /**
      * Obtener la provincia del post.

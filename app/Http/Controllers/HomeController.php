@@ -11,14 +11,9 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $province_code = 'AR-H';
+        $newspapers = Newspaper::oldest('name')->get();
 
-        $newspapers = Newspaper::where('province_code', $province_code)
-                               ->oldest('name')
-                               ->get();
-
-        $posts = Post::where('province_code', $province_code, 'and')
-                     ->where('status', 'publish', 'and')
+        $posts = Post::where('status', 'publish', 'and')
                      ->whereDay('created_at', '>', date('j') - 2)
                      ->latest()
                      ->paginate(20);

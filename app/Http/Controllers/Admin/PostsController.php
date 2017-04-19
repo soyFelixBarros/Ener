@@ -57,7 +57,7 @@ class PostsController extends Controller
 		$post->update($data);
 
 		return redirect()
-			   ->route('admin_posts_edit', ['id' => $id])
+			   ->back()
 			   ->with('status', 'Post updated!');
 	}
 
@@ -66,8 +66,10 @@ class PostsController extends Controller
 	 *
 	 * @return object
 	 */
-	public function delete(Post $post)
+	public function delete($post)
 	{
+		$post = Post::withoutGlobalScopes()->find($post);
+
 		return view('admin.posts.delete')->with('post', $post);
 	}
 

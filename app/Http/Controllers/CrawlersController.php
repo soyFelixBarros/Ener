@@ -60,7 +60,8 @@ class CrawlersController extends Controller
      */
     private function hasPostNow($newspaper_id, $title)
     {
-        $post = Post::where('newspaper_id', $newspaper_id, 'and')
+        $post = Post::withoutGlobalScopes()
+                    ->where('newspaper_id', $newspaper_id, 'and')
                     ->where('title', 'LIKE', '%'.$title.'%', 'and')
                     ->whereMonth('created_at', date('m'))
                     ->first();

@@ -78,8 +78,9 @@ class PostsController extends Controller
 	 *
 	 * @return object
 	 */
-	public function destroy(Post $post)
+	public function destroy($post)
 	{
+		$post = Post::withoutGlobalScopes()->find($post);
 		$post->delete();
 
 		return redirect()

@@ -64,8 +64,9 @@
 /* Small devices (tablets, 768px and up) */
 @media #{$tablets} {
 	.posts {
+		border: 1px solid #e6ecf0;
 		article {
-			border-bottom: 1px solid #eaeaea;
+			border-bottom: 1px solid #e6ecf0;
 			padding: 19px 0;
 			.image {
 				margin: 0;

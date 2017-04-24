@@ -4,6 +4,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/reports', 'ReportsController@index');
+
 Route::get('/tag/{tag}', 'TagsController@show')->name('tag_show');
 
 Route::get('/category/{category}', 'CategoriesController@show')->name('category_show');

@@ -25,7 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('send:reports')
-                 ->everyMinute();
+                 ->everyMinute()
+                 ->timezone('America/Argentina/Buenos_Aires');
     }
 
     /**

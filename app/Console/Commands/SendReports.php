@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Subscriber;
 use App\Mail\Report;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Mail;
 
 class SendReports extends Command
 {

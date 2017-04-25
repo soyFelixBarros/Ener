@@ -18,6 +18,9 @@
                 <li{{ Request::is('admin/users*') ? ' class=active' : '' }}>
                     <a href="{{ route('admin_users') }}">Users</a>
                 </li>
+                <li{{ Request::is('admin/subscribers*') ? ' class=active' : '' }}>
+                    <a href="{{ route('admin_subscribers') }}">Subscribers</a>
+                </li>
             </ul>
         </div><!-- .panel -->
 	</div>

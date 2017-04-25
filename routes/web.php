@@ -57,4 +57,11 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 
 	// Users
 	$this->get('/users', 'UsersController@index')->name('admin_users');
+
+	// Subscribers
+	$this->get('/subscribers', 'SubscribersController@index')->name('admin_subscribers');
+	$this->get('/subscribers/{id}/edit', 'SubscribersController@edit')->name('admin_subscribers_edit');
+	$this->post('/subscribers/{id}/edit', 'SubscribersController@update');
+	$this->get('/subscribers/create', 'SubscribersController@create')->name('admin_subscribers_create');
+	$this->post('/subscribers/create', 'SubscribersController@store');
 });

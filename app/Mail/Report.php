@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -18,7 +19,6 @@ class Report extends Mailable
      */
     public function __construct()
     {
-        //
     }
 
     /**
@@ -28,9 +28,18 @@ class Report extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.report')
+        $day = date('j');
+        $dayAndMonth = $day.'/'.date('m').'/'.date('Y');
+        $posts = Post::where('status', 'publish', 'and')
+                            ->whereDay('created_at', '=', $day)
+                            ->latest()
+                            ->get();
+
+        return $this->subject('Resumen '.$dayAndMonth)
+                    ->view('emails.report')
                     ->with([
-                        'url' => 'http://162.243.192.97',
+                        'dayAndMonth' => $dayAndMonth,
+                        'posts' => $posts,
                     ]);
     }
 }

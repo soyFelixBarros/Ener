@@ -176,7 +176,7 @@ class CrawlersController extends Controller
                 $path = public_path('/uploads/images/');
 
                 $image = Image::make($src)
-                              ->fit(510, 340, null, 'top')
+                              ->fit(520, 360, null, 'top')
                               ->sharpen(10)
                               ->save($path.$file, 80);
 

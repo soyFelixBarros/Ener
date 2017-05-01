@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Resumen 27-04</title>
+<title>Resumen {{ $dayAndMonth }}</title>
 <style type="text/css">
 	/* ------------------------------------- 
 		GLOBAL 
@@ -60,7 +60,7 @@ p.callout {
 
 table.social {
 /* 	padding:15px; */
-	background-color: #ebebeb;
+	background-color: #eee;
 	
 }
 .social .soc-btn {
@@ -199,18 +199,21 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 	width: 300px;
 	float:left;
 }
-.column tr td { padding: 15px; }
+.column tr td { padding: 10px 15px 0 15px; }
 .column-wrap { 
 	padding:0!important; 
 	margin:0 auto; 
 	max-width:800px!important;
 }
 .column table { width:100%;}
-.social .column {
-	width: 280px;
-	min-width: 279px;
-	float:left;
+.column.contact {
+	width: 372px;
 }
+.column.imagen {
+	width: 90px;
+	min-width: 89px;
+}
+.column.imagen img {border: 1px solid #ccc;}
 
 /* Be sure to place a .clear element after each set of columns, just to be safe */
 .clear { display: block; clear: both; }
@@ -269,7 +272,9 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 				<table bgcolor="">
 					<tr>
 						<td class="small" width="27%" style="vertical-align: top; padding-right:15px;">
+							@if ($post->image !== null)
 							<a href="{{ $post->url }}" target="_blank"><img src="{{ asset('uploads/images/'.$post->image) }}" width="180" style="border:1px solid #CCCCCC;" /></a>
+							@endif
 						</td>
 						<td style="vertical-align: top;">
 							<h5><a href="{{ $post->url }}" target="_blank">{{ $post->title }}</a></h5>
@@ -290,36 +295,44 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 						<td>
 							
 							<!-- social & contact -->
-							<table bgcolor="" class="social" width="100%">
+							<table bgcolor="#eee" class="" width="100%">
 								<tr>
 									<td>
-										
-										<!--- column 1 -->
-										<div class="column">
-											<table bgcolor="" cellpadding="" align="right">
-										<tr>
-											<td>
-												<p>
-													<a href="https://ar.linkedin.com/in/soyfelixbarros" target="_blank" class="soc-btn li">LinkedIn</a>
-													<a href="https://twitter.com/soyFelixBarros" target="_blank" class="soc-btn tw">Twitter</a>
-												</p>
-											</td>
-										</tr>
-									</table><!-- /column 1 -->
-										</div>
 
-										<!--- column 2 -->
-										<div class="column">
+										<div class="column imagen">
 											<table bgcolor="" cellpadding="" align="left">
-										<tr>
-											<td>
-												<strong>Felix Barros</strong>				
-												<p>Teléfono: <strong>(362) 406 0798</strong><br/>
-												Correo: <strong><a href="emailto:soyfelixbarros@gmail.com">soyfelixbarros@gmail.com</a></strong></p>
-											</td>
-										</tr>
-									</table><!-- /column 2 -->	
-										</div>
+												<tr>
+													<td>
+														<img src="{{ asset('images/felix.jpg') }}" />
+													</td>
+												</tr>
+											</table>
+										</div><!-- .column -->
+
+										<div class="column contact">
+											<table bgcolor="" cellpadding="" align="left">
+												<tr>
+													<td>
+														<strong>Felix Barros</strong>				
+														<p>Teléfono: <strong>(362) 406 0798</strong><br/>
+														Correo: <strong><a href="emailto:soyfelixbarros@gmail.com">soyfelixbarros@gmail.com</a></strong></p>
+													</td>
+												</tr>
+											</table>
+										</div><!-- .column -->
+
+										<div class="column social">
+											<table bgcolor="" cellpadding="" align="right">
+												<tr>
+													<td>
+														<p>
+															<a href="https://ar.linkedin.com/in/soyfelixbarros" target="_blank" class="soc-btn li">LinkedIn</a>
+															<a href="https://twitter.com/soyFelixBarros" target="_blank" class="soc-btn tw">Twitter</a>
+														</p>
+													</td>
+												</tr>
+											</table>
+										</div><!-- .column -->
 										
 										<div class="clear"></div>
 	

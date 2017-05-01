@@ -123,7 +123,7 @@ h1 { font-weight:200; font-size: 44px;}
 h2 { font-weight:200; font-size: 37px;}
 h3 { font-weight:500; font-size: 27px;}
 h4 { font-weight:500; font-size: 20px; line-height: 1.2;}
-h5 { font-weight:600; font-size: 16px; line-height: 1.25; margin-top: -2px; margin-bottom: 6px;}
+h5 { font-weight:600; font-size: 16px; line-height: 1.25; margin-top: -1px; margin-bottom: 6px;}
 h6 { font-weight:100!important; font-size: 12px; color:#657786; margin-bottom: 5px;}
 
 .collapse { margin:0!important;}
@@ -271,11 +271,12 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 			<div class="content">
 				<table bgcolor="">
 					<tr>
+						@if ($post->image !== null)
 						<td class="small" width="27%" style="vertical-align: top; padding-right:15px;">
-							@if ($post->image !== null)
 							<a href="{{ $post->url }}" target="_blank"><img src="{{ asset('uploads/images/'.$post->image) }}" width="180" style="border:1px solid #CCCCCC;" /></a>
-							@endif
+							
 						</td>
+						@endif
 						<td style="vertical-align: top;">
 							<h5><a href="{{ $post->url }}" target="_blank">{{ $post->title }}</a></h5>
 							<h6>{{ $post->newspaper->name }}</h6>

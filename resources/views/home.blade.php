@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'News Tracker')
+@section('title', 'Cablera Online')
 
 @section('content')
 <div class="row">

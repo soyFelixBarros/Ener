@@ -30,8 +30,8 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li{{ Request::is('/') ? ' class=active' : '' }}><a href="{{ url('/') }}">Inicio</a></li>
-                        <li{{ Request::is('category/politica') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'politica']) }}">Política</a></li>
+                        <li{{ Request::is('/') ? ' class=active' : '' }}><a href="{{ url('/') }}">{{ __('navbar.home') }}</a></li>
+                        <li{{ Request::is('category/politica') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'politica']) }}">{{ __('navbar.politics') }}</a></li>
                         <li{{ Request::is('category/policiales') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'policiales']) }}">Policiales</a></li>
                         <li{{ Request::is('category/cultura') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'cultura']) }}">Cultura</a></li>
                         @if (Auth::check())

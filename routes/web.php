@@ -11,6 +11,11 @@ Route::get('/tag/{tag}', 'TagsController@show')->name('tag_show');
 Route::get('/category/{category}', 'CategoriesController@show')->name('category_show');
 Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
 
+// Newsletters
+Route::group(['prefix' => 'newsletters'], function() {
+	$this->get('/', 'NewslettersController@index');
+});
+
 // Crawlers
 Route::group(['prefix' => 'crawlers'], function() {
 	$this->get('/', 'CrawlersController@index');

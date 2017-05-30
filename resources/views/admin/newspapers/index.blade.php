@@ -8,7 +8,7 @@
 				<h3>Newspapers</h3>
 			</div>
 			<div class="col-md-2 text-right">
-				<a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>	
+				<a href="{{ route('admin_newspapers_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>	
 			</div>
 		</div>
 	</div>

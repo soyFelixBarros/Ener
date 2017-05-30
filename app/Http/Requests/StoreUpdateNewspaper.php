@@ -24,7 +24,9 @@ class StoreUpdateNewspaper extends FormRequest
     public function rules()
     {
         return [
+            'province_code' => 'required',
             'name' => 'required',
+            'website' => 'required'
         ];
     }
 }

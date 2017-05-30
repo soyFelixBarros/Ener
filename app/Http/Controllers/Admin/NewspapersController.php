@@ -6,6 +6,7 @@ use App\Province;
 use App\Newspaper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateNewspaper;
 
 class NewspapersController extends Controller
 {
@@ -19,6 +20,36 @@ class NewspapersController extends Controller
 		$newspapers = Newspaper::oldest('name')->paginate(15);
 
 		return view('admin.newspapers.index')->with('newspapers', $newspapers);
+	}
+
+	/**
+	 * Vista con el formulario para agregar un diario.
+	 *
+	 * @return Object
+	 */
+	public function create()
+	{
+		$provinces = Province::oldest('name')->get();
+
+		return view('admin.newspapers.create')->with('provinces', $provinces);
+	}
+
+	/**
+	 * Crear un diario.
+	 *
+	 * @return Object
+	 */
+	public function store(StoreUpdateNewspaper $request)
+	{
+		$data = $request->except(['_token']);
+
+		$data['slug'] = str_slug($data['name']);
+
+		$newspaper = Newspaper::create($data); 
+
+		return redirect()
+			   ->route('admin_newspapers_edit', ['id' => $newspaper->id])
+			   ->with('status', 'Newspaper created!');
 	}
 
 	/**
@@ -47,6 +78,8 @@ class NewspapersController extends Controller
 		$data = $request->except(['_token']);
 
 		$newspaper = Newspaper::find($id);
+
+		$data['slug'] = str_slug($data['name']);
 
 		$newspaper->update($data);
 

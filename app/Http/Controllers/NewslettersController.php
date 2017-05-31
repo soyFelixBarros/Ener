@@ -11,7 +11,7 @@ class NewslettersController extends Controller
         return view('newsletters.index');
     }
 
-    public function show()
+    public function show($newsletter)
     {
         return view('newsletters.index');
     }

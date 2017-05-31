@@ -13,7 +13,8 @@ Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspap
 
 // Newsletters
 Route::group(['prefix' => 'newsletters'], function() {
-	$this->get('/', 'NewslettersController@index');
+	$this->get('/', 'NewslettersController@index')->name('newsletters');
+	$this->get('/{newsletters}', 'NewslettersController@show');
 });
 
 // Crawlers

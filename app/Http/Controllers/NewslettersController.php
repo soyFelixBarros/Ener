@@ -13,6 +13,6 @@ class NewslettersController extends Controller
 
     public function show($newsletter)
     {
-        return view('newsletters.index');
+        return view('emails.newsletters.morning-report');
     }
 }

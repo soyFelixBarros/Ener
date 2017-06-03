@@ -39,8 +39,9 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ url('/') }}" rel="home">
-                        <img src="/images/logo.png">
+                        <img src="/images/mini-logo.png" alt="{{ config('app.name') }}">
                     </a>
+                    <p class="navbar-text">Noticias de Chaco</p>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">

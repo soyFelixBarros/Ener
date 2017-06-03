@@ -5,7 +5,7 @@
 		// padding-left: 70px;
 		// position: absolute;
 		// padding: 5px 0;
-		padding: 9px 15px;
+		padding: 10px 15px;
 		i {
 			color: #118DF0;
 			font-size: 36px;
@@ -44,6 +44,7 @@
 @media #{$tablets} {
 	.navbar-default {
 		.navbar-brand {
+			padding: 10px 0 10px 15px;
 			img {
 				height: 100%;
 				width: auto;

@@ -4,6 +4,15 @@
 		background-color: #fff;
 		padding: 15px 0;
 		margin-bottom: 20px;
+
+		&:focus
+		&:hover {
+			.summary {
+				display: block;
+				white-space: pre-wrap;
+				word-wrap: break-word;
+			}
+		}
 		.image {
 			margin: -16px -15px 15px -15px;
 		}
@@ -59,12 +68,6 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-
-			&:active {
-				display: block;
-				white-space: pre-wrap;
-				word-wrap: break-word;
-			}
 		}
 		footer {
 			.action {

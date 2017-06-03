@@ -1,5 +1,12 @@
 $( document ).ready(function() {
-  $('time.timeago').timeago();
+   $("time.timeago").timeago();
+
+   $("article").on("touchstart",function(){
+      $(".summary").addClass("more");
+   });
+   $("article").on("touchend",function(){
+      $(".summary").removeClass("more");
+   });
 });
 
 // Spanish

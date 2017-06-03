@@ -1,20 +1,25 @@
 .panel {
-    border: 1px solid #e6ecf0;
+    border: 1px solid $panel-default-border;
     border-radius: 0;
-    // box-shadow: 0 1px 1px rgba(0, 0, 0, .03);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .03);
     box-shadow: none;
     margin-bottom: 10px;
     
     .panel-heading {
     	border-radius: 0;
-    	background-color: #f5f8fa;
-    	border-bottom: 1px solid #e6ecf0;
+    	border-bottom: none;
+        font-family: $font-family-sans-serif-2;
+        font-size: 16px;
+        font-weight: 600;
 
     	h3 {
-    		font-size: 18px;
-    		margin-top: 7px;
+            font-size: 19px;
+    		margin-top: 5px;
     		margin-bottom: 5px;
     	}
+    }
+    .panel-footer {
+        border-top: none;
     }
 }
 

@@ -1,0 +1,96 @@
+.posts {
+	border: none;
+	article {
+		background-color: #fff;
+		padding: 15px 0;
+		margin-bottom: 20px;
+		.image {
+			margin: -16px -15px 15px -15px;
+		}
+		.tags {
+			margin-bottom: 3px;
+			> li {
+				font-size: 13px;
+				> a {
+					color: #e36209;
+				}
+			}
+		}
+		.title {
+			font-size: 16px;
+		    font-weight: 600;
+		    line-height: 1.25em;
+		    margin-top: -1px;
+		    margin-bottom: 6px;
+		    white-space: pre-wrap;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+			a {
+			    color: #0366d6;
+			}
+		}
+		.newspaper-datetime {
+			        font-family: $font-family-sans-serif-2;
+
+			color: #657786;
+			margin-top: 0;
+			margin-bottom: 0;
+			word-wrap: break-word;
+			a {
+				color: #657786;
+				&.cultura {
+					color: #2A014B;//#E1396C;
+				}
+				&.policiales {
+					color: #0092CA;
+				}
+				&.politica {
+					color: #027B7E;
+				}
+
+			}
+		}
+		.summary {
+			color: #14171a;
+			font-size: 14px;
+			margin-top: 5px;
+			margin-bottom: 0;
+
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+
+			&:active {
+				display: block;
+				white-space: pre-wrap;
+				word-wrap: break-word;
+			}
+		}
+		footer {
+			.action {
+				ul {
+					margin-bottom: 0;
+				}
+			}
+		}
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+}
+
+@media #{$tablets} {
+	.posts {
+		article {
+			padding: 19px 0;
+			.image {
+				margin: 0;
+				img { border: 1px solid #eee; }
+			}
+			.summary {
+				white-space: pre-wrap;
+				word-wrap: break-word;
+			}
+		}
+	}
+}

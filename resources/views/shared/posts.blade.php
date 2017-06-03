@@ -1,10 +1,10 @@
-<div class="posts panel panel-default">
+<div class="posts">
     @foreach ($posts as $post)
     @if($post->parent_id === null)
     <article class="clearfix">
         @if ($post->image !== null)
         <div class="col-sm-4 col-md-3 image">
-            <a href="{{ $post->url }}" target="_blank"><img src="/uploads/images/{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
+            <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/uploads/images/{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
         </div>
         <div class="col-sm-8 col-md-9">
         @else
@@ -12,7 +12,7 @@
         @endif 
         <header>
             <hgroup>
-                <h1 class="title"><a href="{{ $post->url }}" target="_blank">{{ $post->title }}</a></h1>
+                <h1 class="title"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h1>
                 <h6 class="newspaper-datetime">
                     <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}">{{ $post->newspaper->name }}</a> - <time class="timeago" datetime="{{ $post->created_at }}">{{ $post->created_at }}</time>
                 @if ($post->category_id !== null)
@@ -22,7 +22,7 @@
             </hgroup>
         </header>
         @if ($post->summary)
-        <p class="summary hidden-xs">{{ $post->summary }}</p>
+        <p class="summary">{{ $post->summary }}</p>
         @endif
         @if($post->children()->count() > 0)
             <ul class="list-unstyled hidden-xs">

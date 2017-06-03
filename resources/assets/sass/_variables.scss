@@ -1,13 +1,13 @@
 // Body
 // $body-bg: #f6f4f2;
-$body-bg: #f5f8fa;
+$body-bg: #FAFAFA;
 
 // Borders
 // $laravel-border-color: darken($body-bg,15%);
-$laravel-border-color: #ddd;
+$laravel-border-color: #eeeeee;
 $list-group-border: $laravel-border-color;
 $navbar-default-border: $laravel-border-color;
-$panel-default-border: #bfccd1;
+$panel-default-border: #eeeeee;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
@@ -21,7 +21,8 @@ $brand-danger: #bf5329;
 // $font-family-sans-serif: "Raleway", sans-serif;
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: Arial, sans-serif;
-$font-size-base: 14px;
+$font-family-sans-serif-2: 'Source Sans Pro', sans-serif;
+$font-size-base: 15px;
 $line-height-base: 1.5;
 $text-color: #333;
 
@@ -37,7 +38,7 @@ $input-border-focus: lighten($brand-primary, 35%);
 $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
-$panel-default-heading-bg: #f2f8fa;
+$panel-default-heading-bg: $body-bg;
 
 $tablets: "(min-width: 768px)";
 $desktops: "(min-width: 992px)";

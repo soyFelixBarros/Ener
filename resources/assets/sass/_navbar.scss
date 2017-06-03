@@ -1,13 +1,28 @@
 .navbar-default {
-	// border-color: transparent;
+	font-family: $font-family-sans-serif-2;
 	.navbar-brand {
-		color: #222;
-		padding: 15px;
+		color: #0E2F56;
+		// padding-left: 70px;
+		// position: absolute;
+		// padding: 5px 0;
+		padding: 9px 15px;
+		i {
+			color: #118DF0;
+			font-size: 36px;
+			width: 44px;
+			position: absolute;
+			top: 8px;
+			right: 15px;
+			left: 15px;
+		}
+		img {
+			height: 100%;
+			width: auto;
+		}
 	}
 	.navbar-nav {
 		> li > a {
 			// color: $navbar-default-link-color;
-
 			&:hover,
 			&:focus {
 				color: $brand-primary;
@@ -26,9 +41,14 @@
 	}
 }
 
-/* Small devices (tablets, 768px and up) */
 @media #{$tablets} {
 	.navbar-default {
+		.navbar-brand {
+			img {
+				height: 100%;
+				width: auto;
+			}
+		}
 		.navbar-nav {
 			> li > a {
 				// color: $navbar-default-link-color;

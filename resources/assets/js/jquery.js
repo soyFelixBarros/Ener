@@ -1,11 +1,8 @@
 $( document ).ready(function() {
    $("time.timeago").timeago();
 
-   $("article").on("touchstart",function(){
-      $(".summary").addClass("more");
-   });
-   $("article").on("touchend",function(){
-      $(".summary").removeClass("more");
+   $(".summary").on("touchstart",function(){
+      $(this).addClass("more");
    });
 });
 

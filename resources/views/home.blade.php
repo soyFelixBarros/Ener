@@ -6,7 +6,7 @@
 <div class="row">
     <section class="col-sm-9">
     @if ($posts->count() > 0)
-    	@include('shared.posts', ['posts' => $posts])
+    	@include('shared.posts', ['posts' => $posts, 'paginate' => false])
     @else
     	<p class="lead">No hay entradas públicadas.</p>
     @endif

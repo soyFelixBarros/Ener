@@ -31,32 +31,30 @@
             @endforeach
             </ul>
         @endif
-        <footer class="row">
-            <div class="col-xs-8 col-md-7">
-            </div>
-            @if (Auth::check())
-            <div class="action col-xs-4 col-md-5 text-right">
-                @if (Auth::user()->hasRole('admin'))
-                <ul class="list-inline">
-                    <li><a href="{{ route('admin_posts_favorite', ['id' => $post->id]) }}" class="text-warning">
-                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-                    </a></li>
-                    <li><a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    </a></li>
-                    <li><a href="{{ route('admin_posts_delete', ['id' => $post->id]) }}" class="text-danger">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </a></li>
-                </ul>
-                @endif
-            </div>
-            @endif
-        </footer>
         </div>
+        @if (Auth::check())
+        <div class="action text-right col-xs-12">
+            @if (Auth::user()->hasRole('admin'))
+            <ul class="list-inline">
+                <li><a href="{{ route('admin_posts_favorite', ['id' => $post->id]) }}" class="text-warning">
+                    <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                </a></li>
+                <li><a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </a></li>
+                <li><a href="{{ route('admin_posts_delete', ['id' => $post->id]) }}" class="text-danger">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </a></li>
+            </ul>
+            @endif
+        </div>
+        @endif
     </article>
     @endif
     @endforeach
 </div>
+@if (! isset($paginate))
 <div class="text-center">
     {{ $posts->links() }}
 </div>
+@endif

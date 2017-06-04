@@ -16,7 +16,7 @@ class HomeController extends Controller
         $posts = Post::where('status', 'publish', 'and')
                      ->whereDay('created_at', '>', date('j') - 2)
                      ->latest()
-                     ->paginate(20);
+                     ->get();
 
         return view('home', array(
             'newspapers' => $newspapers,

@@ -1,7 +1,7 @@
 $( document ).ready(function() {
    $("time.timeago").timeago();
 
-   $(".summary").on("touchstart",function(){
+   $(".summary").on("click",function(){
       $(this).addClass("more");
    });
 });

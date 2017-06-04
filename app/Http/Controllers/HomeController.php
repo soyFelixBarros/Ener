@@ -14,7 +14,7 @@ class HomeController extends Controller
         $newspapers = Newspaper::oldest('name')->get();
 
         $posts = Post::where('status', 'publish', 'and')
-                     ->whereDay('created_at', '>', date('j') - 2)
+                     ->whereDay('created_at', '>', date('j') - 1)
                      ->latest()
                      ->get();
 

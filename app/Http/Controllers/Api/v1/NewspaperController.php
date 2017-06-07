@@ -10,7 +10,7 @@ use App\Http\Requests\StoreUpdateNewspaper;
 class NewspaperController extends Controller
 {
 	/**
-	 * Mostrar todos los newspaper.
+	 * Mostrar todos los diarios.
 	 *
 	 * @return Response
 	 */
@@ -25,7 +25,7 @@ class NewspaperController extends Controller
 	}
 
 	/**
-	 * Crear un nuevo newspaper.
+	 * Agregar un nuevo diario.
 	 *
 	 * @param  StoreUpdateNewspaper  $request
 	 * @return Response
@@ -40,7 +40,7 @@ class NewspaperController extends Controller
 	}
 
 	/**
-	 * Mostrar los datos de un newspaper.
+	 * Ver un diario.
 	 *
 	 * @param  integer  $id
 	 * @return Response
@@ -56,7 +56,7 @@ class NewspaperController extends Controller
 	}
 
 	/**
-	 * Actualizar los datos de un newspaper.
+	 * Actualizar un diario.
 	 *
 	 * @param  StoreUpdateNewspaper  $request
 	 * @return Response

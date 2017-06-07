@@ -24,13 +24,6 @@
         @if ($post->summary)
         <p class="summary">{{ $post->summary }}</p>
         @endif
-        @if($post->children()->count() > 0)
-            <ul class="list-unstyled hidden-xs">
-            @foreach ($post->children as $children)
-                <li><a href="{{ $children->url }}" target="_blank">{{ $children->title }}</a> - <small class="text-muted">{{ $children->newspaper->name }}</small></li>
-            @endforeach
-            </ul>
-        @endif
         </div>
         @if (Auth::check())
         <div class="action text-right col-xs-12">

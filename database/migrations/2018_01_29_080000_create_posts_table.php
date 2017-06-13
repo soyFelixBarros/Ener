@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('parents');
+            $table->foreign('parent_id')->references('id')->on('posts');
             $table->string('province_code')->nullable();
             $table->foreign('province_code')->references('code')->on('provinces');
             $table->unsignedInteger('newspaper_id')->nullable();

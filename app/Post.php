@@ -86,12 +86,14 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Tag');
     }
+    
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id', 'id');
+    }
 
-    /**
-     * Obtener todos datos de su parientes.
-     */
     public function parent()
     {
-        return $this->belongsTo('App\Parent');
+        return $this->belongsTo(self::class, 'parent_id', 'id');
     }
 }

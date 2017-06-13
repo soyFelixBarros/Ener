@@ -1,8 +1,8 @@
 <div class="posts">
     @foreach ($posts as $post)
-    @if($post->parent_id === null)
+    @if ($post->parent_id == null)
     <article class="clearfix">
-        @if ($post->image !== null)
+        @if ($post->image != null)
         <div class="col-sm-4 col-md-3 image">
             <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/uploads/images/{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
         </div>

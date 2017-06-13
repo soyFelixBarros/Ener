@@ -8,7 +8,7 @@
     @if ($posts->count() > 0)
     	@include('shared.posts', ['posts' => $posts, 'paginate' => false])
     @else
-    	<p class="lead">No hay entradas públicadas.</p>
+    	<p class="lead text-muted">No hay entradas públicadas.</p>
     @endif
     </section>
     <div class="col-sm-3">

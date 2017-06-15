@@ -16,7 +16,7 @@ class LinkTest extends TestCase
     protected $table = 'links';
 
     /** @var string $table Ruta de la api. */
-    protected $api = 'api/v1';
+    protected $api = 'api/v1/links/';
 
     /**
      * Obtener todos los links.
@@ -27,7 +27,7 @@ class LinkTest extends TestCase
     {
         $links = factory(Link::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/links');
+        $response = $this->json('GET', $this->api);
 
         $response->assertStatus(200);
 
@@ -47,7 +47,7 @@ class LinkTest extends TestCase
             'url' => 'http://felix.barros',
         );
 
-        $response = $this->json('POST', $this->api . '/link', $link);
+        $response = $this->json('POST', $this->api, $link);
 
         $response
             ->assertStatus(201)
@@ -65,7 +65,7 @@ class LinkTest extends TestCase
     {
         $link = factory(Link::class)->create();
 
-        $response = $this->json('GET', $this->api . '/link/' . $link->id);
+        $response = $this->json('GET', $this->api . $link->id);
 
         $response->assertStatus(200);
 
@@ -84,11 +84,10 @@ class LinkTest extends TestCase
         $link = factory(Link::class)->create();
 
         $update = array(
-            'url' => 'http://felix.barros',
-            'active' => false,
+            'url' => 'http://felix.barros'
         );
 
-        $response = $this->json('PUT', $this->api . '/link/' . $link->id, $update);
+        $response = $this->json('PUT', $this->api . $link->id, $update);
 
         $response
             ->assertStatus(200)
@@ -106,7 +105,7 @@ class LinkTest extends TestCase
     {
         $link = factory(Link::class)->create();
 
-        $response = $this->json('DELETE', $this->api . '/link/' . $link->id);
+        $response = $this->json('DELETE', $this->api . $link->id);
 
         $response
             ->assertStatus(200)

@@ -15,7 +15,7 @@ class CreateNewspapersTable extends Migration
     {
         Schema::create('newspapers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('province_code');
+            $table->string('province_code')->nullable();
             $table->foreign('province_code')->references('code')->on('provinces');
             $table->string('name');
             $table->string('website');

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class PostTest extends TestCase
+class PostsTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -16,7 +16,7 @@ class PostTest extends TestCase
     protected $table = 'posts';
 
     /** @var string $table Ruta de la api. */
-    protected $api = 'api/v1';
+    protected $api = 'api/v1/posts/';
 
     /**
      * Obtener todos los posts.
@@ -27,7 +27,7 @@ class PostTest extends TestCase
     {
         $posts = factory(Post::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/posts');
+        $response = $this->json('GET', $this->api);
 
         $response->assertStatus(200);
 
@@ -48,7 +48,7 @@ class PostTest extends TestCase
             'summary' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.',
         );
 
-        $response = $this->json('POST', $this->api . '/post', $post);
+        $response = $this->json('POST', $this->api, $post);
 
         $response
             ->assertStatus(201)
@@ -66,7 +66,7 @@ class PostTest extends TestCase
     {
         $post = factory(Post::class)->create();
 
-        $response = $this->json('GET', $this->api . '/post/' . $post->id);
+        $response = $this->json('GET', $this->api . $post->id);
 
         $response->assertStatus(200);
         
@@ -82,15 +82,22 @@ class PostTest extends TestCase
      */
     public function testPostUpdate()
     {
-        $post = factory(Post::class)->create();
+        // Crear un post nuevo
+        $post = factory(Post::class)->make();
 
+        // Verificar si existe el post en la base de datos
+        $this->assertDatabaseHas($this->table, $post->toArray());
+
+        // Array para actualziar los datos del post
         $update = array(
             'title' => '¿Qué es Lorem Ipsum?',
             'summary' => 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.',
         );
 
-        $response = $this->json('PUT', $this->api . '/post/' . $post->id, $update);
+        // Actualizar el post creado con los datos nuevos
+        $response = $this->json('PUT', $this->api . $post->id, $update);
 
+        // Estatus de la respuesta y verificación de la respuesta
         $response
             ->assertStatus(200)
             ->assertJson([
@@ -105,9 +112,11 @@ class PostTest extends TestCase
      */
     public function testPostDestroy()
     {
-        $post = factory(Post::class)->create();
+        $post = factory(Post::class)->make();
 
-        $response = $this->json('DELETE', $this->api . '/post/' . $post->id);
+        $this->assertDatabaseHas($this->table, $post->toArray());
+
+        $response = $this->json('DELETE', $this->api . $post->id);
 
         $response
             ->assertStatus(200)
@@ -115,6 +124,6 @@ class PostTest extends TestCase
                 'deleted' => true,
             ]);
         
-        $this->assertDatabaseMissing($this->table, $post->toArray());
+        $this->assertSoftDeleted($this->table, $post->toArray());
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateProvince;
 
-class ProvinceController extends Controller
+class ProvincesController extends Controller
 {
 	/**
 	 * Mostrar todos las provincia.

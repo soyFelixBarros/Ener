@@ -2,29 +2,32 @@
 
 namespace Tests\Unit\database;
 
-use App\Link;
+use App\Post;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class LinkTest extends TestCase
+class PostsTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @var string $table Nombre de la tabla. */
-    protected $table = 'links';
+    protected $table = 'posts';
 
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
         'id',
-        'article_id',
+        'parent_id',
+        'province_code',
         'newspaper_id',
-        'scraping_id',
+        'category_id',
+        'title',
+        'summary',
+        'image',
         'url',
-        'scraping',
-        'active',
+        'status',
         'created_at',
-        'updated_at',
+        'updated_at'
     ];
 
     /**
@@ -32,7 +35,7 @@ class LinkTest extends TestCase
      *
      * @return void
      */
-    public function testHasLinksTable()
+    public function testHasTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -42,7 +45,7 @@ class LinkTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInLinksTable()
+    public function testHasColumnsInTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -50,47 +53,48 @@ class LinkTest extends TestCase
     }
 
     /**
-     * Crear un link.
+     * Crear un post.
      *
      * @return void
      */
-    public function testCreateLink()
+    public function testCreatePost()
     {
-    	$link = factory(Link::class)->create();
+    	$post = factory(Post::class)->create();
     	
-    	$this->assertDatabaseHas($this->table, $link->toArray());
+    	$this->assertDatabaseHas($this->table, $post->toArray());
     }
 
     /**
-     * Actualizar datos de un link.
+     * Actualizar datos de un post.
      *
      * @return void
      */
-    public function testUpdateLink()
+    public function testUpdatePost()
     {
-    	$link = factory(Link::class)->create();
+    	$id = factory(Post::class)->create()->id;
 
-    	$link = Link::find($link->id);
-    	$link->url = 'http://felix.barros';
-    	$link->save();
+    	$post = Post::find($id);
+    	$post->title = 'New title';
+        $post->url = 'http://cablera.online/new-title';
+    	$post->save();
 
     	$this->assertDatabaseHas($this->table, [
-            'url' => $link->url,
+            'title' => $post->title,
+            'url' => $post->url
         ]);
-
     }
 
     /**
-     * Eliminar un link.
+     * Eliminar un post.
      *
      * @return void
      */
-    public function testDeleteLink()
+    public function testDeletePost()
     {
-    	$link = factory(Link::class)->create();
+    	$post = factory(Post::class)->make();
+        
+    	Post::destroy($post->id);
 
-    	Link::destroy($link->id);
-
-    	$this->assertDatabaseMissing($this->table, $link->toArray());
+    	$this->assertDatabaseMissing($this->table, $post->toArray());
     }
 }

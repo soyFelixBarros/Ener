@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateCountry;
 
-class CountryController extends Controller
+class CountriesController extends Controller
 {
 	/**
 	 * Mostrar todos los países.

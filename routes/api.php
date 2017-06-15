@@ -7,61 +7,50 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Articles
+// Api/v1
 Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/articles', 'ArticlesController@all');
-	$this->post('/articles', 'ArticlesController@store');
-	$this->get('/articles/{id?}', 'ArticlesController@find');
-	$this->put('/articles/{id}', 'ArticlesController@update');
-	$this->delete('/articles/{id}', 'ArticlesController@destroy');
-});
+	// Posts
+	Route::group(['prefix' => 'posts'], function() {
+		$this->get('/', 'PostsController@all');
+		$this->post('/', 'PostsController@store');
+		$this->get('/{id?}', 'PostsController@find');
+		$this->put('/{id}', 'PostsController@update');
+		$this->delete('/{id}', 'PostsController@destroy');
+	});
 
-// Newspapers
-Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/newspapers', 'NewspaperController@all');
-	$this->post('/newspaper', 'NewspaperController@store');
-	$this->get('/newspaper/{id?}', 'NewspaperController@find');
-	$this->put('/newspaper/{id}', 'NewspaperController@update');
-	$this->delete('/newspaper/{id}', 'NewspaperController@destroy');
-});
+	// Newspapers
+	Route::group(['prefix' => 'newspapers'], function() {
+		$this->get('/', 'NewspapersController@all');
+		$this->post('/', 'NewspapersController@store');
+		$this->get('/{id?}', 'NewspapersController@find');
+		$this->put('/{id}', 'NewspapersController@update');
+		$this->delete('/{id}', 'NewspapersController@destroy');
+	});
 
-// Links
-Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/links', 'LinksController@all');
-	$this->post('/links', 'LinksController@store');
-	$this->get('/link/{id?}', 'LinksController@find');
-	$this->put('/link/{id}', 'LinksController@update');
-	$this->delete('/link/{id}', 'LinksController@destroy');
-});
+	// Links
+	Route::group(['prefix' => 'links'], function () {
+		$this->get('/', 'LinksController@all');
+		$this->post('/', 'LinksController@store');
+		$this->get('/{id?}', 'LinksController@find');
+		$this->put('/{id}', 'LinksController@update');
+		$this->delete('/{id}', 'LinksController@destroy');
+	});
 
-// Countries
-Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/countries', 'CountryController@all');
-	$this->post('/country', 'CountryController@store');
-	$this->get('/country/{id?}', 'CountryController@find');
-	$this->put('/country/{id}', 'CountryController@update');
-	$this->delete('/country/{id}', 'CountryController@destroy');
-});
+	// Countries
+	Route::group(['prefix' => 'countries'], function () {
+		$this->get('/', 'CountriesController@all');
+		$this->post('/', 'CountriesController@store');
+		$this->get('/{id?}', 'CountriesController@find');
+		$this->put('/{id}', 'CountriesController@update');
+		$this->delete('/{id}', 'CountriesController@destroy');
+	});
 
-// Provinces
-Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/provinces', 'ProvinceController@all');
-	$this->post('/province', 'ProvinceController@store');
-	$this->get('/province/{id?}', 'ProvinceController@find');
-	$this->put('/province/{id}', 'ProvinceController@update');
-	$this->delete('/province/{id}', 'ProvinceController@destroy');
-});
-
-// Tags
-Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/tags', 'TagController@all');
-	$this->post('/tag', 'TagController@store');
-	$this->get('/tag/{id?}', 'TagController@find');
-	$this->put('/tag/{id}', 'TagController@update');
-	$this->delete('/tag/{id}', 'TagController@destroy');
-});
-
-// Search
-Route::group(['namespace' => 'Api\v1'], function () {
-	$this->get('/search/articles', 'SearchController@articles');
+	// Provinces
+	Route::group(['prefix' => 'provinces'], function () {
+		$this->get('/', 'ProvincesController@all');
+		$this->post('/', 'ProvincesController@store');
+		$this->get('/{id?}', 'ProvincesController@find');
+		$this->put('/{id}', 'ProvincesController@update');
+		$this->delete('/{id}', 'ProvincesController@destroy');
+	});
 });

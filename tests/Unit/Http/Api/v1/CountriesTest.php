@@ -16,7 +16,7 @@ class CountryTest extends TestCase
     protected $table = 'countries';
 
     /** @var string $table Ruta de la api. */
-    protected $api = 'api/v1';
+    protected $api = 'api/v1/countries/';
 
     /**
      * Obtener todos los países.
@@ -27,7 +27,7 @@ class CountryTest extends TestCase
     {
         $country = factory(Country::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/countries');
+        $response = $this->json('GET', $this->api);
 
         $response->assertStatus(200);
 
@@ -48,7 +48,7 @@ class CountryTest extends TestCase
             'name' => 'Argentina',
         );
 
-        $response = $this->json('POST', $this->api . '/country', $country);
+        $response = $this->json('POST', $this->api, $country);
 
         $response
             ->assertStatus(201)
@@ -66,7 +66,7 @@ class CountryTest extends TestCase
     {
         $country = factory(Country::class)->create();
 
-        $response = $this->json('GET', $this->api . '/country/' . $country->id);
+        $response = $this->json('GET', $this->api . $country->id);
 
         $response->assertStatus(200);
 
@@ -86,7 +86,7 @@ class CountryTest extends TestCase
 
         $update = array('name' => 'Argentina');
 
-        $response = $this->json('PUT', $this->api . '/country/' . $country->id, $update);
+        $response = $this->json('PUT', $this->api . $country->id, $update);
 
         $response
             ->assertStatus(200)
@@ -104,7 +104,7 @@ class CountryTest extends TestCase
     {
         $country = factory(Country::class)->create();
 
-        $response = $this->json('DELETE', $this->api . '/country/' . $country->id);
+        $response = $this->json('DELETE', $this->api . $country->id);
 
         $response
             ->assertStatus(200)

@@ -2,25 +2,23 @@
 
 namespace Tests\Unit\database;
 
-use App\Tag;
+use App\Country;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class TagTest extends TestCase
+class CountriesTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @var string $table Nombre de la tabla. */
-    protected $table = 'tags';
+    protected $table = 'countries';
 
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
         'id',
+        'code',
         'name',
-        'slug',
-        'created_at',
-        'updated_at',
     ];
 
     /**
@@ -28,7 +26,7 @@ class TagTest extends TestCase
      *
      * @return void
      */
-    public function testHasTagsTable()
+    public function testHasCountriesTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -38,7 +36,7 @@ class TagTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInTagsTable()
+    public function testHasColumnsInCountriesTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -46,48 +44,47 @@ class TagTest extends TestCase
     }
 
     /**
-     * Agregar un tag.
+     * Agregar un país.
      *
      * @return void
      */
-    public function testCreateTag()
+    public function testCreateCountry()
     {
-    	$tag = factory(Tag::class)->create();
+    	$country = factory(Country::class)->create();
     	
-    	$this->assertDatabaseHas($this->table, $tag->toArray());
+    	$this->assertDatabaseHas($this->table, $country->toArray());
     }
 
     /**
-     * Actualizar datos de una tag.
+     * Actualizar datos de un país.
      *
      * @return void
      */
-    public function testUpdateTag()
+    public function testUpdateCountry()
     {
-    	$tag = factory(Tag::class)->create();
+    	$country = factory(Country::class)->create();
 
-    	$tag = Tag::find($tag->id);
-    	$tag->name = 'My tag';
-        $tag->slug = str_slug('My tag');
-    	$tag->save();
-        
+    	$country = Country::find($country->id);
+    	$country->name = 'Argentina';
+    	$country->save();
+
     	$this->assertDatabaseHas($this->table, [
-            'name' => $tag->name,
-            'slug' => $tag->slug,
+            'name' => $country->name,
         ]);
+
     }
 
     /**
-     * Eliminar una tag.
+     * Eliminar un país.
      *
      * @return void
      */
-    public function testDeleteTag()
+    public function testDeleteCountry()
     {
-    	$tag = factory(Tag::class)->create();
+    	$country = factory(Country::class)->create();
 
-    	Tag::destroy($tag->id);
+    	Country::destroy($country->id);
 
-    	$this->assertDatabaseMissing($this->table, $tag->toArray());
+    	$this->assertDatabaseMissing($this->table, $country->toArray());
     }
 }

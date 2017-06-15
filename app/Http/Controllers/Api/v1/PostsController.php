@@ -35,16 +35,6 @@ class PostsController extends Controller
 		$data = $request->all();
 
 		$post = Post::create($data);
-
-		$link = new Link([
-			'article_id' => $post->id,
-			'newspaper_id' => $post['newspaper_id'],
-			'scraping_id' => $post['scraping_id'],
-			'url' => $post['url'],
-			'scraping' => $post['scraping'],
-		]);
-
-		$post->link()->save($link);
 		
 		return response()->json([
 			'created' => (boolean) $post,

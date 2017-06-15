@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateNewspaper;
 
-class NewspaperController extends Controller
+class NewspapersController extends Controller
 {
 	/**
 	 * Mostrar todos los diarios.
@@ -32,7 +32,9 @@ class NewspaperController extends Controller
 	 */
 	public function store(StoreUpdateNewspaper $request)
 	{
-		$newspaper = Newspaper::create($request->all());
+		$data = $request->all();
+		$data['slug'] = str_slug($data['name']);
+		$newspaper = Newspaper::create($data);
 		
 		return response()->json([
 			'created' => (boolean) $newspaper,
@@ -63,8 +65,12 @@ class NewspaperController extends Controller
 	 */
 	public function update(StoreUpdateNewspaper $request, $id)
 	{
-		$newspaper = Newspaper::where('id', '=', $id)
-							  ->update($request->all());
+		$data = $request->all();
+
+		$data['slug'] = str_slug($data['name']);
+
+		$newspaper = Newspaper::where('id', $id)
+							  ->update($data);
 		
 		return response()->json([
 			'updated' => (boolean) $newspaper,
@@ -79,7 +85,7 @@ class NewspaperController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$newspaper = Newspaper::where('id', '=', $id)
+		$newspaper = Newspaper::where('id', $id)
 							  ->delete();
 
 		return response()->json([

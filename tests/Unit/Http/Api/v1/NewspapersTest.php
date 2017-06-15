@@ -16,7 +16,7 @@ class NewspaperTest extends TestCase
     protected $table = 'newspapers';
 
     /** @var string $table Ruta de la api. */
-    protected $api = 'api/v1';
+    protected $api = 'api/v1/newspapers/';
 
     /**
      * Obtener todos los posts.
@@ -27,7 +27,7 @@ class NewspaperTest extends TestCase
     {
         $newspapers = factory(Newspaper::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/newspapers');
+        $response = $this->json('GET', $this->api);
 
         $response->assertStatus(200);
 
@@ -43,7 +43,7 @@ class NewspaperTest extends TestCase
      */
     public function testNewspaperStore()
     {
-        $province = factory('App\Province')->create();
+        $province = factory('App\Province')->make();
 
         $newspaper = array(
             'province_code' => $province->code,
@@ -51,7 +51,7 @@ class NewspaperTest extends TestCase
             'website' => 'felix.news',
         );
 
-        $response = $this->json('POST', $this->api . '/newspaper', $newspaper);
+        $response = $this->json('POST', $this->api, $newspaper);
 
         $response
             ->assertStatus(201)
@@ -69,7 +69,7 @@ class NewspaperTest extends TestCase
     {
         $newspaper = factory(Newspaper::class)->create();
 
-        $response = $this->json('GET', $this->api . '/newspaper/' . $newspaper->id);
+        $response = $this->json('GET', $this->api . $newspaper->id);
 
         $response->assertStatus(200);
 
@@ -85,15 +85,23 @@ class NewspaperTest extends TestCase
      */
     public function testNewspaperUpdate()
     {
+        // Crear un diario nuevo
         $newspaper = factory(Newspaper::class)->create();
 
-        $update = array(
+        // Verificar si existe el post en la base de datos
+        $this->assertDatabaseHas($this->table, $newspaper->toArray());
+
+        // Array para actulizar los datos del newspaper
+        $data = array(
+            'province_code' => $newspaper->province_code,
             'name' => 'Felix News',
-            'website' => 'felix.news',
+            'website' => 'felix.news'
         );
 
-        $response = $this->json('PUT', $this->api . '/newspaper/' . $newspaper->id, $update);
+        // Actualizar el newspaper con los datos nuevos
+        $response = $this->json('PUT', $this->api . $newspaper->id, $data);
 
+        // Estatus de la respuesta y verificación de la respuesta
         $response
             ->assertStatus(200)
             ->assertJson([
@@ -108,9 +116,11 @@ class NewspaperTest extends TestCase
      */
     public function testNewspaperDestroy()
     {
-        $newspaper = factory(Newspaper::class)->create();
+        $newspaper = factory(Newspaper::class)->make();
 
-        $response = $this->json('DELETE', $this->api . '/newspaper/' . $newspaper->id);
+        $this->assertDatabaseHas($this->table, $newspaper->toArray());
+
+        $response = $this->json('DELETE', $this->api . $newspaper->id);
 
         $response
             ->assertStatus(200)
@@ -118,6 +128,6 @@ class NewspaperTest extends TestCase
                 'deleted' => true,
             ]);
         
-        $this->assertDatabaseMissing($this->table, $newspaper->toArray());
+        $this->assertSoftDeleted($this->table, $newspaper->toArray());
     }
 }

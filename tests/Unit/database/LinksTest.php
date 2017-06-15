@@ -2,23 +2,27 @@
 
 namespace Tests\Unit\database;
 
-use App\Country;
+use App\Link;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class CountryTest extends TestCase
+class LinksTest extends TestCase
 {
     use DatabaseTransactions;
 
     /** @var string $table Nombre de la tabla. */
-    protected $table = 'countries';
+    protected $table = 'links';
 
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
         'id',
-        'code',
-        'name',
+        'newspaper_id',
+        'category_id',
+        'url',
+        'status',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -26,7 +30,7 @@ class CountryTest extends TestCase
      *
      * @return void
      */
-    public function testHasCountriesTable()
+    public function testHasLinksTable()
     {
         $this->assertTrue(Schema::hasTable($this->table));
     }
@@ -36,7 +40,7 @@ class CountryTest extends TestCase
      *
      * @return void
      */
-    public function testHasColumnsInCountriesTable()
+    public function testHasColumnsInLinksTable()
     {
         for ($i = 0; count($this->columns) > $i; $i++) {
             $this->assertTrue(Schema::hasColumn($this->table, $this->columns[$i]));
@@ -44,47 +48,47 @@ class CountryTest extends TestCase
     }
 
     /**
-     * Agregar un país.
+     * Crear un link.
      *
      * @return void
      */
-    public function testCreateCountry()
+    public function testCreateLink()
     {
-    	$country = factory(Country::class)->create();
+    	$link = factory(Link::class)->create();
     	
-    	$this->assertDatabaseHas($this->table, $country->toArray());
+    	$this->assertDatabaseHas($this->table, $link->toArray());
     }
 
     /**
-     * Actualizar datos de un país.
+     * Actualizar datos de un link.
      *
      * @return void
      */
-    public function testUpdateCountry()
+    public function testUpdateLink()
     {
-    	$country = factory(Country::class)->create();
+    	$link = factory(Link::class)->create();
 
-    	$country = Country::find($country->id);
-    	$country->name = 'Argentina';
-    	$country->save();
+    	$link = Link::find($link->id);
+    	$link->url = 'http://felix.barros';
+    	$link->save();
 
     	$this->assertDatabaseHas($this->table, [
-            'name' => $country->name,
+            'url' => $link->url,
         ]);
 
     }
 
     /**
-     * Eliminar un país.
+     * Eliminar un link.
      *
      * @return void
      */
-    public function testDeleteCountry()
+    public function testDeleteLink()
     {
-    	$country = factory(Country::class)->create();
+    	$link = factory(Link::class)->create();
 
-    	Country::destroy($country->id);
+    	Link::destroy($link->id);
 
-    	$this->assertDatabaseMissing($this->table, $country->toArray());
+    	$this->assertDatabaseMissing($this->table, $link->toArray());
     }
 }

@@ -5,9 +5,11 @@ namespace Tests\Unit\database;
 use App\Newspaper;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class NewspaperTest extends TestCase
+class NewspapersTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -19,7 +21,8 @@ class NewspaperTest extends TestCase
         'id',
         'province_code',
         'name',
-        'website'
+        'website',
+        'slug',
     ];
 
     /**
@@ -63,14 +66,18 @@ class NewspaperTest extends TestCase
      */
     public function testUpdateNewspaper()
     {
-    	$newspaper = factory(Newspaper::class)->create();
+    	$id = factory(Newspaper::class)->create()->id;
 
-    	$newspaper = Newspaper::find($newspaper->id);
+    	$newspaper = Newspaper::find($id);
     	$newspaper->name = 'New title';
+        $newspaper->website = 'http://new-title';
+        $newspaper->slug = str_slug('New title');
     	$newspaper->save();
 
     	$this->assertDatabaseHas($this->table, [
             'name' => $newspaper->name,
+            'webiste' => $newspaper->website,
+            'slug' => $newspaper->website,
         ]);
 
     }
@@ -82,7 +89,7 @@ class NewspaperTest extends TestCase
      */
     public function testDeleteNewpaper()
     {
-    	$newspaper = factory(Newspaper::class)->create();
+    	$newspaper = factory(Newspaper::class)->make();
 
     	Newspaper::destroy($newspaper->id);
 

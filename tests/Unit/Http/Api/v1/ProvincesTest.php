@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ProvinceTest extends TestCase
+class ProvincesTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -16,7 +16,7 @@ class ProvinceTest extends TestCase
     protected $table = 'provinces';
 
     /** @var string $table Ruta de la api. */
-    protected $api = 'api/v1';
+    protected $api = 'api/v1/provinces/';
 
     /**
      * Obtener todas las provincias.
@@ -27,7 +27,7 @@ class ProvinceTest extends TestCase
     {
         $province = factory(Province::class, 10)->create();
 
-        $response = $this->json('GET', $this->api . '/provinces');
+        $response = $this->json('GET', $this->api);
 
         $response->assertStatus(200);
 
@@ -51,7 +51,7 @@ class ProvinceTest extends TestCase
             'name' => 'Chaco',
         );
 
-        $response = $this->json('POST', $this->api . '/province', $province);
+        $response = $this->json('POST', $this->api, $province);
 
         $response
             ->assertStatus(201)
@@ -69,7 +69,7 @@ class ProvinceTest extends TestCase
     {
         $province = factory(Province::class)->create();
 
-        $response = $this->json('GET', $this->api . '/province/' . $province->id);
+        $response = $this->json('GET', $this->api. $province->id);
 
         $response->assertStatus(200);
 
@@ -89,7 +89,7 @@ class ProvinceTest extends TestCase
 
         $update = array('name' => 'Chaco');
 
-        $response = $this->json('PUT', $this->api . '/province/' . $province->id, $update);
+        $response = $this->json('PUT', $this->api . $province->id, $update);
 
         $response
             ->assertStatus(200)
@@ -107,7 +107,7 @@ class ProvinceTest extends TestCase
     {
         $province = factory(Province::class)->create();
 
-        $response = $this->json('DELETE', $this->api . '/province/' . $province->id);
+        $response = $this->json('DELETE', $this->api . $province->id);
 
         $response
             ->assertStatus(200)

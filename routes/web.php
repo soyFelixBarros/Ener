@@ -1,5 +1,20 @@
 <?php
 
+Route::domain('{country}.cablera.dev')->group(function () {
+	Route::get('/', function ($country) {
+    	return $country. ' ' . $province;
+    });
+    Route::get('/{province}', function ($country, $province) {
+    	return $country. ' ' . $province;
+    });
+    Route::get('/{province}/{city}', function ($country, $province, $city) {
+    	return $country. ', ' . $province . ', ' . $city;
+    });
+    Route::get('/{province}/{category}', function ($country, $province, $category) {
+    	return $country. ', ' . $province . ', ' . $city . ' - ' . $category;
+    });
+});
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');

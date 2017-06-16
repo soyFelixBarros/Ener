@@ -38,23 +38,8 @@ class NewspapersController extends Controller
 		
 		return response()->json([
 			'created' => (boolean) $newspaper,
+			'data' => $newspaper,
 		], 201);
-	}
-
-	/**
-	 * Ver un diario.
-	 *
-	 * @param  integer  $id
-	 * @return Response
-	 */
-	public function find($id = null)
-	{
-		$newspaper = Newspaper::where('id', $id)
-							  ->with('province')
-							  ->with('links')
-							  ->get();
-
-		return response()->json($newspaper);
 	}
 
 	/**
@@ -63,18 +48,19 @@ class NewspapersController extends Controller
 	 * @param  StoreUpdateNewspaper  $request
 	 * @return Response
 	 */
-	public function update(StoreUpdateNewspaper $request, $id)
+	public function update(Request $request, $id)
 	{
-		$data = $request->all();
-
-		$data['slug'] = str_slug($data['name']);
-
-		$newspaper = Newspaper::where('id', $id)
-							  ->update($data);
+		$newspaper = Newspaper::findOrFail($id);
+		$newspaper->province_code = $request->input('province_code');
+		$newspaper->name = $request->input('name');
+		$newspaper->website = $request->input('website');
+		$newspaper->slug = str_slug($request->input('name'));
+		$newspaper->save();
 		
 		return response()->json([
 			'updated' => (boolean) $newspaper,
-		]);
+			'data' => $newspaper,
+		], 200);
 	}
 
 	/**

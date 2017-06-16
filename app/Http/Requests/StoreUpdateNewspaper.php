@@ -24,7 +24,7 @@ class StoreUpdateNewspaper extends FormRequest
     public function rules()
     {
         return [
-            'province_code', 'required',
+            'province_code' =>'required',
             'name' => 'required|max:255',
             'website' => 'required|max:255'
         ];

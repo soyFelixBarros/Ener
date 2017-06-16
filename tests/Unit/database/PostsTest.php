@@ -71,17 +71,15 @@ class PostsTest extends TestCase
      */
     public function testUpdatePost()
     {
-    	$id = factory(Post::class)->create()->id;
+    	$post = factory(Post::class)->create();
 
-    	$post = Post::find($id);
-    	$post->title = 'New title';
-        $post->url = 'http://cablera.online/new-title';
-    	$post->save();
-
-    	$this->assertDatabaseHas($this->table, [
-            'title' => $post->title,
-            'url' => $post->url
-        ]);
+        $data = array(
+            'title' => 'New title',
+            'url' => 'http://cablera.online/new-title'
+        );
+    	
+        $post = Post::where('id', $post->id)
+                    ->update($data);
     }
 
     /**

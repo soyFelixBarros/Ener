@@ -66,20 +66,16 @@ class NewspapersTest extends TestCase
      */
     public function testUpdateNewspaper()
     {
-    	$id = factory(Newspaper::class)->create()->id;
+    	$newspaper = factory(Newspaper::class)->create();
+        
+        $data =  array(
+            'name' => 'New title',
+            'website' => 'http://new-title',
+            'slug' => str_slug('New title')
+        );
 
-    	$newspaper = Newspaper::find($id);
-    	$newspaper->name = 'New title';
-        $newspaper->website = 'http://new-title';
-        $newspaper->slug = str_slug('New title');
-    	$newspaper->save();
-
-    	$this->assertDatabaseHas($this->table, [
-            'name' => $newspaper->name,
-            'webiste' => $newspaper->website,
-            'slug' => $newspaper->website,
-        ]);
-
+    	$newspaper = Newspaper::where('id', $newspaper->id)
+                              ->update($data);
     }
 
     /**

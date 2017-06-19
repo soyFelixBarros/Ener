@@ -12,9 +12,6 @@
                 <li{{ Request::is('admin/newspapers*') ? ' class=active' : '' }}>
                     <a href="{{ route('admin_newspapers') }}">Newspapers</a>
                 </li>
-                <li{{ Request::is('admin/tags*') ? ' class=active' : '' }}>
-                    <a href="{{ route('admin_tags') }}">Tags</a>
-                </li>
                 <li{{ Request::is('admin/users*') ? ' class=active' : '' }}>
                     <a href="{{ route('admin_users') }}">Users</a>
                 </li>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', config('app.name'))
+@section('description', 'Cablera.Online - Noticias de Chaco.')
 
 @section('content')
 <div class="row">

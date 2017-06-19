@@ -18,7 +18,7 @@ class PostsTest extends TestCase
     protected $columns = [
         'id',
         'parent_id',
-        'province_code',
+        'province_id',
         'newspaper_id',
         'category_id',
         'title',

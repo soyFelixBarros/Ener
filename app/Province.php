@@ -19,7 +19,7 @@ class Province extends Model
      * @var array
      */
     protected $fillable = [
-        'country_code',
+        'country_id',
         'code',
         'name',
     ];
@@ -30,7 +30,7 @@ class Province extends Model
      * @var array
      */
     protected $hidden = [
-        'country_code',
+        'country_id',
     ];
 
     /**
@@ -47,7 +47,7 @@ class Province extends Model
     {
         return $this->hasManyThrough(
             'App\Post', 'App\Newspaper',
-            'province_code', 'newspaper_id', 'id'
+            'province_id', 'newspaper_id', 'id'
         );
     }
 
@@ -56,7 +56,7 @@ class Province extends Model
      */
     public function country()
     {
-        return $this->belongsTo('App\Country', 'country_code', 'code')
+        return $this->belongsTo('App\Country')
                     ->select(['code', 'name']);
     }
 
@@ -65,6 +65,6 @@ class Province extends Model
      */
     public function newspapers()
     {
-        return $this->hasMany('App\Newspaper', 'province_code', 'code');
+        return $this->hasMany('App\Newspaper');
     }
 }

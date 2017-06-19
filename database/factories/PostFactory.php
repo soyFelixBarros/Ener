@@ -2,8 +2,8 @@
 
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
-    	'province_code' => function () {
-    		return factory(App\Province::class)->create()->code;
+    	'province_id' => function () {
+    		return factory(App\Province::class)->create()->id;
     	},
     	'newspaper_id' => function () {
     		return factory(App\Newspaper::class)->create()->id;

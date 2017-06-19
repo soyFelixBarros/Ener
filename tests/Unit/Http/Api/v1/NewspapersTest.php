@@ -48,7 +48,7 @@ class NewspaperTest extends TestCase
 
         // Datos del nuevo newspaper
         $newspaper = array(
-            'province_code' => $province->code, // Codigo de la provincia
+            'province_id' => $province->id, // Codigo de la provincia
             'name' => 'Felix News',
             'website' => 'felix.news',
         );

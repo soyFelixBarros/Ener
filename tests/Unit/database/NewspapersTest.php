@@ -19,7 +19,7 @@ class NewspapersTest extends TestCase
     /** @var array $columns Nombres de los campos de una tabla. */
     protected $columns = [
         'id',
-        'province_code',
+        'province_id',
         'name',
         'website',
         'slug',

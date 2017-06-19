@@ -35,6 +35,6 @@ class Country extends Model
      */
     public function provinces()
     {
-        return $this->hasMany('App\Province', 'country_code', 'code');
+        return $this->hasMany('App\Province');
     }
 }

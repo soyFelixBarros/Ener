@@ -1,18 +1,9 @@
 <?php
 
-Route::domain('{country}.cablera.dev')->group(function () {
-	Route::get('/', function ($country) {
-    	return $country. ' ' . $province;
-    });
-    Route::get('/{province}', function ($country, $province) {
-    	return $country. ' ' . $province;
-    });
-    Route::get('/{province}/{city}', function ($country, $province, $city) {
-    	return $country. ', ' . $province . ', ' . $city;
-    });
-    Route::get('/{province}/{category}', function ($country, $province, $category) {
-    	return $country. ', ' . $province . ', ' . $city . ' - ' . $category;
-    });
+Route::domain('{country}.'.env('APP_URL'))->group(function () {
+	Route::get('/{province?}', function ($country, $province = null) {
+		return $country;
+	});
 });
 
 Auth::routes();

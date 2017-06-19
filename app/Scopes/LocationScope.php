@@ -17,6 +17,6 @@ class LocationScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('province_code', '=', 'AR-H');
+        $builder->where('province_id', '=', 1);
     }
 }

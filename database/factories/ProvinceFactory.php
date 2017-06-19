@@ -1,11 +1,11 @@
 <?php
 
 $factory->define(App\Province::class, function (Faker\Generator $faker) {
-	$country_code = factory(App\Country::class)->create()->code;
+	$country = factory(App\Country::class)->create();
     
     return [
-    	'country_code' => $country_code,
-    	'code' => $country_code.'-'.$faker->unique()->stateAbbr,
+    	'country_id' => $country->id,
+    	'code' => $country->code.'-'.$faker->unique()->stateAbbr,
         'name' => $faker->city,
     ];
 });

@@ -20,7 +20,7 @@ class Newspaper extends Model
      * @var array
      */
     protected $fillable = [
-        'province_code',
+        'province_id',
         'name',
         'website',
         'slug',
@@ -32,7 +32,7 @@ class Newspaper extends Model
      * @var array
      */
     protected $hidden = [
-        'province_code',
+        'province_id',
     ];
 
     /**
@@ -83,8 +83,7 @@ class Newspaper extends Model
      */
     public function province()
     {
-        return $this->belongsTo('App\Province', 'province_code', 'code')
-                    ->select(['code', 'name']);
+        return $this->belongsTo('App\Province');
     }
 
     /**

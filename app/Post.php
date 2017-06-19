@@ -21,7 +21,7 @@ class Post extends Model
      */
     protected $fillable = [
         'parent_id',
-        'province_code',
+        'province_id',
         'newspaper_id',
         'category_id',
         'title',
@@ -59,7 +59,7 @@ class Post extends Model
      */
     public function province()
     {
-        return $this->belongsTo('App\Province', 'province_code', 'code');
+        return $this->belongsTo('App\Province');
     }
 
     /**

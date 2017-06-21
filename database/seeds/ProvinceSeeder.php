@@ -13,37 +13,38 @@ class ProvinceSeeder extends Seeder
     {
         $provinces = [
             // Argentina
-    		['AR', 'AR-B', 'Buenos Aires'],
-            ['AR', 'AR-K', 'Catamarca'],
-            ['AR', 'AR-H', 'Chaco'],
-            ['AR', 'AR-U', 'Chubut'],
-            ['AR', 'AR-C', 'Capital Federal'], // Ciudad Autónoma de Buenos Aires
-            ['AR', 'AR-X', 'Córdoba'],
-            ['AR', 'AR-W', 'Corrientes'],
-            ['AR', 'AR-E', 'Entre Ríos'],
-            ['AR', 'AR-P', 'Formosa'],
-            ['AR', 'AR-Y', 'Jujuy'],
-            ['AR', 'AR-L', 'La Pampa'],
-            ['AR', 'AR-F', 'La Rioja'],
-            ['AR', 'AR-M', 'Mendoza'],
-            ['AR', 'AR-N', 'Misiones'],
-            ['AR', 'AR-Q', 'Neuquén'],
-            ['AR', 'AR-R', 'Río Negro'],
-            ['AR', 'AR-A', 'Salta'],
-            ['AR', 'AR-J', 'San Juan'],
-            ['AR', 'AR-D', 'San Luis'],
-            ['AR', 'AR-Z', 'Santa Cruz'],
-            ['AR', 'AR-S', 'Santa Fe'],
-            ['AR', 'AR-G', 'Santiago del Estero'],
-            ['AR', 'AR-V', 'Tierra del Fuego'],
-            ['AR', 'AR-T', 'Tucumán'],
+    		['AR-B', 'Buenos Aires'],
+            ['AR-K', 'Catamarca'],
+            ['AR-H', 'Chaco'],
+            ['AR-U', 'Chubut'],
+            ['AR-C', 'Capital Federal'], // Ciudad Autónoma de Buenos Aires
+            ['AR-X', 'Córdoba'],
+            ['AR-W', 'Corrientes'],
+            ['AR-E', 'Entre Ríos'],
+            ['AR-P', 'Formosa'],
+            ['AR-Y', 'Jujuy'],
+            ['AR-L', 'La Pampa'],
+            ['AR-F', 'La Rioja'],
+            ['AR-M', 'Mendoza'],
+            ['AR-N', 'Misiones'],
+            ['AR-Q', 'Neuquén'],
+            ['AR-R', 'Río Negro'],
+            ['AR-A', 'Salta'],
+            ['AR-J', 'San Juan'],
+            ['AR-D', 'San Luis'],
+            ['AR-Z', 'Santa Cruz'],
+            ['AR-S', 'Santa Fe'],
+            ['AR-G', 'Santiago del Estero'],
+            ['AR-V', 'Tierra del Fuego'],
+            ['AR-T', 'Tucumán'],
     	];
 
     	for ($i = 0; count($provinces) > $i; $i++) {
     		DB::table('provinces')->insert([
-                'country_code' => $provinces[$i][0],
-                'code' => $provinces[$i][1],
-    			'name' => $provinces[$i][2],
+                'country_id' => 10,
+                'code' => $provinces[$i][0],
+    			'name' => $provinces[$i][1],
+                'slug' => str_slug($provinces[$i][1]),
     		]);
     	}
     }

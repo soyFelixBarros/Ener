@@ -18,17 +18,7 @@
 
             <div class="form-group">
                 <label>Provinces</label>
-                <select name="province_code" class="form-control">
-                    <option value="">None</option>
-                    @if($post->province_code != null)
-                    <option value="{{ $post->province->code }}" selected="selected">{{ $post->province->name }}</option>
-                    @endif
-                    @foreach ($provinces as $province)
-                        @if ($post->province_code != $province->code)
-                        <option value="{{ $province->code }}">{{ $province->name }}</option>
-                        @endif
-                    @endforeach
-                </select>
+                @include('shared.select-location', ['provinces' => $provinces, 'selected' => $post->province_id])
             </div>
 
             <div class="form-group">

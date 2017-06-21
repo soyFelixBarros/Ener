@@ -19,6 +19,7 @@ class CreateProvincesTable extends Migration
             $table->foreign('country_id')->references('id')->on('countries');
             $table->string('code', 6)->unique();
             $table->string('name');
+            $table->string('slug')->unique();
         });
     }
 

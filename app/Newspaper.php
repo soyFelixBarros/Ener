@@ -31,9 +31,7 @@ class Newspaper extends Model
      *
      * @var array
      */
-    protected $hidden = [
-        'province_id',
-    ];
+    protected $hidden = [];
 
     /**
      * Indicates if the model should be timestamped.

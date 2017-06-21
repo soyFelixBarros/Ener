@@ -17,7 +17,7 @@ class NewspapersController extends Controller
 	 */
 	public function index()
 	{
-		$newspapers = Newspaper::oldest('name')->paginate(15);
+		$newspapers = Newspaper::withoutGlobalScopes()->oldest('name')->paginate(15);
 
 		return view('admin.newspapers.index')->with('newspapers', $newspapers);
 	}
@@ -45,8 +45,8 @@ class NewspapersController extends Controller
 
 		$data['slug'] = str_slug($data['name']);
 
-		$newspaper = Newspaper::create($data); 
-
+		$newspaper = Newspaper::create($data);
+		
 		return redirect()
 			   ->route('admin_newspapers_edit', ['id' => $newspaper->id])
 			   ->with('status', 'Newspaper created!');
@@ -59,7 +59,7 @@ class NewspapersController extends Controller
 	 */
 	public function edit($id)
 	{
-		$newspaper = Newspaper::find($id);
+		$newspaper = Newspaper::withoutGlobalScopes()->find($id);
 		$provinces = Province::oldest('name')->get();
 
 		return view('admin.newspapers.edit', array(
@@ -77,7 +77,7 @@ class NewspapersController extends Controller
 	{
 		$data = $request->except(['_token']);
 
-		$newspaper = Newspaper::find($id);
+		$newspaper = Newspaper::withoutGlobalScopes()->find($id);
 
 		$data['slug'] = str_slug($data['name']);
 

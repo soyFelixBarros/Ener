@@ -1,5 +1,7 @@
 @extends('layouts.admin')
+
 @section('title', 'Create newspaper')
+
 @section('content.admin')
 <form class="panel panel-default" role="form" method="POST">
     {{ csrf_field() }}
@@ -13,19 +15,9 @@
         </div>
     </div><!-- .panel-heading -->
     <div class="panel-body">
-        <div class="form-group{{ $errors->has('province_code') ? ' has-error' : '' }}">
+        <div class="form-group{{ $errors->has('province_id') ? ' has-error' : '' }}">
             <label>Province</label>
-            <select name="province_code" class="form-control">
-                <option selected="selected">None</option>
-                @foreach ($provinces as $province)
-                    @if (old('province_code') != $province->code)
-                    <option value="{{ $province->code }}">{{ $province->name }}</option>
-                    @else
-                    <option value="{{ old('province_code') }}" selected="selected">{{ $province->name }}</option>
-
-                    @endif
-                @endforeach
-            </select>
+            @include('shared.select-location', ['provinces' => $provinces, 'selected' => old('province_id')])
         </div>
 
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -22,6 +22,7 @@ class Province extends Model
         'country_id',
         'code',
         'name',
+        'slug',
     ];
 
     /**

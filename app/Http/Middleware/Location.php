@@ -24,17 +24,16 @@ class Location
                 if ($request->country != $location['country']) {
                     $request->session()->put([$key => [
                         'country' => $request->country,
+                        'province' => $request->province,
                     ]]);
                 }
             }
         } else {
             $request->session()->put([$key => [
                 'country' => $request->country,
+                'province' => $request->province,
             ]]);
         }
-
-        // $data = $request->session()->all();
-        // dd($data);
         
         return $next($request);
     }

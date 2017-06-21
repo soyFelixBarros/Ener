@@ -1,9 +1,7 @@
 <?php
 
 Route::domain('{country}.'.env('APP_URL'))->group(function () {
-	Route::get('/{province?}', function ($country, $province = null) {
-		return $country;
-	});
+	Route::get('/{province?}', 'HomeController@index');
 });
 
 Auth::routes();

@@ -24,9 +24,9 @@ class StoreUpdateNewspaper extends FormRequest
     public function rules()
     {
         return [
-            'province_code' =>'required',
-            'name' => 'required|max:255',
-            'website' => 'required|max:255'
+            'province_id' =>'required',
+            'name' => 'required|max:190',
+            'website' => 'required|max:255|url'
         ];
     }
 }

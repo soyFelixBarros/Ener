@@ -17,6 +17,7 @@ class CreateCountriesTable extends Migration
             $table->increments('id');
             $table->string('code', 2)->unique();
             $table->string('name', 100);
+            $table->string('slug')->unique();
         });
     }
 

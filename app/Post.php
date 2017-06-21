@@ -78,14 +78,6 @@ class Post extends Model
     {
         return $this->belongsTo('App\Category');
     }
-
-    /**
-     * Obtener todos los tags de un post.
-     */
-    public function tags()
-    {
-        return $this->belongsToMany('App\Tag');
-    }
     
     public function children()
     {

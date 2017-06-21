@@ -261,8 +261,9 @@ class CountrySeeder extends Seeder
 
     	for ($i = 0; count($countries) > $i; $i++) {
     		DB::table('countries')->insert([
-                'code' => $countries[$i][0],
-    			'name' => $countries[$i][1],
+                  'code' => $countries[$i][0],
+                  'name' => $countries[$i][1],
+                  'slug' => str_slug($countries[$i][1]),
     		]);
     	}
     }

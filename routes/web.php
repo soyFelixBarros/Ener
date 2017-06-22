@@ -1,15 +1,16 @@
 <?php
 
 Route::domain('{country}.'.env('APP_URL'))->group(function () {
-	Route::get('/{province?}', 'HomeController@index');
+	Route::get('/{province?}', 'HomeController@index')->name('home');
 });
 
-Auth::routes();
+Route::get('/', 'HomeController@index');
 
-Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'AboutController@index')->name('about');
 
 Route::get('/reports', 'ReportsController@index');
+
+Auth::routes();
 
 Route::get('/category/{category}', 'CategoriesController@show')->name('category_show');
 Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');

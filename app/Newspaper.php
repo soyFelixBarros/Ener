@@ -20,6 +20,7 @@ class Newspaper extends Model
      * @var array
      */
     protected $fillable = [
+        'country_id',
         'province_id',
         'name',
         'website',
@@ -74,6 +75,14 @@ class Newspaper extends Model
     public function links()
     {
         return $this->hasMany('App\Link');
+    }
+
+    /**
+     * Obtener el país del diario.
+     */
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
     }
 
     /**

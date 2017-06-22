@@ -105,6 +105,7 @@ class CrawlersController extends Controller
                 }
             } else {
                 $post = Post::create([
+                    'country_id' => $link->newspaper->country->id,
                     'province_id' => $link->newspaper->province->id,
                     'newspaper_id' => $link->newspaper->id,
                     'category_id' => $link->category_id,

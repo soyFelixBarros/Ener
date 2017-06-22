@@ -17,6 +17,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('posts');
+            $table->unsignedInteger('country_id')->nullable();
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->unsignedInteger('province_id')->nullable();
             $table->foreign('province_id')->references('id')->on('provinces');
             $table->unsignedInteger('newspaper_id')->nullable();

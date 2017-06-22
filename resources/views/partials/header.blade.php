@@ -8,9 +8,9 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ url('/') }}" rel="home">
-                <img src="/images/mini-logo.png" alt="Logo {{ config('app.name') }}"> {{ config('app.name') }}
+                <img src="/images/mini-logo.png" alt="Logo {{ config('app.name') }}">
+                {{ config('app.name') }}
             </a>
-            <p class="navbar-text">Argentina, Chaco</p>
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">

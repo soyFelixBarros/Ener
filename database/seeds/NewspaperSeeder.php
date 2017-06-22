@@ -23,6 +23,7 @@ class NewspaperSeeder extends Seeder
 
     	for ($i = 0; count($newspapers) > $i; $i++) {
     		DB::table('newspapers')->insert([
+                'country_id' => 10,
                 'province_id' => 3,
     			'name' => $newspapers[$i][0],
     			'website' => $newspapers[$i][1],

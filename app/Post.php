@@ -21,6 +21,7 @@ class Post extends Model
      */
     protected $fillable = [
         'parent_id',
+        'country_id',
         'province_id',
         'newspaper_id',
         'category_id',
@@ -52,6 +53,14 @@ class Post extends Model
         parent::boot();
 
         static::addGlobalScope(new LocationScope);
+    }
+
+    /**
+     * Obtener el país del post.
+     */
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
     }
 
     /**

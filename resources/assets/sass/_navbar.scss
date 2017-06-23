@@ -2,8 +2,10 @@
 	font-family: $font-family-sans-serif-2;
 	.navbar-brand {
 		color: #0E2F56;
-		padding: 14px 10px 14px 75px;
+		padding: 14px 10px 15px 75px;
 		position: relative;
+		font-weight: 400;
+		font-size: 17px;
 		img {
 			position: absolute;
 			width: auto;
@@ -25,7 +27,6 @@
 			&:hover,
 			&:focus {
 				color: #fff;
-				background-color: $brand-primary;
 				border-bottom: none;
 			}
 		}
@@ -34,13 +35,18 @@
 
 @media #{$tablets} {
 	.navbar-default {
+		.navbar-header {
+			padding-top: 4px;
+		}
 		.navbar-nav {
 			> li > a {
+				padding-top: 19px;
+				padding-bottom: 18px;
 				// color: $navbar-default-link-color;
-
+				font-size: 16px;
 				&:hover,
 				&:focus {
-					color: $brand-primary;
+					color: #616161;
 					background-color: $navbar-default-link-hover-bg;
 				}
 			}
@@ -48,10 +54,10 @@
 				&,
 				&:hover,
 				&:focus {
-					color: $text-color;
-					background-color: #fff;
-					padding-bottom: 11px;
-					border-bottom: 3px solid $brand-primary;
+					background-color: transparent;
+					color: $brand-primary;
+					// padding-bottom: 11px;
+					// border-bottom: 3px solid $brand-primary;
 				}
 			}
 	}

@@ -1,12 +1,12 @@
-<div class="posts">
+<div class="row posts masonry-container">
     @foreach ($posts as $post)
     @if ($post->parent_id == null)
-    <article class="clearfix">
+    <article class="row col-xs-12 col-sm-12 col-md-12 col-lg-6 clearfix item">
         @if ($post->image != null)
-        <div class="col-sm-4 col-md-3 image">
+        <div class="col-xs-4 col-sm-5 col-md-3 col-lg-4 image">
             <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/uploads/images/{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
         </div>
-        <div class="col-sm-8 col-md-9">
+        <div class="col-xs-8 col-sm-7 col-md-9 col-lg-8">
         @else
         <div class="col-sm-12">
         @endif 
@@ -14,18 +14,15 @@
             <hgroup>
                 <h1 class="title"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h1>
                 <h6 class="newspaper-datetime">
-                    <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}">{{ $post->newspaper->name }}</a> - <time class="timeago" datetime="{{ $post->created_at }}">{{ $post->created_at }}</time>
-                @if ($post->category_id !== null)
-                 en <a href="{{ route('category_show', ['category' => $post->category->slug]) }}" class="category {{ $post->category->slug }}">{{ $post->category->name }}</a>
-                @endif
+                    <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}">{{ $post->newspaper->name }}</a> - <time class="timeago" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
                 </h6>
             </hgroup>
         </header>
         @if ($post->summary)
-        <p class="summary">{{ $post->summary }}</p>
+        <p class="summary">{{ str_limit($post->summary, 150) }}</p>
         @endif
         </div>
-        @if (Auth::check())
+        @if (Auth::check() && Request::is('admin/*'))
         <div class="action text-right col-xs-12">
             @if (Auth::user()->hasRole('admin'))
             <ul class="list-inline">

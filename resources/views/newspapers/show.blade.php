@@ -3,14 +3,9 @@
 @section('title', $title)
 
 @section('content')
-<div class="row">
-    <div class="col-sm-9">
-    @include('shared.posts', ['posts' => $posts])
-    </div>
-    <div class="col-sm-3">
-    @if (count($newspapers) > 0)
-    @include('sidebar.newspapers', ['newspapers' => $newspapers])
-    @endif
-    </div>
-</div><!-- .row -->
+<ol class="breadcrumb">
+  <li><a href="{{ url('/') }}">Inicio</a></li>
+  <li class="active">{{ $title }}</li>
+</ol>
+@include('shared.posts', ['posts' => $posts])
 @endsection

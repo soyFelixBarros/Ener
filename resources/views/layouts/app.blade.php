@@ -19,7 +19,7 @@
 <body>
     <div id="app">
         @include('partials.header')
-        <div class="container-fluid">
+        <div class="container">
         @yield('content')
         </div>
         @include('partials.footer')

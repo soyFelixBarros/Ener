@@ -17,14 +17,12 @@
 				}
 			}
 		}
-		.title,
-		.summary {
-			font-size: 14px;
-		}
+
 		.title {
+			font-size: 14px;
 		    font-weight: 600;
 		    line-height: 1.25em;
-		    margin-top: -1px;
+		    margin-top: 0;
 		    // margin-bottom: 6px;
 		    white-space: pre-wrap;
 		    overflow: hidden;
@@ -65,11 +63,6 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-			&.more {
-				display: block;
-				white-space: pre-wrap;
-				word-wrap: break-word;
-			}
 		}
 		footer {
 			.action {
@@ -93,7 +86,7 @@
 	.posts {
 		article {
 			.image {
-				margin: 0 -15px 0 0;
+				margin: 0;
 			}
 			.image {
 				img {
@@ -101,11 +94,12 @@
 					border-radius: 3px;
 				}
 			}
-			.title,
-			.summary {
+			.title {
 				font-size: 16px;
 			}
 			.summary {
+				color: #333;
+				font-size: 14px;
 				white-space: pre-wrap;
 				word-wrap: break-word;
 			}

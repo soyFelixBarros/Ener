@@ -1,10 +1,11 @@
-<div class="row posts masonry-container">
+@if($posts->count() > 0)
+<section class="row posts masonry-container">
     @foreach ($posts as $post)
     @if ($post->parent_id == null)
     <article class="row col-xs-12 col-sm-12 col-md-12 col-lg-6 clearfix item">
         @if ($post->image != null)
         <div class="col-xs-4 col-sm-5 col-md-3 col-lg-4 image">
-            <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/uploads/images/{{ $post->image }}" class="img-responsive" alt="{{ $post->title }}"></a>
+            <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/uploads/images/{{ $post->image }}" width="170" height="170" class="img-responsive" alt="{{ $post->title }}"></a>
         </div>
         <div class="col-xs-8 col-sm-7 col-md-9 col-lg-8">
         @else
@@ -19,7 +20,7 @@
             </hgroup>
         </header>
         @if ($post->summary)
-        <p class="summary">{{ str_limit($post->summary, 150) }}</p>
+        <p class="summary">{{ str_limit($post->summary, 130) }}</p>
         @endif
         </div>
         @if (Auth::check() && Request::is('admin/*'))
@@ -42,9 +43,12 @@
     </article>
     @endif
     @endforeach
-</div>
+</section>
 @if (! isset($paginate))
 <div class="text-center">
     {{ $posts->links() }}
 </div>
+@endif
+@else
+<p class="text-muted">No hay entradas públicadas.</p>
 @endif

@@ -1,5 +1,5 @@
 <footer class="footer">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 {{-- 			<div class="col-sm-10">
 				<ul class="nav nav-pills">

@@ -3,9 +3,9 @@
 @section('title', $title)
 
 @section('content')
-<div class="row">
-    <div class="col-sm-9 col-md-offset-2">
-    @include('shared.posts', ['posts' => $posts])
-    </div>
-</div><!-- .row -->
+<ol class="breadcrumb">
+  <li><a href="{{ url('/') }}">Inicio</a></li>
+  <li class="active">{{ $title }}</li>
+</ol>
+@include('shared.posts', ['posts' => $posts])
 @endsection

@@ -1,10 +1,10 @@
 <?php
 
-Route::domain('{country}.'.env('APP_URL'))->group(function () {
-	Route::get('/{province?}', 'HomeController@index')->name('home');
+Route::domain('{province}.{country}.'.env('APP_URL'))->group(function () {
+	Route::get('/', 'HomeController@index');
 });
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/about', 'AboutController@index')->name('about');
 

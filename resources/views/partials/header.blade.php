@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top" role="banner">
+<header class="navbar navbar-default navbar-static-top" role="banner">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -7,15 +7,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url('/') }}" rel="home">
-                <img src="/images/mini-logo.png" alt="Logo {{ config('app.name') }}">
-                {{ config('app.name') }}
+            <a class="navbar-brand" href="{{ route('home') }}" rel="home">
+                <img src="/images/mini-logo.png" alt="{{ config('app.name') }}">
+                <h1>{{ config('app.name') }}</h1>
+                @if (request()->province)
+                <h2>{{ request()->province->name }}, {{ request()->country->name }}</h2>
+                @elseif (request()->country)
+                <h2>{{ request()->country->name }}</h2>
+                @else
+                <h2>el mundo</h2>
+                @endif
             </a>
+            @if (request()->category)
+            <p class="navbar-text">{{ request()->category->name }}</p>
+            @endif
         </div>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+
+        <nav class="collapse navbar-collapse" id="app-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li{{ Request::is('/') ? ' class=active' : '' }}><a href="{{ url('/') }}">{{ __('navbar.home') }}</a></li>
+                <li{{ Request::is('/') ? ' class=active' : '' }}><a href="{{ route('home') }}" rel="home">{{ __('navbar.home') }}</a></li>
                 <li{{ Request::is('category/politica') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'politica']) }}">{{ __('navbar.politics') }}</a></li>
                 <li{{ Request::is('category/policiales') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'policiales']) }}">Policiales</a></li>
                 <li{{ Request::is('category/deportes') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'deportes']) }}">Deportes</a></li>
@@ -53,6 +64,6 @@
                 </li>
                 @endif
             </ul>
-        </div>
+        </nav>
     </div>
-</nav>
+</header>

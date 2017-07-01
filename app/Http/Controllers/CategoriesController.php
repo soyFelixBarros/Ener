@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {
-	public function show(Category $category)
-	{		
+	public function show(Request $request)
+	{
+		$category = $request->category;
+
 		$posts = $category->posts()
 						  ->latest()
-						  ->paginate(15);
+						  ->paginate(20);
 
 		return view('categories.show', array(
 			'title' => $category->name,

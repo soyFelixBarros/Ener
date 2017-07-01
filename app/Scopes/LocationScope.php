@@ -2,7 +2,6 @@
 
 namespace App\Scopes;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -20,11 +19,9 @@ class LocationScope implements Scope
     {
         $request = request();
         if ($request->country) {
-            $country = DB::table('countries')->where('slug', $request->country)->first();
-            $builder->where('country_id', '=', $country->id);
+            $builder->where('country_id', '=', $request->country->id);
             if ($request->province) {
-                $province = DB::table('provinces')->where('slug', $request->province)->first();
-                $builder->where('province_id', '=', $province->id);
+                $builder->where('province_id', '=', $request->province->id);
             }
         }
     }

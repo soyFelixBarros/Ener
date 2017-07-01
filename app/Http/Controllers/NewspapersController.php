@@ -7,17 +7,15 @@ use Illuminate\Http\Request;
 
 class NewspapersController extends Controller
 {
-	public function show(Newspaper $newspaper)
+	public function show(Request $request)
 	{
-		$newspapers = $newspaper->oldest('name')->get();
-		
+		$newspaper = $request->newspaper;
 		$posts = $newspaper->posts()
 						   ->latest()
-						   ->paginate(15);
+						   ->paginate(20);
 
 		return view('newspapers.show', array(
 			'title' => $newspaper->name,
-			'newspapers' => $newspapers,
 			'posts' => $posts,
 		));
 	}

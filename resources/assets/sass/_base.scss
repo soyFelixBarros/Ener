@@ -17,13 +17,15 @@
 				}
 			}
 		}
-
-		.title {
+		.title,
+		.summary {
 			font-size: 14px;
+		}
+		.title {
 		    font-weight: 600;
 		    line-height: 1.25em;
 		    margin-top: 0;
-		    // margin-bottom: 6px;
+		    margin-bottom: 6px;
 		    white-space: pre-wrap;
 		    overflow: hidden;
 		    text-overflow: ellipsis;
@@ -37,6 +39,7 @@
 			font-weight: 400;
 			margin-top: 0;
 			margin-bottom: 0;
+			font-size: 13px;
 			word-wrap: break-word;
 			a {
 				color: #657786;
@@ -63,13 +66,6 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-		}
-		footer {
-			.action {
-				ul {
-					margin-bottom: 0;
-				}
-			}
 		}
 		&:last-child {
 			border-bottom: 0;

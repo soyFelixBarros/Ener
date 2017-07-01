@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request, $country = null, $province = null)
+    public function index(Request $request)
     {
         $newspapers = Newspaper::oldest('name')->get();
 

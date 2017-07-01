@@ -20,9 +20,9 @@ class PostsController extends Controller
 	 */
 	public function index(Post $post)
 	{
-		$posts = Post::withoutGlobalScopes()->latest()->paginate(15);
+		$posts = Post::withoutGlobalScopes()->latest()->paginate(20);
 
-		return view('admin.posts.list')->with('posts', $posts);
+		return view('admin.posts.index')->with('posts', $posts);
 	}
 
 	/**

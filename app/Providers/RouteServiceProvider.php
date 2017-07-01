@@ -24,8 +24,26 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         Route::pattern('id', '[0-9]+');
+        Route::pattern('country', '[a-z]+');
+        Route::pattern('province', '[a-z]+');
 
         parent::boot();
+
+        Route::bind('country', function ($slug) {
+            return \App\Country::where('slug', $slug)->first();
+        });
+
+        Route::bind('province', function ($slug) {
+            return \App\Province::where('slug', $slug)->first();
+        });
+
+        Route::bind('category', function ($slug) {
+            return \App\Category::where('slug', $slug)->first();
+        });
+
+        Route::bind('newspaper', function ($slug) {
+            return \App\Newspaper::where('slug', $slug)->first();
+        });
     }
 
     /**

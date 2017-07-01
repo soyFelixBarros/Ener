@@ -1,7 +1,15 @@
 <?php
 
-Route::domain('{province}.{country}.'.env('APP_URL'))->group(function () {
-	Route::get('/', 'HomeController@index');
+Route::group(['domain' => '{province}.{country}.'.env('APP_URL')], function () {
+	$this->get('/', 'HomeController@index')->name('home');
+	$this->get('/{category?}', 'CategoriesController@show')->name('category_show');
+	$this->get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
+});
+
+Route::group(['domain' => '{country}.'.env('APP_URL')], function () {
+	$this->get('/', 'HomeController@index')->name('home');
+	$this->get('/{category?}', 'CategoriesController@show')->name('category_show');
+	$this->get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -12,7 +20,7 @@ Route::get('/reports', 'ReportsController@index');
 
 Auth::routes();
 
-Route::get('/category/{category}', 'CategoriesController@show')->name('category_show');
+Route::get('/{category?}', 'CategoriesController@show')->name('category_show');
 Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
 
 // Newsletters

@@ -15,18 +15,9 @@ class Location
      */
     public function handle($request, Closure $next)
     {
-        if ($request->country == null) {
-            $ip = env('IP', $request->ip());
-            $host = env('APP_URL');
-            $scheme = $request->getScheme();
-            $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
-            if (isset($query) && $query['status'] == 'success') {
-                $country = str_slug($query['country']);
-                $province = str_slug($query['regionName']);
-                $city = '?city='.str_slug($query['city']);
-                // return redirect($scheme.'://'.$host.'/'.$country.'/'.$province.$city);
-                return redirect($scheme.'://'.$country.'.'.$host.'/'.$province.$city);
-            }
+        // $response = $next($request);
+
+        if (! is_null($request->country)) {
         }
         
         return $next($request);

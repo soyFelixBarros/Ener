@@ -13,7 +13,7 @@ class CategoriesController extends Controller
 
 		$posts = $category->posts()
 						  ->latest()
-						  ->paginate(20);
+						  ->paginate(30);
 
 		return view('categories.show', array(
 			'title' => $category->name,

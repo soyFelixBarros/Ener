@@ -1,4 +1,5 @@
 <?php
+
 // scraper.{spider}.cablera.online
 Route::group(['domain' => 'scraper.{spider}'.env('SESSION_DOMAIN')], function() {
 	$this->get('/', 'CrawlersController@index');
@@ -6,6 +7,7 @@ Route::group(['domain' => 'scraper.{spider}'.env('SESSION_DOMAIN')], function() 
 	$this->get('/summary', 'CrawlersController@summary');
 	$this->get('/image', 'CrawlersController@image');
 });
+
 
 // chaco.argentina.cablera.online
 Route::group(['domain' => '{province}.{country}'.env('SESSION_DOMAIN')], function () {

@@ -15,9 +15,6 @@ class Location
      */
     public function handle($request, Closure $next)
     {
-        $host = env('SESSION_DOMAIN');
-        $scheme = $request->getScheme();
-
         if (! $request->session()->exists('location')) {
             $ip = env('IP', $request->ip());
             $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
@@ -30,19 +27,24 @@ class Location
                 ]]);
             }
         }
+        
+        if (is_null($request->spider)) {
+            $host = env('SESSION_DOMAIN');
+            $scheme = $request->getScheme();
 
-        if (! is_null($request->spider)) {
-            $location = (object) $request->session()->get('location');
-            $country = $location->country;
-            $province = $location->province;
+            if (is_null($request->country) || is_null($request->province)) {
+                $location = (object) $request->session()->get('location');
+                $country = $location->country;
+                $province = $location->province;
+                
+                if ($province) {
+                    $redirect = $scheme.'://'.$province.'.'.$country.$host;
+                } else {
+                    $redirect = $scheme.'://'.$country.$host;
+                }
 
-            if ($province) {
-                $redirect = $scheme.'://'.$province.'.'.$country.$host;
-            } else {
-                $redirect = $scheme.'://'.$country.$host;
+                return redirect($redirect);
             }
-
-            return redirect($redirect);
         }
 
         return $next($request);

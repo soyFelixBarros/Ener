@@ -28,24 +28,24 @@ class Location
             }
         }
         
-        if (is_null($request->spider)) {
-            $host = env('SESSION_DOMAIN');
-            $scheme = $request->getScheme();
+        // if (is_null($request->spider)) {
+        //     $host = env('SESSION_DOMAIN');
+        //     $scheme = $request->getScheme();
 
-            if (is_null($request->country) || is_null($request->province)) {
-                $location = (object) $request->session()->get('location');
-                $country = $location->country;
-                $province = $location->province;
+        //     if (is_null($request->country) || is_null($request->province)) {
+        //         $location = (object) $request->session()->get('location');
+        //         $country = $location->country;
+        //         $province = $location->province;
                 
-                if ($province) {
-                    $redirect = $scheme.'://'.$province.'.'.$country.$host;
-                } else {
-                    $redirect = $scheme.'://'.$country.$host;
-                }
+        //         if ($province) {
+        //             $redirect = $scheme.'://'.$province.'.'.$country.$host;
+        //         } else {
+        //             $redirect = $scheme.'://'.$country.$host;
+        //         }
 
-                return redirect($redirect);
-            }
-        }
+        //         return redirect($redirect);
+        //     }
+        // }
 
         return $next($request);
     }

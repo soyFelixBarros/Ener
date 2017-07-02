@@ -16,6 +16,7 @@ class Location
     public function handle($request, Closure $next)
     {
         if (! $request->session()->exists('location')) {
+            $ip = env('IP', $request->ip());
             $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
             if (isset($query) && $query['status'] == 'success') {
@@ -29,7 +30,6 @@ class Location
             $location = (object) $request->session()->get('location');
             $country = $location->country;
             $province = $location->province;
-            $ip = env('IP', $request->ip());
             $host = env('SESSION_DOMAIN');
             $scheme = $request->getScheme();
 

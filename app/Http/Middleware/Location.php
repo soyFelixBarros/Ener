@@ -15,6 +15,9 @@ class Location
      */
     public function handle($request, Closure $next)
     {
+        $host = env('SESSION_DOMAIN');
+        $scheme = $request->getScheme();
+
         if (! $request->session()->exists('location')) {
             $ip = env('IP', $request->ip());
             $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
@@ -28,12 +31,10 @@ class Location
             }
         }
 
-        if (is_null($request->spider) && $request->session()->exists('location')) {
+        if (! is_null($request->spider)) {
             $location = (object) $request->session()->get('location');
             $country = $location->country;
             $province = $location->province;
-            $host = env('SESSION_DOMAIN');
-            $scheme = $request->getScheme();
 
             if ($province) {
                 $redirect = $scheme.'://'.$province.'.'.$country.$host;

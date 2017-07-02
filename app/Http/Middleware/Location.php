@@ -26,7 +26,9 @@ class Location
                     'city' => str_slug($query['city']),
                 ]]);
             }
-            
+        }
+
+        if (is_null($request->spider) || $request->session()->exists('location')) {
             $location = (object) $request->session()->get('location');
             $country = $location->country;
             $province = $location->province;

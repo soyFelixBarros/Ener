@@ -1,4 +1,4 @@
-<header class="navbar navbar-default navbar-static-top" role="banner">
+<header class="navbar navbar-default" role="banner">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -15,11 +15,11 @@
                 @elseif (request()->country)
                 <h2>{{ request()->country->name }}</h2>
                 @else
-                <h2>el mundo</h2>
+                <h2>Noticias</h2>
                 @endif
             </a>
             @if (request()->category)
-            <p class="navbar-text">{{ request()->category->name }}</p>
+            <p class="navbar-text category {{ request()->category->slug }}">{{ request()->category->name }}</p>
             @endif
         </div>
 

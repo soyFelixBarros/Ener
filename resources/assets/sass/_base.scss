@@ -2,12 +2,13 @@
 	article {
 		// background-color: #fff;
 		// border-bottom: 1px solid #eeeeee;
-		margin-bottom: 20px;
-		padding-bottom: 20px;
+		border-bottom: 1px solid #eee;
+		margin-bottom: 15px;
+		padding-bottom: 15px;
 
-		// .image {
-		// 	margin: 0 -15px 15px -15px;
-		// }
+		.image {
+			padding-right: 0px;
+		}
 		.tags {
 			margin-bottom: 3px;
 			> li {
@@ -19,7 +20,7 @@
 		}
 		.title,
 		.summary {
-			font-size: 14px;
+			font-size: 13px;
 		}
 		.title {
 		    font-weight: 600;
@@ -39,23 +40,10 @@
 			font-weight: 400;
 			margin-top: 0;
 			margin-bottom: 0;
-			font-size: 13px;
+			font-size: 12px;
 			word-wrap: break-word;
 			a {
 				color: #657786;
-				&.cultura {
-					color: #2A014B;
-				}
-				&.policiales {
-					color: #0092CA;
-				}
-				&.politica {
-					color: #027B7E;
-				}
-				&.deportes {
-					color: #BE3144;
-				}
-
 			}
 		}
 		.summary {
@@ -74,13 +62,27 @@
 
 }
 
-@media #{$tablets} {
-	.container-fluid {
-	    padding-left: 30px;
-	    padding-right: 30px;
+.category {
+	&.cultura {
+		color: #2A014B;
 	}
+	&.policiales {
+		color: #0092CA;
+	}
+	&.politica {
+		color: #027B7E;
+	}
+	&.deportes {
+		color: #BE3144;
+	}
+}
+
+@media #{$tablets} {
 	.posts {
 		article {
+			border-bottom: none;
+			margin-bottom: 20px;
+			padding-bottom: 20px;
 			.image {
 				margin: 0;
 			}
@@ -92,6 +94,9 @@
 			}
 			.title {
 				font-size: 16px;
+			}
+			.newspaper-datetime {
+				font-size: 13px;
 			}
 			.summary {
 				color: #333;

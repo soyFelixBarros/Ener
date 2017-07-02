@@ -15,11 +15,33 @@ class Location
      */
     public function handle($request, Closure $next)
     {
-        // $response = $next($request);
+        if (! $request->session()->exists('location')) {
+            $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
-        if (! is_null($request->country)) {
+            if (isset($query) && $query['status'] == 'success') {
+                $request->session()->put(['location' => [
+                    'country' => str_slug($query['country']),
+                    'province' => str_slug($query['regionName']),
+                    'city' => str_slug($query['city']),
+                ]]);
+            }
+            
+            $location = (object) $request->session()->get('location');
+            $country = $location->country;
+            $province = $location->province;
+            $ip = env('IP', $request->ip());
+            $host = env('SESSION_DOMAIN');
+            $scheme = $request->getScheme();
+
+            if ($province) {
+                $redirect = $scheme.'://'.$province.'.'.$country.$host;
+            } else {
+                $redirect = $scheme.'://'.$country.$host;
+            }
+
+            return redirect($redirect);
         }
-        
+
         return $next($request);
     }
 

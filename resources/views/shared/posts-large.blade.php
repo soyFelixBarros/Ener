@@ -23,7 +23,7 @@
 			            @endif
 	                    <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}">{{ $post->newspaper->name }}</a> - <time class="timeago" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
 	                    @if ($post->category_id !== null)
-	                    - <a href="{{ route('category_show', ['category' => $post->category->slug]) }}" class="category {{ $post->category->slug }}">{{ $post->category->name }}</a>
+	                    - <a href="{{ route('category_show', ['category' => $post->category->slug]) }}" class="{{ $post->category->slug }}">{{ $post->category->name }}</a>
 	                    @endif
 	                </h6>
 	            </hgroup>

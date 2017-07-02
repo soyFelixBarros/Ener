@@ -20,6 +20,7 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
+        'story_id',
         'parent_id',
         'country_id',
         'province_id',
@@ -53,6 +54,14 @@ class Post extends Model
         parent::boot();
 
         static::addGlobalScope(new LocationScope);
+    }
+
+    /**
+     * Obtener la story.
+     */
+    public function story()
+    {
+        return $this->belongsTo('App\Story');
     }
 
     /**

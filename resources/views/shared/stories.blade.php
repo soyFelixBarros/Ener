@@ -1,7 +1,7 @@
-@if(count($posts) > 0)
+@if(count($stories) > 0)
 <section class="row posts masonry-container">
-    @foreach ($posts as $post)
-    @if (is_null($post->parent_id))
+    @foreach ($stories->posts as $post)
+    @if ($post->parent_id == null)
     <article class="col-xs-12 col-sm-12 col-md-12 col-lg-6 clearfix item">
         <div class="row">
             @if ($post->image != null)
@@ -28,7 +28,7 @@
                 </hgroup>
             </header>
             @if ($post->summary)
-            <p class="summary">{{ str_limit($post->summary, 130) }}</p>
+            <p class="summary">{{ $post->summary }}</p>
             @endif
             </div>
         </div>
@@ -36,11 +36,4 @@
     @endif
     @endforeach
 </section>
-@if (! isset($paginate))
-<div class="text-center">
-    {{ $posts->links() }}
-</div>
-@endif
-@else
-<p class="text-muted">No hay entradas públicadas.</p>
 @endif

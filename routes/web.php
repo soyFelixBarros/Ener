@@ -1,18 +1,29 @@
 <?php
+// scraper.{spider}.cablera.online
+Route::group(['domain' => 'scraper.{spider}'.env('SESSION_DOMAIN')], function() {
+	$this->get('/', 'CrawlersController@index');
+	$this->get('/title', 'CrawlersController@title');
+	$this->get('/summary', 'CrawlersController@summary');
+	$this->get('/image', 'CrawlersController@image');
+});
 
-Route::group(['domain' => '{province}.{country}.'.env('APP_URL')], function () {
+// chaco.argentina.cablera.online
+Route::group(['domain' => '{province}.{country}'.env('SESSION_DOMAIN')], function () {
 	$this->get('/', 'HomeController@index')->name('home');
 	$this->get('/{category?}', 'CategoriesController@show')->name('category_show');
 	$this->get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
 });
 
-Route::group(['domain' => '{country}.'.env('APP_URL')], function () {
+// argentina.cablera.online
+Route::group(['domain' => '{country}'.env('SESSION_DOMAIN')], function () {
 	$this->get('/', 'HomeController@index')->name('home');
 	$this->get('/{category?}', 'CategoriesController@show')->name('category_show');
 	$this->get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/stories/{id}', 'StoriesController@show')->name('story_show');
 
 Route::get('/about', 'AboutController@index')->name('about');
 
@@ -29,13 +40,6 @@ Route::group(['prefix' => 'newsletters'], function() {
 	$this->get('/{newsletters}', 'NewslettersController@show');
 });
 
-// Crawlers
-Route::group(['prefix' => 'crawlers'], function() {
-	$this->get('/', 'CrawlersController@index');
-	$this->get('/title', 'CrawlersController@title');
-	$this->get('/summary', 'CrawlersController@summary');
-	$this->get('/image', 'CrawlersController@image');
-});
 
 // Settings
 Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {

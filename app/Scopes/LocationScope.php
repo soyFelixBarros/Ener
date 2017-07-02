@@ -18,6 +18,7 @@ class LocationScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         $request = request();
+        
         if ($request->country) {
             $builder->where('country_id', '=', $request->country->id);
             if ($request->province) {

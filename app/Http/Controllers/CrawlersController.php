@@ -11,11 +11,6 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class CrawlersController extends Controller
 {
-    public function index()
-    {
-        return redirect('/crawlers/title');
-    }
-
     private function toScrape($settings)
     {
         $settings = (array) $settings;
@@ -171,7 +166,7 @@ class CrawlersController extends Controller
                 $post->newspaper->scraping->src,
             ]);
 
-            if ($content->count() > 0) {
+            if (count($content) > 0) {
                 $src = $this->prepareLink($content->text(), $post->newspaper->website);
                 $file = $post->id.'-'.str_slug($post->title).'.jpg';
                 $path = public_path('/uploads/images/');

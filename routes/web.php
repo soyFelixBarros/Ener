@@ -25,7 +25,6 @@ Route::get('/reports', 'ReportsController@index');
 Auth::routes();
 
 Route::group(['prefix' => 'scraping'], function() {
-	$this->get('/', 'CrawlersController@index');
 	$this->get('/title', 'CrawlersController@title');
 	$this->get('/summary', 'CrawlersController@summary');
 	$this->get('/image', 'CrawlersController@image');

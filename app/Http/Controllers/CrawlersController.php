@@ -11,17 +11,21 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class CrawlersController extends Controller
 {
+    private function get_http_response_code($url) {
+        $headers = get_headers($url);
+        return substr($headers[0], 9, 3);
+    }
+    
     private function toScrape($settings)
     {
         $settings = (array) $settings;
-        $count = count($settings);
 
-        if ($count > 0) {
+        if (count($settings) > 0) {
             // Decodifica una cadena cifrada como URL
             $url = urldecode($settings[0]);
 
             // Transmite un fichero entero a una cadena
-            $html = file_get_contents($url);
+            $html = @file_get_contents($url);
 
             if ($html !== false) {
                 // Buscamos el contenido en el html
@@ -77,8 +81,8 @@ class CrawlersController extends Controller
         ]);
 
         $link->update(['status' => 'pending']);
-
-        if ($content->count() > 0) {    
+        
+        if ($content) {    
             // Filtros
             $title = trim($content->text());
             $url = $this->prepareLink($content->attr('href'), $link->newspaper->website);

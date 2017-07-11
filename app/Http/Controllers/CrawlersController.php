@@ -82,7 +82,7 @@ class CrawlersController extends Controller
 
         $link->update(['status' => 'pending']);
         
-        if ($content) {    
+        if ($content->count() > 0) {    
             // Filtros
             $title = trim($content->text());
             $url = $this->prepareLink($content->attr('href'), $link->newspaper->website);

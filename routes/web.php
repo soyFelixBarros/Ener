@@ -1,5 +1,8 @@
 <?php
 
+Auth::routes();
+Route::get('/about', 'PagesController@about')->name('about');
+
 // scraper.cablera.online
 Route::group(['domain' => 'scraper'.env('SESSION_DOMAIN')], function () {
 	$this->get('/title', 'CrawlersController@title');
@@ -22,15 +25,8 @@ Route::group(['domain' => '{country}'.env('SESSION_DOMAIN')], function () {
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-
 Route::get('/stories/{id}', 'StoriesController@show')->name('story_show');
-
-Route::get('/about', 'AboutController@index')->name('about');
-
 Route::get('/reports', 'ReportsController@index');
-
-Auth::routes();
-
 Route::get('/{category?}', 'CategoriesController@show')->name('category_show');
 Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
 

@@ -4,7 +4,7 @@ Auth::routes();
 Route::get('/about', 'PagesController@about')->name('about');
 
 // scraper.cablera.online
-Route::group(['domain' => 'scraper'.env('SESSION_DOMAIN')], function () {
+Route::group(['domain' => 'scraper.{scraper}'.env('SESSION_DOMAIN')], function () {
 	$this->get('/title', 'CrawlersController@title');
 	$this->get('/summary', 'CrawlersController@summary');
 	$this->get('/image', 'CrawlersController@image');

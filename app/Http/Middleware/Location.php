@@ -15,7 +15,6 @@ class Location
      */
     public function handle($request, Closure $next)
     {
-
         if (! $request->session()->exists('location') && is_null($request->scraper)) {
             $ip = env('IP', $request->ip());
             $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));

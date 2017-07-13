@@ -10,13 +10,14 @@
             <a class="navbar-brand" href="{{ route('home') }}" rel="home">
                 <img src="/images/mini-logo.png" alt="{{ config('app.name') }}">
                 <h1>{{ config('app.name') }}</h1>
-                @if (request()->province)
+                <h2>Chaco, Argentina</h2>
+{{--                 @if (request()->province)
                 <h2>{{ request()->province->name }}, {{ request()->country->name }}</h2>
                 @elseif (request()->country)
                 <h2>{{ request()->country->name }}</h2>
                 @else
                 <h2>Noticias</h2>
-                @endif
+                @endif --}}
             </a>
             @if (request()->category)
             <p class="navbar-text category {{ request()->category->slug }}">{{ request()->category->name }}</p>

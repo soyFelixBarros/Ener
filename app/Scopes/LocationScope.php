@@ -19,11 +19,11 @@ class LocationScope implements Scope
     {
         $request = request();
         
-        if ($request->country) {
-            $builder->where('country_id', '=', $request->country->id);
-            if ($request->province) {
-                $builder->where('province_id', '=', $request->province->id);
-            }
-        }
+        // if ($request->country) {
+        //     $builder->where('country_id', '=', $request->country->id);
+        //     if ($request->province) {
+                $builder->where('province_id', '=', 3);
+        //     }
+        // }
     }
 }

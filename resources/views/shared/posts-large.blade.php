@@ -6,12 +6,12 @@
     	<div class="row">
 	        @if ($post->image != null)
 	        <div class="col-xs-4 col-sm-5 col-md-3 col-lg-2 image">
-	            <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/images/{{ $post->image }}?w=170?h=170&fit=crop" width="170" height="170" class="img-responsive" alt="{{ $post->title }}"></a>
+	            <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/images/{{ $post->image }}?w=170&h=150&fit=crop-top&sharp=10" width="170" height="170" class="img-responsive" alt="{{ $post->title }}"></a>
 	        </div>
 	        <div class="col-xs-8 col-sm-7 col-md-9 col-lg-10">
 	        @else
 	        <div class="col-sm-12">
-	        @endif 
+	        @endif
 	        <header>
 	            <hgroup>
 	                <h1 class="title"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h1>

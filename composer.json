@@ -11,6 +11,7 @@
         "jenssegers/imagehash": "^0.4.1",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "league/glide-laravel": "^1.0",
         "symfony/dom-crawler": "^3.2"
     },
     "require-dev": {

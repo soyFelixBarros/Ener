@@ -6,7 +6,7 @@
     	<div class="row">
 	        @if ($post->image != null)
 	        <div class="col-xs-4 col-sm-5 col-md-3 col-lg-2 image">
-	            <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/uploads/images/{{ $post->image }}" width="170" height="170" class="img-responsive" alt="{{ $post->title }}"></a>
+	            <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/images/{{ $post->image }}?w=170?h=170&fit=crop" width="170" height="170" class="img-responsive" alt="{{ $post->title }}"></a>
 	        </div>
 	        <div class="col-xs-8 col-sm-7 col-md-9 col-lg-10">
 	        @else

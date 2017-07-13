@@ -175,11 +175,12 @@ class CrawlersController extends Controller
                 $file = $post->id.'-'.str_slug($post->title).'.jpg';
                 $path = public_path('/uploads/images/');
 
-                $image = Image::make($src)
+                $image = Image::make($src)->save($path.$file);
                               // ->fit(520, 480, null, 'top')
-                              ->fit(170, 150, null, 'top')
-                              ->sharpen(10)
-                              ->save($path.$file, 80);
+                              // ->fit(170, 150, null, 'top')
+                              // ->sharpen(10)
+                              // ->save($path.$file);
+                              
 
                 $post->update([
                     'image' => $file,

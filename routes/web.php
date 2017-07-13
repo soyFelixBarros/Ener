@@ -3,7 +3,7 @@
 Auth::routes();
 Route::get('/about', 'PagesController@about')->name('about');
 
-// scraper.cablera.online
+// scraper.{scraper}.cablera.online
 Route::group(['domain' => 'scraper.{scraper}'.env('SESSION_DOMAIN')], function () {
 	$this->get('/title', 'CrawlersController@title');
 	$this->get('/summary', 'CrawlersController@summary');
@@ -35,7 +35,6 @@ Route::group(['prefix' => 'newsletters'], function() {
 	$this->get('/', 'NewslettersController@index')->name('newsletters');
 	$this->get('/{newsletters}', 'NewslettersController@show');
 });
-
 
 // Settings
 Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {

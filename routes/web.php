@@ -1,5 +1,5 @@
 <?php
-Route::get('images/{path}', 'ImagesController@show')->where('path', '.*');
+Route::get('/images/{path}', 'ImagesController@show')->where('path', '.*');
 
 Auth::routes();
 Route::get('/about', 'PagesController@about')->name('about');

@@ -10,7 +10,7 @@
 			<section class="col-sm-7">
 				<article>
 					<h3>Informarte de la mejor manera</h3>
-					<p>Hola mi nombre es <a href="https://twitter.com/soyfelixbarros" target="_blank">Felix Barros</a>, desarrollador de programas informáticos. Actualmente recido en la ciudad de Resistencia, provincia del Chaco, Argentina. Cablera.Online es uno proyecto personale y en constante desarrollo.</p>
+					<p>Hola mi nombre es <a href="https://twitter.com/soyfelixbarros" target="_blank">Felix Barros</a>, desarrollador de programas informáticos. Actualmente recido en la ciudad de Resistencia, provincia del Chaco, Argentina. Cablera.Online es un proyecto personal en constante desarrollo.</p>
 
 					<h4>¿Qué es Cablera.Online?</h4>
 					<p>Cablera.Online es un programa informatico que utiliza la técnica de <a href="https://es.wikipedia.org/wiki/Web_scraping" target="_blank">Web scraping</a> para extraer las noticias de los diarios digitales más importantes.</p>

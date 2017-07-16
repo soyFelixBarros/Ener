@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Acerca de ' . config('app.name'))
+@section('title', 'Información')
 @section('description', 'Sistema informático que obtiene las noticias de los diarios digitales.')
 
 @section('content')
@@ -9,7 +9,7 @@
 		<div class="row">
 			<section class="col-sm-7">
 				<article>
-					<h3>Informarte de la mejor manera</h3>
+					<h3>Informarte de la mejor manera.</h3>
 					<p>Hola mi nombre es <a href="https://twitter.com/soyfelixbarros" target="_blank">Felix Barros</a>, desarrollador de programas informáticos. Actualmente recido en la ciudad de Resistencia, provincia del Chaco, Argentina. Cablera.Online es un proyecto personal en constante desarrollo.</p>
 
 					<h4>¿Qué es Cablera.Online?</h4>

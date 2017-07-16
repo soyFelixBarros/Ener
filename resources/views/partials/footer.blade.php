@@ -1,12 +1,12 @@
 <footer class="footer">
 	<div class="container">
-{{-- 		<div class="row">
+		<div class="row">
 			<div class="col-xs-12">
 				<ul class="list-inline">
-					<li><a href="{{ route('about') }}">Acerca de</a></li>
+					<li><a href="{{ route('about') }}">Información</a></li>
 				</ul>
 			</div>
-		</div> --}}
+		</div>
 		<div class="row copy">
 			<div class="col-xs-12">
 				<span>&copy; {{ date('Y') }} {{ config('app.name') }}</span>

@@ -23,6 +23,7 @@ class Scraper extends Model
         'title',
         'src',
         'content',
+        'status',
     ];
 
     /**

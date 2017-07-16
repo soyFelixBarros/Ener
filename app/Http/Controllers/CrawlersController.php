@@ -27,6 +27,9 @@ class CrawlersController extends Controller
             // Transmite un fichero entero a una cadena
             $html = @file_get_contents($url);
 
+            // Obtener el status HTTP
+            $status = (int) substr($http_response_header[0], 9, 3);
+
             if ($html !== false) {
                 // Buscamos el contenido en el html
                 $crawler = new Crawler($html);
@@ -77,12 +80,12 @@ class CrawlersController extends Controller
         // Obterner el contenido
         $content = $this->toScrape([
             $link->url,
-            $link->newspaper->scraping->title,
+            $link->newspaper->scraper->title,
         ]);
 
         $link->update(['status' => 'pending']);
         
-        if ($content->count() > 0) {    
+        if ($content) {    
             // Filtros
             $title = trim($content->text());
             $url = $this->prepareLink($content->attr('href'), $link->newspaper->website);
@@ -135,7 +138,7 @@ class CrawlersController extends Controller
             // Obterner el contenido
             $content = $this->toScrape([
                 $post->url,
-                $post->newspaper->scraping->content,
+                $post->newspaper->scraper->content,
             ]);
 
             if ($content->count() > 0) { 
@@ -143,7 +146,7 @@ class CrawlersController extends Controller
                 $summary = str_replace("\xc2\xa0", '', $summary);
 
                 $post->update([
-                    'summary' => ($summary !== '') ? $summary : null,
+                    'summary' => ($summary != '') ? $summary : null,
                 ]);
             }
 
@@ -167,7 +170,7 @@ class CrawlersController extends Controller
             // Obterner el contenido
             $content = $this->toScrape([
                 $post->url,
-                $post->newspaper->scraping->src,
+                $post->newspaper->scraper->src,
             ]);
 
             if (count($content) > 0) {

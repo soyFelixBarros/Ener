@@ -20,6 +20,7 @@ class CreateScrapersTable extends Migration
             $table->string('title');
             $table->string('src');
             $table->string('content');
+            $table->integer('status')->nullable();
         });
     }
 

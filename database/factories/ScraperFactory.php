@@ -1,6 +1,6 @@
 <?php
 
-$factory->define(App\Scraping::class, function (Faker\Generator $faker) {
+$factory->define(App\Scraper::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence($nbWords = 5, $variableNbWords = true),
         'src' => $faker->sentence($nbWords = 5, $variableNbWords = true),

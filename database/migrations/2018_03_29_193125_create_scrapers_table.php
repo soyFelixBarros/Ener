@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateScrapingsTable extends Migration
+class CreateScrapersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateScrapingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('scrapings', function (Blueprint $table) {
+        Schema::create('scrapers', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('newspaper_id')->nullable();
             $table->foreign('newspaper_id')->references('id')->on('newspapers')->onDelete('cascade');
@@ -30,6 +30,6 @@ class CreateScrapingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scrapings');
+        Schema::dropIfExists('scrapers');
     }
 }

@@ -56,9 +56,9 @@ class Newspaper extends Model
     /**
      * Obtener los xpath del diario.
      */
-    public function scraping()
+    public function scraper()
     {
-        return $this->hasOne('App\Scraping');
+        return $this->hasOne('App\Scraper');
     }
 
     /**

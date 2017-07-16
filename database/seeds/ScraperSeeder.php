@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ScrapingSeeder extends Seeder
+class ScraperSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -70,7 +70,7 @@ class ScrapingSeeder extends Seeder
     	];
 
     	for ($i = 0; count($scrapings) > $i; $i++) {
-    		DB::table('scrapings')->insert([
+    		DB::table('scrapers')->insert([
                 'newspaper_id' => $scrapings[$i][0],
                 'title' => $scrapings[$i][1],
     			'src' => $scrapings[$i][2],

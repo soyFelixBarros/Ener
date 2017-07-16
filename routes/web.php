@@ -1,8 +1,20 @@
 <?php
-Route::get('/images/{path}', 'ImagesController@show')->where('path', '.*');
-
 Auth::routes();
 Route::get('/about', 'PagesController@about')->name('about');
+
+Route::get('/images/{path}', 'ImagesController@show')->where('path', '.*');
+
+// Newspapers
+Route::group(['prefix' => 'newspapers'], function() {
+	$this->get('/', 'NewspapersController@index')->name('newspapers');
+	$this->get('/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
+});
+
+// Newsletters
+Route::group(['prefix' => 'newsletters'], function() {
+	$this->get('/', 'NewslettersController@index')->name('newsletters');
+	$this->get('/{newsletters}', 'NewslettersController@show');
+});
 
 // scraper.{scraper}.cablera.online
 Route::group(['domain' => 'scraper.{scraper}'.env('SESSION_DOMAIN')], function () {
@@ -15,27 +27,18 @@ Route::group(['domain' => 'scraper.{scraper}'.env('SESSION_DOMAIN')], function (
 Route::group(['domain' => '{province}.{country}'.env('SESSION_DOMAIN')], function () {
 	$this->get('/', 'HomeController@index')->name('home');
 	$this->get('/{category?}', 'CategoriesController@show')->name('category_show');
-	$this->get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
 });
 
 // argentina.cablera.online
 Route::group(['domain' => '{country}'.env('SESSION_DOMAIN')], function () {
 	$this->get('/', 'HomeController@index')->name('home');
 	$this->get('/{category?}', 'CategoriesController@show')->name('category_show');
-	$this->get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/stories/{id}', 'StoriesController@show')->name('story_show');
 Route::get('/reports', 'ReportsController@index');
 Route::get('/{category?}', 'CategoriesController@show')->name('category_show');
-Route::get('/newspaper/{newspaper}', 'NewspapersController@show')->name('newspaper_show');
-
-// Newsletters
-Route::group(['prefix' => 'newsletters'], function() {
-	$this->get('/', 'NewslettersController@index')->name('newsletters');
-	$this->get('/{newsletters}', 'NewslettersController@show');
-});
 
 // Settings
 Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {
@@ -60,6 +63,10 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 	$this->get('/newspapers/{id}/edit', 'NewspapersController@edit')->name('admin_newspapers_edit');
 	$this->post('/newspapers/{id}/edit', 'NewspapersController@update');
 	
+	// Scrapers
+	$this->get('/scrapers/{id}/edit', 'ScrapersController@edit')->name('admin_scrapers_edit');
+	$this->post('/scrapers/{id}/edit', 'ScrapersController@update');
+
 	// Posts
 	$this->get('/posts', 'PostsController@index')->name('admin_posts');
 	$this->get('/posts/{id}/edit', 'PostsController@edit')->name('admin_posts_edit');

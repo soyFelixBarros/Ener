@@ -32,6 +32,7 @@
 						<td>{{ $link->status }}</td>
 						<th class="text-right">
 							<a href="{{ route('admin_scrapers_edit', ['id' => $link->newspaper->scraper->id]) }}" class="text-muted"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span></a> 
+							<a href="{{ route('admin_links_edit', ['id' => $link->id]) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 						</th>
 					</tr>
 					@endforeach

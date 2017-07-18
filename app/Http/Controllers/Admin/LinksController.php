@@ -19,4 +19,34 @@ class LinksController extends Controller
 
 		return view('admin.links.index')->with('links', $links);
 	}
+
+	/**
+	 * Vista con el formulario para editar un link.
+	 *
+	 * @return Object
+	 */
+	public function edit($id)
+	{
+		$link = Link::withoutGlobalScopes()->find($id);
+
+		return view('admin.links.edit')->with('link', $link);
+	}
+
+	/**
+	 * Metodo para actualizar los datos del link.
+	 *
+	 * @return void
+	 */
+	public function update($id, Request $request)
+	{
+		$data = $request->except(['_token']);
+
+		$link = Link::withoutGlobalScopes()->find($id);
+
+		$link->update($data);
+
+		return redirect()
+			   ->route('admin_links_edit', ['id' => $id])
+			   ->with('status', 'Link updated!');
+	}
 }

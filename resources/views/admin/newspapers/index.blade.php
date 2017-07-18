@@ -32,7 +32,6 @@
 						<th scope=row class="text-center">{{ count($newspaper->posts) }}</th>
 						<td>{{ $newspaper->province->name }}</td>
 						<th class="text-right">
-							<a href="{{ route('admin_scrapers_edit', ['id' => $newspaper->scraper->id]) }}" class="text-muted"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span></a> 
 							<a href="{{ route('admin_newspapers_edit', ['id' => $newspaper->id]) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 						</th>
 					</tr>

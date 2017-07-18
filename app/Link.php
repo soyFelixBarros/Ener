@@ -23,6 +23,7 @@ class Link extends Model
         'category_id',
         'url',
         'status',
+        'scraping',
         'created_at',
         'updated_at',
     ];

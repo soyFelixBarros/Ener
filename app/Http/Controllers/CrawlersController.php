@@ -13,7 +13,7 @@ class CrawlersController extends Controller
 {
     private function get_http_response_code($url) {
         $headers = get_headers($url);
-        return substr($headers[0], 9, 3);
+        return (int) substr($headers[0], 9, 3);
     }
     
     private function toScrape($settings)
@@ -28,7 +28,7 @@ class CrawlersController extends Controller
             $html = @file_get_contents($url);
 
             // Obtener el status HTTP
-            $status = (int) substr($http_response_header[0], 9, 3);
+            // $status = (int) substr($http_response_header[0], 9, 3);
 
             if ($html !== false) {
                 // Buscamos el contenido en el html
@@ -74,55 +74,61 @@ class CrawlersController extends Controller
     {
         // Obtener un link
         $link = Link::oldest('updated_at')->first();
-        
-        $link->update(['status' => 'scraping']);
 
-        // Obterner el contenido
-        $content = $this->toScrape([
-            $link->url,
-            $link->newspaper->scraper->title,
-        ]);
+        $status = $this->get_http_response_code($link->url);
 
-        $link->update(['status' => 'pending']);
-        
-        if ($content) {    
-            // Filtros
-            $title = trim($content->text());
-            $url = $this->prepareLink($content->attr('href'), $link->newspaper->website);
+        $link->update(['status' => $status, 'scraping' => 1]);
 
-            // Buscar si el post existe
-            $post = $this->hasPostNow($link->newspaper->id, $title);
+        if ($status == 200) {
+            // Obterner el contenido
+            $content = $this->toScrape([
+                $link->url,
+                $link->newspaper->scraper->title,
+            ]);
+            
+            if ($content) {    
+                // Filtros
+                $title = trim($content->text());
+                $url = $this->prepareLink($content->attr('href'), $link->newspaper->website);
 
-            if (count($post) > 0) {
+                // Buscar si el post existe
+                $post = $this->hasPostNow($link->newspaper->id, $title);
 
-                // Comparamos los títulos
-                $levenshtein = levenshtein($title, $post->title);
+                if (count($post) > 0) {
 
-                // Si el título se modifico, lo actualizamos
-                if ($levenshtein > 0 && $levenshtein < 20) {
-                    $post = Post::where('id', $post->id)->update([
+                    // Comparamos los títulos
+                    $levenshtein = levenshtein($title, $post->title);
+
+                    // Si el título se modifico, lo actualizamos
+                    if ($levenshtein > 0 && $levenshtein < 20) {
+                        $post = Post::where('id', $post->id)->update([
+                            'title' => $title,
+                            'url' => $url,
+                        ]);
+                    }
+                } else {
+                    $post = Post::create([
+                        'country_id' => $link->newspaper->country->id,
+                        'province_id' => $link->newspaper->province->id,
+                        'newspaper_id' => $link->newspaper->id,
+                        'category_id' => $link->category_id,
                         'title' => $title,
                         'url' => $url,
+                        'status' => 'summary',
                     ]);
                 }
-            } else {
-                $post = Post::create([
-                    'country_id' => $link->newspaper->country->id,
-                    'province_id' => $link->newspaper->province->id,
-                    'newspaper_id' => $link->newspaper->id,
-                    'category_id' => $link->category_id,
-                    'title' => $title,
-                    'url' => $url,
-                    'status' => 'summary',
-                ]);
-            }
 
-            return array(
-                'newspaper' => $post->newspaper->name,
-                'title' => $post->title,
-                'url' => $post->url
-            );
+                return array(
+                    'newspaper' => $post->newspaper->name,
+                    'title' => $post->title,
+                    'url' => $post->url
+                );
+            }
         }
+
+        $link->update(['scraping' => 0]);
+
+        return $status;
     }
 
     public function summary()

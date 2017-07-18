@@ -20,7 +20,8 @@ class CreateLinksTable extends Migration
             $table->unsignedInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('url');
-            $table->string('status', 20)->default('pending');
+            $table->integer('status')->default(200);
+            $table->boolean('scraping')->default(0);
             $table->timestamps();
         });
     }

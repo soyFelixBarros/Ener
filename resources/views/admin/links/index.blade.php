@@ -19,7 +19,7 @@
 					<tr>
 						<th>Url</th>
 						<th>Newspaper</th>
-						<th>Status</th>
+						<th class="text-center">Status</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -29,7 +29,7 @@
 					<tr>
 						<td><a href="{{ $link->url }}" target="_blank">{{ $link->url }}</a></td>
 						<td>{{ $link->newspaper->name }}</td>
-						<td>{{ $link->status }}</td>
+						<th scope=row class="text-center{{ $link->status == 200 ? ' text-success' : ' text-danger' }}">{{ $link->status }}</th>
 						<th class="text-right">
 							<a href="{{ route('admin_scrapers_edit', ['id' => $link->newspaper->scraper->id]) }}" class="text-muted"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span></a> 
 							<a href="{{ route('admin_links_edit', ['id' => $link->id]) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>

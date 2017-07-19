@@ -69,6 +69,9 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 	$this->post('/links/{id}/edit', 'LinksController@update');
 
 	// Scrapers
+	$this->get('/scrapers/page', 'ScrapersController@page')->name('admin_scrapers_page');
+	$this->post('/scrapers/page', 'ScrapersController@evaluatePage');
+
 	$this->get('/scrapers/{id}/edit', 'ScrapersController@edit')->name('admin_scrapers_edit');
 	$this->post('/scrapers/{id}/edit', 'ScrapersController@update');
 

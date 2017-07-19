@@ -9,6 +9,42 @@ use App\Http\Controllers\Controller;
 class ScrapersController extends Controller
 {
 	/**
+	 * Metodo para mostrar un formulario.
+	 *
+	 * @return void
+	 */
+	public function page(Request $request)
+	{
+		$url = $request->input('url');
+		return view('admin.scrapers.page', array(
+			'url' => $url
+		));
+	}
+
+	/**
+	 * Metodo para mostrar un formulario.
+	 *
+	 * @return void
+	 */
+	public function evaluatePage(Request $request)
+	{
+		// Decodifica una cadena cifrada como URL
+        $url = urldecode($request->url);
+
+        // Transmite un fichero entero a una cadena
+        $html = @file_get_contents($url);
+
+		$crawler = new \Symfony\Component\DomCrawler\Crawler($html);
+		$results =  $crawler->evaluate($request->filter);
+
+		return view('admin.scrapers.page', array(
+			'results' => $results,
+			'url' => $url,
+			'filter' => $request->filter,
+		));
+	}
+
+	/**
 	 * Vista con el formulario para editar los datos de un scraper.
 	 *
 	 * @return Object

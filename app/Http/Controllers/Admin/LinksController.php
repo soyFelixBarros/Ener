@@ -15,7 +15,7 @@ class LinksController extends Controller
 	 */
 	public function index()
 	{
-		$links = Link::withoutGlobalScopes()->paginate(15);
+		$links = Link::withoutGlobalScopes()->paginate(20);
 
 		return view('admin.links.index')->with('links', $links);
 	}

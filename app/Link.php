@@ -53,13 +53,4 @@ class Link extends Model
     {
         return $this->belongsTo('App\Category');
     }
-
-    /**
-     * Obtener el scraping del link.
-     */
-    public function scraping()
-    {
-        return $this->belongsTo('App\Scraping')
-                    ->select(['id', 'title', 'src', 'content']);
-    }
 }

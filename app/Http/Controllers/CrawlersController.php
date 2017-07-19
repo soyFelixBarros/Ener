@@ -72,12 +72,18 @@ class CrawlersController extends Controller
     
     public function title()
     {
+        // $table = (new Link())->getTable();
         // Obtener un link
-        $link = Link::oldest('updated_at')->first();
+        $link = Link::where('status', 200, 'AND')
+                    ->where('scraping', false)
+                    ->oldest('updated_at')
+                    ->first();
 
+        // Obtener el status de la URL
         $status = $this->get_http_response_code($link->url);
 
-        $link->update(['status' => $status, 'scraping' => 1]);
+        // Actualziamos el campo Scraping
+        $link->update(array('scraping' => true));
 
         if ($status == 200) {
             // Obterner el contenido
@@ -117,18 +123,14 @@ class CrawlersController extends Controller
                         'status' => 'summary',
                     ]);
                 }
-
-                return array(
-                    'newspaper' => $post->newspaper->name,
-                    'title' => $post->title,
-                    'url' => $post->url
-                );
             }
         }
 
-        $link->update(['scraping' => 0]);
+        $link->status = $status;
+        $link->scraping = false;
+        $link->save();
 
-        return $status;
+        return $link;
     }
 
     public function summary()

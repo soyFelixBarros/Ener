@@ -4,6 +4,7 @@
 			<div class="col-xs-12">
 				<ul class="list-inline">
 					<li><a href="{{ route('about') }}">Información</a></li>
+					<li><a href="{{ route('newspapers') }}">Diarios</a></li>
 				</ul>
 			</div>
 		</div>

@@ -18,6 +18,11 @@
             <label>Url</label>
             <input type="text" name="url" class="form-control" value="{{ $link->url }}">
         </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" name="active" value="1" {{ $link->active ? ' checked' : '' }}> Activo
+            </label>
+        </div>
     </div><!-- .panel-body -->
 
     <div class="panel-footer">

@@ -11,8 +11,14 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class CrawlersController extends Controller
 {
+    public function __construct()
+    {
+        ini_set('default_socket_timeout', 10);
+    }
+
     private function get_http_response_code($url) {
-        $headers = get_headers($url);
+        $headers = @get_headers(urldecode($url));
+
         return (int) substr($headers[0], 9, 3);
     }
     

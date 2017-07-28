@@ -17,9 +17,9 @@
 			<table class=table>
 				<thead>
 					<tr>
+						<th></th>
 						<th>Url</th>
 						<th>Newspaper</th>
-						<th class="text-center">Status</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -27,9 +27,9 @@
 				<tbody>
 					@foreach ($links as $link)
 					<tr>
+						<th scope=row class="text-center{{ $link->active ? ' text-success' : ' text-danger' }}"><i class="fa fa-circle" aria-hidden="true"></i></th>
 						<td><a href="{{ $link->url }}" target="_blank">{{ $link->url }}</a></td>
 						<td>{{ $link->newspaper->name }}</td>
-						<th scope=row class="text-center{{ $link->status == 200 ? ' text-success' : ' text-danger' }}">{{ $link->status }}</th>
 						<th class="text-right">
 							<a href="{{ route('admin_scrapers_edit', ['id' => $link->newspaper->scraper->id]) }}" class="text-muted"><span class="glyphicon glyphicon-open-file" aria-hidden="true"></span></a> 
 							<a href="{{ route('admin_links_edit', ['id' => $link->id]) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>

@@ -1,0 +1,18 @@
+.sub-header {
+	background-color: #f4f9fd;
+	// border-bottom: 1px solid #eee;
+	margin-top: -21px;
+	margin-bottom: 20px;
+	padding-top: 21px;
+	.title {
+		color: #444;
+		line-height: 1em;
+		margin: 0 0 20px 0;
+	}
+	.breadcrumb {
+		padding: 2px 0;
+		margin: 0;
+		font-size: 13px;
+		background-color: transparent;
+	}
+}

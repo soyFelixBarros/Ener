@@ -3,5 +3,7 @@
 @section('title', $title)
 
 @section('content')
-@include('shared.posts', ['posts' => $posts])
+<div class="container"> 
+	@include('shared.posts', ['posts' => $posts])
+</div>
 @endsection

@@ -4,7 +4,7 @@
 @section('description', 'Informarte de la mejor manera. Todas las noticias de los diarios más importante de la provincia de Chaco, Argentina.')
 
 @section('content')
-<div class="container"> 
+<div class="container">
 	{{-- @include('shared.stories', ['stories' => $stories])
 	 --}}
 	@include('shared.posts', ['posts' => $posts, 'paginate' => false])

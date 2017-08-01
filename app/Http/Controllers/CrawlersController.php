@@ -80,8 +80,7 @@ class CrawlersController extends Controller
     {
         // $table = (new Link())->getTable();
         // Obtener un link
-        $link = Link::where('active', true, 'AND')
-                    ->where('scraping', false)
+        $link = Link::where('active', true)
                     ->oldest('updated_at')
                     ->first();
 

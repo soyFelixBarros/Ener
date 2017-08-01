@@ -3,9 +3,7 @@
 @section('content.admin')
 @if (isset($results))
 <pre>
-@foreach ($results as $domElement)
-{{ var_dump($domElement) }}
-@endforeach
+{{ var_dump($results) }}
 </pre>
 @endif
 <form class="panel panel-default" role="form" method="POST">
@@ -26,7 +24,7 @@
         </div>
         <div class="form-group{{ $errors->has('filter') ? ' has-error' : '' }}">
             <label>Filter</label>
-            <input type="text" name="filter" class="form-control" value="{{ $filter ? $filter : old('filter') }}">
+            <input type="text" name="filter" class="form-control" value="{{ isset($filter) ? $filter : old('filter') }}">
         </div>
     </div><!-- .panel-body -->
     <div class="panel-footer">

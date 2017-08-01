@@ -39,9 +39,9 @@ class ScraperSeeder extends Seeder
             // Chaco Dia Por Dia
             [
                 4,
-                '//section/section/section/div/div[1]/div/article[1]/h2/a',
-                '//div/figure//img/@src',
-                '/html/body/section/div[1]/article/h2/text()',
+                '//*[@class="td_block_inner"]/div[1]/div[1]/div[2]/div/div[1]/h3/a',
+                '//div[@class="td-post-featured-image"]/figure/img/@src',
+                '//p[@class="td-post-sub-title"]/text()',
             ],
 
             // Diario TAG

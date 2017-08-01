@@ -34,13 +34,11 @@ class LinkSeeder extends Seeder
             [3, 'http://www.datachaco.com/noticias/index_seccion/Actualidad', null],
 
             // Chaco Dia Por Dia
-            [4, 'http://www.chacodiapordia.com/politica', 1],
-            [4, 'http://www.chacodiapordia.com/economia', 3],
-            [4, 'http://www.chacodiapordia.com/produccion', 4],
-            [4, 'http://www.chacodiapordia.com/sociedad', 5],
-            [4, 'http://www.chacodiapordia.com/policiales', 2],
-            [4, 'http://www.chacodiapordia.com/cultura', 8],
-            [4, 'http://www.chacodiapordia.com/deportes', 9],
+            [4, 'http://www.chacodiapordia.com/category/politica/', 1],
+            [4, 'http://www.chacodiapordia.com/category/interior/', null],
+            [4, 'http://www.chacodiapordia.com/category/actualidad/', null],
+            [4, 'http://www.chacodiapordia.com/category/ciudad/', null],
+            [4, 'http://www.chacodiapordia.com/category/cultura/', 8],
 
             // Diario TAG
             [5, 'https://www.diariotag.com/tag/chaco', null],

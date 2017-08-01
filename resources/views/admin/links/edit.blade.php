@@ -28,6 +28,7 @@
     <div class="panel-footer">
         <div class="row">
             <div class="col-xs-4">
+                <a href="{{ route('admin_scrapers_page', ['url' => $link->url]) }}" type="submit" class="btn btn-default">Scraper</a>
             </div>
             <div class="col-xs-8 text-right">
                 <a href="{{ route('admin_links') }}" type="submit" class="btn btn-default">Cancel</a>

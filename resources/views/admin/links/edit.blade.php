@@ -8,6 +8,7 @@
                 <h3>Edit link</h3>
             </div>
             <div class="col-md-2 text-right">
+                <a href="{{ route('admin_links_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>
             </div>
         </div>
     </div><!-- .panel-heading -->
@@ -29,6 +30,7 @@
         <div class="row">
             <div class="col-xs-4">
                 <a href="{{ route('admin_scrapers_page', ['url' => $link->url]) }}" type="submit" class="btn btn-default">Scraper</a>
+                <a href="{{ route('admin_links_delete', ['id' => $link->id]) }}" type="submit" class="btn btn-danger">Delete</a>
             </div>
             <div class="col-xs-8 text-right">
                 <a href="{{ route('admin_links') }}" type="submit" class="btn btn-default">Cancel</a>

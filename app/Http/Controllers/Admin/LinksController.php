@@ -21,6 +21,32 @@ class LinksController extends Controller
 	}
 
 	/**
+	 * Vista con el formulario para agregar un link.
+	 *
+	 * @return Object
+	 */
+	public function create()
+	{
+		return view('admin.links.create');
+	}
+
+	/**
+	 * Metodo para agregar un link.
+	 *
+	 * @return Object
+	 */
+	public function store(Request $request)
+	{
+		$data = $request->except(['_token']);
+
+		$link = Link::create($data); 
+
+		return redirect()
+			   ->route('admin_links_edit', ['id' => $link->id])
+			   ->with('status', 'Link created!');
+	}
+
+	/**
 	 * Vista con el formulario para editar un link.
 	 *
 	 * @return Object
@@ -48,5 +74,34 @@ class LinksController extends Controller
 		return redirect()
 			   ->route('admin_links_edit', ['id' => $id])
 			   ->with('status', 'Link updated!');
+	}
+
+
+	/**
+	 * Vista con el formulario para eliminar un link.
+	 *
+	 * @return object
+	 */
+	public function delete($link)
+	{
+		$link = Link::withoutGlobalScopes()->find($link);
+
+		return view('admin.links.delete')->with('link', $link);
+	}
+
+	/**
+	 * Metodo para eliminar un link.
+	 *
+	 * @return object
+	 */
+	public function destroy($link)
+	{
+		$post = Link::withoutGlobalScopes()
+					->find($link)
+					->delete();
+
+		return redirect()
+			   ->route('admin_links')
+			   ->with('status', 'Link deleted!');
 	}
 }

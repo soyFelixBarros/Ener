@@ -71,7 +71,7 @@ class CrawlersController extends Controller
         $post = Post::withoutGlobalScopes()
                     ->where('newspaper_id', $newspaper_id, 'and')
                     ->where('title', 'LIKE', '%'.$title.'%', 'and')
-                    ->whereDate('created_at', date('Y-m-d'))
+                    ->whereYear('created_at', date('Y'))
                     ->first();
         return $post;
     }

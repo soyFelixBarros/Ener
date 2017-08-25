@@ -97,7 +97,7 @@ class CrawlersController extends Controller
                 $link->newspaper->scraper->title,
             ]);
             
-            if (empty($content)) {    
+            if ($content) {    
                 // Filtros
                 $title = trim($content->text());
                 $url = $this->prepareLink($content->attr('href'), $link->newspaper->website);

@@ -4,6 +4,13 @@ use Illuminate\Database\Seeder;
 
 class NewspaperSeeder extends Seeder
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Newspaper())->getTable();
+    }
+
     /**
      * Run the database seeds.
      *
@@ -21,13 +28,13 @@ class NewspaperSeeder extends Seeder
     		['Primera Línea', 'http://www.diarioprimeralinea.com.ar'],
     	];
 
-    	for ($i = 0; count($newspapers) > $i; $i++) {
-    		DB::table('newspapers')->insert([
+    	foreach ($newspapers as $newspaper) {
+    		DB::table($this->table)->insert([
                 'country_id' => 10,
                 'province_id' => 3,
-    			'name' => $newspapers[$i][0],
-    			'website' => $newspapers[$i][1],
-                'slug' => str_slug($newspapers[$i][0]),
+    			'name' => $newspaper[0],
+    			'website' => $newspaper[1],
+                'slug' => str_slug($newspaper[0]),
     		]);
     	}
     }

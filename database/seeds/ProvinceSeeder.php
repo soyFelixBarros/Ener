@@ -4,6 +4,13 @@ use Illuminate\Database\Seeder;
 
 class ProvinceSeeder extends Seeder
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Province())->getTable();
+    }
+    
     /**
      * Run the database seeds.
      *
@@ -39,12 +46,12 @@ class ProvinceSeeder extends Seeder
             ['AR-T', 'Tucumán'],
     	];
 
-    	for ($i = 0; count($provinces) > $i; $i++) {
-    		DB::table('provinces')->insert([
+        foreach ($provinces as $province) {
+    		DB::table($this->table)->insert([
                 'country_id' => 10,
-                'code' => $provinces[$i][0],
-    			'name' => $provinces[$i][1],
-                'slug' => str_slug($provinces[$i][1]),
+                'code' => $province[0],
+    			'name' => $province[1],
+                'slug' => str_slug($province[1]),
     		]);
     	}
     }

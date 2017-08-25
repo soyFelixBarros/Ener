@@ -6,6 +6,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateStoriesTable extends Migration
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Story())->getTable();
+    }
+        
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateStoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('stories', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +33,6 @@ class CreateStoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stories');
+        Schema::dropIfExists($this->table);
     }
 }

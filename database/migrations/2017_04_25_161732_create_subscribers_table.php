@@ -6,6 +6,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSubscribersTable extends Migration
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Subscriber())->getTable();
+    }
+
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateSubscribersTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscribers', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->nullable();
             $table->timestamps();
@@ -27,6 +34,6 @@ class CreateSubscribersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscribers');
+        Schema::dropIfExists($this->table);
     }
 }

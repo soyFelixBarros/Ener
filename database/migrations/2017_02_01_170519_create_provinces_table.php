@@ -6,6 +6,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateProvincesTable extends Migration
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Province())->getTable();
+    }
+
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateProvincesTable extends Migration
      */
     public function up()
     {
-        Schema::create('provinces', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');
@@ -30,6 +37,6 @@ class CreateProvincesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provinces');
+        Schema::dropIfExists($this->table);
     }
 }

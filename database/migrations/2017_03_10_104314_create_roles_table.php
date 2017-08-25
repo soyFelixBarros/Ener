@@ -6,6 +6,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateRolesTable extends Migration
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Role())->getTable();
+    }
+
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
@@ -27,6 +34,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists($this->table);
     }
 }

@@ -6,6 +6,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateFavoritesTable extends Migration
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Favorite())->getTable();
+    }
+
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateFavoritesTable extends Migration
      */
     public function up()
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->primary(['user_id', 'post_id']);
             $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('post_id')->index();
@@ -28,6 +35,6 @@ class CreateFavoritesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists($this->table);
     }
 }

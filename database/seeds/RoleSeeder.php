@@ -4,6 +4,13 @@ use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Role())->getTable();
+    }
+
     /**
      * Run the database seeds.
      *
@@ -16,10 +23,10 @@ class RoleSeeder extends Seeder
             ['Suscriptor']
     	];
 
-    	for ($i = 0; count($roles) > $i; $i++) {
-    		DB::table('roles')->insert([
-                'name' => $roles[$i][0],
-                'slug' => str_slug($roles[$i][0]),
+    	foreach ($roles as $role) {
+    		DB::table($this->table)->insert([
+                'name' => $role[0],
+                'slug' => str_slug($role[0]),
     		]);
     	}
     }

@@ -6,6 +6,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateCountriesTable extends Migration
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Country())->getTable();
+    }
+
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->string('code', 2)->unique();
             $table->string('name', 100);
@@ -28,6 +35,6 @@ class CreateCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists($this->table);
     }
 }

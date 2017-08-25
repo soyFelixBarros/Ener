@@ -4,6 +4,13 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\User())->getTable();
+    }
+
 	/**
      * Run the database seeds.
      *
@@ -11,7 +18,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('users')->insert([
+    	DB::table($this->table)->insert([
             [
                 'role_id' => 1,
             	'name' => 'Felix Barros',

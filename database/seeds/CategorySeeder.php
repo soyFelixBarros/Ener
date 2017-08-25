@@ -4,6 +4,13 @@ use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Category())->getTable();
+    }
+
     /**
      * Run the database seeds.
      *
@@ -25,10 +32,10 @@ class CategorySeeder extends Seeder
             ['Educación']
     	];
 
-    	for ($i = 0; count($categories) > $i; $i++) {
-    		DB::table('categories')->insert([
-    			'name' => $categories[$i][0],
-                'slug' => str_slug($categories[$i][0]),
+    	 foreach ($categories as $category) {
+    		DB::table($this->table)->insert([
+    			'name' => $category[0],
+                'slug' => str_slug($category[0]),
     		]);
     	}
     }

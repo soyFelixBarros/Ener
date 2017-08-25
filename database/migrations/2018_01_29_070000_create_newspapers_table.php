@@ -6,6 +6,13 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateNewspapersTable extends Migration
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Newspaper())->getTable();
+    }
+    
     /**
      * Run the migrations.
      *
@@ -13,7 +20,7 @@ class CreateNewspapersTable extends Migration
      */
     public function up()
     {
-        Schema::create('newspapers', function (Blueprint $table) {
+        Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');
@@ -32,6 +39,6 @@ class CreateNewspapersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('newspapers');
+        Schema::dropIfExists($this->table);
     }
 }

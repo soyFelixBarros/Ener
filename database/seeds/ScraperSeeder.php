@@ -4,6 +4,13 @@ use Illuminate\Database\Seeder;
 
 class ScraperSeeder extends Seeder
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Scraper())->getTable();
+    }
+
     /**
      * Run the database seeds.
      *
@@ -69,12 +76,12 @@ class ScraperSeeder extends Seeder
             ],
     	];
 
-    	for ($i = 0; count($scrapings) > $i; $i++) {
-    		DB::table('scrapers')->insert([
-                'newspaper_id' => $scrapings[$i][0],
-                'title' => $scrapings[$i][1],
-    			'src' => $scrapings[$i][2],
-    			'content' => $scrapings[$i][3],
+    	foreach ($scrapings as $scraper) {
+    		DB::table($this->table)->insert([
+                'newspaper_id' => $scraper[0],
+                'title' => $scraper[1],
+    			'src' => $scraper[2],
+    			'content' => $scraper[3],
     		]);
     	}
     }

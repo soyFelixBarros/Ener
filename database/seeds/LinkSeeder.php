@@ -4,6 +4,13 @@ use Illuminate\Database\Seeder;
 
 class LinkSeeder extends Seeder
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->table = (new App\Link())->getTable();
+    }
+    
     /**
      * Run the database seeds.
      *
@@ -58,11 +65,11 @@ class LinkSeeder extends Seeder
             [7, 'http://www.diarioprimeralinea.com.ar/opinion/', 6]
     	];
 
-    	for ($i = 0; count($links) > $i; $i++) {
-    		DB::table('links')->insert([
-                'newspaper_id' => $links[$i][0],
-    			'url' => $links[$i][1],
-                'category_id' => $links[$i][2]
+        foreach ($links as $link) {
+    		DB::table($this->table)->insert([
+                'newspaper_id' => $link[0],
+    			'url' => $link[1],
+                'category_id' => $link[2]
     		]);
     	}
     }

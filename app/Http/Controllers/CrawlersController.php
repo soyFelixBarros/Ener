@@ -13,7 +13,7 @@ class CrawlersController extends Controller
 {
     public function __construct()
     {
-        ini_set('default_socket_timeout', 15);
+        ini_set('default_socket_timeout', 30);
     }
 
     private function get_http_response_code($url) {

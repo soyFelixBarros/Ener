@@ -21,9 +21,12 @@ php artisan key:generate
 ```
 
 Abrimos el archivo .env y agregamos los datos de conexión a la base de datos:
-DB_DATABASE=cableraonline
-DB_USERNAME=root
-DB_PASSWORD=
+
+```
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+```
 
 Por últimos, creamos las tablas y cargamos los datos de ejemplos:
 ```bash
@@ -31,6 +34,6 @@ php artisan migrate:fresh
 php artisan db:seed
 ```
 
-## Contacto
+------
 
 Desarrollado por [Felix Barros](https://twitter.com/soyFelixBarros)

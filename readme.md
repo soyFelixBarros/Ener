@@ -1,8 +1,8 @@
 # Cablera Online
 
-> Informarte de la mejor manera
+> Visualizar todas las noticias en un solo lugar
 
-Un sistema informático que obtiene las noticias de los diarios digitales, las clasifica y ordena por categoría, tema y lugar.
+Cablera Online es un programa informatico que utiliza la técnica de [Web scraping](https://es.wikipedia.org/wiki/Web_scraping) para extraer las noticias de los diarios digitales más importantes.
 
 ## Instalación
 
@@ -20,7 +20,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-Abrimos el archivo .env y agregamos los datos de conexión a la base de datos:
+Abrimos el archivo .env y editamos los datos de conexión a la base de datos:
 
 ```
 DB_DATABASE=homestead

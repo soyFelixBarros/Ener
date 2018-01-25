@@ -4,7 +4,9 @@
 
 Cablera Online es un programa informatico que utiliza la técnica de [Web scraping](https://es.wikipedia.org/wiki/Web_scraping) para extraer las noticias de los diarios digitales más importantes.
 
-## Instalación
+## Desarrolladores
+
+### Instalación
 
 Desde la terminal vamos a comenzar clonando el proyecto e instalando las dependencias:
 
@@ -15,7 +17,7 @@ composer install
 ```
 
 Crear el archivo de configuración de Laravel y genera un APP_KEY:
-```md
+```bash
 cp .env.example .env
 php artisan key:generate
 ```
@@ -29,6 +31,7 @@ DB_PASSWORD=secret
 ```
 
 Por últimos, creamos las tablas y cargamos los datos de ejemplos:
+
 ```bash
 php artisan migrate:fresh
 php artisan db:seed

@@ -13,6 +13,7 @@ class CrawlersController extends Controller
 {
     public function __construct()
     {
+        // Definimos el tiempo de espera para la carga de los sitios web
         ini_set('default_socket_timeout', 30);
     }
 

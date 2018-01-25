@@ -1,21 +1,21 @@
 <?php
-
-use Illuminate\Http\Request;
-
-// User
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+$this->get('/', function () {
+	return 'API';
 });
-
-// Api/v1
-Route::group(['namespace' => 'Api\v1'], function () {
+// api.example.com
+Route::group(['prefix' => 'v1', 'namespace' => 'Api\v1'], function () {
+	
+	$this->get('/', function () {
+		return 'v1';
+	});
+	
 	// Posts
-	Route::group(['prefix' => 'posts'], function() {
-		$this->get('/', 'PostsController@all');
-		$this->post('/', 'PostsController@store');
-		$this->get('/{id?}', 'PostsController@find');
-		$this->put('/{id}', 'PostsController@update');
-		$this->delete('/{id}', 'PostsController@destroy');
+	$this->group(['prefix' => 'posts'], function () {
+		$this->get('/', 'PostController@index');
+		$this->post('/', 'PostController@store');
+		$this->get('/{id?}', 'PostController@find');
+		$this->put('/{id}', 'PostController@update');
+		$this->delete('/{id}', 'PostController@destroy');
 	});
 
 	// Newspapers

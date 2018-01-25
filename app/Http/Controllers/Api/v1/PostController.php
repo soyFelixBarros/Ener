@@ -7,21 +7,18 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePost;
+use App\Http\Resources\PostCollection;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
 	/**
-	 * Mostrar todas las entradas.
+	 * Mostrar todas las publicaciones.
 	 *
 	 * @return Response
 	 */
-	public function all()
+	public function index()
 	{
-		$posts = Post::latest()
-					 ->with('newspaper')
-					 ->get();
-
-		return response()->json($posts);
+		return new PostCollection(Post::all());
 	}
 
 	/**

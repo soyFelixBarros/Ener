@@ -17,7 +17,7 @@ class NewspapersController extends Controller
 	 */
 	public function index()
 	{
-		$newspapers = Newspaper::withoutGlobalScopes()->oldest('name')->paginate(15);
+		$newspapers = Newspaper::withoutGlobalScopes()->oldest('name')->paginate(30);
 
 		return view('admin.newspapers.index')->with('newspapers', $newspapers);
 	}

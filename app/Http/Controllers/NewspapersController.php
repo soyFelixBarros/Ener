@@ -19,7 +19,7 @@ class NewspapersController extends Controller
 		$newspaper = $request->newspaper;
 		$posts = $newspaper->posts()
 						   ->latest()
-						   ->paginate(30);
+						   ->paginate(40);
 
 		return view('newspapers.show', array(
 			'title' => $newspaper->name,

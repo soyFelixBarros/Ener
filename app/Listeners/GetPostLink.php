@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\LinkScraped;
+use App\Events\PostScraped;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class GetPostLink implements ShouldQueue
@@ -25,7 +25,9 @@ class GetPostLink implements ShouldQueue
      */
     public function handle(PostScraped $event)
     {
-        dd($event->link);
+        dd('link');
+        sleep(5);
+        return true;
 
         // Access the order using $event->order...
         // return false; // Retornar falso si el post ya existe

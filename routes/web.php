@@ -17,20 +17,8 @@ Route::group(['prefix' => 'newsletters'], function() {
 });
 
 // scraper.cablera.online
-Route::group(['domain' => 'scraper.'.env('APP_URL'), 'namespace' => 'Scraper'], function () {
-	$this->get('/', 'LinksController@index');
-});
-
-// scraper.{scraper}.cablera.online
-Route::group(['domain' => 'scraper.{scraper}'.env('SESSION_DOMAIN')], function () {
-	// Obtener el link del posts a screapear
-	//--
-	// Obtener el titulo del post
-	// $this->get('/title', 'CrawlersController@title');
-	// Obtener la bajada de la noticia
-	// $this->get('/summary', 'CrawlersController@summary');
-	// Obtener la imagen de la noticia
-	// $this->get('/image', 'CrawlersController@image');
+Route::group(['domain' => 'scraper.'.env('APP_URL')], function () {
+	$this->get('/', 'ScraperController@index');
 });
 
 // chaco.argentina.cablera.online

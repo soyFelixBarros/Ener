@@ -30,6 +30,7 @@ class Post extends Model
         'summary',
         'image',
         'url',
+        'url_hash',
         'status',
         'created_at',
         'updated_at',

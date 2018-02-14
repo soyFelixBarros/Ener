@@ -22,7 +22,8 @@ class ScraperSeeder extends Seeder
             // Diario Chaco
     		[
                 1,
-                '//div[2]/div[2]/h3/a',
+                '//h3/a',
+                '//article/h2/a[2]',
                 '//article//a//img/@src',
                 '//div[@class="field-item even"]/p[1] | //div[@class="field-item even"]/div[1]',
             ],
@@ -30,15 +31,17 @@ class ScraperSeeder extends Seeder
             // Diario NORTE
             [
                 2,
-                '//div[1]/section/article[1]/h3/a',
-                '//*[@id="body"]/section/article//img/@src',
-                '//summary/p',
+                '//article/a',
+                '//article/section/header/h1',
+                '//figure/img/@src',
+                '//article[1]/a/summary',
             ],
             
             // DataChaco.com
             [
                 3,
-                '//div[5]/div[2]/div[1]/div/div[2]/a',
+                '//div[@class="col-not-titulo"]/a',
+                '//*[@id="contenido-view"]/div/div[2]',
                 '//div[@class="carousel-inner"]/div/img/@data-original',
                 '//*[@id="contenido-view"]/div/div[4]/text()',
             ],
@@ -47,6 +50,7 @@ class ScraperSeeder extends Seeder
             [
                 4,
                 '//*[@class="td_block_inner"]/div[1]/div[1]/div[2]/div/div[1]/h3/a',
+                '//header/h1',
                 '//div[@class="td-post-featured-image"]/figure/img/@src',
                 '//p[@class="td-post-sub-title"]/text()',
             ],
@@ -54,7 +58,8 @@ class ScraperSeeder extends Seeder
             // Diario TAG
             [
                 5,
-                '//div[1]/article/h1/a',
+                '//article/h1/a',
+                '//h1',
                 '//a[@class="image-link"]/@href',
                 '//*/div[1]/div[4]/div[1]/div/div/p[1]/text()',
             ],
@@ -63,6 +68,7 @@ class ScraperSeeder extends Seeder
             [
                 6,
                 '//div[@class="rela-titu"]/a',
+                '//html/body/div[3]/div/div[2]/div[2]/div/a[1]',
                 '//div[@id="slider"]//img[1]/@src',
                 '//div[@class="vol-des"]',
             ],
@@ -70,7 +76,8 @@ class ScraperSeeder extends Seeder
             // Primera Línea
             [
                 7,
-                '//div[1]/div[2]/h5/a',
+                '//h3/a',
+                '//header/h1',
                 '//div[@class="caja"]/div/div/*/img/@src',
                 '//h3[@itemprop="description"]',
             ],
@@ -79,9 +86,10 @@ class ScraperSeeder extends Seeder
     	foreach ($scrapings as $scraper) {
     		DB::table($this->table)->insert([
                 'newspaper_id' => $scraper[0],
-                'title' => $scraper[1],
-    			'src' => $scraper[2],
-    			'content' => $scraper[3],
+                'href' => $scraper[1],
+                'title' => $scraper[2],
+    			'src' => $scraper[3],
+    			'content' => $scraper[4],
     		]);
     	}
     }

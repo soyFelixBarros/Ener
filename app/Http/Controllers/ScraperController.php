@@ -24,24 +24,27 @@ class ScraperController extends Controller
         $link->update(['scraping' => true]);
 
         // Prepara el crawler y ejecutar
-        $data = Crawler::extracting($link->url, $link->newspaper->scraper->title);
+        $data = Crawler::extracting($link->url, $link->newspaper->scraper->href);
 
-        $status = (boolean) $data->count();
+        if ((boolean) $data->count()) {
+            // Obtener el enlace del utlimo post y normalizar
+            $href = $data->attr('href');
 
-        $url = null;
+            // Normalizar url
+            $url = new Url($href);
 
-        if ($status) {
-            // Obtener el enlace del utlimo post
-            $urlPost = $data->attr('href');
-
-            // Normalizamos la url
-            $urlPost = new Url($urlPost);
-
-            // Disparamos el evento para obtener el contenido de una notcia
-            event(new PostScraped($urlPost));
+            // Disparar el evento para comenzar a obtener los diferentes elemento 
+            event(new PostScraped((object) [
+                'country_id' => $link->newspaper->country->id,
+                'province_id' => $link->newspaper->province->id,
+                'newspaper_id' => $link->newspaper->id,
+                'url' => $url->normalize($link->newspaper->website),
+                'url_hash' => $url->getHash(),
+                'xpath' => $link->newspaper->scraper
+            ]));
         }
 
-        dd(['url' => $link->url, 'scraping' => $status, 'post' => $url]);
+        dd($link->url);
         
         // Cambiar el estado del enlace
         $link->update(['scraping' => false]);

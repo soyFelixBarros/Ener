@@ -24,6 +24,7 @@ class CreateScrapersTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('newspaper_id')->nullable();
             $table->foreign('newspaper_id')->references('id')->on('newspapers')->onDelete('cascade');
+            $table->string('href');
             $table->string('title');
             $table->string('src');
             $table->string('content');

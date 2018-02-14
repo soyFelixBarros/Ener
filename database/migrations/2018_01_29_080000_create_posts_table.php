@@ -38,6 +38,7 @@ class CreatePostsTable extends Migration
             $table->text('summary')->nullable();
             $table->string('image')->nullable();
             $table->string('url')->nullable();
+            $table->string('url_hash', 32)->nullable()->unique();
             $table->string('status', 20)->default('publish');
             $table->timestamps();
         });

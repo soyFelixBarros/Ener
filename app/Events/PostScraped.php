@@ -8,16 +8,16 @@ class PostScraped
 {
     use SerializesModels;
     
-    public $link;
+    public $post;
 
     /**
      * Create a new event instance.
      *
-     * @param  Link  $link
+     * @param  Post  $post
      * @return void
      */
-    public function __construct($link)
+    public function __construct($post)
     {
-        $this->link = $link;
+        $this->post = $post;
     }
 }

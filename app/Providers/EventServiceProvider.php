@@ -14,8 +14,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\PostScraped' => [
-            'App\Listeners\GetPostTitle',
-            'App\Listeners\GetPostLink'
+            'App\Listeners\GetPostTitle'
+            // 'App\Listeners\GetPostLink'
         ],
     ];
 

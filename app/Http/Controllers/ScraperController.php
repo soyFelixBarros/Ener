@@ -17,20 +17,33 @@ class ScraperController extends Controller
 	 */
 	public function index()
 	{
-                // Obtener el ultimo enlace
-                $link = Link::where('active', true)->oldest('updated_at')->first();
+        // Obtener el ultimo enlace
+        $link = Link::where('active', true)->oldest('updated_at')->first();
 
-                // Prepara el crawler y ejecutar
-                $crawler = new Crawler($link->url, $link->newspaper->scraper->title);
-                $crawler->start();
+        // Cambiar el estado del enlace
+        $link->update(['scraping' => true]);
 
-                // Obtener el enlace del utlimo post
-                $baseUrl = $crawler->getContent()->attr('href');
-                
-                // Normalizamos la url
-                $url = new Url($baseUrl);
+        // Prepara el crawler y ejecutar
+        $data = Crawler::extracting($link->url, $link->newspaper->scraper->title);
 
-                // Disparamos el evento link para escrapear 
-                event(new PostScraped($url->normalize($link->newspaper->website)));
+        $status = (boolean) $data->count();
+
+        $url = null;
+
+        if ($status) {
+            // Obtener el enlace del utlimo post
+            $urlPost = $data->attr('href');
+
+            // Normalizamos la url
+            $urlPost = new Url($urlPost);
+
+            // Disparamos el evento para obtener el contenido de una notcia
+            event(new PostScraped($urlPost));
+        }
+
+        dd(['url' => $link->url, 'scraping' => $status, 'post' => $url]);
+        
+        // Cambiar el estado del enlace
+        $link->update(['scraping' => false]);
 	}
 }

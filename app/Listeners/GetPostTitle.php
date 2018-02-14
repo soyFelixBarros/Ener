@@ -25,8 +25,7 @@ class GetPostTitle implements ShouldQueue
      */
     public function handle(PostScraped $event)
     {
-        dd('title');
-        sleep(5);
+        dd($event->link);
         return true;
         // Access the order using $event->order...
         // return false; // Retornar falso si el post ya existe

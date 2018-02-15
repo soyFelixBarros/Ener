@@ -2,6 +2,8 @@
 
 namespace App\Listeners;
 
+use Felix\Scraper\Crawler;
+use App\Events\PostScraped;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ExistingPost implements ShouldQueue
@@ -12,12 +14,13 @@ class ExistingPost implements ShouldQueue
      * @param  PostScraped  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(PostScraped $event)
     {
-        $hasPost = \App\Post::where('url_hash', $event->post->url_hash)->exists();
+        $existsPost = \App\Post::where('url_hash', $event->post->url_hash)->exists();
         
-        if ($hasPost) {
-            return false;
-        }
+        // if ($existsPost) {
+        //     return false;
+        // }
+        $event->post->xpath->status = false;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use Felix\Scraper\Crawler;
+use App\Events\PostScraped;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ExtractingPostTitle implements ShouldQueue
@@ -57,28 +58,27 @@ class ExtractingPostTitle implements ShouldQueue
      * @param  PostScraped  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(PostScraped $event)
     {
-        $data = Crawler::extracting($event->post->url, $event->post->xpath->title);
+		dd($event->handle());
+        // $data = Crawler::extracting($event->post->url, $event->post->xpath->title);
 
-        // Si no existe titulo retornar 'false'
-        if (! (boolean) $data->count()) {
-            return false;
-        }
+        // // Si no existe titulo retornar 'false'
+        // if (! (boolean) $data->count()) {
+        //     return false;
+        // }
 
-        // Limpiar el titulo de caracteres extraños
-        $title = $this->clean($data->text());
+        // // Limpiar el titulo de caracteres extraños
+        // $title = $this->clean($data->text());
 
-        // Crear post con un título
-        $post = \App\Post::create([
-            'country_id' => $event->post->country_id,
-            'province_id' => $event->post->province_id,
-            'newspaper_id' => $event->post->newspaper_id,
-            'title' => $title,
-            'url' => $event->post->url,
-            'url_hash' => $event->post->url_hash
-        ]);
-        
-        dd($post);
+        // // Crear post con un título
+        // $post = \App\Post::create([
+        //     'country_id' => $event->post->country_id,
+        //     'province_id' => $event->post->province_id,
+        //     'newspaper_id' => $event->post->newspaper_id,
+        //     'title' => $title,
+        //     'url' => $event->post->url,
+        //     'url_hash' => $event->post->url_hash
+        // ]);
     }
 }

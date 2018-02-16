@@ -60,25 +60,28 @@ class ExtractingPostTitle implements ShouldQueue
      */
     public function handle(PostScraped $event)
     {
-		dd($event->handle());
-        // $data = Crawler::extracting($event->post->url, $event->post->xpath->title);
+		$existsPost = \App\Post::where('url_hash', $event->post->url_hash)->exists();
+        
+		if (! $existsPost) {
+			$data = Crawler::extracting($event->post->url, $event->post->xpath->title);
 
-        // // Si no existe titulo retornar 'false'
-        // if (! (boolean) $data->count()) {
-        //     return false;
-        // }
-
-        // // Limpiar el titulo de caracteres extraños
-        // $title = $this->clean($data->text());
-
-        // // Crear post con un título
-        // $post = \App\Post::create([
-        //     'country_id' => $event->post->country_id,
-        //     'province_id' => $event->post->province_id,
-        //     'newspaper_id' => $event->post->newspaper_id,
-        //     'title' => $title,
-        //     'url' => $event->post->url,
-        //     'url_hash' => $event->post->url_hash
-        // ]);
+			// Si no existe titulo retornar 'false'
+			if (! (boolean) $data->count()) {
+				return false;
+			}
+	
+			// Limpiar el titulo de caracteres extraños
+			$title = $this->clean($data->text());
+	
+			// Crear post con un título
+			$post = \App\Post::create([
+				'country_id' => $event->post->country_id,
+				'province_id' => $event->post->province_id,
+				'newspaper_id' => $event->post->newspaper_id,
+				'title' => $title,
+				'url' => $event->post->url,
+				'url_hash' => $event->post->url_hash
+			]);
+		}
     }
 }

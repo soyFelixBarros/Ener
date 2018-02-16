@@ -41,20 +41,19 @@ class RunScraper extends Command
     {
         $links = Link::where('active', true)->get();
         $count = count($links);
+        
+        $this->line("\n Scraping ${count} web pages:\n");
 
-        $bar = $this->output->createProgressBar($count);
-
+        $bar = $this->output->createProgressBar($count); 
+        
         foreach ($links as $link) {
-            // Cambiar el estado del enlace
-            $link->update(['scraping' => true]);
 
             ProcessPost::dispatch($link);
-
-            // Cambiar el estado del enlace
-            $link->update(['scraping' => false]);
 
             $bar->advance();
         }
         $bar->finish();
+
+        $this->info("\n\n Finish.\n");
     }
 }

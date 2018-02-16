@@ -14,7 +14,6 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\PostScraped' => [
-            'App\Listeners\ExistingPost',
             'App\Listeners\ExtractingPostTitle'
         ],
     ];

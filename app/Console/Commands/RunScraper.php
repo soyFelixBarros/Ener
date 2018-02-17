@@ -47,8 +47,13 @@ class RunScraper extends Command
         $bar = $this->output->createProgressBar($count); 
         
         foreach ($links as $link) {
+            // Cambiar el estado del enlace
+            $link->update(['scraping' => true]);
 
             ProcessPost::dispatch($link);
+            
+            // Cambiar el estado del enlace
+            $link->update(['scraping' => false]);
 
             $bar->advance();
         }

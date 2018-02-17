@@ -34,9 +34,6 @@ class ProcessPost implements ShouldQueue
      */
     public function handle()
     {
-        // Cambiar el estado del enlace
-        $this->link->update(['scraping' => true]);
-
         // Prepara el crawler y ejecutar
         $data = Crawler::extracting($this->link->url, $this->link->newspaper->scraper->href);
             
@@ -57,8 +54,5 @@ class ProcessPost implements ShouldQueue
                 'xpath' => $this->link->newspaper->scraper
             ]));
         }
-        
-        // Cambiar el estado del enlace
-        $link->update(['scraping' => false]);
     }
 }

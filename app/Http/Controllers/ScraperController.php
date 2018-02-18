@@ -2,21 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Link;
 use Felix\Scraper\Url;
 use Felix\Scraper\Str;
 use Felix\Scraper\Crawler;
+use App\Events\PageScraping;
 use Illuminate\Http\Request;
 
 class ScraperController extends Controller
 {
+	public function test()
+	{
+		$link = Link::where('active', true)
+					->oldest('updated_at')
+					->first();
+		
+		$link->update(['scraping' => true]);
+
+		event(new PageScraping($link));
+
+		$link->update(['scraping' => false]);
+		
+		return 'Done.';
+	}
+
 	/**
-	 * Comenzaro con el proceso de raspado web.
+	 * Test para el scraper.
 	 *
 	 * @return Object
 	 */
 	public function index()
 	{
-		$data = Crawler::extracting('http://www.diario21.tv/notix2/noticias/1/chaco.html', '//div[@class="rela-titu"]/a');
+		$data = Crawler::extracting('https://www.diariotag.com/tag/chaco', '//article/h1/a');
 
 		// Si no existe titulo retornar 'false'
 		if (! (boolean) $data->count()) {
@@ -26,7 +43,7 @@ class ScraperController extends Controller
 		// Normalizar url
 		$url = new Url($data->attr('href'));
 
-		$data = Crawler::extracting($url->normalize($data->getBaseHref()), '//a[@class="tit-cata"]');
+		$data = Crawler::extracting($url->normalize('https://www.diariotag.com'), '//h1');
 
 		// Si no existe titulo retornar 'false'
 		if (! (boolean) $data->count()) {

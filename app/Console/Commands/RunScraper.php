@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Link;
-use App\Jobs\ProcessPost;
+use App\Events\PageScraping;
 use Illuminate\Console\Command;
 
 class RunScraper extends Command
@@ -40,24 +40,12 @@ class RunScraper extends Command
     public function handle()
     {
         $links = Link::where('active', true)->get();
-        $count = count($links);
-        
-        $this->line("\n Scraping ${count} web pages:\n");
 
-        $bar = $this->output->createProgressBar($count); 
-        
+        $this->line("\n Scraping web pages.\n");
+
         foreach ($links as $link) {
-            // Cambiar el estado del enlace
-            $link->update(['scraping' => true]);
-
-            ProcessPost::dispatch($link);
-            
-            // Cambiar el estado del enlace
-            $link->update(['scraping' => false]);
-
-            $bar->advance();
+            event(new PageScraping($link));
         }
-        $bar->finish();
 
         $this->info("\n\n Finish.\n");
     }

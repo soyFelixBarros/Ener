@@ -76,7 +76,7 @@ class ScraperSeeder extends Seeder
             // Primera Línea
             [
                 7,
-                '//h3/a',
+                '//div[@class="td-ss-main-content"]//h3/a',
                 '//header/h1',
                 '//div[@class="caja"]/div/div/*/img/@src',
                 '//h3[@itemprop="description"]',

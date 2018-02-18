@@ -13,7 +13,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\PostScraped' => [
+        'App\Events\PageScraping' => [
+            'App\Listeners\ExtractingPostLink'
+        ],
+        'App\Events\PostScraping' => [
+            'App\Listeners\CheckingPostExists',
             'App\Listeners\ExtractingPostTitle'
         ],
     ];

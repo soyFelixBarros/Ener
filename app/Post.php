@@ -26,9 +26,9 @@ class Post extends Model
         'province_id',
         'newspaper_id',
         'category_id',
+        'image_id',
         'title',
         'summary',
-        'image',
         'url',
         'url_hash',
         'status',
@@ -106,5 +106,13 @@ class Post extends Model
     public function parent()
     {
         return $this->belongsTo(self::class, 'parent_id', 'id');
+    }
+    
+    /**
+     * Obtener la imagen.
+     */
+    public function image()
+    {
+        return $this->belongsTo('App\Image');
     }
 }

@@ -34,9 +34,10 @@ class CreatePostsTable extends Migration
             $table->foreign('newspaper_id')->references('id')->on('newspapers');
             $table->unsignedInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedInteger('image_id')->nullable();
+            $table->foreign('image_id')->references('id')->on('images');
             $table->string('title');
-            $table->text('summary')->nullable();
-            $table->string('image')->nullable();
+            $table->text('content')->nullable();
             $table->string('url')->nullable();
             $table->string('url_hash', 32)->nullable()->unique();
             $table->string('status', 20)->default('publish');

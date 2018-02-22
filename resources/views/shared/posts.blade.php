@@ -27,8 +27,8 @@
                     </h6>
                 </hgroup>
             </header>
-            @if ($post->summary)
-            <p class="summary">{{ str_limit($post->summary, 130) }}</p>
+            @if ($post->content)
+            <p class="summary">{{ str_limit($post->content, 130) }}</p>
             @endif
             </div>
         </div>

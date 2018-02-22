@@ -8,7 +8,7 @@ use App\Events\PostScraping;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ExtractingPostTitle
+class ExtractingPostContent
 {
 	/**
      * Create the event listener.
@@ -28,26 +28,28 @@ class ExtractingPostTitle
      */
     public function handle(PostScraping $event)
     {
-		$data = Crawler::extracting($event->post->url, $event->post->xpath->title);
+		$data = Crawler::extracting($event->post->url, $event->post->xpath->content);
 
 		// Si no existe titulo retornar 'false'
 		if ($data->count() === 0) {
 			return false;
+        }
+
+        // Obtener todos los párrafos
+		$paragraphs = $data->extract(array('_text'));
+		$arr = array();
+
+		foreach ($paragraphs as $p) {
+            $p = Str::clean($p);
+			if ($p != "") {
+				array_push($arr, $p);
+			}
 		}
 
-		// Limpiar el titulo de caracteres extraños
-		$title = Str::clean($data->text());
+		$content = implode("\n", $arr);
 
-		// Crear post con un título
-		$post = new \App\Post;
-		$post->country_id = $event->post->country_id;
-		$post->province_id = $event->post->province_id;
-		$post->newspaper_id = $event->post->newspaper_id;
-		$post->title =  $title;
-		$post->url = $event->post->url;
-		$post->url_hash = $event->post->url_hash;
-		$post->save();
+        $post = \App\Post::where('url_hash', $event->post->url_hash)->update(['content' => $content]);
 
-		var_dump($title);
+        var_dump($content);
     }
 }

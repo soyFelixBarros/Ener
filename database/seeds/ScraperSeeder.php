@@ -24,8 +24,8 @@ class ScraperSeeder extends Seeder
                 1,
                 '//h3/a',
                 '//article/h2/a[2]',
-                '//article//a//img/@src',
-                '//div[@class="field-item even"]/p[1] | //div[@class="field-item even"]/div[1]',
+                '//html/head/meta[@property="og:image"]/@content',
+                '//div[@class="cuerpo"]//div[@class="field-items"]/div/*',
             ],
             
             // Diario NORTE
@@ -34,7 +34,7 @@ class ScraperSeeder extends Seeder
                 '//article/a',
                 '//article/section/header/h1',
                 '//figure/img/@src',
-                '//article[1]/a/summary',
+                '//article//section[@class="body"]/p',
             ],
             
             // DataChaco.com
@@ -42,8 +42,8 @@ class ScraperSeeder extends Seeder
                 3,
                 '//div[@class="col-not-titulo"]/a',
                 '//*[@id="contenido-view"]/div/div[2]',
-                '//div[@class="carousel-inner"]/div/img/@data-original',
-                '//*[@id="contenido-view"]/div/div[4]/text()',
+                '//html/head/meta[@property="og:image"]/@content',
+                '//div[@class="view-cuerpo"]/p',
             ],
 
             // Chaco Dia Por Dia
@@ -51,8 +51,8 @@ class ScraperSeeder extends Seeder
                 4,
                 '//*[@class="td_block_inner"]/div[1]/div[1]/div[2]/div/div[1]/h3/a',
                 '//header/h1',
-                '//div[@class="td-post-featured-image"]/figure/img/@src',
-                '//p[@class="td-post-sub-title"]/text()',
+                '//html/head/meta[@property="og:image"]/@content',
+                '//div[@class="td-post-content"]/p',
             ],
 
             // Diario TAG
@@ -60,8 +60,8 @@ class ScraperSeeder extends Seeder
                 5,
                 '//article/h1/a',
                 '//h1',
-                '//a[@class="image-link"]/@href',
-                '//*/div[1]/div[4]/div[1]/div/div/p[1]/text()',
+                '//html/head/meta[@property="og:image:url"]/@content',
+                '//div[@class="field-items"]//*',
             ],
 
             // diario21.tv
@@ -70,16 +70,16 @@ class ScraperSeeder extends Seeder
                 '//div[@class="rela-titu"]/a',
                 '//a[@class="tit-cata"]',
                 '//div[@id="slider"]//img[1]/@src',
-                '//div[@class="vol-des"]',
+                '//div[@class="titulo-des"]/p',
             ],
 
             // Primera Línea
             [
                 7,
                 '//div[@class="td-ss-main-content"]//h3/a',
-                '//header/h1',
+                '//header[@class="td-post-title"]/h1[@class="entry-title"]',
                 '//div[@class="caja"]/div/div/*/img/@src',
-                '//h3[@itemprop="description"]',
+                '//div[@class="td-post-content"]/p',
             ],
     	];
 
@@ -88,7 +88,7 @@ class ScraperSeeder extends Seeder
                 'newspaper_id' => $scraper[0],
                 'href' => $scraper[1],
                 'title' => $scraper[2],
-    			'src' => $scraper[3],
+    			'image' => $scraper[3],
     			'content' => $scraper[4],
     		]);
     	}

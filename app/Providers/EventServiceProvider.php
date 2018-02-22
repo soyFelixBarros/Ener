@@ -18,7 +18,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\PostScraping' => [
             'App\Listeners\CheckingPostExists',
-            'App\Listeners\ExtractingPostTitle'
+            'App\Listeners\ExtractingPostTitle',
+            'App\Listeners\ExtractingPostContent',
+            'App\Listeners\ExtractingPostImage'
         ],
     ];
 

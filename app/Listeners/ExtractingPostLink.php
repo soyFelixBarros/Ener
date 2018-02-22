@@ -9,7 +9,7 @@ use App\Events\PostScraping;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ExtractingPostLink implements ShouldQueue
+class ExtractingPostLink
 {
     /**
      * Create the event listener.

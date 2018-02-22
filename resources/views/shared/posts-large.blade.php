@@ -28,8 +28,8 @@
 	                </h6>
 	            </hgroup>
 	        </header>
-	        @if ($post->summary)
-	        <p class="summary">{{ $post->summary }}</p>
+	        @if ($post->content)
+	        <p class="summary">{{ $post->content }}</p>
 	        @endif
 	        </div>
         </div>

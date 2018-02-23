@@ -25,7 +25,7 @@ class CreateImagesTable extends Migration
             $table->string('file');
             $table->integer('width');
             $table->integer('height');
-            $table->string('hash', 16)->unique();
+            $table->string('hash', 32)->nullable()->unique();
             $table->timestamps();
         });
     }

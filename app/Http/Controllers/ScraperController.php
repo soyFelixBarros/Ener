@@ -9,7 +9,6 @@ use Felix\Scraper\Str;
 use Felix\Scraper\Crawler;
 use App\Events\PageScraping;
 use Illuminate\Http\Request;
-use Jenssegers\ImageHash\ImageHash;
 use Intervention\Image\ImageManagerStatic as Manager;
 
 class ScraperController extends Controller
@@ -82,8 +81,8 @@ class ScraperController extends Controller
 
 	public function index()
 	{
-		$url = 'http://www.chacodiapordia.com/2018/02/20/cultura-firmo-un-convenio-con-lapachito-para-el-fomento-de-la-actividad-cultural/';
-		$xpath = '//html/head/meta[@property="og:image"]/@content';
+		$url = 'http://www.datachaco.com/noticias/view/105090';
+		$xpath = '//div[@class="carousel-inner"]/div/img/@data-original';
 
 		$data = Crawler::extracting($url, $xpath);
 
@@ -92,20 +91,21 @@ class ScraperController extends Controller
 			return false;
 		}
 
-		$src = $data->text();
-		$hasher = new ImageHash();
-		$hash = $hasher->hash('http://www.chacodiapordia.com/wp-content/uploads/2018/02/01-CONVENIO-%E2%80%93-LAPACHITO-3.jpg');
+		$url = new Url($data->text());
+		$src = $url->normalize('http://www.datachaco.com');
+		// $src = $url->addScheme();
+		$hash = md5_file($src);
 		$file = $hash.'.jpg';
 		$dir = public_path('/uploads/images/');
 		$path = $dir.$file;
 
 		// Obtenemos la imagen desde la base de datos
 		$image = Image::where('hash', $hash)->first();
-
+		// 'http://www.chacodiapordia.com/wp-content/uploads/2018/02/01-CONVENIO-%E2%80%93-LAPACHITO-3.jpg'
 		// Si no existe, crearlas
 		if ($image === null) {
 			// Guardar la imagen en el servidor
-			$manager = Manager::make('http://www.chacodiapordia.com/wp-content/uploads/2018/02/01-CONVENIO-%E2%80%93-LAPACHITO-3.jpg')->save($path);
+			$manager = Manager::make($src)->save($path);
 
 			// Guardar en la base de datos
 			$image = new Image();

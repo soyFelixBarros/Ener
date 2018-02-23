@@ -3,9 +3,9 @@
 namespace App\Listeners;
 
 use App\Image;
+use Felix\Scraper\Url;
 use Felix\Scraper\Crawler;
 use App\Events\PostScraping;
-use Jenssegers\ImageHash\ImageHash;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Intervention\Image\ImageManagerStatic as Manager;
@@ -37,9 +37,9 @@ class ExtractingPostImage
 			return false;
 		}
 
-		$src = $data->text();
-		$hasher = new ImageHash();
-		$hash = $hasher->hash($src);
+		$url = new Url($data->text());
+		$src = $url->normalize($event->post->newspaper->website);
+		$hash = md5_file($src);
 		$file = $hash.'.jpg';
 		$dir = public_path('/uploads/images/');
 		$path = $dir.$file;

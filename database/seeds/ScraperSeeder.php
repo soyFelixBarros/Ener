@@ -42,7 +42,7 @@ class ScraperSeeder extends Seeder
                 3,
                 '//div[@class="col-not-titulo"]/a',
                 '//*[@id="contenido-view"]/div/div[2]',
-                '//html/head/meta[@property="og:image"]/@content',
+                '//div[@class="carousel-inner"]/div/img/@data-original',
                 '//div[@class="view-cuerpo"]/p',
             ],
 

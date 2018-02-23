@@ -47,7 +47,8 @@ class ExtractingPostLink
 		event(new PostScraping((object) [
 			'country_id' => $event->link->newspaper->country->id,
 			'province_id' => $event->link->newspaper->province->id,
-			'newspaper_id' => $event->link->newspaper->id,
+            'newspaper_id' => $event->link->newspaper->id,
+            'newspaper' => $event->link->newspaper,
 			'url' => $url->normalize($event->link->newspaper->website),
 			'url_hash' => $url->getHash(),
 			'xpath' => $event->link->newspaper->scraper

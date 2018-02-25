@@ -33,12 +33,16 @@ class LinkSeeder extends Seeder
             [2, 'http://www.diarionorte.com/politica/', 1],
             [2, 'http://www.diarionorte.com/locales/', null],
             [2, 'http://www.diarionorte.com/interior/', null],
+            [2, 'http://www.diarionorte.com/voces-de-la-ciudad/', null],
+            [2, 'http://www.diarionorte.com/salud/', null],
 
             // DataChaco.com
             [3, 'http://www.datachaco.com/noticias/index_seccion/Cultura', 8],
             [3, 'http://www.datachaco.com/noticias/index_seccion/Policiales', 2],
             [3, 'http://www.datachaco.com/noticias/index_seccion/Polit%C3%ADca', 1],
             [3, 'http://www.datachaco.com/noticias/index_seccion/Actualidad', null],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Educaci%C3%B3n', null],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Sociedad', null],
 
             // Chaco Dia Por Dia
             [4, 'http://www.chacodiapordia.com/category/politica/', 1],
@@ -46,6 +50,7 @@ class LinkSeeder extends Seeder
             [4, 'http://www.chacodiapordia.com/category/actualidad/', null],
             [4, 'http://www.chacodiapordia.com/category/ciudad/', null],
             [4, 'http://www.chacodiapordia.com/category/cultura/', 8],
+            [4, 'http://www.chacodiapordia.com/category/opinion/', null],
 
             // Diario TAG
             [5, 'https://www.diariotag.com/tag/chaco', null],
@@ -57,12 +62,12 @@ class LinkSeeder extends Seeder
             [6, 'http://www.diario21.tv/notix2/noticias/1/chaco.html', null],
 
             // Primera Línea
-            [7, 'http://www.diarioprimeralinea.com.ar/politica/', 1],
-            [7, 'http://www.diarioprimeralinea.com.ar/informacion-general/', null],
-            [7, 'http://www.diarioprimeralinea.com.ar/policiales/', 2],
-            [7, 'http://www.diarioprimeralinea.com.ar/deportes/', 9],
-            [7, 'http://www.diarioprimeralinea.com.ar/cultura-espectaculos/', 8],
-            [7, 'http://www.diarioprimeralinea.com.ar/opinion/', 6]
+            [7, 'http://diarioprimeralinea.com.ar/politica/gran-resistencia/', 1],
+            [7, 'http://diarioprimeralinea.com.ar/politica/interior/', 1],
+            [7, 'http://diarioprimeralinea.com.ar/informacion-general/gran-resistencia-informacion-general/', null],
+            [7, 'http://diarioprimeralinea.com.ar/informacion-general/interior-informacion-general/', null],
+            [7, 'http://diarioprimeralinea.com.ar/policiales/', 2],
+            [7, 'http://diarioprimeralinea.com.ar/deportes/', 9]
     	];
 
         foreach ($links as $link) {

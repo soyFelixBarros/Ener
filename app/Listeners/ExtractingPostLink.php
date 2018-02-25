@@ -41,7 +41,7 @@ class ExtractingPostLink
 		$href = $data->attr('href');
 					
 		// Normalizar url
-        $url = new Url($href);
+        $url = Url::normalize($href, $event->link->newspaper->website);
         					
 		// Disparar el evento para comenzar a obtener los diferentes elemento 
 		event(new PostScraping((object) [
@@ -49,8 +49,8 @@ class ExtractingPostLink
 			'province_id' => $event->link->newspaper->province->id,
             'newspaper_id' => $event->link->newspaper->id,
             'newspaper' => $event->link->newspaper,
-			'url' => $url->normalize($event->link->newspaper->website),
-			'url_hash' => $url->getHash(),
+			'url' => $url,
+			'url_hash' => md5($url),
 			'xpath' => $event->link->newspaper->scraper
 		]));
     }

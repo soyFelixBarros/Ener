@@ -60,7 +60,7 @@ class ScraperSeeder extends Seeder
                 5,
                 '//article/h1/a',
                 '//h1',
-                '//html/head/meta[@property="og:image:url"]/@content',
+                '//div[@class="node-content"]/a[@class="image-link"]/@href',
                 '//div[@class="field-items"]//*',
             ],
 
@@ -78,7 +78,7 @@ class ScraperSeeder extends Seeder
                 7,
                 '//div[@class="td-ss-main-content"]//h3/a',
                 '//header[@class="td-post-title"]/h1[@class="entry-title"]',
-                '//div[@class="caja"]/div/div/*/img/@src',
+                '//div[@class="td-post-featured-image"]//@href',
                 '//div[@class="td-post-content"]/p',
             ],
     	];

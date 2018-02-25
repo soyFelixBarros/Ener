@@ -36,9 +36,8 @@ class ExtractingPostImage
 		if ($data->count() === 0) {
 			return false;
 		}
-
-		$url = new Url($data->text());
-		$src = $url->normalize($event->post->newspaper->website);
+		
+		$src = Url::normalize($data->text(), $event->post->newspaper->website);
 		$hash = md5_file($src);
 		$file = $hash.'.jpg';
 		$dir = public_path('/uploads/images/');

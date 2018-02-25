@@ -43,7 +43,7 @@ class ScraperSeeder extends Seeder
                 '//div[@class="col-not-titulo"]/a',
                 '//*[@id="contenido-view"]/div/div[2]',
                 '//div[@class="carousel-inner"]/div/img/@data-original',
-                '//div[@class="view-cuerpo"]/p',
+                '//div[@class="view-cuerpo"]/*',
             ],
 
             // Chaco Dia Por Dia

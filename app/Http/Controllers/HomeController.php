@@ -15,9 +15,9 @@ class HomeController extends Controller
         //                 ->first();
 
         $posts = Post::where('status', 'publish')
-                     ->whereDate('created_at', date('Y-n-j'))
-                     ->latest()
-                     ->get();
+                    //  ->whereDate('created_at', date('Y-n-j'))
+                    ->latest()
+                    ->get();
 
         return view('home', array(
             // 'stories' => $stories,

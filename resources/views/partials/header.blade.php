@@ -1,70 +1,42 @@
-<header class="navbar navbar-default" role="banner">
+<header class="navbar navbar-light bg-light navbar-expand-lg mb-4" role="banner">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ route('home') }}" rel="home">
-                <img src="/images/mini-logo.png" alt="{{ config('app.name') }}">
-                <h1>{{ config('app.name') }}</h1>
-                <h2>Chaco, Argentina</h2>
-{{--                 @if (request()->province)
-                <h2>{{ request()->province->name }}, {{ request()->country->name }}</h2>
-                @elseif (request()->country)
-                <h2>{{ request()->country->name }}</h2>
-                @else
-                <h2>Noticias</h2>
-                @endif --}}
-            </a>
-            @if (request()->category)
-            <p class="navbar-text category {{ request()->category->slug }}">{{ request()->category->name }}</p>
-            @endif
-        </div>
+        <a class="navbar-brand mb-0 h1" href="{{ route('home') }}">
+            {{--  <img src="/images/mini-logo.png" width="30" height="30" class="d-inline-block align-top" alt="Mini logo {{ route('home') }}">  --}}
+            {{ config('app.name') }}
+        </a>
+        <span class="navbar-text">
+            Chaco, Argentina
+        </span>
 
-
-        <nav class="collapse navbar-collapse" id="app-navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li{{ Request::is('/') ? ' class=active' : '' }}><a href="{{ route('home') }}" rel="home">{{ __('navbar.home') }}</a></li>
-                <li{{ Request::is('politica') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'politica']) }}">{{ __('navbar.politics') }}</a></li>
-                <li{{ Request::is('policiales') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'policiales']) }}">Policiales</a></li>
-                <li{{ Request::is('deportes') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'deportes']) }}">Deportes</a></li>
-                <li{{ Request::is('cultura') ? ' class=active' : '' }}><a href="{{ route('category_show', ['category' => 'cultura']) }}">Cultura</a></li>
+        <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
                 @if (Auth::check())
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
 
-                    <ul class="dropdown-menu" role="menu">
-                        @if (Auth::user()->hasRole('admin'))
-                        <li><a href="{{ route('admin_posts') }}">Administración</a></li>
-                        @endif
-                        <li><a href="{{ route('favorites') }}">Favorities</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header"><i class="fa fa-fw fa-btn fa-cog"></i> Settings</li>
-                        <li>
-                            <a href="{{ route('profile') }}">Profile</a>
-                            <a href="{{ route('security') }}">Security</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                <i class="fa fa-fw fa-btn fa-sign-out"></i>Logout
-                            </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (Auth::user()->hasRole('admin'))
+                            <a href="{{ route('admin_posts') }}" class="dropdown-item">Administración</a>
+                            <div class="dropdown-divider"></div>
+                            @endif
+                            <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
+                            <a href="{{ route('security') }}" class="dropdown-item">Security</a>
+                            <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
-                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                        </div>
+                    </li>
                 @endif
             </ul>
         </nav>
-    </div>
+    </div><!-- .container -->
 </header>

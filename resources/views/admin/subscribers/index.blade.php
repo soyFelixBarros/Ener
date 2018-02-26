@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('title', 'Subscribers')
 @section('content.admin')
-<div class="panel panel-default">
-	<div class="panel-heading">
+<div class="card">
+	<div class="card-header">
 		<div class="row">
 			<div class="col-md-10">
 				<h3>Subscribers</h3>
@@ -12,7 +12,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="panel-body">
+	<div class="card-body">
 		@if (count($subscribers) > 0)
 		<div class="table-responsive">
 			<table class=table>

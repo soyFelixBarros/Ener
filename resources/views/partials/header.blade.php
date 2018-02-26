@@ -1,6 +1,6 @@
 <header class="navbar navbar-light bg-light navbar-expand-lg mb-4" role="banner">
     <div class="container">
-        <a class="navbar-brand mb-0 h1" href="{{ route('home') }}">
+        <a class="navbar-brand mb-0 h1 text-uppercase" href="{{ route('home') }}">
             {{--  <img src="/images/mini-logo.png" width="30" height="30" class="d-inline-block align-top" alt="Mini logo {{ route('home') }}">  --}}
             {{ config('app.name') }}
         </a>
@@ -38,7 +38,7 @@
                 @endif
             </ul>
             <form class="form-inline my-2 my-lg-0" action="/search">
-                <img src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.svg" width="130" class="mr-2">
+                <img src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.svg" width="130" class="mr-3">
                 <input name="q" class="form-control mr-sm-2" type="search" aria-label="Search" value="{{ old('q') }}">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
             </form>

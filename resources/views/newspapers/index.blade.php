@@ -15,8 +15,8 @@
 	<section class="row">
 		@forelse($newspapers as $newspaper)
 		<div class="col-md-4">
-		<article class="panel panel-default">
-			<div class="panel-body">
+		<article class="card">
+			<div class="card-body">
 				<h4>{{ $newspaper->name }}</h4>
 				<ul class="list-unstyled">
 					<li class="text-muted">{{ $newspaper->province->name }}, {{ $newspaper->country->name }}</li>

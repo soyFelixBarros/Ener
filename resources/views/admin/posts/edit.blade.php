@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('title', 'Edit post')
 @section('content.admin')
-<div class="panel panel-default">
-    <div class="panel-heading">Edit post</div>
+<div class="card">
+    <div class="card-header">Edit post</div>
     <form role="form" method="POST">
-        <div class="panel-body">
+        <div class="card-body">
             {{ csrf_field() }}
             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                 <label>Title</label>
@@ -36,7 +36,7 @@
                 </select>
             </div>
             </div><!-- .panel-body -->
-        <div class="panel-footer">
+        <div class="card-footer">
             <div class="row">
                 <div class="col-xs-4">
                     <a href="{{ route('admin_posts_delete', ['id' => $post->id]) }}" type="submit" class="btn btn-danger">Delete</a>

@@ -3,9 +3,9 @@
 @section('title', 'Create newspaper')
 
 @section('content.admin')
-<form class="panel panel-default" role="form" method="POST">
+<form class="card" role="form" method="POST">
     {{ csrf_field() }}
-    <div class="panel-heading">
+    <div class="card-header">
         <div class="row">
             <div class="col-md-10">
                 <h3>Create newspaper</h3>
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div><!-- .panel-heading -->
-    <div class="panel-body">
+    <div class="card-body">
         <div class="form-group{{ $errors->has('province_id') ? ' has-error' : '' }}">
             <label>Province</label>
             @include('shared.select-location', ['provinces' => $provinces, 'selected' => old('province_id')])
@@ -29,7 +29,7 @@
             <input type="text" name="website" class="form-control" value="{{ old('website') }}">
         </div>
     </div><!-- .panel-body -->
-    <div class="panel-footer">
+    <div class="card-footer">
         <div class="row">
             <div class="col-xs-4">
             </div>

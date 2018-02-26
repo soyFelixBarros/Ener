@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('title', 'Delete post')
 @section('content.admin')
-<div class="posts panel panel-default">
-    <div class="panel-heading">¿Estás seguro de que quieres eliminar ésta entrada?</div>
-    <div class="panel-body">
+<div class="posts card">
+    <div class="card-header">¿Estás seguro de que quieres eliminar ésta entrada?</div>
+    <div class="card-body">
         <section class="row posts">
         @if ($post->parent_id == null)
         <article class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
@@ -34,7 +34,7 @@
         @endif
         </section>
     </div>
-    <form class="panel-footer" role="form" method="POST">
+    <form class="card-footer" role="form" method="POST">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-xs-4">

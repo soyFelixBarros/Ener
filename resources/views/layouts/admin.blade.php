@@ -4,26 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <div class="panel panel-default panel-flush">
-                <div class="panel-heading">Administración</div>
-                <ul class="nav settings-stacked-tabs">
-                    <li{{ Request::is('admin/posts*') ? ' class=active' : '' }}>
-                        <a href="{{ route('admin_posts') }}">Posts</a>
-                    </li>
-                    <li{{ Request::is('admin/newspapers*') ? ' class=active' : '' }}>
-                        <a href="{{ route('admin_newspapers') }}">Newspapers</a>
-                    </li>
-                    <li{{ Request::is('admin/users*') ? ' class=active' : '' }}>
-                        <a href="{{ route('admin_users') }}">Users</a>
-                    </li>
-                    <li{{ Request::is('admin/subscribers*') ? ' class=active' : '' }}>
-                        <a href="{{ route('admin_subscribers') }}">Subscribers</a>
-                    </li>
-                    <li{{ Request::is('admin/links*') ? ' class=active' : '' }}>
-                        <a href="{{ route('admin_links') }}">Links</a>
-                    </li>
-                </ul>
-            </div><!-- .panel -->
+            <div class="list-group">
+                <a href="{{ route('admin_posts') }}" class="list-group-item list-group-item-action">Posts</a>
+                <a href="{{ route('admin_newspapers') }}" class="list-group-item list-group-item-action">Newspapers</a>
+                <a href="{{ route('admin_users') }}" class="list-group-item list-group-item-action">Users</a>
+                <a href="{{ route('admin_subscribers') }}" class="list-group-item list-group-item-action">Subscribers</a>
+                <a href="{{ route('admin_links') }}" class="list-group-item list-group-item-action">Links</a>
+            </div><!-- .list-group -->
     	</div>
         <div class="col-md-9">
         @include('shared.status')

@@ -3,15 +3,11 @@
 @section('title', $title)
 
 @section('content')
-@component('partials.sub-header')
-	@slot('title')
-	{{ $title }}
-	@endslot
-	<li><a href="{{ route('newspapers') }}">Diarios</a></li>
-    <li class="active">{{ $title }}</li>
-@endcomponent
-
 <div class="container"> 
-	@include('shared.posts', ['posts' => $posts])
+	<h3 class="mb-4">
+		{{ $title }}<br />
+		<small class="text-muted">{{ $posts->count() }} noticias</small>
+	</h3>
+	@include('shared.posts-2', ['posts' => $posts, 'paginate' => true])
 </div>
 @endsection

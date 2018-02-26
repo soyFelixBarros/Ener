@@ -2,11 +2,13 @@
 
 namespace App;
 
+use Laravel\Scout\Searchable;
 use App\Scopes\LocationScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use Searchable;
 	/**
      * The table associated with the model.
      *

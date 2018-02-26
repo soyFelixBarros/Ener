@@ -4,6 +4,11 @@ Route::get('/about', 'PagesController@about')->name('about');
 
 Route::get('/images/{path}', 'ImagesController@show')->where('path', '.*');
 
+// cablera.online/search?q=string
+Route::group(['prefix' => 'search'], function() {
+	$this->get('/', 'SearchController@index')->name('search');
+});
+
 // Newspapers
 Route::group(['prefix' => 'newspapers'], function() {
 	$this->get('/', 'NewspapersController@index')->name('newspapers');
@@ -16,8 +21,8 @@ Route::group(['prefix' => 'newsletters'], function() {
 	$this->get('/{newsletters}', 'NewslettersController@show');
 });
 
-// scraper.cablera.online
-Route::group(['domain' => 'scraper.'.env('APP_URL')], function () {
+// cablera.online/scraper
+Route::group(['prefix' => 'scraper'], function () {
 	$this->get('/', 'ScraperController@index');
 });
 

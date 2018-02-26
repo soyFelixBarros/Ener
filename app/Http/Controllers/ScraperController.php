@@ -60,7 +60,7 @@ class ScraperController extends Controller
 	// 	return $str;
 	// }
 
-	public function index()
+	public function anality()
 	{
 		$text = "La obra contempla la pavimentación, desagües pluviales, iluminación y señalización (vertical y horizontal) de calles de la Chacra 192 comprendidas en los tramos Sargento Cabral, entre José Hernández y Avenida Nicolás Rojas Acosta; Francisco Solano, entre avenida Laprida y Sargento Cabral y Padre Distorto, entre avenida Laprida y Sargento Cabral.
 		El municipio capitalino encara de esta manera un proyecto integral para la recuperación y mejoramiento de un barrio emblemático de la ciudad, llevando a los vecinos los beneficios que conlleva la realización de una nueva obra de pavimento urbano.
@@ -121,5 +121,11 @@ class ScraperController extends Controller
 		}
 
         return $image;
+	}
+
+	public function index()
+	{
+		$posts = \App\Post::search('Domingo Peppo')->get();
+		return $posts;
 	}
 }

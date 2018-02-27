@@ -10,6 +10,9 @@ window.Popper = require('popper.js').default;
 
 try {
     window.$ = window.jQuery = require('jquery');
+    require('@fortawesome/fontawesome');
+    require('@fortawesome/fontawesome-free-solid');
+    require('@fortawesome/fontawesome-free-regular');
     require('timeago');
     require('bootstrap');
 } catch (e) {}

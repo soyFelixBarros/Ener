@@ -1,7 +1,7 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
+// @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600);
 
 // @import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900);
 
@@ -12,7 +12,9 @@
 @import '~bootstrap/scss/bootstrap';
 
 // // Font Awesome
-// @import "node_modules/font-awesome/scss/font-awesome";
+//@import "~font-awesome/scss/font-awesome.scss";
+//$fa-font-path: "../fonts/font-awesome" !default;
+
 
 // @import "panel";
 // @import "forms";

@@ -3,7 +3,7 @@
 @section('content.admin')
 <div class="card">
 	<div class="card-body">
-	@include('shared.posts-large', ['posts' => $posts])
+	@include('shared.posts', ['posts' => $posts, 'type' => 'large', 'paginate' => true, ])
 	</div>
 </div>
 @endsection

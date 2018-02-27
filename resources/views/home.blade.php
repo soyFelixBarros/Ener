@@ -5,6 +5,6 @@
 
 @section('content')
 <div class="container">
-    @include('shared.posts-2', ['posts' => $posts])
+    @include('shared.posts', ['posts' => $posts])
 </div>
 @endsection

@@ -1,46 +1,75 @@
 @if(count($posts) > 0)
-<section class="row posts masonry-container">
-    @foreach ($posts as $post)
-    @if (is_null($post->parent_id))
-    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-6 clearfix item">
-        <div class="row">
+    @if(isset($type) && $type == 'large')
+        @foreach ($posts as $post)
+        <div class="media mb-4">
             @if ($post->image != null)
-            <div class="col-xs-4 col-sm-5 col-md-3 col-lg-4 image">
-                <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img src="/images/{{ $post->image }}?w=170&h=150&q=80&fit=crop-top&sharp=10" width="170" height="150" class="img-responsive" alt="{{ $post->title }}"></a>
-            </div>
-            <div class="col-xs-8 col-sm-7 col-md-9 col-lg-8">
-            @else
-            <div class="col-sm-12">
-            @endif 
-            <header>
-                <hgroup>
-                    <h1 class="title"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h1>
-                    <h6 class="newspaper-datetime">
+            <a href="{{ $post->url }}" target="_blank" rel="bookmark">
+                <img class="align-self-start mr-3" src="/images/{{ $post->image }}?w=80&h=80&q=80&fit=crop-top&sharp=10" width="80" height="80" alt="{{ $post->title }}">
+            </a>
+            @endif
+            <div class="media-body">
+                <h6 class="mt-0"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h6>
+                <div class="mb-0">
+                    <small>
                         @if (Auth::check())
                             @if (Auth::user()->hasRole('admin'))
-                            <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" title="Edit post">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Edit post">
+                                <i class="far fa-edit"></i>
                             </a> /
                             @endif
                         @endif
-                        <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}">{{ $post->newspaper->name }}</a> - <time class="timeago" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
-                    </h6>
-                </hgroup>
-            </header>
-            @if ($post->content)
-            <p class="summary">{{ str_limit($post->content, 130) }}</p>
-            @endif
+                        @if(! request()->is('newspapers/*'))
+                        <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
+                        @endif
+                        <time class="timeago text-muted" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
+                    </small>
+                </div>
+                @if ($post->content)
+                {{ str_limit($post->content, 110) }}
+                @endif
             </div>
-        </div>
-    </article>
+        </div><!-- .media -->
+        <hr />
+        @endforeach
+    @else
+    <div class="card-columns">
+         @foreach ($posts as $post)
+        <div class="card">
+             @if ($post->image != null)
+                @if($post->image->width > $post->image->height)
+                <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img class="card-img-top" src="/images/{{ $post->image }}?w=354&h=254&q=80&fit=crop-top&sharp=10" alt="{{ $post->title }}"></a>
+                @else
+                <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img class="card-img-top" src="/images/{{ $post->image }}?w=354&h=531&q=80&fit=crop-top&sharp=10" alt="{{ $post->title }}"></a>
+                @endif
+            @endif 
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h5>
+                @if ($post->content)
+                <p class="card-text">{{ str_limit($post->content, 110) }}</p>
+                @endif
+                <p class="card-text font-weight-light">
+                    <small>
+                        @if (Auth::check())
+                            @if (Auth::user()->hasRole('admin'))
+                            <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Edit post">
+                                <i class="far fa-edit"></i>
+                            </a> /
+                            @endif
+                        @endif
+
+                         @if(! request()->is('newspapers/*'))
+                        <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
+                        @endif
+                        <time class="timeago text-muted" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
+                    </small>
+                </p>
+            </div><!-- .card-body -->
+        </div><!-- .card -->
+        @endforeach
+    </div><!-- .card-columns -->
     @endif
-    @endforeach
-</section>
-@if (! isset($paginate))
-<div class="text-center">
-    {{ $posts->links() }}
-</div>
-@endif
-@else
-<p class="text-muted">No hay entradas públicadas.</p>
+
+    @if(isset($paginate))
+        {{ $posts->links() }}
+    @endif
 @endif

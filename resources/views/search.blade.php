@@ -8,6 +8,6 @@
         {{ $title }}<br />
         <small class="text-muted">{{ $posts->count() }} resultados</small>
     </h3>
-    @include('shared.posts-2', ['posts' => $posts, 'paginate' => true])
+    @include('shared.posts', ['posts' => $posts, 'paginate' => true])
 </div>
 @endsection

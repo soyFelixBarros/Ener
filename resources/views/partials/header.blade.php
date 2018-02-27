@@ -1,13 +1,8 @@
 <header class="navbar navbar-light bg-light navbar-expand-lg mb-4" role="banner">
     <div class="container">
-        <a class="navbar-brand mb-0 h1 text-uppercase" href="{{ route('home') }}">
-            {{--  <img src="/images/mini-logo.png" width="30" height="30" class="d-inline-block align-top" alt="Mini logo {{ route('home') }}">  --}}
+        <a class="navbar-brand mb-0 h1" href="{{ route('home') }}">
             {{ config('app.name') }}
         </a>
-        <span class="navbar-text">
-            Chaco, Argentina
-        </span>
-
         <nav class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 @if (Auth::check())
@@ -21,13 +16,13 @@
                             <a href="{{ route('admin_posts') }}" class="dropdown-item">Administración</a>
                             <div class="dropdown-divider"></div>
                             @endif
-                            <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
-                            <a href="{{ route('security') }}" class="dropdown-item">Security</a>
+                            <a href="{{ route('profile') }}" class="dropdown-item">Perfil</a>
+                            <a href="{{ route('security') }}" class="dropdown-item">Seguridad</a>
                             <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                    Logout
+                                    Cerrar sesión
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

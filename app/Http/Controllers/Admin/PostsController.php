@@ -37,6 +37,7 @@ class PostsController extends Controller
 		$provinces = Province::all();
 
 		return view('admin.posts.edit', array(
+			'title' => 'Editar noticia',
 			'post' => $post,
 			'provinces' => $provinces,
 			'categories' => $categories,

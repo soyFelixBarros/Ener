@@ -4,12 +4,6 @@
 @section('description', 'Sistema informático que obtiene las noticias de los diarios digitales.')
 
 @section('content')
-@component('partials.sub-header')
-	@slot('title')
-	Informarte de la mejor manera.
-	@endslot
-	<li class="active">Información</li>
-@endcomponent
 
 <div class="container">
 	<div class="row">

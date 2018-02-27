@@ -4,7 +4,7 @@
         <div class="media mb-4">
             @if ($post->image != null)
             <a href="{{ $post->url }}" target="_blank" rel="bookmark">
-                <img class="align-self-start mr-3" src="/images/{{ $post->image }}?w=80&h=80&q=80&fit=crop-top&sharp=10" width="80" height="80" alt="{{ $post->title }}">
+                <img class="align-self-start mt-1 mr-3" src="/images/{{ $post->image }}?w=80&h=80&q=80&fit=crop-top&sharp=10" width="80" height="80" alt="{{ $post->title }}">
             </a>
             @endif
             <div class="media-body">
@@ -21,7 +21,7 @@
                         @if(! request()->is('newspapers/*'))
                         <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
                         @endif
-                        <time class="timeago text-muted" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
+                        <time class="timeago text-muted" datetime="{{ $post->updated_at }}" title="{{ $post->updated_at }}"></time>
                     </small>
                 </div>
                 @if ($post->content)
@@ -29,7 +29,6 @@
                 @endif
             </div>
         </div><!-- .media -->
-        <hr />
         @endforeach
     @else
     <div class="card-columns">
@@ -60,7 +59,7 @@
                          @if(! request()->is('newspapers/*'))
                         <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
                         @endif
-                        <time class="timeago text-muted" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
+                        <time class="timeago text-muted" datetime="{{ $post->updated_at }}" title="{{ $post->updated_at }}"></time>
                     </small>
                 </p>
             </div><!-- .card-body -->
@@ -70,6 +69,8 @@
     @endif
 
     @if(isset($paginate))
+    <div class="row justify-content-md-center mt-4">
         {{ $posts->links() }}
+    </div>
     @endif
 @endif

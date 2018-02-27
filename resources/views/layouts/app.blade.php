@@ -15,13 +15,13 @@
         ]) !!};
     </script>
 </head>
-<body>
+<body class="pb-3">
     <div id="app">
         @include('partials.header')
 
         @yield('content')
         
-        {{--  @include('partials.footer')  --}}
+        @include('partials.footer')
     </div>
     
     <script src="{{ mix('/js/app.js') }}"></script>

@@ -1,30 +1,30 @@
 @extends('layouts.admin')
-@section('title', 'Edit post')
+@section('title', $title)
 @section('content.admin')
 <div class="card">
-    <div class="card-header">Edit post</div>
+    <div class="card-header">{{ $title }}</div>
     <form role="form" method="POST">
         <div class="card-body">
             {{ csrf_field() }}
             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                <label>Title</label>
+                <label>Título</label>
                 <input type="text" name="title" class="form-control" value="{{ $post->title }}">
             </div>
 
-            <div class="form-group{{ $errors->has('summary') ? ' has-error' : '' }}">
-                <label>Summary</label>
-                <textarea name="summary" rows="3" class="form-control">{{ $post->summary }}</textarea>
+            <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                <label>Contenido</label>
+                <textarea name="content" rows="20" class="form-control">{{ $post->content }}</textarea>
             </div>
 
             <div class="form-group">
-                <label>Provinces</label>
+                <label>Provincias</label>
                 @include('shared.select-location', ['provinces' => $provinces, 'selected' => $post->province_id])
             </div>
 
             <div class="form-group">
-                <label>Category</label>
+                <label>Categoría</label>
                 <select name="category_id" class="form-control">
-                    <option value="" selected="selected">None</option>
+                    <option value="" selected="selected">Ninguna</option>
                     @if($post->category_id != null)
                     <option value="{{ $post->category->id }}" selected="selected">{{ $post->category->name }}</option>
                     @endif
@@ -36,15 +36,14 @@
                 </select>
             </div>
             </div><!-- .panel-body -->
-        <div class="card-footer">
-            <div class="row">
-                <div class="col-xs-4">
-                    <a href="{{ route('admin_posts_delete', ['id' => $post->id]) }}" type="submit" class="btn btn-danger">Delete</a>
-                </div>
-                <div class="col-xs-8 text-right">
-                    <a href="{{ route('admin_posts') }}" type="submit" class="btn btn-default">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
+        <div class="card-footer clearfix">
+            <div class="float-left">
+                <a href="{{ route('admin_posts_delete', ['id' => $post->id]) }}" class="btn btn-danger" role="button">Borrar</a>
+            </div>
+            <div class="float-right">
+                <a href="{{ route('admin_posts') }}" class="btn btn-outline-secondary" role="button">Regresar</a>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
         </div><!-- .panel-footer -->
     </form>
 </div><!-- .panel -->

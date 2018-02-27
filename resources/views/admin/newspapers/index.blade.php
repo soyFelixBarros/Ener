@@ -2,25 +2,23 @@
 @section('title', 'Newspapers')
 @section('content.admin')
 <div class="card">
-	<div class="card-header">
-		<div class="row">
-			<div class="col-md-10">
-				<h3>Newspapers</h3>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="{{ route('admin_newspapers_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>	
-			</div>
+	<div class="card-header clearfix">
+		<div class="float-left">
+			<h5 class="mt-1 mb-1">Diarios</h5>
+		</div>
+		<div class="float-right">
+			<a href="{{ route('admin_newspapers_create') }}" class="btn btn-success btn-sm" role="button" title="Agregar diario"><i class="fas fa-plus"></i></a>	
 		</div>
 	</div>
 	<div class="card-body">
 		@if (count($newspapers) > 0)
 		<div class="table-responsive">
-			<table class=table>
+			<table class="table table-sm">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th class="text-center">Post</th>
-						<th>Province</th>
+						<th>Nombre</th>
+						<th class="text-center">Noticia</th>
+						<th>Provincia</th>
 						<th></th>
 					</tr>
 				</thead>

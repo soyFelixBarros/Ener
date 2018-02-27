@@ -2,14 +2,9 @@
 @section('title', 'Users')
 @section('content.admin')
 <div class="card">
-	<div class="card-header">
-		<div class="row">
-			<div class="col-md-10">
-				<h3>Users</h3>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>	
-			</div>
+	<div class="card-header clearfix">
+		<div class="float-left">
+			<h5 class="mt-1 mb-1">Usuarios</h5>
 		</div>
 	</div>
 	<div class="card-body">

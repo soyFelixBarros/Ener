@@ -30,7 +30,7 @@ class Post extends Model
         'category_id',
         'image_id',
         'title',
-        'summary',
+        'content',
         'url',
         'url_hash',
         'status',

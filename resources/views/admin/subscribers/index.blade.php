@@ -2,14 +2,12 @@
 @section('title', 'Subscribers')
 @section('content.admin')
 <div class="card">
-	<div class="card-header">
-		<div class="row">
-			<div class="col-md-10">
-				<h3>Subscribers</h3>
-			</div>
-			<div class="col-md-2 text-right">
-				<a href="{{ route('admin_subscribers_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>	
-			</div>
+	<div class="card-header clearfix">
+		<div class="float-left">
+			<h3>Subscribers</h3>
+		</div>
+		<div class="float-right">
+			<a href="{{ route('admin_subscribers_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>	
 		</div>
 	</div>
 	<div class="card-body">

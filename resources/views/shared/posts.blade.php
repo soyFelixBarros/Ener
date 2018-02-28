@@ -31,9 +31,9 @@
     @elseif(isset($type) && $type == 'card')
         @foreach ($posts as $post)
         <article class="card mb-4">
-            @if ($post->image != null && $post->image->width > 850)
+            @if ($post->image != null && $post->image->width > 950 && $post->image->height < 950)
             <a href="{{ $post->url }}" target="_blank" rel="bookmark">
-                <img class="card-img-top" src="/images/{{ $post->image }}?w=538&h=280&q=80&fit=crop-center&sharp=10&dpr=2" alt="{{ $post->title }}">
+                <img class="card-img-top" src="/images/{{ $post->image }}?w=538&h=300&q=80&fit=crop-center&sharp=10&dpr=2" alt="{{ $post->title }}">
             </a>
             @endif 
             <div class="card-body pt-3">

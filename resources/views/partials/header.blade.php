@@ -1,4 +1,4 @@
-<header class="navbar navbar-light bg-light navbar-expand-lg mb-4" role="banner">
+<header class="navbar navbar-light bg-white border-bottom navbar-expand-lg fixed-top mb-4" role="banner">
     <div class="container">
         <a class="navbar-brand mb-0 h1" href="{{ route('home') }}">
             {{ config('app.name') }}

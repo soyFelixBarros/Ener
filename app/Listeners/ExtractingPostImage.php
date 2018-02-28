@@ -21,6 +21,21 @@ class ExtractingPostImage
     {
         //
 	}
+
+	public function saveImage($origin, $destination)
+	{
+		$img = Manager::make($origin);
+
+		// Cambiar el tamaño de la imagen
+		if ($img->width() > 1200) {
+			$img->widen(1200);
+		}
+		
+		// Guardar la imagen en el servidor
+		$img->save($destination);
+
+		return $img;
+	}
 	
     /**
      * Handle the event.
@@ -48,12 +63,13 @@ class ExtractingPostImage
 
 		// Si no existe, crearlas
 		if ($image === null) {
-			// Guardar la imagen en el servidor
-			$manager = Manager::make($src)->save($path);
+
+			// Guardar imagen en el servidor
+			$manager = $this->saveImage($src, $path);
 
 			// Guardar en la base de datos
 			$image = new Image();
-			$image->file = $file;
+			$image->file = $manager->basename;
 			$image->width = $manager->width();
 			$image->height = $manager->height();
 			$image->hash = $hash;

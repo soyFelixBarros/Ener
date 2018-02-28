@@ -82,48 +82,39 @@ class ScraperController extends Controller
 		return $res->getBody();
 	}
 
-	public function scraper()
+	public function image()
 	{
-		return Url::normalize('https://www.diariotag.com/sites/www.diariotag.com/files/styles/630x430/public/news_featured_image/mm_dp_59986_59986.jpg?itok=7jb_LdUx');
-		$url = 'http://diarioprimeralinea.com.ar/bertolt-brecht-favaloro-y-el-aborto/';
-		$xpath = '//div[@class="td-post-featured-image"]//@href';
-
-		$data = Crawler::extracting($url, $xpath);
-
-		// Si no existe titulo retornar 'false'
-		if ($data->count() === 0) {
-			return false;
-		}
-
-		$src = Url::normalize(rawurlencode($data->text()), 'http://diarioprimeralinea.com.ar');
-		$hash = md5_file($src);
-		$file = $hash.'.jpg';
+		$file = rand().'.jpg';
 		$dir = public_path('/uploads/images/');
 		$path = $dir.$file;
 
-		// Obtenemos la imagen desde la base de datos
-		$image = Image::where('hash', $hash)->first();
-
-		// Si no existe, crearlas
-		if ($image === null) {
-			// Guardar la imagen en el servidor
-			$manager = Manager::make($src)->save($path);
-
-			// Guardar en la base de datos
-			$image = new Image();
-			$image->file = $file;
-			$image->width = $manager->width();
-			$image->height = $manager->height();
-			$image->hash = $hash;
-			$image->save();
-			
-			return 'Creamos la imagen nueva';
+		$img = Manager::make('http://www.chacodiapordia.com/wp-content/uploads/2018/02/PLP_GrupoMeichtry-696x455.jpg');
+		if ($img->width() > 600) {
+			$img->widen(600);
 		}
+		$img->save($path);
 
-        return $image;
+		return $img->basename;
+		// // Si no existe, crearlas
+		// if ($image === null) {
+		// 	// Guardar la imagen en el servidor
+		// 	$manager = Manager::make($src)->save($path);
+
+		// 	// Guardar en la base de datos
+		// 	$image = new Image();
+		// 	$image->file = $file;
+		// 	$image->width = $manager->width();
+		// 	$image->height = $manager->height();
+		// 	$image->hash = $hash;
+		// 	$image->save();
+			
+		// 	return 'Creamos la imagen nueva';
+		// }
+
+		// return $image;
 	}
 
-	public function index()
+	public function search()
 	{
 		$posts = \App\Post::search('Domingo Peppo')->get();
 		return $posts;

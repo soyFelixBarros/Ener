@@ -16,7 +16,7 @@
 			<div class="card-body">
 				<h5 class="card-title"><a href="{{ route('newspaper_show', ['newspaper' => $newspaper->slug]) }}">{{ $newspaper->name }}</a></h5>
 				<h6 class="card-subtitle mb-2 text-muted">{{ $newspaper->posts->count() }} noticias</h6>
-				<a href="{{ $newspaper->website }}" class="text-dark" target="_blank">{{ $newspaper->website }}</a>
+				<a href="{{ $newspaper->website }}" class="text-dark" target="_blank">{{ $newspaper->host }}</a>
 				<p class="card-text font-weight-light"><small class="text-muted">Actualizado <time class="timeago text-lowercase" datetime="{{ $newspaper->posts->last()['updated_at'] }}" title="{{ $newspaper->posts->first()['updated_at'] }}"></time></small></p>
 			</div>
 		</article>

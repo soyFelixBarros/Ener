@@ -1,21 +1,19 @@
 @if(count($posts) > 0)
     @if(isset($type) && $type == 'large')
         @foreach ($posts as $post)
-        <div class="media mb-4">
+        <article class="media mb-4">
             @if ($post->image != null)
             <a href="{{ $post->url }}" target="_blank" rel="bookmark">
-                <img class="align-self-start mt-1 mr-3" src="/images/{{ $post->image }}?w=80&h=80&q=80&fit=crop-top&sharp=10" width="80" height="80" alt="{{ $post->title }}">
+                <img class="align-self-start mt-1 mr-3" src="/images/{{ $post->image }}?w=80&h=80&q=80&fit=crop-top&sharp=10&dpr=2" width="95" height="95" alt="{{ $post->title }}">
             </a>
             @endif
             <div class="media-body">
                 <h6 class="mt-0"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h6>
                 <div class="mb-0">
                     <small>
-                        @if (Auth::check())
-                            @if (Auth::user()->hasRole('admin'))
-                            <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Edit post">
-                                <i class="far fa-edit"></i>
-                            </a> /
+                        @if (auth()->check())
+                            @if (auth()->user()->hasRole('admin'))
+                            <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Editar noticia"><i class="far fa-edit"></i></a> /
                             @endif
                         @endif
                         @if(! request()->is('newspapers/*'))
@@ -28,18 +26,46 @@
                 {{ str_limit($post->content, 110) }}
                 @endif
             </div>
-        </div><!-- .media -->
+        </article><!-- .media -->
+        @endforeach
+    @elseif(isset($type) && $type == 'card')
+        @foreach ($posts as $post)
+        <article class="card mb-4">
+            @if ($post->image != null && $post->image->width > 850)
+            <a href="{{ $post->url }}" target="_blank" rel="bookmark">
+                <img class="card-img-top" src="/images/{{ $post->image }}?w=538&h=280&q=80&fit=crop-center&sharp=10&dpr=2" alt="{{ $post->title }}">
+            </a>
+            @endif 
+            <div class="card-body pt-3">
+                    <p class="card-text font-weight-light mb-0">
+                            <small>
+                                @if (auth()->check())
+                                    @if (auth()->user()->hasRole('admin'))
+                                    <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Editar noticia"><i class="far fa-edit"></i></a> /
+                                    @endif
+                                @endif
+        
+                                @if(! request()->is('newspapers/*'))
+                                <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
+                                @endif
+                                <time class="timeago text-muted" datetime="{{ $post->updated_at }}" title="{{ $post->updated_at }}"></time>
+                            </small>
+                        </p>
+                <h5 class="card-title"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h5>
+                @if ($post->content)
+                <p class="card-text">{{ str_limit($post->content, 185) }}</p>
+                @endif
+            </div><!-- .card-body -->
+        </article><!-- .card -->
         @endforeach
     @else
-    <div class="card-columns">
+    <section class="card-columns">
          @foreach ($posts as $post)
-        <div class="card">
-             @if ($post->image != null)
-                @if($post->image->width > $post->image->height)
-                <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img class="card-img-top" src="/images/{{ $post->image }}?w=354&h=254&q=80&fit=crop-top&sharp=10" alt="{{ $post->title }}"></a>
-                @else
-                <a href="{{ $post->url }}" target="_blank" rel="bookmark"><img class="card-img-top" src="/images/{{ $post->image }}?w=354&h=531&q=80&fit=crop-top&sharp=10" alt="{{ $post->title }}"></a>
-                @endif
+        <article class="card mb-4">
+            @if ($post->image != null)
+            <a href="{{ $post->url }}" target="_blank" rel="bookmark">
+                <img class="card-img-top" src="/images/{{ $post->image }}?w=354&q=80&fit=crop-top&sharp=10&dpr=2" alt="{{ $post->title }}">
+            </a>
             @endif 
             <div class="card-body">
                 <h5 class="card-title"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h5>
@@ -48,11 +74,9 @@
                 @endif
                 <p class="card-text font-weight-light">
                     <small>
-                        @if (Auth::check())
-                            @if (Auth::user()->hasRole('admin'))
-                            <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Edit post">
-                                <i class="far fa-edit"></i>
-                            </a> /
+                        @if (auth()->check())
+                            @if (auth()->user()->hasRole('admin'))
+                            <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Editar noticia"><i class="far fa-edit"></i></a> /
                             @endif
                         @endif
 
@@ -63,9 +87,9 @@
                     </small>
                 </p>
             </div><!-- .card-body -->
-        </div><!-- .card -->
+        </article><!-- .card -->
         @endforeach
-    </div><!-- .card-columns -->
+    </section><!-- .card-columns -->
     @endif
 
     @if(isset($paginate))

@@ -19,13 +19,13 @@ class NewspaperSeeder extends Seeder
     public function run()
     {
         $newspapers = [
-    		['Diario Chaco', 'http://www.diariochaco.com'],
-    		['Diario NORTE', 'http://www.diarionorte.com'],
-    		['DataChaco.com', 'http://www.datachaco.com'],
-    		['Chaco Dia Por Dia', 'http://www.chacodiapordia.com'],
-    		['Diario TAG', 'https://www.diariotag.com'],
-    		['diario21.tv', 'http://www.diario21.tv/notix2/'],
-    		['Primera Línea', 'http://www.diarioprimeralinea.com.ar'],
+    		['Diario Chaco', 'http://www.diariochaco.com', 'diariochaco.com'],
+    		['Diario NORTE', 'http://www.diarionorte.com', 'diarionorte.com'],
+    		['DataChaco.com', 'http://www.datachaco.com', 'datachaco.com'],
+    		['Chaco Dia Por Dia', 'http://www.chacodiapordia.com', 'chacodiapordia.com'],
+    		['Diario TAG', 'https://www.diariotag.com', 'diariotag.com'],
+    		['diario21.tv', 'http://www.diario21.tv/notix2/', 'diario21.tv'],
+    		['Primera Línea', 'http://www.diarioprimeralinea.com.ar', 'diarioprimeralinea.com.ar'],
     	];
 
     	foreach ($newspapers as $newspaper) {
@@ -33,7 +33,8 @@ class NewspaperSeeder extends Seeder
                 'country_id' => 10,
                 'province_id' => 3,
     			'name' => $newspaper[0],
-    			'website' => $newspaper[1],
+                'website' => $newspaper[1],
+                'host' => $newspaper[2],
                 'slug' => str_slug($newspaper[0]),
     		]);
     	}

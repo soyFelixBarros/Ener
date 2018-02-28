@@ -5,6 +5,10 @@
 
 @section('content')
 <div class="container">
-    @include('shared.posts', ['posts' => $posts])
+    <div class="row justify-content-md-center">
+        <div class="col-6">
+            @include('shared.posts', ['posts' => $posts, 'type' => 'card'])
+        </div>
+    </div>
 </div>
 @endsection

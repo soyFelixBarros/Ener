@@ -68,8 +68,8 @@ class ScraperSeeder extends Seeder
             [
                 6,
                 '//div[@class="rela-titu"]/a',
-                '//a[@class="tit-cata"]',
-                '//div[@id="slider"]//img[1]/@src',
+                '//html/head/meta[@property="og:title"]/@content',
+                '//html/head/meta[@property="og:image"]/@content',
                 '//div[@class="titulo-des"]/p',
             ],
 

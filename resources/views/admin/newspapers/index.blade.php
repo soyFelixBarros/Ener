@@ -17,6 +17,7 @@
 				<thead>
 					<tr>
 						<th>Nombre</th>
+						<th>Actualizado</th>
 						<th class="text-center">Noticia</th>
 						<th>Provincia</th>
 						<th></th>
@@ -26,7 +27,8 @@
 				<tbody>
 					@foreach ($newspapers as $newspaper)
 					<tr>
-						<td>{{ $newspaper->name }}</td>
+						<td><img src="https://www.google.com/s2/favicons?domain={{ $newspaper->host }}" class="mr-2" style="margin-top: -4px;" width="16" height="16"/> {{ $newspaper->name }}</td>
+						<td><time class="timeago text-lowercase" datetime="{{ $newspaper->posts->last()['updated_at'] }}" title="{{ $newspaper->posts->first()['updated_at'] }}"></time></td>
 						<th scope=row class="text-center">{{ count($newspaper->posts) }}</th>
 						<td>{{ $newspaper->province->name }}</td>
 						<th class="text-right">

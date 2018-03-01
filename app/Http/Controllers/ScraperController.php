@@ -33,32 +33,21 @@ class ScraperController extends Controller
 	//  *
 	//  * @return Object
 	//  */
-	// public function testScraper()
-	// {
-	// 	$url = 'http://www.diario21.tv/notix2/noticia/96966_policiacuteas-detenidos-por-robo-integrariacutean-una-banda-delictiva-que-operaba-en-chaco.htm';
-	// 	$xpath = '//div[@class="titulo-des"]/p';
-	// 	$data = Crawler::extracting($url, $xpath);
+	public function index()
+	{
+		$url = 'http://www.diario21.tv/notix2/noticia/96966_policiacuteas-detenidos-por-robo-integrariacutean-una-banda-delictiva-que-operaba-en-chaco.htm';
+		$xpath = '//div[@class="rela-titu"]/a';
+		$data = Crawler::extracting($url, $xpath);
 
-	// 	// Si no existe titulo retornar 'false'
-	// 	if (! (boolean) $data->count()) {
-	// 		return false;
-	// 	}
+		// Si no existe titulo retornar 'false'
+		if ($data->count() === 0) {
+			return false;
+		}
 
-	// 	// Obtener todos los párrafos
-	// 	$paragraphs = $data->extract(array('_text'));
-	// 	$arr = array();
+		$href = $data->attr('href');
 
-	// 	foreach ($paragraphs as $p) {
-	// 		$p = Str::clean($p);
-	// 		if ($p != "") {
-	// 			array_push($arr, $p);
-	// 		}
-	// 	}
-
-	// 	$str = implode("\n\n", $arr);
-
-	// 	return $str;
-	// }
+		return Url::normalize($href, 'http://www.diario21.tv/notix2/');
+	}
 
 	public function anality()
 	{

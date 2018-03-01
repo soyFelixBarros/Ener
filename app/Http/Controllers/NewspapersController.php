@@ -10,7 +10,7 @@ class NewspapersController extends Controller
 	public function index()
 	{
 		$newspapers = Newspaper::all();
-		$title = 'Diarios de Chaco, Argentina';
+		$title = 'Diarios';
 
 		return view('newspapers.index', [
 			'title' => $title,

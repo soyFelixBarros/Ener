@@ -28,7 +28,7 @@
 					@foreach ($newspapers as $newspaper)
 					<tr>
 						<td><img src="https://www.google.com/s2/favicons?domain={{ $newspaper->host }}" class="mr-2" style="margin-top: -4px;" width="16" height="16"/> {{ $newspaper->name }}</td>
-						<td><time class="timeago text-lowercase" datetime="{{ $newspaper->posts->last()['updated_at'] }}" title="{{ $newspaper->posts->first()['updated_at'] }}"></time></td>
+						<td><time class="timeago text-lowercase" datetime="{{ $newspaper->posts->last()['created_at'] }}" title="{{ $newspaper->posts->first()['created_at'] }}"></time></td>
 						<th scope=row class="text-center">{{ count($newspaper->posts) }}</th>
 						<td>{{ $newspaper->province->name }}</td>
 						<th class="text-right">

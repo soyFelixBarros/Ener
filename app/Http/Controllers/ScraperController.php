@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Link;
 use App\Image;
+use App\Post;
 use Felix\Scraper\Url;
 use Felix\Scraper\Str;
 use Felix\Scraper\Crawler;
@@ -33,7 +34,7 @@ class ScraperController extends Controller
 	//  *
 	//  * @return Object
 	//  */
-	public function index()
+	public function scraper()
 	{
 		$url = 'http://www.diario21.tv/notix2/noticia/96966_policiacuteas-detenidos-por-robo-integrariacutean-una-banda-delictiva-que-operaba-en-chaco.htm';
 		$xpath = '//div[@class="rela-titu"]/a';
@@ -107,5 +108,33 @@ class ScraperController extends Controller
 	{
 		$posts = \App\Post::search('Domingo Peppo')->get();
 		return $posts;
+	}
+
+	public function compare($first, $second)
+	{
+		$first = strtolower($first);
+		$second = strtolower($second);
+		$levenshtein = levenshtein($first, $second);
+
+		similar_text($first, $second, $percent);
+		
+		return $levenshtein < 40 && $percent > 60 ? true : false;
+	}
+
+	public function index()
+	{
+		$title = 'Nadia Garcia Amud fue a la Legislatura con una botella de Sprite';
+		$posts = Post::where('newspaper_id', 6)->where('status', 'publish')->get();
+		$results = array('compare' => $title);
+
+		foreach ($posts as $post) {
+			array_push($results, [
+				'title' => $post->title,
+				'update' => $this->compare($title, $post->title)
+			]);
+		}
+
+
+		return $results;
 	}
 }

@@ -19,7 +19,7 @@
                         @if(! request()->is('newspapers/*'))
                         <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
                         @endif
-                        <time class="timeago text-muted" datetime="{{ $post->updated_at }}" title="{{ $post->updated_at }}"></time>
+                        <time class="timeago text-muted" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
                     </small>
                 </div>
                 @if ($post->content)
@@ -51,7 +51,7 @@
                         @if(! request()->is('newspapers/*'))
                         <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
                         @endif
-                        <time class="timeago text-muted" datetime="{{ $post->updated_at }}" title="{{ $post->updated_at }}"></time>
+                        <time class="timeago text-muted" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
                     </small>
                 </p>
             </div><!-- .card-body -->
@@ -82,7 +82,7 @@
                          @if(! request()->is('newspapers/*'))
                         <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
                         @endif
-                        <time class="timeago text-muted" datetime="{{ $post->updated_at }}" title="{{ $post->updated_at }}"></time>
+                        <time class="timeago text-muted" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
                     </small>
                 </p>
             </div><!-- .card-body -->

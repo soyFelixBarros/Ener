@@ -1,20 +1,22 @@
 @extends('layouts.admin')
-@section('title', 'Users')
+
+@section('title', $title)
+
 @section('content.admin')
 <div class="card">
 	<div class="card-header clearfix">
 		<div class="float-left">
-			<h5 class="mt-1 mb-1">Usuarios</h5>
+		<h5 class="mt-1 mb-1">{{ $users->count() }} {{ $title }}</h5>
 		</div>
-	</div>
+	</div><!-- .card-header -->
 	<div class="card-body">
-		@if (count($users) > 0)
+		@if ($users->count() > 0)
 		<div class="table-responsive">
-			<table class=table>
+			<table class='table table-sm'>
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Email</th>
+						<th>Nombre</th>
+						<th>Correo electrónico</th>
 						<th>Role</th>
 					</tr>
 				</thead>
@@ -34,6 +36,6 @@
 			</div>
 		</div><!-- .table-responsive -->
 		@endif
-	</div>
-</div>
+	</div><!-- .card-body -->
+</div><!-- .card -->
 @endsection

@@ -15,8 +15,12 @@ class UsersController extends Controller
 	 */
 	public function index()
 	{
+		$title = 'Usuarios';
 		$users = User::latest()->paginate(30);
 
-		return view('admin.users.index')->with('users', $users);
+		return view('admin.users.index', [
+			'title' => $title,
+			'users' => $users
+		]);
 	}
 }

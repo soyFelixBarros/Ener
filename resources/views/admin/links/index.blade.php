@@ -6,14 +6,14 @@
 <div class="card">
 	<div class="card-header clearfix">
 		<div class="float-left">
-			<h5 class="mt-1 mb-1">{{ $title }}</h5>
+			<h5 class="mt-1 mb-1">{{ $links->count() }} {{ $title }}</h5>
 		</div>
 		<div class="float-right">
 			<a href="{{ route('admin_links_create') }}" data-toggle="tooltip" data-placement="left" class="btn btn-success btn-sm" role="button" title="Agregar enlace"><i class="fas fa-plus"></i></a>
 		</div>
 	</div><!-- .card-header -->
 	<div class="card-body">
-		@if (count($links) > 0)
+		@if ($links->count() > 0)
 		<div class="table-responsive">
 			<table class="table table-sm">
 				<thead>
@@ -27,7 +27,7 @@
 				<tbody>
 					@foreach ($links as $link)
 					<tr>
-						<th class="text-left{{ $link->active ? ' text-success' : ' text-danger' }}"><i class="fa fa-circle" aria-hidden="true"></i></th>
+						<th class="text-left{{ $link->active ? ' text-success' : ' text-danger' }}"><small><i class="fa fa-circle" aria-hidden="true"></i></small></th>
 						<td><a href="{{ $link->url }}" target="_blank">{{ $link->url }}</a></td>
 						<th class="text-right">
 							<a href="{{ route('admin_links_delete', ['id' => $link->id]) }}" class="text-danger"><i class="far fa-trash-alt"></i></a>

@@ -20,9 +20,13 @@ class PostsController extends Controller
 	 */
 	public function index(Post $post)
 	{
+		$title = 'Noticias';
 		$posts = Post::withoutGlobalScopes()->latest()->paginate(40);
 
-		return view('admin.posts.index')->with('posts', $posts);
+		return view('admin.posts.index', [
+			'title' => $title,
+			'posts' => $posts
+		]);
 	}
 
 	/**

@@ -17,9 +17,13 @@ class NewspapersController extends Controller
 	 */
 	public function index()
 	{
+		$title = 'Diarios';
 		$newspapers = Newspaper::withoutGlobalScopes()->oldest('name')->paginate(40);
 
-		return view('admin.newspapers.index')->with('newspapers', $newspapers);
+		return view('admin.newspapers.index', [
+			'title' => $title,
+			'newspapers' => $newspapers
+		]);
 	}
 
 	/**

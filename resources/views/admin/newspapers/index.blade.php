@@ -1,17 +1,17 @@
 @extends('layouts.admin')
-@section('title', 'Newspapers')
+@section('title', $title)
 @section('content.admin')
 <div class="card">
 	<div class="card-header clearfix">
 		<div class="float-left">
-			<h5 class="mt-1 mb-1">Diarios</h5>
+			<h5 class="mt-1 mb-1">{{ $newspapers->count() }} {{ $title }}</h5>
 		</div>
 		<div class="float-right">
 			<a href="{{ route('admin_newspapers_create') }}" data-toggle="tooltip" data-placement="left" class="btn btn-success btn-sm" role="button" title="Agregar diario"><i class="fas fa-plus"></i></a>	
 		</div>
 	</div>
 	<div class="card-body">
-		@if (count($newspapers) > 0)
+		@if ($newspapers->count() > 0)
 		<div class="table-responsive">
 			<table class="table table-sm">
 				<thead>

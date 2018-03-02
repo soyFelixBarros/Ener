@@ -15,9 +15,13 @@ class LinksController extends Controller
 	 */
 	public function index()
 	{
+		$title = 'Enlaces';
 		$links = Link::withoutGlobalScopes()->paginate(40);
 
-		return view('admin.links.index')->with('links', $links);
+		return view('admin.links.index', [
+			'title' => $title,
+			'links' => $links
+		]);
 	}
 
 	/**
@@ -27,7 +31,10 @@ class LinksController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.links.create');
+		$title = 'Agregar enlace';
+		return view('admin.links.create', [
+			'title' => $title
+		]);
 	}
 
 	/**
@@ -53,9 +60,13 @@ class LinksController extends Controller
 	 */
 	public function edit($id)
 	{
+		$title = 'Editar enlace';
 		$link = Link::withoutGlobalScopes()->find($id);
 
-		return view('admin.links.edit')->with('link', $link);
+		return view('admin.links.edit', [
+			'title' => $title,
+			'link' => $link
+		]);
 	}
 
 	/**

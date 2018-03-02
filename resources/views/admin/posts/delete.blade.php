@@ -1,5 +1,7 @@
 @extends('layouts.admin')
-@section('title', 'Delete post')
+
+@section('title', 'Eliminar noticia')
+
 @section('content.admin')
 <div class="posts card">
     <div class="card-header">¿Estás seguro de que quieres eliminar ésta entrada?</div>

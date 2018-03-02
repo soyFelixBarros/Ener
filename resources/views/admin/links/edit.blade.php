@@ -1,19 +1,15 @@
 @extends('layouts.admin')
-@section('title', 'Edit link')
+@section('title', $title)
 @section('content.admin')
-<form class="panel panel-default" role="form" method="POST">
-    <div class="panel-heading">
-        <div class="row">
-            <div class="col-md-10">
-                <h3>Edit link</h3>
-            </div>
-            <div class="col-md-2 text-right">
-                <a href="{{ route('admin_links_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>
-            </div>
+<form class="card" role="form" method="POST">
+    <div class="card-header clearfix">
+        <div class="float-left">
+            <h5 class="mt-1 mb-1">{{ $title }}</h5>
         </div>
-    </div><!-- .panel-heading -->
-
-    <div class="panel-body">
+        <div class="float-right">
+        </div>
+    </div><!-- .card-header -->
+    <div class="card-body">
         {{ csrf_field() }}
         <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
             <label>Url</label>
@@ -24,18 +20,15 @@
                 <input type="checkbox" name="active" value="1" {{ $link->active ? ' checked' : '' }}> Activo
             </label>
         </div>
-    </div><!-- .panel-body -->
-
-    <div class="panel-footer">
-        <div class="row">
-            <div class="col-xs-4">
-                <a href="{{ route('admin_scrapers_page', ['url' => $link->url]) }}" type="submit" class="btn btn-default">Scraper</a>
-                <a href="{{ route('admin_links_delete', ['id' => $link->id]) }}" type="submit" class="btn btn-danger">Delete</a>
-            </div>
-            <div class="col-xs-8 text-right">
-                <a href="{{ route('admin_links') }}" type="submit" class="btn btn-default">Cancel</a>
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
-    </div><!-- .panel-footer -->
-</div><!-- .panel -->
+    </div><!-- .card-body -->
+    <div class="card-footer clearfix">
+        <div class="float-left">
+            <a href="{{ route('admin_links_delete', ['id' => $link->id]) }}" class="btn btn-danger" role="button">Borrar</a>
+        </div>
+        <div class="float-right">
+            <a href="{{ route('admin_links') }}" class="btn btn-outline-secondary" role="button">Regresar</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+    </div><!-- .card-footer -->
+</form><!-- .card -->
 @endsection

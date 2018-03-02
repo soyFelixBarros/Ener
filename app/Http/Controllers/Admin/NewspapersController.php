@@ -29,9 +29,13 @@ class NewspapersController extends Controller
 	 */
 	public function create()
 	{
+		$title = 'Agregar diario';
 		$provinces = Province::oldest('name')->get();
 
-		return view('admin.newspapers.create')->with('provinces', $provinces);
+		return view('admin.newspapers.create', [
+			'title' => $title,
+			'provinces' => $provinces
+		]);
 	}
 
 	/**

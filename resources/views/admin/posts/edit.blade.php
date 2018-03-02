@@ -2,7 +2,9 @@
 @section('title', $title)
 @section('content.admin')
 <div class="card">
-    <div class="card-header">{{ $title }}</div>
+    <div class="card-header">
+        {{ $title }}
+    </div><!-- .card-heade -->
     <form role="form" method="POST">
         <div class="card-body">
             {{ csrf_field() }}
@@ -35,7 +37,7 @@
                     @endforeach
                 </select>
             </div>
-            </div><!-- .panel-body -->
+        </div><!-- .card-body -->
         <div class="card-footer clearfix">
             <div class="float-left">
                 <a href="{{ route('admin_posts_delete', ['id' => $post->id]) }}" class="btn btn-danger" role="button">Borrar</a>
@@ -44,7 +46,7 @@
                 <a href="{{ route('admin_posts') }}" class="btn btn-outline-secondary" role="button">Regresar</a>
                 <button type="submit" class="btn btn-primary">Actualizar</button>
             </div>
-        </div><!-- .panel-footer -->
+        </div><!-- .card-footer -->
     </form>
-</div><!-- .panel -->
+</div><!-- .card -->
 @endsection

@@ -7,7 +7,7 @@
 			<h5 class="mt-1 mb-1">Diarios</h5>
 		</div>
 		<div class="float-right">
-			<a href="{{ route('admin_newspapers_create') }}" class="btn btn-success btn-sm" role="button" title="Agregar diario"><i class="fas fa-plus"></i></a>	
+			<a href="{{ route('admin_newspapers_create') }}" data-toggle="tooltip" data-placement="left" class="btn btn-success btn-sm" role="button" title="Agregar diario"><i class="fas fa-plus"></i></a>	
 		</div>
 	</div>
 	<div class="card-body">

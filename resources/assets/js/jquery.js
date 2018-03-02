@@ -1,9 +1,11 @@
-$( document ).ready(function() {
-   $("time.timeago").timeago();
-
-   $(".summary").on("click",function(){
-      $(this).addClass("more");
-   });
+$(document).ready(function () {
+    $(function () {
+        $("time.timeago").timeago();
+    });
+    
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
 });
 
 // Spanish

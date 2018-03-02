@@ -1,15 +1,17 @@
 @extends('layouts.admin')
-@section('title', 'Links')
+
+@section('title', $title)
+
 @section('content.admin')
 <div class="card">
 	<div class="card-header clearfix">
 		<div class="float-left">
-			<h5 class="mt-1 mb-1">Enlaces</h5>
+			<h5 class="mt-1 mb-1">{{ $title }}</h5>
 		</div>
 		<div class="float-right">
-			<a href="{{ route('admin_links_create') }}" class="btn btn-success btn-sm" role="button" title="Agregar enlace"><i class="fas fa-plus"></i></a>
+			<a href="{{ route('admin_links_create') }}" data-toggle="tooltip" data-placement="left" class="btn btn-success btn-sm" role="button" title="Agregar enlace"><i class="fas fa-plus"></i></a>
 		</div>
-	</div>
+	</div><!-- .card-header -->
 	<div class="card-body">
 		@if (count($links) > 0)
 		<div class="table-responsive">
@@ -40,6 +42,6 @@
 			</div>
 		</div><!-- .table-responsive -->
 		@endif
-	</div>
-</div>
+	</div><!-- .card-body -->
+</div><!-- .card -->
 @endsection

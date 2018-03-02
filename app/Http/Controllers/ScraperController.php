@@ -34,10 +34,10 @@ class ScraperController extends Controller
 	//  *
 	//  * @return Object
 	//  */
-	public function scraper()
+	public function index()
 	{
-		$url = 'http://www.diario21.tv/notix2/noticia/96966_policiacuteas-detenidos-por-robo-integrariacutean-una-banda-delictiva-que-operaba-en-chaco.htm';
-		$xpath = '//div[@class="rela-titu"]/a';
+		$url = 'http://www.diariochaco.com/noticia/docentes-rechazaron-propuesta-del-gobierno-y-el-lunes-no-comienzan-las-clases-en-la';
+		$xpath = '//div[@class="cuerpo"]//div[@class="field-items"]/div/*';
 		$data = Crawler::extracting($url, $xpath);
 
 		// Si no existe titulo retornar 'false'
@@ -45,9 +45,21 @@ class ScraperController extends Controller
 			return false;
 		}
 
-		$href = $data->attr('href');
+		// Obtener todos los párrafos
+		$paragraphs = $data->extract(array('_text'));
+		$arr = array();
 
-		return Url::normalize($href, 'http://www.diario21.tv/notix2/');
+		foreach ($paragraphs as $p) {
+			$p = Str::clean($p);
+			if ($p != "") {
+				$p = strlen($p) > 79  ? '<p>'.$p.'</p>' : '<h3>'.$p.'</h3>'; 
+				array_push($arr, $p);
+			}
+		}
+
+		$content = implode("\n", $arr);
+
+		return $content;
 	}
 
 	public function anality()
@@ -121,7 +133,7 @@ class ScraperController extends Controller
 		return $levenshtein < 40 && $percent > 60 ? true : false;
 	}
 
-	public function index()
+	public function simily()
 	{
 		$title = 'Nadia Garcia Amud fue a la Legislatura con una botella de Sprite';
 		$posts = Post::where('newspaper_id', 6)->where('status', 'publish')->get();

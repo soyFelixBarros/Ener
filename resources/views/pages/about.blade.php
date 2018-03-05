@@ -19,7 +19,7 @@
 				<p>Visualizar todas las noticias en un solo lugar, filtrarlas por temas y categorías, personas que están siendo protagonistas y lugar del hecho.</p>
 
 				<h4>Contacto</h4>
-				<p>Te invito a ponerte en contacto a través de tiwtter <a href="https://twitter.com/soyfelixbarros" target="_blank">@soyFelixBarros</a>.</p>
+				<p>Te invito a ponerte en contacto a través de Twitter <a href="https://twitter.com/soyfelixbarros" target="_blank">@soyFelixBarros</a>.</p>
 			</article>
 		</section>
 	</div><!-- .row -->

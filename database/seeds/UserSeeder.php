@@ -21,9 +21,15 @@ class UserSeeder extends Seeder
     	DB::table($this->table)->insert([
             [
                 'role_id' => 1,
-            	'name' => 'Felix Barros',
-            	'email' => 'soyFelixBarros@gmail.com',
+            	'name' => 'Admin',
+            	'email' => 'admin@gmail.com',
             	'password' => bcrypt('admin'),
+            ],
+            [
+                'role_id' => 2,
+            	'name' => 'Demo',
+            	'email' => 'demo@gmail.com',
+            	'password' => bcrypt('demo'),
             ],
         ]);
     }

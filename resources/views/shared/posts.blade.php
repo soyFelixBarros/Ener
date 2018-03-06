@@ -11,11 +11,11 @@
                 <h6 class="mt-0"><a href="{{ $post->url }}" target="_blank" rel="bookmark">{{ $post->title }}</a></h6>
                 <div class="mb-0">
                     <small>
-                        @if (auth()->check())
+                        @auth
                             @if (auth()->user()->hasRole('admin'))
                             <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Editar noticia"><i class="far fa-edit"></i></a> /
                             @endif
-                        @endif
+                        @endauth
                         @if(! request()->is('newspapers/*'))
                         <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
                         @endif
@@ -43,11 +43,11 @@
                 @endif
                 <p class="card-text font-weight-light">
                     <small>
-                        @if (auth()->check())
+                        @auth
                             @if (auth()->user()->hasRole('admin'))
                             <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Editar noticia"><i class="far fa-edit"></i></a> /
                             @endif
-                        @endif
+                        @endauth
                         @if(! request()->is('newspapers/*'))
                         <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
                         @endif
@@ -73,15 +73,15 @@
                 @endif
                 <p class="card-text font-weight-light">
                     <small>
-                        @if (auth()->check())
+                        @auth
                             @if (auth()->user()->hasRole('admin'))
                             <a href="{{ route('admin_posts_edit', ['id' => $post->id]) }}" class="text-info" title="Editar noticia"><i class="far fa-edit"></i></a> /
                             @endif
                         @endif
 
-                         @if(! request()->is('newspapers/*'))
+                        @if(! request()->is('newspapers/*'))
                         <a href="{{ route('newspaper_show', ['newspaper' => $post->newspaper->slug]) }}" class="text-dark">{{ $post->newspaper->name }}</a> - 
-                        @endif
+                        @endauth
                         <time class="timeago text-muted" datetime="{{ $post->created_at }}" title="{{ $post->created_at }}"></time>
                     </small>
                 </p>

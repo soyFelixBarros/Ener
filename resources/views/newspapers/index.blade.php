@@ -16,8 +16,7 @@
 			<div class="card-body">
 				<h5 class="card-title"><a href="{{ route('newspaper_show', ['newspaper' => $newspaper->slug]) }}">{{ $newspaper->name }}</a></h5>
 				<h6 class="card-subtitle mb-2 text-muted">{{ $newspaper->posts->count() }} noticias</h6>
-				<p class="card-text font-weight-light"><small class="text-muted">Actualizado <time class="timeago text-lowercase" datetime="{{ $newspaper->posts->last()['created_at'] }}" title="{{ $newspaper->posts->first()['created_at'] }}"></time></small></p>
-				<img src="https://www.google.com/s2/favicons?domain={{ $newspaper->host }}" class="mr-1" style="margin-top: -4px;" width="16" height="16"/> <a href="{{ $newspaper->website }}" class="text-dark" target="_blank">{{ $newspaper->host }}</a>
+				<a href="{{ $newspaper->website }}" class="text-dark" target="_blank">{{ $newspaper->host }}</a>
 			</div>
 		</article>
 		</div>

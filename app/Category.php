@@ -30,6 +30,11 @@ class Category extends Model
      */
     public $timestamps = false;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * Obtener todas las entradas de un diario.
      */

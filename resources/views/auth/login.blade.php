@@ -12,8 +12,7 @@
                     Iniciar sesión
                 </div><!-- .card-heade -->
                 <form class="card-body" role="form" method="POST" action="{{ route('login') }}">
-                    {{ csrf_field() }}
-
+                    @csrf
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                         <label for="email">Correo electrónico</label>
                         <input class="form-control" id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>

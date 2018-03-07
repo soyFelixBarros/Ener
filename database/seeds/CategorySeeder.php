@@ -21,15 +21,7 @@ class CategorySeeder extends Seeder
         $categories = [
     		['Política'],
             ['Policiales'],
-            ['Economía'],
-            ['Producción'],
-            ['Sociedad'],
-            ['Opinión'],
-            ['Espectáculos'],
-            ['Cultura'],
-            ['Deportes'],
-            ['Salud'],
-            ['Educación']
+            ['Deportes']
     	];
 
     	 foreach ($categories as $category) {

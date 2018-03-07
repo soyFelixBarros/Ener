@@ -10,7 +10,7 @@
         </div>
     </div><!-- .card-header -->
     <div class="card-body">
-        {{ csrf_field() }}
+        @csrf
         <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
             <label>Url</label>
             <input type="text" name="url" class="form-control" value="{{ $link->url }}">

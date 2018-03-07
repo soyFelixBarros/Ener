@@ -39,9 +39,7 @@ Route::group(['domain' => '{country}'.env('SESSION_DOMAIN')], function () {
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/stories/{id}', 'StoriesController@show')->name('story_show');
-Route::get('/reports', 'ReportsController@index');
-Route::get('/{category?}', 'CategoriesController@show')->name('category_show');
+Route::get('/news/{category?}', 'CategoriesController@show')->name('category_show');
 
 // Settings
 Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {

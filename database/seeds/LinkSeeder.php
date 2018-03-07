@@ -21,14 +21,14 @@ class LinkSeeder extends Seeder
         $links = [
         
             // Diario Chaco
-    		[1, 'http://www.diariochaco.com/secciones/cultura', 8],
+    		[1, 'http://www.diariochaco.com/secciones/cultura', null],
             [1, 'http://www.diariochaco.com/secciones/policiales-y-judiciales', 2],
             [1, 'http://www.diariochaco.com/secciones/provinciales', null],
             [1, 'http://www.diariochaco.com/secciones/interior', null],
 
             // Diario NORTE
-            [2, 'http://www.diarionorte.com/espectaculos/', 7],
-            [2, 'http://www.diarionorte.com/cultura/', 8],
+            [2, 'http://www.diarionorte.com/espectaculos/', null],
+            [2, 'http://www.diarionorte.com/cultura/', null],
             [2, 'http://www.diarionorte.com/policiales/', 2],
             [2, 'http://www.diarionorte.com/politica/', 1],
             [2, 'http://www.diarionorte.com/locales/', null],
@@ -37,7 +37,7 @@ class LinkSeeder extends Seeder
             [2, 'http://www.diarionorte.com/salud/', null],
 
             // DataChaco.com
-            [3, 'http://www.datachaco.com/noticias/index_seccion/Cultura', 8],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Cultura', null],
             [3, 'http://www.datachaco.com/noticias/index_seccion/Policiales', 2],
             [3, 'http://www.datachaco.com/noticias/index_seccion/Polit%C3%ADca', 1],
             [3, 'http://www.datachaco.com/noticias/index_seccion/Actualidad', null],
@@ -49,7 +49,7 @@ class LinkSeeder extends Seeder
             [4, 'http://www.chacodiapordia.com/category/interior/', null],
             [4, 'http://www.chacodiapordia.com/category/actualidad/', null],
             [4, 'http://www.chacodiapordia.com/category/ciudad/', null],
-            [4, 'http://www.chacodiapordia.com/category/cultura/', 8],
+            [4, 'http://www.chacodiapordia.com/category/cultura/', null],
             [4, 'http://www.chacodiapordia.com/category/opinion/', null],
 
             // Diario TAG
@@ -67,7 +67,7 @@ class LinkSeeder extends Seeder
             [7, 'http://diarioprimeralinea.com.ar/informacion-general/gran-resistencia-informacion-general/', null],
             [7, 'http://diarioprimeralinea.com.ar/informacion-general/interior-informacion-general/', null],
             [7, 'http://diarioprimeralinea.com.ar/policiales/', 2],
-            [7, 'http://diarioprimeralinea.com.ar/deportes/', 9]
+            [7, 'http://diarioprimeralinea.com.ar/deportes/', 3]
     	];
 
         foreach ($links as $link) {

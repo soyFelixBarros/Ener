@@ -48,6 +48,7 @@ class ExtractingPostLink
 			'country_id' => $event->link->newspaper->country->id,
 			'province_id' => $event->link->newspaper->province->id,
             'newspaper_id' => $event->link->newspaper->id,
+            'category_id' => $event->link->category_id,
             'newspaper' => $event->link->newspaper,
 			'url' => $url,
 			'url_hash' => md5($url),

@@ -7,7 +7,7 @@
     </div><!-- .card-heade -->
     <form role="form" method="POST">
         <div class="card-body">
-            {{ csrf_field() }}
+            @csrf
             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                 <label>Título</label>
                 <input type="text" name="title" class="form-control" value="{{ $post->title }}">

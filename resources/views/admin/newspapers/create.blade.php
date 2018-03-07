@@ -4,7 +4,7 @@
 
 @section('content.admin')
 <form class="card" role="form" method="POST">
-    {{ csrf_field() }}
+    @csrf
     <div class="card-header clearfix">
         <div class="float-left">
             <h5 class="mt-1 mb-1">{{ $title }}</h5>

@@ -11,7 +11,7 @@
         <a href="{{ $link->url }}" target="_blank">{{ $link->url }}</a>
     </div><!-- .card-body -->
     <form class="card-footer" role="form" method="POST">
-        {{ csrf_field() }}
+        @csrf
         <div class="float-left">
         </div>
         <div class="float-right">

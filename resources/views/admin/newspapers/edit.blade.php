@@ -13,7 +13,7 @@
         </div>
     </div><!-- .panel-heading -->
     <div class="panel-body">
-        {{ csrf_field() }}
+        @csrf
         <div class="form-group">
             <label>Province</label>
             @include('shared.select-location', ['provinces' => $provinces, 'selected' => $newspaper->province_id])

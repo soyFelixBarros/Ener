@@ -43,6 +43,7 @@ class ExtractingPostTitle
 		$post->country_id = $event->post->country_id;
 		$post->province_id = $event->post->province_id;
 		$post->newspaper_id = $event->post->newspaper_id;
+		$post->category_id = $event->post->category_id;
 		$post->title =  $title;
 		$post->url = $event->post->url;
 		$post->url_hash = $event->post->url_hash;

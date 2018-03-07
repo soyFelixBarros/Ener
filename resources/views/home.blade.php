@@ -6,8 +6,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-2">
+            @include('shared.sidebar-left', ['categories' => $categories])
+        </div>
         <div class="col-sm-12 col-md-6">
             @include('shared.posts', ['posts' => $posts, 'type' => 'card'])
+        </div>
+        <div class="col-sm-12 col-md-4">
+            @include('shared.sidebar-right')
         </div>
     </div>
 </div>

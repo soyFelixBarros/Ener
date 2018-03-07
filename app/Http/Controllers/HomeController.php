@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-// use App\Story;
+use App\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,8 +20,8 @@ class HomeController extends Controller
                     ->get();
 
         return view('home', array(
-            // 'stories' => $stories,
             'posts' => $posts,
+            'categories' => Category::all()
         ));
     }
 }

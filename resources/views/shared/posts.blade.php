@@ -1,4 +1,4 @@
-@if(count($posts) > 0)
+@if($posts->count() > 0)
     @if(isset($type) && $type == 'large')
         @foreach ($posts as $post)
         <article class="media mb-4">

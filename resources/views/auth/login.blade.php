@@ -7,10 +7,14 @@
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             @include('shared.status')
-            <div class="card mt-5">
+            <div class="card mt-4">
                 <div class="card-header">
                     Iniciar sesión
-                </div><!-- .card-heade -->
+                </div><!-- .card-header -->
+                <div class="card-body text-center">
+                    <a href="{{ route('login.social', ['provider' => 'facebook']) }}" class="btn btn-primary" target="_blank" style="background-color:#4963A4;">Continuar con Facebook</a>
+                </div>
+                <hr class="mt-0 mb-1" />
                 <form class="card-body" role="form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -42,7 +46,7 @@
                     </div>
                     
                     <button type="submit" class="btn btn-primary">Ingresar</button>
-                    <a class="btn btn-link float-right" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
+                    <a class="btn btn-link pr-0 float-right" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
                 </form><!-- .card-body -->
             </div><!-- .card -->
         </div><!-- .col- -->

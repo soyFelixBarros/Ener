@@ -7,14 +7,12 @@
     <div class="row justify-content-md-center">
         <div class="col-md-4">
             @include('shared.status')
-            <div class="card mt-4">
+            <div class="card">
                 <div class="card-header">
                     Iniciar sesión
                 </div><!-- .card-header -->
-                <div class="card-body text-center">
-                    <a href="{{ route('login.social', ['provider' => 'facebook']) }}" class="btn btn-primary" target="_blank" style="background-color:#4963A4;">Continuar con Facebook</a>
-                </div>
-                <hr class="mt-0 mb-1" />
+                @include('auth.social-buttons')
+                <hr class="mt-0 mb-0" />
                 <form class="card-body" role="form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

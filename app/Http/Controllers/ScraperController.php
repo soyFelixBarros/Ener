@@ -14,6 +14,14 @@ use Intervention\Image\ImageManagerStatic as Manager;
 
 class ScraperController extends Controller
 {
+	public function index()
+	{
+		$url = 'http://www.chacodiapordia.co
+		m/2018/03/13/capitanich-suscribio-convenios-de-cooperacion-mutua-con-los-in
+		tendentes-de-merlo-y-escobar-el-intendente-jorge-capitanich-se-reunio-con-s
+		us-pares-de-las-localidades-de-merlo-gustavo-menendez-y-d/';
+		return count_chars($url);
+	}
 	// public function test()
 	// {
 	// 	$link = Link::where('active', true)
@@ -34,7 +42,7 @@ class ScraperController extends Controller
 	//  *
 	//  * @return Object
 	//  */
-	public function index()
+	public function scrap()
 	{
 		$url = 'http://www.diariochaco.com/noticia/docentes-rechazaron-propuesta-del-gobierno-y-el-lunes-no-comienzan-las-clases-en-la';
 		$xpath = '//div[@class="cuerpo"]//div[@class="field-items"]/div/*';

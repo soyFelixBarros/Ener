@@ -1,13 +1,13 @@
 <?php
 
+Route::get('/images/{path}', 'ImagesController@show')->where('path', '.*');
+
 Auth::routes();
 
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.social');
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/about', 'PagesController@about')->name('about');
-
-Route::get('/images/{path}', 'ImagesController@show')->where('path', '.*');
 
 // cablera.online/search?q=string
 Route::group(['prefix' => 'search'], function() {

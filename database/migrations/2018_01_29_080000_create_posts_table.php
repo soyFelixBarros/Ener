@@ -37,7 +37,7 @@ class CreatePostsTable extends Migration
             $table->unsignedInteger('image_id')->nullable();
             $table->foreign('image_id')->references('id')->on('images');
             $table->string('title');
-            $table->text('content')->nullable();
+            $table->mediumText('content')->nullable();
             $table->string('url', 255)->nullable();
             $table->string('url_hash', 32)->nullable()->unique();
             $table->string('status', 20)->default('publish');

@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $(function () {
-        $("time.timeago").timeago();
+        $('time.timeago').timeago();
     });
     
     $(function () {

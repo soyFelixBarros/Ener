@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Post;
 use App\Events\PostScraping;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -26,8 +27,6 @@ class CheckingPostExists
      */
     public function handle(PostScraping $event)
     {
-        $existsPost = \App\Post::where('url_hash', $event->post->url_hash)->exists();
-
-        return ! $existsPost;
+        return ! Post::where('url_hash', $event->post->url_hash)->exists();
     }
 }

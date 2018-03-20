@@ -47,7 +47,7 @@ class ExtractingPostImage
     {
 		$data = Crawler::extracting($event->post->url, $event->post->xpath->image);
 
-		// Si no existe titulo retornar 'false'
+		// Si no existe imagen retorna 'false'
 		if ($data->count() === 0) {
 			return false;
 		}

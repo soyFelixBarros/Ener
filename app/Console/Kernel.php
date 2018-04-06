@@ -29,10 +29,10 @@ class Kernel extends ConsoleKernel
         //          ->hourly()
         //          ->timezone('America/Argentina/Buenos_Aires');
         
-        // $schedule
-        // ->command('scraper:run')
-        // ->everyMinute()
-        // ->timezone('America/Argentina/Buenos_Aires');
+        $schedule
+        ->command('scraper:run')
+        ->everyMinute()
+        ->timezone('America/Argentina/Buenos_Aires');
     }
 
     /**

@@ -33,7 +33,7 @@ class ExtractingPostLink
         $data = Crawler::extracting($event->link->url, $event->link->newspaper->scraper->href);
         
 		if ($data->count() === 0) {
-            $event->link->update(['active' => false]);
+            // $event->link->update(['active' => false]);
             return false;
         }
 

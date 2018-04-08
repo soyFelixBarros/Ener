@@ -17,6 +17,7 @@ class HomeController extends Controller
         $posts = Post::where('status', 'publish')
                     //  ->whereDate('created_at', date('Y-n-j'))
                     ->latest()
+                    ->limit(40)
                     ->get();
 
         return view('home', array(

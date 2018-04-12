@@ -63,7 +63,7 @@
         <article class="card mb-4">
             @if ($post->image != null)
             <a href="{{ $post->url }}" target="_blank" rel="bookmark">
-                <img class="card-img-top" src="/images/{{ $post->image }}?w=354&q=80&fit=crop-top&sharp=10&dpr=2" alt="{{ $post->title }}">
+                <img class="card-img-top" src="/images/{{ $post->image }}?w=354&q=80&fit=crop-top&sharp=10" alt="{{ $post->title }}">
             </a>
             @endif 
             <div class="card-body">

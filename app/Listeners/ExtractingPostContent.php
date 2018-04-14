@@ -8,8 +8,10 @@ use App\Events\PostScraping;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ExtractingPostContent
+class ExtractingPostContent implements ShouldQueue
 {
+    use InteractsWithQueue;
+
 	/**
      * Create the event listener.
      *

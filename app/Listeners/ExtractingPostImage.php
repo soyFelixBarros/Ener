@@ -10,8 +10,10 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Intervention\Image\ImageManagerStatic as Manager;
 
-class ExtractingPostImage
+class ExtractingPostImage implements ShouldQueue
 {
+    use InteractsWithQueue;
+
 	/**
      * Create the event listener.
      *

@@ -14,7 +14,7 @@ use Intervention\Image\ImageManagerStatic as Manager;
 
 class ScraperController extends Controller
 {
-	public function index()
+	public function main()
 	{
 		$url = 'http://www.chacodiapordia.co
 		m/2018/03/13/capitanich-suscribio-convenios-de-cooperacion-mutua-con-los-in
@@ -70,25 +70,20 @@ class ScraperController extends Controller
 		return $content;
 	}
 
-	public function anality()
+	public function index()
 	{
-		$text = "La obra contempla la pavimentación, desagües pluviales, iluminación y señalización (vertical y horizontal) de calles de la Chacra 192 comprendidas en los tramos Sargento Cabral, entre José Hernández y Avenida Nicolás Rojas Acosta; Francisco Solano, entre avenida Laprida y Sargento Cabral y Padre Distorto, entre avenida Laprida y Sargento Cabral.
-		El municipio capitalino encara de esta manera un proyecto integral para la recuperación y mejoramiento de un barrio emblemático de la ciudad, llevando a los vecinos los beneficios que conlleva la realización de una nueva obra de pavimento urbano.
-		La obra contempla un total de siete cuadras con sus correspondientes obras complementarias de desagües pluviales, alumbrado público led, señalización vial y rampas urbanas para discapacitados. El plazo de ejecución está fijado en 240 días, pero se prevé concluirla antes si acompañan las condiciones climáticas. Participaron de la firma de la licitación el secretario de Economía, Federico Muñoz Femenía y el subsecretario de Legal y Técnica, Jorge Alegre.
-		Mejoras sustanciales para la conectividad
-		El pavimento urbano implica mejoras sustanciales para la transitabilidad y la conectividad para esta zona de Villa Prosperidad. En este caso particular tienen particular importancia la realización de obras complementarias, especialmente los desagües pluviales al tratarse de una zona con una fuerte incidencia hídrica por la presencia de las lagunas.
-		Participaron del proceso licitatorio tres empresas (Tecmasa S.A., Vidal y Zening S.R.L. y Novelli S.A.C.I.F.I.C.A.), quienes presentaron sus respectivas ofertas para la realización del trabajo. Después del análisis correspondiente de las ofertas y cumplimentando todos los requisitos establecidos se adjudicó la licitación a la firma Tecmasa S.A.";
+		$post = Post::find(25);
+		
 		$client = new \GuzzleHttp\Client();
 		$res = $client->request('GET', env('NLU_URL'), [
 			'auth' => [env('NLU_USERNAME'), env('NLU_PASSWORD')],
 			'query' => [
 				'version' => '2017-02-27',
-				'text' => $text,
-				'features' => 'sentiment,keywords,entities',
-				'keywords.sentiment' => true
+				'url' => $post->url,
+				'features' => 'entities'
 			]
 		]);
-		
+			
 		return $res->getBody();
 	}
 

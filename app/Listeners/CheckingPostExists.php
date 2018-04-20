@@ -7,10 +7,8 @@ use App\Events\PostScraping;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CheckingPostExists implements ShouldQueue
+class CheckingPostExists
 {
-    use InteractsWithQueue;
-
     /**
      * Create the event listener.
      *

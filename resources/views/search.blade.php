@@ -6,7 +6,7 @@
 <div class="container">
     <h3 class="mb-4">
         {{ $title }}<br />
-        <small class="text-muted">{{ $posts->count() }} resultados</small>
+        <small class="text-muted">{{ $posts->total() }} resultados</small>
     </h3>
     @include('shared.posts', ['posts' => $posts, 'paginate' => true])
 </div>

@@ -6,7 +6,7 @@
 <div class="card">
 	<div class="card-header clearfix">
 		<div class="float-left">
-			<h5 class="mt-1 mb-1">{{ $links->count() }} {{ $title }}</h5>
+			<h5 class="mt-1 mb-1">{{ $links->total() }} {{ $title }}</h5>
 		</div>
 		<div class="float-right">
 			<a href="{{ route('admin_links_create') }}" data-toggle="tooltip" data-placement="left" class="btn btn-success btn-sm" role="button" title="Agregar enlace"><i class="fas fa-plus"></i></a>

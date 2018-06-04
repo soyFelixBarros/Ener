@@ -67,7 +67,12 @@ class LinkSeeder extends Seeder
             [7, 'http://diarioprimeralinea.com.ar/informacion-general/gran-resistencia-informacion-general/', null],
             [7, 'http://diarioprimeralinea.com.ar/informacion-general/interior-informacion-general/', null],
             [7, 'http://diarioprimeralinea.com.ar/policiales/', 2],
-            [7, 'http://diarioprimeralinea.com.ar/deportes/', 3]
+            [7, 'http://diarioprimeralinea.com.ar/deportes/', 3],
+
+            // La Voz del Chaco
+            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/capital.htm', null],
+            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/interior.htm', null],
+            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/politica-provincial.htm', 1],
     	];
 
         foreach ($links as $link) {

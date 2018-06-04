@@ -81,6 +81,15 @@ class ScraperSeeder extends Seeder
                 '//div[@class="td-post-featured-image"]//@href',
                 '//div[@class="td-post-content"]/p',
             ],
+
+            // La Voz del Chaco
+            [
+                8,
+                '//article[1]//h3/a',
+                '//h2',
+                '//div[@class="portfolio-overlay"]/a/@href',
+                '//blockquote/p',
+            ],
     	];
 
     	foreach ($scrapings as $scraper) {

@@ -28,7 +28,6 @@ class CreateNewspapersTable extends Migration
             $table->foreign('province_id')->references('id')->on('provinces');
             $table->string('name');
             $table->string('website');
-            $table->string('host');
             $table->string('slug')->unique();
         });
     }

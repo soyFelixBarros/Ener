@@ -90,6 +90,15 @@ class ScraperSeeder extends Seeder
                 '//div[@class="portfolio-overlay"]/a/@href',
                 '//blockquote/p',
             ],
+
+            // Chaco On Line
+            [
+                9,
+                '//div[@class="lista"]/article[1]/h1/a',
+                '//article/header/h1',
+                '//article/div[5]/img/@src',
+                '//div[@class="detalle"]',
+            ],
     	];
 
     	foreach ($scrapings as $scraper) {

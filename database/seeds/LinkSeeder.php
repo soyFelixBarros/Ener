@@ -73,6 +73,16 @@ class LinkSeeder extends Seeder
             [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/capital.htm', null],
             [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/interior.htm', null],
             [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/politica-provincial.htm', 1],
+
+            // Chaco On Line
+            [9, 'https://chacoonline.com.ar/categoria/1/sociedad', null],
+            [9, 'https://chacoonline.com.ar/categoria/6/ciudad', null],
+            [9, 'https://chacoonline.com.ar/categoria/7/provincia', null],
+            [9, 'https://chacoonline.com.ar/categoria/8/region', null],
+            [9, 'https://chacoonline.com.ar/categoria/8/region', null],
+            [9, 'https://chacoonline.com.ar/categoria/3/cultura', null],
+            [9, 'https://chacoonline.com.ar/categoria/4/espectaculos', null],
+            [9, 'https://chacoonline.com.ar/categoria/5/educacion', null]
     	];
 
         foreach ($links as $link) {

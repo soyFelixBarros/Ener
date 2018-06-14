@@ -51,7 +51,7 @@ class ExtractingPostLink
             'category_id' => $event->link->category_id,
             'newspaper' => $event->link->newspaper,
 			'url' => $url,
-			'url_hash' => md5($url),
+			'url_hash' => md5(now()->day.'-'.$url),
 			'xpath' => $event->link->newspaper->scraper
 		]));
     }

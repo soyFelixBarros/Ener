@@ -10,7 +10,7 @@
             @include('shared.sidebar-left', ['categories' => $categories])
         </div>
         <div class="col-sm-12 col-md-6">
-            @include('shared.posts', ['posts' => $posts, 'type' => 'card'])
+            @include('shared.posts', ['posts' => $posts, 'type' => 'large', 'paginate' => true])
         </div>
         <div class="col-sm-12 col-md-4">
             @include('shared.sidebar-right')

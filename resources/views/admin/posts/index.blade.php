@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	<div class="card-body">
-	@include('shared.posts', ['posts' => $posts, 'type' => 'large', 'paginate' => true, ])
+	@include('shared.posts', ['posts' => $posts, 'type' => 'large', 'paginate' => true])
 	</div>
 </div>
 @endsection

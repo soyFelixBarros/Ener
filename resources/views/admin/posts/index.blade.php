@@ -4,7 +4,7 @@
 <div class="card">
 	<div class="card-header clearfix">
 		<div class="float-left">
-			<h5 class="mt-1 mb-1">{{ $posts->count() }} {{ $title }}</h5>
+			<h5 class="mt-1 mb-1">{{ $posts->total() }} {{ $title }}</h5>
 		</div>
 	</div>
 	<div class="card-body">

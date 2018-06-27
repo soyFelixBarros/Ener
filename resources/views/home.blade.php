@@ -9,10 +9,13 @@
         <div class="col-sm-12 col-md-2 mb-4">
             @include('shared.sidebar-left', ['categories' => $categories])
         </div>
-        <div class="card col-sm-12 col-md-6">
-            <div class="card-body">
-            @include('shared.posts', ['posts' => $posts, 'type' => 'large'])
-            </div>
+        <div class="col-sm-12 col-md-6">
+            <h6 class="text-muted mb-4">Últimas noticias de Chaco</h6>
+            <div class="card">
+                <div class="card-body">
+                @include('shared.posts', ['posts' => $posts, 'type' => 'large'])
+                </div>
+            </div><!-- .card -->
         </div>
         <div class="col-sm-12 col-md-4">
             @include('shared.sidebar-right')

@@ -9,7 +9,7 @@
         <div class="col-sm-12 col-md-2 mb-4">
             @include('shared.sidebar-left', ['categories' => $categories])
         </div>
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 col-md-8">
             <h6 class="text-muted mb-4">Últimas noticias de Chaco</h6>
             <div class="card">
                 <div class="card-body">
@@ -17,7 +17,7 @@
                 </div>
             </div><!-- .card -->
         </div>
-        <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-2">
             @include('shared.sidebar-right')
         </div>
     </div>

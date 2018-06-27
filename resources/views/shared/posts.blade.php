@@ -4,7 +4,7 @@
         <article class="media mb-4">
             @if ($post->image != null)
             <a href="{{ $post->url }}" target="_blank" rel="bookmark">
-                <img class="align-self-start mt-1 mr-3" src="/images/{{ $post->image }}?w=80&h=80&q=80&fit=crop-top&sharp=10&dpr=2" width="95" height="95" alt="{{ $post->title }}">
+                <img class="align-self-start mt-1 mr-3" src="/images/{{ $post->image }}?w=134&h=114&q=80&fit=crop-top&sharp=10" width="134" height="114" alt="{{ $post->title }}">
             </a>
             @endif
             <div class="media-body">

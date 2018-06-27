@@ -48,10 +48,10 @@ class ExtractingPostImage
 		$data = Crawler::extracting($event->post->url, $event->post->xpath->image);
 
 		// Si no existe imagen retorna 'false'
-		if ($data->count() === 0) {
+		if ($data->count() == 0) {
 			return false;
 		}
-		
+	
 		$src = Url::normalize($data->text(), $event->post->newspaper->website);
 		$hash = md5_file($src);
 		$file = $hash.'.jpg';
@@ -62,7 +62,7 @@ class ExtractingPostImage
 		$image = Image::where('hash', $hash)->first();
 
 		// Si no existe, crearlas
-		if ($image === null) {
+		if ($image == null) {
 
 			// Guardar imagen en el servidor
 			$manager = $this->saveImage($src, $path);
@@ -78,7 +78,7 @@ class ExtractingPostImage
 
         $post = \App\Post::where('url_hash', $event->post->url_hash)->update(['image_id' => $image->id]);
 
-		var_dump($image->file);
+		var_dump($src);
         var_dump('------');
     }
 }

@@ -31,16 +31,16 @@ class ExtractingPostContent
 		$data = Crawler::extracting($event->post->url, $event->post->xpath->content);
 
 		// Si no existe titulo retornar 'false'
-		if ($data->count() === 0) {
+		if ($data->count() == 0) {
 			return false;
         }
 
         // Obtener todos los párrafos
-		$paragraphs = $data->extract(array('_text'));
-		$arr = array();
+        $paragraphs = $data->extract(array('_text'));
+        $arr = array();
 
 		foreach ($paragraphs as $p) {
-            $p = Str::clean($p);
+         $p = Str::clean($p);
 			if ($p != "") {
 				array_push($arr, $p);
 			}

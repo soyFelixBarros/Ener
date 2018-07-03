@@ -78,7 +78,7 @@ class ExtractingPostImage
 
         $post = \App\Post::where('url_hash', $event->post->url_hash)->update(['image_id' => $image->id]);
 
-		var_dump($src);
+		var_dump($image->file);
         var_dump('------');
     }
 }

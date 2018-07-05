@@ -15,7 +15,7 @@ class SearchController extends Controller
         
         $q = $request->input('q');
         
-        $posts = Post::search($q)->paginate(20);
+        $posts = Post::where('title', 'like', '%'.$q.'%')->orWhere('content', 'like', '%'.$q.'%')->paginate(20);
         
         return view('search', array(
             'title' => $q,

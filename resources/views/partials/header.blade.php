@@ -11,7 +11,6 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}">
-                <img src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia.svg" width="130" class="mr-3">
                 <input name="q" class="form-control mr-sm-2" type="search" aria-label="Search" value="{{ old('q') }}">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
             </form>

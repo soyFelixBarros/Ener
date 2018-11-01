@@ -13,10 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(CountrySeeder::class);
-        $this->call(ProvinceSeeder::class);
         $this->call(NewspaperSeeder::class);
-        $this->call(CategorySeeder::class);
         $this->call(ScraperSeeder::class);
         $this->call(LinkSeeder::class);
     }

@@ -32,8 +32,6 @@ class NewspaperSeeder extends Seeder
 
     	foreach ($newspapers as $newspaper) {
     		DB::table($this->table)->insert([
-                'country_id' => 10,
-                'province_id' => 3,
     			'name' => $newspaper[0],
                 'website' => $newspaper[1],
                 'slug' => str_slug($newspaper[0]),

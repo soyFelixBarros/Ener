@@ -7,15 +7,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-3">
-            @include('shared.sidebar-left', ['categories' => $categories])
         </div>
         <div class="col-sm-12 col-md-7">
-            <h6 class="text-muted mb-4">Últimas noticias de Chaco</h6>
-            <div class="card">
-                <div class="card-body">
-                @include('shared.posts', ['posts' => $posts, 'type' => 'large'])
-                </div>
-            </div><!-- .card -->
         </div>
         <div class="col-sm-12 col-md-2">
             @include('shared.sidebar-right')

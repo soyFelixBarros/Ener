@@ -34,17 +34,14 @@ Route::group(['prefix' => 'scraper'], function () {
 // chaco.argentina.cablera.online
 Route::group(['domain' => '{province}.{country}'.env('SESSION_DOMAIN')], function () {
 	$this->get('/', 'HomeController@index')->name('home');
-	$this->get('/{category?}', 'CategoriesController@show')->name('category_show');
 });
 
 // argentina.cablera.online
 Route::group(['domain' => '{country}'.env('SESSION_DOMAIN')], function () {
 	$this->get('/', 'HomeController@index')->name('home');
-	$this->get('/{category?}', 'CategoriesController@show')->name('category_show');
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/news/{category?}', 'CategoriesController@show')->name('category_show');
 
 // Settings
 Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {
@@ -53,11 +50,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'settings'], function () {
 	$this->post('/profile', 'SettingsController@updateProfile');
 	$this->get('/security', 'SettingsController@security')->name('security');
 	$this->post('security', 'SettingsController@updatePassword');
-});
-
-// Favorites
-Route::group(['middleware' => 'auth', 'prefix' => 'favorites'], function () {
-	$this->get('/', 'FavoritesController@posts')->name('favorites');
 });
 
 // Admin
@@ -85,21 +77,6 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin', 'name
 	$this->get('/scrapers/{id}/edit', 'ScrapersController@edit')->name('admin_scrapers_edit');
 	$this->post('/scrapers/{id}/edit', 'ScrapersController@update');
 
-	// Posts
-	$this->get('/posts', 'PostsController@index')->name('admin_posts');
-	$this->get('/posts/{id}/edit', 'PostsController@edit')->name('admin_posts_edit');
-	$this->post('/posts/{id}/edit', 'PostsController@update');
-	$this->get('/posts/{post}/delete', 'PostsController@delete')->name('admin_posts_delete');
-	$this->post('/posts/{post}/delete', 'PostsController@destroy');
-	$this->get('/posts/{post}/favorite', 'PostsController@favorite')->name('admin_posts_favorite');
-
 	// Users
 	$this->get('/users', 'UsersController@index')->name('admin_users');
-
-	// Subscribers
-	$this->get('/subscribers', 'SubscribersController@index')->name('admin_subscribers');
-	$this->get('/subscribers/{id}/edit', 'SubscribersController@edit')->name('admin_subscribers_edit');
-	$this->post('/subscribers/{id}/edit', 'SubscribersController@update');
-	$this->get('/subscribers/create', 'SubscribersController@create')->name('admin_subscribers_create');
-	$this->post('/subscribers/create', 'SubscribersController@store');
 });

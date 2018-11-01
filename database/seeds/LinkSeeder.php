@@ -88,7 +88,6 @@ class LinkSeeder extends Seeder
     		DB::table($this->table)->insert([
                 'newspaper_id' => $link[0],
     			'url' => $link[1],
-                'category_id' => $link[2]
     		]);
     	}
     }

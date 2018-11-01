@@ -22,10 +22,6 @@ class CreateNewspapersTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('country_id');
-            $table->foreign('country_id')->references('id')->on('countries');
-            $table->unsignedInteger('province_id');
-            $table->foreign('province_id')->references('id')->on('provinces');
             $table->string('name');
             $table->string('website');
             $table->string('slug')->unique();

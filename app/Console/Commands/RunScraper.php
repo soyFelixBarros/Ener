@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Link;
-use App\Events\PageScraping;
+use App\Events\Scraping;
 use Illuminate\Console\Command;
 
 class RunScraper extends Command
@@ -44,7 +44,7 @@ class RunScraper extends Command
         $this->line("\n Scraping web pages.\n");
 
         foreach ($links as $link) {
-            event(new PageScraping($link));
+            event(new Scraping($link));
         }
 
         $this->info("\n\n Finish.\n");

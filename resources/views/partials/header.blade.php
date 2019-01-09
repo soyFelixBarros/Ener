@@ -1,51 +1,16 @@
-<header class="navbar navbar-light bg-white border-bottom navbar-expand-lg fixed-top mb-4" role="banner">
-    <div class="container">
-        <a class="navbar-brand mb-0 h1" href="{{ route('home') }}">
-            {{ config('app.name') }}
-        </a>
-
-        <nav class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item{{ request()->is('newspapers*') ? ' active' : '' }}">
-                    <a class="nav-link" href="{{ route('newspapers') }}">Diarios</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" action="{{ route('search') }}">
-                <input name="q" class="form-control mr-sm-2" type="search" aria-label="Search" value="{{ old('q') }}">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
-            <ul class="navbar-nav ml-5 mr-0">
-                @auth
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-    
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @if (Auth::user()->hasRole('admin'))
-                            <a href="{{ route('admin_posts') }}" class="dropdown-item">Administración</a>
-                            <div class="dropdown-divider"></div>
-                            @endif
-                            <a href="{{ route('profile') }}" class="dropdown-item">Perfil</a>
-                            <a href="{{ route('security') }}" class="dropdown-item">Seguridad</a>
-                            <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                    Cerrar sesión
-                                </a>
-    
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                        </div>
-                    </li>
-                @endif
-                @guest
-                <li class="nav-item mr-4"><a href="{{ route('register') }}" class="nav-link text-success">Registrarse</a></li>
-                <li><a href="{{ route('login') }}" class="btn btn-light" role="button">Ingresar</a></li>
-                @endguest
-            </ul>
-        </nav>
-    </div><!-- .container -->
+<header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+        <div class="col-4 pt-1">
+            <a class="text-muted" href="#">Subscribe</a>
+        </div>
+        <div class="col-4 text-center">
+            <a class="blog-header-logo text-dark" href="{{ route('home') }}">{{ config('app.name') }}</a>
+        </div>
+        <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="text-muted" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+            </a>
+            <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+        </div>
+    </div>
 </header>

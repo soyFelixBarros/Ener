@@ -16,15 +16,15 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Scraping' => [
             'App\Listeners\Scraping\Init'
         ],
-        'App\Events\PageScraping' => [
-            'App\Listeners\ExtractingPostLink'
-        ],
-        'App\Events\PostScraping' => [
-            'App\Listeners\CheckingPostExists',
-            'App\Listeners\ExtractingPostTitle',
-            'App\Listeners\ExtractingPostContent',
-            'App\Listeners\ExtractingPostImage'
-        ],
+        // 'App\Events\PageScraping' => [
+        //     'App\Listeners\ExtractingPostLink'
+        // ],
+        // 'App\Events\PostScraping' => [
+        //     'App\Listeners\CheckingPostExists',
+        //     'App\Listeners\ExtractingPostTitle',
+        //     'App\Listeners\ExtractingPostContent',
+        //     'App\Listeners\ExtractingPostImage'
+        // ],
     ];
 
     /**

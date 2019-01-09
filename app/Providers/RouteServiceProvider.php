@@ -26,10 +26,6 @@ class RouteServiceProvider extends ServiceProvider
         Route::pattern('id', '[0-9]+');
 
         parent::boot();
-
-        Route::bind('newspaper', function ($slug) {
-            return \App\Newspaper::where('slug', $slug)->first();
-        });
     }
 
     /**

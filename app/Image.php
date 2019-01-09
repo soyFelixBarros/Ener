@@ -17,12 +17,4 @@ class Image extends Model
     {
         return $this->file;
     }
-    
-    /**
-     * Obtener las noticias.
-     */
-    public function posts()
-    {
-        return $this->hasMany('App\Post');
-    }
 }

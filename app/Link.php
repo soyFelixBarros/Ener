@@ -20,7 +20,6 @@ class Link extends Model
      */
     protected $fillable = [
         'newspaper_id',
-        'category_id',
         'url',
         'active',
         'status',
@@ -43,15 +42,6 @@ class Link extends Model
      */
     public function newspaper()
     {
-        return $this->belongsTo('App\Newspaper')
-                    ->with('province');
-    }
-
-    /**
-     * Obtener la categoria del link.
-     */
-    public function category()
-    {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Newspaper');
     }
 }

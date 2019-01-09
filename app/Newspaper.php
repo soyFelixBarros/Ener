@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Scopes\LocationScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Newspaper extends Model
@@ -20,8 +19,6 @@ class Newspaper extends Model
      * @var array
      */
     protected $fillable = [
-        'country_id',
-        'province_id',
         'name',
         'website',
         'slug',
@@ -40,18 +37,6 @@ class Newspaper extends Model
      * @var bool
      */
     public $timestamps = false;
-    
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::addGlobalScope(new LocationScope);
-    }
 
     /**
      * Obtener los xpath del diario.
@@ -62,35 +47,11 @@ class Newspaper extends Model
     }
 
     /**
-     * Obtener todas las entradas de un diario.
-     */
-    public function posts()
-    {
-        return $this->hasMany('App\Post');
-    }
-
-    /**
      * Obtener todos los links de un diario.
      */
     public function links()
     {
         return $this->hasMany('App\Link');
-    }
-
-    /**
-     * Obtener el país del diario.
-     */
-    public function country()
-    {
-        return $this->belongsTo('App\Country');
-    }
-
-    /**
-     * Obtener la provincia del diario.
-     */
-    public function province()
-    {
-        return $this->belongsTo('App\Province');
     }
 
     /**

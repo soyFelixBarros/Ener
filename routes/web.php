@@ -9,11 +9,6 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
 
 Route::get('/about', 'PagesController@about')->name('about');
 
-// cablera.online/search?q=string
-Route::group(['prefix' => 'search'], function() {
-	$this->get('/', 'SearchController@index')->name('search');
-});
-
 // Newspapers
 Route::group(['prefix' => 'newspapers'], function() {
 	$this->get('/', 'NewspapersController@index')->name('newspapers');
@@ -29,16 +24,6 @@ Route::group(['prefix' => 'newsletters'], function() {
 // cablera.online/scraper
 Route::group(['prefix' => 'scraper'], function () {
 	$this->get('/', 'ScraperController@index');
-});
-
-// chaco.argentina.cablera.online
-Route::group(['domain' => '{province}.{country}'.env('SESSION_DOMAIN')], function () {
-	$this->get('/', 'HomeController@index')->name('home');
-});
-
-// argentina.cablera.online
-Route::group(['domain' => '{country}'.env('SESSION_DOMAIN')], function () {
-	$this->get('/', 'HomeController@index')->name('home');
 });
 
 Route::get('/', 'HomeController@index')->name('home');

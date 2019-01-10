@@ -32,16 +32,16 @@ class ScraperSeeder extends Seeder
             [
                 2,
                 '//article/a',
-                '//article/section/header/h1',
+                '//main/div/div[@class="container"]/h1',
                 '//figure/img/@src',
-                '//article//section[@class="body"]/p',
+                '//article//section[@class="body"]//p',
             ],
             
             // DataChaco.com
             [
                 3,
                 '//div[@class="col-not-titulo"]/a',
-                '//*[@id="contenido-view"]/div/div[2]',
+                '//*[@id="contenido-view"]/div/div[@class="view-titulo"]',
                 '//div[@class="carousel-inner"]/div/img/@data-original',
                 '//div[@class="view-cuerpo"]/*',
             ],
@@ -94,7 +94,7 @@ class ScraperSeeder extends Seeder
             // Chaco On Line
             [
                 9,
-                '//div[@class="lista"]/article[1]/h1/a',
+                '//article//h3/a',
                 '//article/header/h1',
                 '//article/div[5]/img/@src',
                 '//div[@class="detalle"]',

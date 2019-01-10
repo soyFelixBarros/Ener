@@ -10,7 +10,8 @@ class WpApi
     public function __construct()
     {
         $this->client = new \GuzzleHttp\Client();
-        $this->url = config('wp.api');
+        $this->url = config('wp.url');
+        $this->auth = config('wp.auth');
     }
     
     /**
@@ -38,10 +39,11 @@ class WpApi
      * 
      * @return json
      */
-	public function sendRequest($requestname, array $query)
+	public function sendRequest($requestname, array $query, string $method = 'GET')
 	{
-		$results = $this->client->get($this->url . $requestname, [
-            'query' => $query
+		$results = $this->client($method, $this->url . $requestname, [
+            'query' => $query,
+            $this->auth,
         ]);
 		if ($results)
 		{

@@ -19,11 +19,9 @@ class Scraper extends Model
      * @var array
      */
     protected $fillable = [
-        'newspaper_id',
         'title',
         'src',
         'content',
-        'status',
     ];
 
     /**
@@ -32,6 +30,9 @@ class Scraper extends Model
      * @var array
      */
     protected $hidden = [
+        'id',
+        'newspaper_id',
+        'status',
     ];
 
     /**

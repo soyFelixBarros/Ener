@@ -13,17 +13,17 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 class PostScraping
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    
-    public $post;
+
+    public $hash;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($post)
+    public function __construct($hash)
     {
-        $this->post = $post;
+        $this->hash = $hash;
     }
 
     /**

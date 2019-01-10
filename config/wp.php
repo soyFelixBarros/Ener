@@ -2,6 +2,11 @@
 
 return [
 
-    'api' => env('WP_API'),
+    'url' => env('WP_URL'),
+
+    'auth' => [
+        env('WP_USERNAME'),
+        env('WP_PASSWORD'),
+    ]
 
 ];

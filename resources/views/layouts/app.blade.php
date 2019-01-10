@@ -20,11 +20,11 @@
 <body class="pb-3">
     <div id="app">
         <div class="container">
-        {{-- @include('partials.header')
+        {{-- @include('partials.header') --}}
 
         @yield('content')
         
-        @include('partials.footer') --}}
+        {{-- @include('partials.footer') --}}
         </div><!-- .container -->
     </div>
     

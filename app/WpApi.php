@@ -2,16 +2,44 @@
 
 namespace App;
 
-use Illuminate\Support\Collection;
 use GuzzleHttp;
+use Illuminate\Support\Collection;
 
 class WpApi
 {
+    private $client;
+    private $url;
+    private $auth;
+
     public function __construct()
     {
-        $this->client = new \GuzzleHttp\Client();
         $this->url = config('wp.url');
+        $this->client = new \GuzzleHttp\Client(['base_uri' => $this->url]);
         $this->auth = config('wp.auth');
+    }
+
+    /**
+     * Metodo para crear un post.
+     * 
+     * @return Collection
+     */
+	public function addPosts(array $json)
+	{
+	    return $this->post('posts', $json);
+    }
+
+    /**
+     * Metod para realizar un POST al punto final pasado como parametro.
+     *
+     * @return Collection
+     */
+    public function post(string $endPoints, array $json = [])
+    {
+        $query = [
+            'json' => $json,
+            'auth' => $this->auth,
+        ];
+        return Collection::make($this->sendRequest($endPoints, $query, 'POST'));
     }
     
     /**
@@ -31,6 +59,7 @@ class WpApi
      */
     public function get(string $endPoints, array $query = [])
     {
+        $query = ['query' => $query];
         return Collection::make($this->sendRequest($endPoints, $query));
     }
 
@@ -41,15 +70,12 @@ class WpApi
      */
 	public function sendRequest($requestname, array $query, string $method = 'GET')
 	{
-		$results = $this->client($method, $this->url . $requestname, [
-            'query' => $query,
-            $this->auth,
-        ]);
-		if ($results)
-		{
+		$results = $this->client->request($method, $requestname, $query);
+
+		if ($results) {
 		    return json_decode($results->getBody(), true);
-		} else {
-			return json_decode($results=[], true);
-		}
+        }
+        
+        return json_decode($results=[], true);
 	}
 }

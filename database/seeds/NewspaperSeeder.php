@@ -28,6 +28,7 @@ class NewspaperSeeder extends Seeder
             ['Primera Línea', 'http://www.diarioprimeralinea.com.ar'],
             ['La Voz del Chaco', 'http://www.diariolavozdelchaco.com/notix/'],
             ['Chaco On Line', 'https://chacoonline.com.ar'],
+            ['Chaco Hoy', 'http://www.chacohoy.com'],
     	];
 
     	foreach ($newspapers as $newspaper) {

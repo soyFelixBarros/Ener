@@ -99,6 +99,15 @@ class ScraperSeeder extends Seeder
                 '//article/div[5]/img/@src',
                 '//div[@class="detalle"]',
             ],
+
+            // Chaco Hoy
+            [
+                10,
+                '//div/h1/a',
+                '//h1',
+                '//img[@class="sombra"]/@src',
+                '//div[@class="fuentes"]',
+            ],
     	];
 
     	foreach ($scrapings as $scraper) {

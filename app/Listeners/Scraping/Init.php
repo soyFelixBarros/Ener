@@ -65,8 +65,9 @@ class Init
         // Creamos el cache con su limite de tiempo
         Cache::add($hash, $post, $expiresAt);
 
+        dump($url);
         // Ejecutamos el evento para seguir con la recoleccion de datos
-        event(new PostScraping($hash));
+        //event(new PostScraping($hash));
     }
 
 

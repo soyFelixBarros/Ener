@@ -63,7 +63,7 @@ class CheckingPostExists
         ];
 
         // Crear la noticia en WordPress
-        $posts = $this->api->addPosts($body);
+        // $posts = $this->api->addPosts($body);
 
         // // Mostrar en pantalla
         // dd($posts->first());

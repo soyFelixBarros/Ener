@@ -81,7 +81,13 @@ class LinkSeeder extends Seeder
             [9, 'https://chacoonline.com.ar/categoria/8/region', null],
             [9, 'https://chacoonline.com.ar/categoria/3/cultura', null],
             [9, 'https://chacoonline.com.ar/categoria/4/espectaculos', null],
-            [9, 'https://chacoonline.com.ar/categoria/5/educacion', null]
+            [9, 'https://chacoonline.com.ar/categoria/5/educacion', null],
+
+            // Chaco Hoy
+            [10, 'http://www.chacohoy.com/noticias/index_seccion/Pol%C3%ADtica', null],
+            [10, 'http://www.chacohoy.com/noticias/index_seccion/Info%20General', null],
+            [10, 'http://www.chacohoy.com/noticias/index_seccion/Cultura', null],
+            [10, 'http://www.chacohoy.com/noticias/index_seccion/Policiales', null],
     	];
 
         foreach ($links as $link) {

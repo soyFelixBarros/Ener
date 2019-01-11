@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Listeners\Scraping;
+namespace App\Listeners;
 
 use Felix\Scraper\Url;
 use Felix\Scraper\Crawler;
-use App\Events\Scraping;
-use App\Events\PostScraping;
+use App\Events\Scraping as EventsScraping;
+use App\Events\Scraping\Post\Title as EventsScrapingPostTitle;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Init
+class Scraping
 {
     /**
      * Create the event listener.
@@ -28,7 +28,7 @@ class Init
      * @param  Scraping  $event
      * @return void
      */
-    public function handle(Scraping $event)
+    public function handle(EventsScraping $event)
     {
         // Prepara el crawler y ejecutar
         $data = Crawler::extracting($event->link->url, $event->link->newspaper->scraper->href);
@@ -65,9 +65,8 @@ class Init
         // Creamos el cache con su limite de tiempo
         Cache::add($hash, $post, $expiresAt);
 
-        dump($url);
         // Ejecutamos el evento para seguir con la recoleccion de datos
-        //event(new PostScraping($hash));
+        event(new EventsScrapingPostTitle($hash));
     }
 
 

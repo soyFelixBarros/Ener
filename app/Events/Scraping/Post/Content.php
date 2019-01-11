@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace App\Events\Scraping\Post;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
@@ -10,20 +10,20 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class PageScraping
+class Content
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     
-    public $link;
+    public $hash;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($link)
+    public function __construct($hash)
     {
-        $this->link = $link;
+        $this->hash = $hash;
     }
 
     /**

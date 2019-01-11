@@ -29,6 +29,16 @@ class WpApi
     }
 
     /**
+     * Metodo para actualizar un post.
+     * 
+     * @return Collection
+     */
+	public function updatePost($id, array $json)
+	{
+	    return $this->post('posts/'.$id, $json);
+    }
+
+    /**
      * Metod para realizar un POST al punto final pasado como parametro.
      *
      * @return Collection

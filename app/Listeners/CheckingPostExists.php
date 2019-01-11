@@ -45,22 +45,24 @@ class CheckingPostExists
 		// Limpiar el titulo de caracteres extraños
         $title = Str::clean($data->text());
 
-        // Buscamos el titulo de la noticia en la BD
-        $posts = $this->api->getPosts([ 'search' => $title ]);
+        dump($title.' - '.$value["newspaper"]["name"]);
 
-        // Si la noticia ya está creada terminar el ciclo
-		if ($posts->count() === 1) {
-			return false;
-        }
+        // // Buscamos el titulo de la noticia en la BD
+        // $posts = $this->api->getPosts([ 'search' => $title ]);
 
-        // Datos del posts que sea agregaran
-        $body = [
-            'title' => $title,
-            'content' => '<a href="'.$value["url"].'" target="blank">'.$value["newspaper"]["name"].'</a>',
-            'status' => 'publish', // publish, future, draft, pending, private
-            'comment_status' => 'closed',
-            'format' => 'link', // standard (default), aside, gallery, link, image, quote, status, video
-        ];
+        // // Si la noticia ya está creada terminar el ciclo
+		// if ($posts->count() === 1) {
+		// 	return false;
+        // }
+
+        // // Datos del posts que sea agregaran
+        // $body = [
+        //     'title' => $title,
+        //     'content' => '<a href="'.$value["url"].'" target="blank">'.$value["newspaper"]["name"].'</a>',
+        //     'status' => 'publish', // publish, future, draft, pending, private
+        //     'comment_status' => 'closed',
+        //     'format' => 'link', // standard (default), aside, gallery, link, image, quote, status, video
+        // ];
 
         // Crear la noticia en WordPress
         // $posts = $this->api->addPosts($body);

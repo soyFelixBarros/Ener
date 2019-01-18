@@ -51,19 +51,31 @@ class Content
 			if ($p != "") {
 				array_push($arr, $p);
 			}
-		}
+        }
+        
+        $source = '<a href="'.$post["url"].'" target="blank">'.$post["newspaper"]["name"].'</a>';
+        $content = implode("\n\r\n", $arr)."\n\r\nFuente: ". $source; // Concatenamos el contenido que está en cache
 
-        $content = implode("\n", $arr);
-
+        // CREAMOS EL POST CON TITULO Y CONTENIDO
         // Datos del posts que sea agregaran
         $body = [
+            'title' => $post['title'],
             'content' => $content,
+            'status' => 'pending', // publish, future, draft, pending, private
+            'comment_status' => 'closed',
             'format' => 'standard', // standard (default), aside, gallery, link, image, quote, status, video
         ];
 
-        // Actualziar la noticia en WordPress
-        $posts = $this->api->updatePost($post['id'], $body);
+        dd($body);
+        
+        // Crear la noticia en WordPress
+        $posts = $this->api->addPosts($body);
 
-        dump($post["url"]);
+        // Agregamos el id del posts al cache
+        $post['content'] = $body['content']; // Actualizamos el cache con el contenido nuevo
+        $expiresAt = now()->addHours(48);
+        Cache::put($event->hash, $post, $expiresAt);
+        $post = Cache::get($event->hash);
+        dd($post);
     }
 }

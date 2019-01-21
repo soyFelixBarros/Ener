@@ -53,8 +53,8 @@ class Content
 			}
         }
         
-        $source = '<a href="'.$post["url"].'" target="blank">'.$post["newspaper"]["name"].'</a>';
-        $content = implode("\n\r\n", $arr)."\n\r\nFuente: ". $source; // Concatenamos el contenido que está en cache
+        $content = implode("\n\r\n", $arr);
+        $content .= '\n\r\nFuente:  <a href="'.$post["url"].'" target="blank">'.$post["newspaper"]["name"].'</a>'; // Concatenamos el contenido que está en cache
 
         // CREAMOS EL POST CON TITULO Y CONTENIDO
         // Datos del posts que sea agregaran

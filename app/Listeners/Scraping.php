@@ -2,7 +2,9 @@
 
 namespace App\Listeners;
 
-use Felix\Scraper\Url;
+// use Felix\Scraper\Url;
+use GuzzleHttp\Client;
+use Zend\Uri\UriFactory;
 use Felix\Scraper\Crawler;
 use App\Events\Scraping as EventsScraping;
 use App\Events\Scraping\Post\Title as EventsScrapingPostTitle;
@@ -40,7 +42,14 @@ class Scraping
         
         // Obtener el enlace del utlimo post y normalizar
         $href = $data->attr('href');
-                            
+
+        $client = new Client([
+            // Base URI is used with relative requests
+            'base_uri' => $event->link->newspaper->website,
+            // You can set any number of default request options.
+            'timeout'  => 2.0,
+        ]);
+
         // Normalizar url
         $url = Url::normalize($href, $event->link->newspaper->website);
 

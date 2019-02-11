@@ -4,11 +4,11 @@ namespace App\Listeners\Scraping\Post;
 
 use Felix\Scraper\Str;
 use Felix\Scraper\Crawler;
-use App\Events\Scraping\Post\Title as EventsScrapingPostTitle;
-use App\Events\Scraping\Post\Content as EventsScrapingPostContent;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Events\Scraping\Post\Title as EventsScrapingPostTitle;
+use App\Events\Scraping\Post\Content as EventsScrapingPostContent;
 
 class Title
 {

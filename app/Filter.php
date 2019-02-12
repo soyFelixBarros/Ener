@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Scraper extends Model
+class Filter extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'scrapers';
+    protected $table = 'filters';
 
     /**
      * The attributes that are mass assignable.
@@ -19,9 +19,10 @@ class Scraper extends Model
      * @var array
      */
     protected $fillable = [
+        'link',
         'title',
-        'src',
-        'content',
+        'image',
+        'text',
     ];
 
     /**
@@ -31,8 +32,7 @@ class Scraper extends Model
      */
     protected $hidden = [
         'id',
-        'newspaper_id',
-        'status',
+        'source_id',
     ];
 
     /**
@@ -43,10 +43,10 @@ class Scraper extends Model
     public $timestamps = false;
 
     /**
-     * Obtener el diario que posee del scraping.
+     * Obtener la fuente del filtro.
      */
-    public function newspaper()
+    public function source()
     {
-        return $this->belongsTo('App\Newspaper');
+        return $this->belongsTo('App\Source');
     }
 }

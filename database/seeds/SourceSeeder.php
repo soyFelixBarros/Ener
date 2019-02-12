@@ -2,13 +2,13 @@
 
 use Illuminate\Database\Seeder;
 
-class NewspaperSeeder extends Seeder
+class SourceSeeder extends Seeder
 {
     protected $table;
 
     public function __construct()
     {
-        $this->table = (new App\Newspaper())->getTable();
+        $this->table = (new App\Source())->getTable();
     }
 
     /**
@@ -18,7 +18,7 @@ class NewspaperSeeder extends Seeder
      */
     public function run()
     {
-        $newspapers = [
+        $sources = [
     		['Diario Chaco', 'http://www.diariochaco.com'],
     		['Diario NORTE', 'http://www.diarionorte.com'],
     		['DataChaco.com', 'http://www.datachaco.com'],
@@ -31,11 +31,10 @@ class NewspaperSeeder extends Seeder
             ['Chaco Hoy', 'http://www.chacohoy.com'],
     	];
 
-    	foreach ($newspapers as $newspaper) {
+    	foreach ($sources as $source) {
     		DB::table($this->table)->insert([
-    			'name' => $newspaper[0],
-                'website' => $newspaper[1],
-                'slug' => str_slug($newspaper[0]),
+    			'name' => $source[0],
+                'url' => $source[1],
     		]);
     	}
     }

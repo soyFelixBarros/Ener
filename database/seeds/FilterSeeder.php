@@ -2,13 +2,13 @@
 
 use Illuminate\Database\Seeder;
 
-class ScraperSeeder extends Seeder
+class FilterSeeder extends Seeder
 {
     protected $table;
 
     public function __construct()
     {
-        $this->table = (new App\Scraper())->getTable();
+        $this->table = (new App\Filter())->getTable();
     }
 
     /**
@@ -18,7 +18,7 @@ class ScraperSeeder extends Seeder
      */
     public function run()
     {
-        $scrapings = [
+        $filters = [
             // Diario Chaco
     		[
                 1,
@@ -110,13 +110,13 @@ class ScraperSeeder extends Seeder
             ],
     	];
 
-    	foreach ($scrapings as $scraper) {
+    	foreach ($filters as $filter) {
     		DB::table($this->table)->insert([
-                'newspaper_id' => $scraper[0],
-                'href' => $scraper[1],
-                'title' => $scraper[2],
-    			'image' => $scraper[3],
-    			'content' => $scraper[4],
+                'source_id' => $filter[0],
+                'link' => $filter[1],
+                'title' => $filter[2],
+    			'image' => $filter[3],
+    			'text' => $filter[4],
     		]);
     	}
     }

@@ -22,10 +22,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
-            $table->string('facebook_id')->nullable();
-            $table->string('twitter_id')->nullable();
-            $table->unsignedInteger('role_id')->default(2);
-            $table->foreign('role_id')->references('id')->on('roles');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password')->nullable();

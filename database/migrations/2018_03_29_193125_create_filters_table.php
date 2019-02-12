@@ -4,15 +4,15 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewspapersTable extends Migration
+class CreateFiltersTable extends Migration
 {
     protected $table;
 
     public function __construct()
     {
-        $this->table = (new App\Newspaper())->getTable();
+        $this->table = (new App\Filter())->getTable();
     }
-    
+
     /**
      * Run the migrations.
      *
@@ -22,9 +22,12 @@ class CreateNewspapersTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('website');
-            $table->string('slug')->unique();
+            $table->unsignedInteger('source_id')->nullable();
+            $table->foreign('source_id')->references('id')->on('sources')->onDelete('cascade');
+            $table->string('link');
+            $table->string('title');
+            $table->string('image');
+            $table->string('text');
         });
     }
 

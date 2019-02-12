@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Newspaper extends Model
+class Source extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'newspapers';
+    protected $table = 'sources';
 
     /**
      * The attributes that are mass assignable.
@@ -20,8 +20,7 @@ class Newspaper extends Model
      */
     protected $fillable = [
         'name',
-        'website',
-        'slug',
+        'website'
     ];
 
     /**
@@ -37,28 +36,4 @@ class Newspaper extends Model
      * @var bool
      */
     public $timestamps = false;
-
-    /**
-     * Obtener los xpath del diario.
-     */
-    public function scraper()
-    {
-        return $this->hasOne('App\Scraper');
-    }
-
-    /**
-     * Obtener todos los links de un diario.
-     */
-    public function links()
-    {
-        return $this->hasMany('App\Link');
-    }
-
-    /**
-     * Capturar el slug.
-     */
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 }

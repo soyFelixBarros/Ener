@@ -11,8 +11,6 @@
                 <div class="card-header">
                     Iniciar sesión
                 </div><!-- .card-header -->
-                @include('auth.social-buttons')
-                <hr class="mt-0 mb-0" />
                 <form class="card-body" role="form" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

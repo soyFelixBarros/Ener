@@ -21,78 +21,78 @@ class LinkSeeder extends Seeder
         $links = [
         
             // Diario Chaco
-    		[1, 'http://www.diariochaco.com/secciones/cultura', null],
-            [1, 'http://www.diariochaco.com/secciones/policiales-y-judiciales', 2],
-            [1, 'http://www.diariochaco.com/secciones/provinciales', null],
-            [1, 'http://www.diariochaco.com/secciones/interior', null],
+    		[1, 'http://www.diariochaco.com/secciones/cultura'],
+            [1, 'http://www.diariochaco.com/secciones/policiales-y-judiciales'],
+            [1, 'http://www.diariochaco.com/secciones/provinciales'],
+            [1, 'http://www.diariochaco.com/secciones/interior'],
 
             // Diario NORTE
-            [2, 'http://www.diarionorte.com/espectaculos/', null],
-            [2, 'http://www.diarionorte.com/cultura/', null],
-            [2, 'http://www.diarionorte.com/policiales/', 2],
-            [2, 'http://www.diarionorte.com/politica/', 1],
-            [2, 'http://www.diarionorte.com/locales/', null],
-            [2, 'http://www.diarionorte.com/interior/', null],
-            [2, 'http://www.diarionorte.com/voces-de-la-ciudad/', null],
-            [2, 'http://www.diarionorte.com/salud/', null],
+            [2, 'http://www.diarionorte.com/espectaculos/'],
+            [2, 'http://www.diarionorte.com/cultura/'],
+            [2, 'http://www.diarionorte.com/policiales/'],
+            [2, 'http://www.diarionorte.com/politica/'],
+            [2, 'http://www.diarionorte.com/locales/'],
+            [2, 'http://www.diarionorte.com/interior/'],
+            [2, 'http://www.diarionorte.com/voces-de-la-ciudad/'],
+            [2, 'http://www.diarionorte.com/salud/'],
 
             // DataChaco.com
-            [3, 'http://www.datachaco.com/noticias/index_seccion/Cultura', null],
-            [3, 'http://www.datachaco.com/noticias/index_seccion/Policiales', 2],
-            [3, 'http://www.datachaco.com/noticias/index_seccion/Polit%C3%ADca', 1],
-            [3, 'http://www.datachaco.com/noticias/index_seccion/Actualidad', null],
-            [3, 'http://www.datachaco.com/noticias/index_seccion/Educaci%C3%B3n', null],
-            [3, 'http://www.datachaco.com/noticias/index_seccion/Sociedad', null],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Cultura'],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Policiales'],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Polit%C3%ADca'],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Actualidad'],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Educaci%C3%B3n'],
+            [3, 'http://www.datachaco.com/noticias/index_seccion/Sociedad'],
 
             // Chaco Dia Por Dia
-            [4, 'http://www.chacodiapordia.com/category/politica/', 1],
-            [4, 'http://www.chacodiapordia.com/category/interior/', null],
-            [4, 'http://www.chacodiapordia.com/category/actualidad/', null],
-            [4, 'http://www.chacodiapordia.com/category/ciudad/', null],
-            [4, 'http://www.chacodiapordia.com/category/cultura/', null],
-            [4, 'http://www.chacodiapordia.com/category/opinion/', null],
+            [4, 'http://www.chacodiapordia.com/category/politica/'],
+            [4, 'http://www.chacodiapordia.com/category/interior/'],
+            [4, 'http://www.chacodiapordia.com/category/actualidad/'],
+            [4, 'http://www.chacodiapordia.com/category/ciudad/'],
+            [4, 'http://www.chacodiapordia.com/category/cultura/'],
+            [4, 'http://www.chacodiapordia.com/category/opinion/'],
 
             // Diario TAG
-            [5, 'https://www.diariotag.com/tag/chaco', null],
-            [5, 'https://www.diariotag.com/tag/resistencia', null],
-            [5, 'https://www.diariotag.com/seccion/locales', null],
-            [5, 'https://www.diariotag.com/seccion/interior', null],
+            [5, 'https://www.diariotag.com/tag/chaco'],
+            [5, 'https://www.diariotag.com/tag/resistencia'],
+            [5, 'https://www.diariotag.com/seccion/locales'],
+            [5, 'https://www.diariotag.com/seccion/interior'],
 
             // diario21.tv
-            [6, 'http://www.diario21.tv/notix2/noticias/1/chaco.html', null],
+            [6, 'http://www.diario21.tv/notix2/noticias/1/chaco.html'],
 
             // Primera Línea
-            [7, 'http://diarioprimeralinea.com.ar/politica/gran-resistencia/', 1],
-            [7, 'http://diarioprimeralinea.com.ar/politica/interior/', 1],
-            [7, 'http://diarioprimeralinea.com.ar/informacion-general/gran-resistencia-informacion-general/', null],
-            [7, 'http://diarioprimeralinea.com.ar/informacion-general/interior-informacion-general/', null],
-            [7, 'http://diarioprimeralinea.com.ar/policiales/', 2],
-            [7, 'http://diarioprimeralinea.com.ar/deportes/', 3],
+            [7, 'http://diarioprimeralinea.com.ar/politica/gran-resistencia/'],
+            [7, 'http://diarioprimeralinea.com.ar/politica/interior/'],
+            [7, 'http://diarioprimeralinea.com.ar/informacion-general/gran-resistencia-informacion-general/'],
+            [7, 'http://diarioprimeralinea.com.ar/informacion-general/interior-informacion-general/'],
+            [7, 'http://diarioprimeralinea.com.ar/policiales/'],
+            [7, 'http://diarioprimeralinea.com.ar/deportes/'],
 
             // La Voz del Chaco
-            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/capital.htm', null],
-            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/interior.htm', null],
-            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/politica-provincial.htm', 1],
+            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/capital.htm'],
+            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/interior.htm'],
+            [8, 'http://www.diariolavozdelchaco.com/notix/noticias/1/politica-provincial.htm'],
 
             // Chaco On Line
-            [9, 'https://chacoonline.com.ar/categoria/1/sociedad', null],
-            [9, 'https://chacoonline.com.ar/categoria/6/ciudad', null],
-            [9, 'https://chacoonline.com.ar/categoria/7/provincia', null],
-            [9, 'https://chacoonline.com.ar/categoria/8/region', null],
-            [9, 'https://chacoonline.com.ar/categoria/3/cultura', null],
-            [9, 'https://chacoonline.com.ar/categoria/4/espectaculos', null],
-            [9, 'https://chacoonline.com.ar/categoria/5/educacion', null],
+            [9, 'https://chacoonline.com.ar/categoria/1/sociedad'],
+            [9, 'https://chacoonline.com.ar/categoria/6/ciudad'],
+            [9, 'https://chacoonline.com.ar/categoria/7/provincia'],
+            [9, 'https://chacoonline.com.ar/categoria/8/region'],
+            [9, 'https://chacoonline.com.ar/categoria/3/cultura'],
+            [9, 'https://chacoonline.com.ar/categoria/4/espectaculos'],
+            [9, 'https://chacoonline.com.ar/categoria/5/educacion'],
 
             // Chaco Hoy
-            [10, 'http://www.chacohoy.com/noticias/index_seccion/Pol%C3%ADtica', null],
-            [10, 'http://www.chacohoy.com/noticias/index_seccion/Info%20General', null],
-            [10, 'http://www.chacohoy.com/noticias/index_seccion/Cultura', null],
-            [10, 'http://www.chacohoy.com/noticias/index_seccion/Policiales', null],
+            [10, 'http://www.chacohoy.com/noticias/index_seccion/Pol%C3%ADtica'],
+            [10, 'http://www.chacohoy.com/noticias/index_seccion/Info%20General'],
+            [10, 'http://www.chacohoy.com/noticias/index_seccion/Cultura'],
+            [10, 'http://www.chacohoy.com/noticias/index_seccion/Policiales'],
     	];
 
         foreach ($links as $link) {
     		DB::table($this->table)->insert([
-                'newspaper_id' => $link[0],
+                'source_id' => $link[0],
     			'url' => $link[1],
     		]);
     	}

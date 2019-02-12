@@ -22,8 +22,8 @@ class CreateLinksTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('newspaper_id')->nullable();
-            $table->foreign('newspaper_id')->references('id')->on('newspapers');
+            $table->unsignedInteger('source_id')->nullable();
+            $table->foreign('source_id')->references('id')->on('sources');
             $table->string('url');
             $table->boolean('active')->default(true);
             $table->timestamps();

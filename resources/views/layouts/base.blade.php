@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-12 col-md-3">
             <div class="list-group mb-3">
+                <a href="{{ route('admin.dashboard.index') }}" class="list-group-item list-group-item-action{{ request()->is('admin/dashboard*') ? ' active' : '' }}">Dashboard</a>
                 <a href="{{ route('admin.sources.index') }}" class="list-group-item list-group-item-action{{ request()->is('admin/sources*') ? ' active' : '' }}">Fuentes</a>
             </div><!-- .list-group -->
     	</div>

@@ -11,7 +11,6 @@
         <div class="col-sm-12 col-md-7">
         </div>
         <div class="col-sm-12 col-md-2">
-            @include('shared.sidebar-right')
         </div>
     </div>
 </div>

@@ -21,7 +21,14 @@
     </head>
     <body>
         <div id="app">
+            @include('partials.header')
+
             @yield('content')
+
+            @include('partials.footer')
         </div>
+        @section('javascript')
+        <script src="{{ mix('/js/app.js') }}"></script>
+        @show
     </body>
 </html>

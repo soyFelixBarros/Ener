@@ -36,4 +36,12 @@ class Source extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Get the links for the source.
+     */
+    public function links()
+    {
+        return $this->hasMany('App\Link');
+    }
 }

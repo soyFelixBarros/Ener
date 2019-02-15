@@ -36,12 +36,12 @@ class Link extends Model
     protected $hidden = [
         'newspaper_id',
     ];
-    
+
     /**
-     * Obtener el diario del link.
+     * Get the source that owns the link.
      */
-    public function newspaper()
+    public function source()
     {
-        return $this->belongsTo('App\Newspaper');
+        return $this->belongsTo('App\Source');
     }
 }

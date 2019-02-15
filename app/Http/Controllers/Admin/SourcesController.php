@@ -21,4 +21,18 @@ class SourcesController extends Controller
 			'sources' => $sources,
 		]);
 	}
+
+	/**
+	 * Vista con más info de la fuente y sus enlaces.
+	 *
+	 * @return Object
+	 */
+	public function show(Request $request, $id)
+	{
+		$source = Source::find($id);
+
+		return view('admin.sources.show', [
+			'source' => $source,
+		]);
+	}
 }

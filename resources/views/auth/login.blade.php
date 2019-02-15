@@ -34,15 +34,8 @@
                             </span>
                         @endif
                     </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? '' : 'checked' }}>
-                            <label class="form-check-label">Recuérdame</label>
-                        </div>
-                    </div>
                     
                     <button type="submit" class="btn btn-primary">Ingresar</button>
-                    <a class="btn btn-link pr-0 float-right" href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
                 </form><!-- .card-body -->
             </div><!-- .card -->
         </div><!-- .col- -->

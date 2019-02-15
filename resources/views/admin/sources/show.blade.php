@@ -1,38 +1,35 @@
 @extends('layouts.base')
 
-@section('title', 'Fuentes')
+@section('title', $source->name)
 
 @section('content.base')
 <div class="card">
 	<div class="card-header clearfix">
 		<div class="float-left">
-			<h5 class="mt-1 mb-1">Fuentes</h5>
+			<h5 class="mt-1 mb-1">Fuente: {{ $source->name }}</h5>
 		</div>
 		<div class="float-right">
 		</div>
 	</div>
 	<div class="card-body">
-		@if ($sources->count() > 0)
+		@if ($source->links->count() > 0)
 		<div class="table-responsive">
 			<table class="table table-sm">
 				<thead>
 					<tr>
-						<th>Nombre</th>
-						<th>Enlaces</th>
+						<th>Url</th>
+						<th>Activo</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach ($sources as $source)
+					@foreach ($source->links as $link)
 					<tr>
-						<td><a href="{{ route('admin.sources.show', $source->id) }}">{{ $source->name }}</a></td>
-						<td>{{ $source->links->count() }}</td>
+						<td><a href="{{ $link->url }}" target="_blank">{{ $link->url }}</a></td>
+						<td>{{ $link->active ? 'Si' : 'No' }}</td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
-			<div class="text-center">
-			{{ $sources->links() }}
-			</div>
 		</div><!-- .table-responsive -->
 		@endif
 	</div>

@@ -1,16 +1,38 @@
-<header class="blog-header py-3">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-        <div class="col-4 pt-1">
-            <a class="text-muted" href="#">Subscribe</a>
-        </div>
-        <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="{{ route('home') }}">{{ config('app.name') }}</a>
-        </div>
-        <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="text-muted" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
-            </a>
-            <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-        </div>
-    </div>
+<header class="navbar bg-gradient navbar-expand-lg shadow mb-5" role="banner">
+    <div class="container">
+        <a class="navbar-brand mb-0 h1 font-weight-normal" href="{{ route('home') }}">
+            Cablera.Online
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav">
+                @auth
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a> 
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="/horizon" class="dropdown-item">Horizon</a>
+                        <a href="{{ route('admin.dashboard.index') }}" class="dropdown-item">Administración</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Cerrar sesión
+                        </a>
+    
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        </div>
+                    </li>
+                @endauth
+                @guest
+                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Ingresar</a></li>
+                @endguest
+            </ul>
+        </nav>
+    </div><!-- .container -->
 </header>

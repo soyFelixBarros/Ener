@@ -2,7 +2,9 @@
 
 Route::get('/images/{path}', 'ImagesController@show')->where('path', '.*');
 
-Auth::routes();
+Auth::routes([
+	'register' => false
+]);
 
 Route::get('/', 'HomeController@index')->name('home');
 

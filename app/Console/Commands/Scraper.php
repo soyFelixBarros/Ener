@@ -6,21 +6,21 @@ use App\Link;
 use App\Events\Scraping;
 use Illuminate\Console\Command;
 
-class RunScraper extends Command
+class Scraper extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'scraper:run';
+    protected $signature = 'scraper';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Correr raspador';
+    protected $description = 'Raspador web';
 
     /**
      * Create a new command instance.

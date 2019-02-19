@@ -16,7 +16,9 @@
         "laravel/scout": "^4.0",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
-        "league/glide-laravel": "^1.0"
+        "league/glide-laravel": "^1.0",
+        "pusher/pusher-php-server": "~3.0",
+        "symfony/dom-crawler": "^4.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

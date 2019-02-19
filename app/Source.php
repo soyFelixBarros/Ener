@@ -44,4 +44,12 @@ class Source extends Model
     {
         return $this->hasMany('App\Link');
     }
+
+    /**
+     * Get the filter record associated with the source.
+     */
+    public function filter()
+    {
+        return $this->hasOne('App\Filter');
+    }
 }

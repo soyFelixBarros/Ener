@@ -13,8 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\SendReports::class,
-        Commands\RunScraper::class,
+        Commands\Scraper::class,
     ];
 
     /**
@@ -30,7 +29,7 @@ class Kernel extends ConsoleKernel
         //          ->timezone('America/Argentina/Buenos_Aires');
         
         $schedule
-        ->command('scraper:run')
+        ->command('scraper')
         ->everyMinute()
         ->timezone('America/Argentina/Buenos_Aires');
     }

@@ -21,5 +21,10 @@ Route::middleware('auth')->group(function() {
 			$this->get('/', 'SourcesController@index')->name('index');
 			$this->get('/{id}', 'SourcesController@show')->name('show');
 		});
+
+		// Links
+		Route::name('links.')->prefix('links')->group(function() {
+			$this->get('/{id}', 'LinksController@show')->name('show');
+		});
 	});
 });

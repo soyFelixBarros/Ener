@@ -10,7 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class Scraping
+class ScraperPost
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     
@@ -33,6 +33,6 @@ class Scraping
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new PrivateChannel('scraper');
     }
 }

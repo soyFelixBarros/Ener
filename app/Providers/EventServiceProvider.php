@@ -13,21 +13,13 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Scraping' => [
+        'App\Events\ScraperLink' => [
             'App\Listeners\GetUrlPost', // Obtener el enlace del post
             'App\Listeners\GetTitlePost', // Obtener el titulo del post
             'App\Listeners\CheckingPostExists', //  Comprobando si existe el post
-            'App\Listeners\GetImagePost', //  Obtener la imagen del post
+            //'App\Listeners\GetImagePost', //  Obtener la imagen del post
+            'App\Listeners\SendPostWordpress', // Publicar post en wordpress
         ],
-        // 'App\Events\Scraping\Post\Title' => [
-        //     'App\Listeners\Scraping\Post\Title' // Obtener el titulo de la noticia
-        // ],
-        // 'App\Events\Scraping\Post\Content' => [
-        //     'App\Listeners\Scraping\Post\Content' // Obtener el contenido de la noticia
-        // ],
-        // 'App\Events\Scraping\Post\Exists' => [
-        //     'App\Listeners\Scraping\Post\Exists', // Buscamos si existe el posts en la base de datos
-        // ],
     ];
 
     /**

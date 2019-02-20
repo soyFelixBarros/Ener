@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\Scraping;
 use Felix\Scraper\Crawler;
+use App\Events\ScraperLink;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -22,10 +22,10 @@ class GetUrlPost implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  \App\Events\Scraping  $event
+     * @param  \App\Events\ScraperLink  $event
      * @return void
      */
-    public function handle(Scraping $event)
+    public function handle(ScraperLink $event)
     {
         // Prepara el crawler y ejecutar
         $data = Crawler::extracting($event->link->url, $event->link->source->filter->link);

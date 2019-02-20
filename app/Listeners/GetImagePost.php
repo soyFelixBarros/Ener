@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\Scraping;
+use App\Events\ScraperLink;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -21,15 +21,11 @@ class GetImagePost implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  \App\Events\Scraping  $event
+     * @param  \App\Events\ScraperLink  $event
      * @return void
      */
-    public function handle(Scraping $event)
+    public function handle(ScraperLink $event)
     {
-        $unixTimestamp = $event->link->updated_at->timestamp;
-
-        // Optenemos la url desde cache
-        $post = Cache::get($unixTimestamp);
-        var_dump('Esto no se tiene que ver');
+        //
     }
 }

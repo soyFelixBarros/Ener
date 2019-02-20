@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Link;
-use App\Events\Scraping;
+use App\Events\ScraperLink;
 use Illuminate\Console\Command;
 
 class WebScraper extends Command
@@ -54,7 +54,7 @@ class WebScraper extends Command
 
         foreach ($links as $link) {
             $this->line($link->url);
-            event(new Scraping($link));
+            event(new ScraperLink($link));
         }
 
         $this->info("\nFinish.\n");

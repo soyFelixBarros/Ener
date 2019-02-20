@@ -3,8 +3,8 @@
 namespace App\Listeners;
 
 use Felix\Scraper\Str;
-use App\Events\Scraping;
 use Felix\Scraper\Crawler;
+use App\Events\ScraperLink;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -23,14 +23,17 @@ class GetTitlePost implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  \App\Events\Scraping  $event
+     * @param  \App\Events\ScrapingLink  $event
      * @return void
      */
-    public function handle(Scraping $event)
+    public function handle(ScraperLink $event)
     {
         $unixTimestamp = $event->link->updated_at->timestamp;
-
-        // Optenemos la url desde cache
+        
+        if (!Cache::has($unixTimestamp))
+            return false;
+        
+            // Optenemos la url desde cache
         $post = Cache::get($unixTimestamp);
 
         // Obtenemos el titulo de la noticia

@@ -6,21 +6,21 @@ use App\Link;
 use App\Events\Scraping;
 use Illuminate\Console\Command;
 
-class Scraper extends Command
+class WebScraper extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'scraper';
+    protected $signature = 'scraper:web';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Raspador web';
+    protected $description = 'Raspar las páginas web';
 
     /**
      * Create a new command instance.
@@ -41,7 +41,7 @@ class Scraper extends Command
     {
         $links = Link::where('active', true)->get();
 
-        $this->line("\n Scraping web pages.\n");
+        $this->line("\n Scraping...\n");
 
         foreach ($links as $link) {
             event(new Scraping($link));

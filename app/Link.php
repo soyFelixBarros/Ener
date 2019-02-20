@@ -19,11 +19,9 @@ class Link extends Model
      * @var array
      */
     protected $fillable = [
-        'newspaper_id',
+        'source_id',
         'url',
         'active',
-        'status',
-        'scraping',
         'created_at',
         'updated_at',
     ];
@@ -34,7 +32,7 @@ class Link extends Model
      * @var array
      */
     protected $hidden = [
-        'newspaper_id',
+        'source_id',
     ];
 
     /**

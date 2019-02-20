@@ -15,6 +15,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\Scraping' => [
             'App\Listeners\GetUrlPost', // Obtener el enlace del post
+            'App\Listeners\GetTitlePost', // Obtener el titulo del post
+            'App\Listeners\CheckingPostExists', //  Comprobando si existe el post
+            'App\Listeners\GetImagePost', //  Obtener la imagen del post
         ],
         // 'App\Events\Scraping\Post\Title' => [
         //     'App\Listeners\Scraping\Post\Title' // Obtener el titulo de la noticia

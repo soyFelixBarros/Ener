@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\Scraping;
 use Felix\Scraper\Crawler;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class GetUrlPost implements ShouldQueue
@@ -33,16 +34,34 @@ class GetUrlPost implements ShouldQueue
             return false;
         
         // Obtener el enlace del utlimo post y normalizar
-        $content = $data->attr('href');
+        $url = $data->attr('href');
 
-        // ¿Tiene http o https la url?
-        if (preg_match("@^http://@i", $content)) {
-            $url = $content;
-        } else {
+        // Ver si una url contiene http:// o https://
+        if (!preg_match("@^https?:\/\/@i", $url)) { // URL no contiene http:// o https://
             $sourceUrl = rtrim($event->link->source->url, "/"); // Quitamos la barra final
-            $url = $sourceUrl . $content; // Concatenamos las dos partes de la url
+            $url = $sourceUrl . $url; // Concatenamos las dos partes de la url
         }
+
+        // Actualziamos la hora y fecha del link
+        $event->link->update([
+            'updated_at' => now()
+        ]);
+
+        $unixTimestamp = now()->timestamp; // Usamos la fecha unix como identificador del cache
+
+        // Limpiamos el cache
+        Cache::flush();
         
-        var_dump($url);
+        // Ver si existe el cache
+        if (Cache::has($unixTimestamp))
+            return false;
+
+        // Guardamos el la noticia en cache, unas 48 horas
+        $expiresAt = now()->addHours(48);
+
+        // Creamos el cache con su limite de tiempo
+        Cache::add($unixTimestamp, [
+            'url' => $url
+        ], $expiresAt);
     }
 }

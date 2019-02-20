@@ -24,14 +24,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('send:reports')
-        //          ->hourly()
-        //          ->timezone('America/Argentina/Buenos_Aires');
         
         $schedule
-        ->command('scraper')
-        ->everyMinute()
-        ->timezone('America/Argentina/Buenos_Aires');
+        ->command('scraper:link') // Comando
+        ->everyMinute() // Ejecutar cada minuto
+        ->timezone('America/Argentina/Buenos_Aires'); // Setear la zona horaria
     }
 
     /**

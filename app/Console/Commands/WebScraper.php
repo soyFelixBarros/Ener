@@ -13,7 +13,7 @@ class WebScraper extends Command
      *
      * @var string
      */
-    protected $signature = 'scraper:web';
+    protected $signature = 'scraper:link {id?}';
 
     /**
      * The console command description.
@@ -39,14 +39,24 @@ class WebScraper extends Command
      */
     public function handle()
     {
-        $links = Link::where('active', true)->get();
+        $linkId = $this->argument('id');
 
-        $this->line("\n Scraping...\n");
+        if (is_null($linkId)) {
+            $links = Link::where('active', true)->get();
+        } else {
+            $links = Link::where([
+                'id' => $linkId,
+                'active' => true,
+            ])->get();
+        }
+
+        $this->info("\nScraping...\n");
 
         foreach ($links as $link) {
+            $this->line($link->url);
             event(new Scraping($link));
         }
 
-        $this->info("\n\n Finish.\n");
+        $this->info("\nFinish.\n");
     }
 }

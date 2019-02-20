@@ -32,7 +32,7 @@ class FilterSeeder extends Seeder
             [
                 2,
                 '//article/a',
-                '//main/div/div[@class="container"]/h1',
+                '//article/header//h1',
                 '//figure/img/@src',
                 '//article//section[@class="body"]//p',
             ],

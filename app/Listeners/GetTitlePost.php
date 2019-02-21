@@ -33,7 +33,7 @@ class GetTitlePost implements ShouldQueue
         if (!Cache::has($unixTimestamp))
             return false;
         
-            // Optenemos la url desde cache
+        // Optenemos la url desde cache
         $post = Cache::get($unixTimestamp);
 
         // Obtenemos el titulo de la noticia

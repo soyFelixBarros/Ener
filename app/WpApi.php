@@ -29,6 +29,34 @@ class WpApi
     }
 
     /**
+     * Metodo para subir una archivo.
+     * 
+     * @return Collection
+     */
+	public function addMedia($fileName, $body)
+	{
+        $query = [
+            'body'    => $body,
+            'auth'    => $this->auth,
+            'headers' => [
+                'Content-Type' => 'application/binary',
+                'Content-Disposition' => 'attachment; filename='.$fileName
+            ],
+        ];
+        return Collection::make($this->sendRequest('media', $query, 'POST'));
+    }
+
+    /**
+     * Metodo para actualizar un media.
+     * 
+     * @return Collection
+     */
+	public function updateMedia($id, array $json)
+	{
+	    return $this->post('media/'.$id, $json);
+    }
+
+    /**
      * Metodo para actualizar un post.
      * 
      * @return Collection
@@ -46,8 +74,8 @@ class WpApi
     public function post(string $endPoints, array $json = [])
     {
         $query = [
-            'json' => $json,
-            'auth' => $this->auth,
+            'json'    => $json,
+            'auth'    => $this->auth,
         ];
         return Collection::make($this->sendRequest($endPoints, $query, 'POST'));
     }

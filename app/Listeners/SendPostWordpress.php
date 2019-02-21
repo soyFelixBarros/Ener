@@ -39,14 +39,23 @@ class SendPostWordpress implements ShouldQueue
 
         // Datos del posts que sea agregaran
         $body = [
-            'title' => $post['title'],
-            'content' => '<a href="'.$post["url"].'" target="blank">'.$event->link->source->name.'</a>',
             'status' => 'publish', // publish, future, draft, pending, private
-            'comment_status' => 'closed',
-            'format' => 'link', // standard (default), aside, gallery, link, image, quote, status, video
+            // 'categories' => 6, // category ID
+            // 'tags' => '7',
         ];
+
+        // Agregamos el media_id al post, si existe. Y actualizamos el el media con el id del post
+        if ( isset($post['media_id']) ) {
+            $media = (new WpApi)->updateMedia($post['media_id'], [
+                // 'title' => $post['title'],
+                'post' => $post['id'],
+                'comment_status' => 'closed',
+            ]);
+
+            $body['featured_media'] = $media['id'];
+        }
         
-        // Crear la noticia en WordPress
-        $posts = (new WpApi)->addPosts($body);
+        // Publciar la noticia en WordPress
+        $posts = (new WpApi)->updatePost($post['id'], $body);
     }
 }

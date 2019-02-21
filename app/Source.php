@@ -19,6 +19,7 @@ class Source extends Model
      * @var array
      */
     protected $fillable = [
+        'tax_id',
         'name',
         'website'
     ];

@@ -28,19 +28,15 @@ class GetUrlPost implements ShouldQueue
     public function handle(ScraperLink $event)
     {
         // Prepara el crawler y ejecutar
-        $data = Crawler::extracting($event->link->url, $event->link->source->filter->link);
-        
-        if ($data->count() === 0)
+        try{
+            $data = Crawler::extracting($event->link->url, $event->link->source->filter->link);
+        } catch(Exception $e) { // I guess its InvalidArgumentException in this case
             return false;
-        
-        // Obtener el enlace del utlimo post y normalizar
-        $url = $data->attr('href');
-
-        // Ver si una url contiene http:// o https://
-        if (!preg_match("@^https?:\/\/@i", $url)) { // URL no contiene http:// o https://
-            $sourceUrl = rtrim($event->link->source->url, "/"); // Quitamos la barra final
-            $url = $sourceUrl . $url; // Concatenamos las dos partes de la url
         }
+
+        // Obtener el enlace del utlimo post y normalizar
+        $href = $data->attr('href');
+        $url = $event->hasSchema($href, $event->link->source->url);
 
         // Actualziamos la hora y fecha del link
         $event->link->update([
@@ -48,9 +44,6 @@ class GetUrlPost implements ShouldQueue
         ]);
 
         $unixTimestamp = now()->timestamp; // Usamos la fecha unix como identificador del cache
-
-        // Limpiamos el cache
-        Cache::flush();
         
         // Ver si existe el cache
         if (Cache::has($unixTimestamp))

@@ -31,8 +31,8 @@ class FilterSeeder extends Seeder
             // Diario NORTE
             [
                 2,
-                '//article/a',
-                '//article/header//h1',
+                '//article[1]/a',
+                '//h1',
                 '//figure/img/@src',
                 '//article//section[@class="body"]//p',
             ],
@@ -68,7 +68,7 @@ class FilterSeeder extends Seeder
             [
                 6,
                 '//div[@class="rela-titu"]/a',
-                '//html/head/meta[@property="og:title"]/@content',
+                '//a[@class="tit-cata"]',
                 '//html/head/meta[@property="og:image"]/@content',
                 '//div[@class="titulo-des"]/p',
             ],
@@ -96,7 +96,7 @@ class FilterSeeder extends Seeder
                 9,
                 '//article//h3/a',
                 '//article/header/h1',
-                '//article/div[5]/img/@src',
+                '//meta[@name="twitter:image"]/@content',
                 '//div[@class="detalle"]',
             ],
 

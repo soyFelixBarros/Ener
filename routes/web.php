@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function() {
 		Route::name('sources.')->prefix('sources')->group(function() {
 			$this->get('/', 'SourcesController@index')->name('index');
 			$this->get('/{id}', 'SourcesController@show')->name('show');
+			$this->get('/{id}/edit', 'SourcesController@edit')->name('edit');
+            $this->post('/{id}/edit', 'SourcesController@update');
 		});
 
 		// Links

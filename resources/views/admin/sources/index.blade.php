@@ -19,6 +19,8 @@
 					<tr>
 						<th>Nombre</th>
 						<th>Enlaces</th>
+						<th>Tax ID</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,6 +28,10 @@
 					<tr>
 						<td><a href="{{ route('admin.sources.show', $source->id) }}">{{ $source->name }}</a></td>
 						<td>{{ $source->links->count() }}</td>
+						<td>{{ $source->tax_id }}</td>
+						<td class="text-right">
+							<a href="{{ route('admin.sources.edit', ['id' => $source->id]) }}"><i class="far fa-edit"></i></a>
+						</td>
 					</tr>
 					@endforeach
 				</tbody>

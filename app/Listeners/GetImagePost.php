@@ -38,11 +38,10 @@ class GetImagePost implements ShouldQueue
         $post = Cache::get($unixTimestamp);
         
         // Obtenemos la url de la imagen
-        try {
-            $data = Crawler::extracting($post['url'], $event->link->source->filter->image);
-        } catch(Exception $e) { // I guess its InvalidArgumentException in this case
+        $data = Crawler::extracting($post['url'], $event->link->source->filter->image);
+        
+        if ($data->count() == 0)
             return false;
-        }
 
         $urlImage = $event->hasSchema( $data->text(), $event->link->source->url ); // Url de la imagen
         $fileName = str_slug($post['title']).'.jpg'; // Generamos un nombre amigable para la imagen

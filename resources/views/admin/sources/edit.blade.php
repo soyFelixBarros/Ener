@@ -1,40 +1,38 @@
-@extends('layouts.admin')
-@section('title', 'Edit newspaper')
-@section('content.admin')
-<form class="panel panel-default" role="form" method="POST">
-    <div class="panel-heading">
-        <div class="row">
-            <div class="col-md-10">
-                <h3>Edit newspaper</h3>
-            </div>
-            <div class="col-md-2 text-right">
-                <a href="{{ route('admin_newspapers_create') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-plus"></span> Create</a>
-            </div>
+@extends('layouts.base')
+
+@section('title', 'Editar fuente')
+
+@section('content.base')
+<form class="card" role="form" method="POST">
+    <div class="card-header clearfix">
+        <div class="float-left">
+            <h5 class="mt-1 mb-1">Editar fuente</h5>
         </div>
-    </div><!-- .panel-heading -->
-    <div class="panel-body">
+        <div class="float-right">
+        </div>
+    </div><!-- .card-header -->
+    <div class="card-body">
         @csrf
-        <div class="form-group">
-            <label>Province</label>
-            @include('shared.select-location', ['provinces' => $provinces, 'selected' => $newspaper->province_id])
-        </div>
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            <label>Name</label>
-            <input type="text" name="name" class="form-control" value="{{ $newspaper->name }}">
+            <label>Nombre</label>
+            <input type="text" name="name" class="form-control" value="{{ $source->name }}">
         </div>
-        <div class="form-group{{ $errors->has('website') ? ' has-error' : '' }}">
-            <label>Website</label>
-            <input type="text" name="website" class="form-control" value="{{ $newspaper->website }}">
+        <div class="form-group{{ $errors->has('url') ? ' has-error' : '' }}">
+            <label>URL</label>
+            <input type="text" name="url" class="form-control" value="{{ $source->url }}">
         </div>
-    </div><!-- .panel-body -->
-    <div class="panel-footer">
-        <div class="row">
-            <div class="col-xs-4">
-            </div>
-            <div class="col-xs-8 text-right">
-                <a href="{{ route('admin_newspapers') }}" type="submit" class="btn btn-default">Cancel</a>
-                <button type="submit" class="btn btn-primary">Update</button>
-            </div>
-    </div><!-- .panel-footer -->
-</div><!-- .panel -->
+        <div class="form-group{{ $errors->has('tax_id') ? ' has-error' : '' }}">
+            <label>Taxonomy ID</label>
+            <input type="number" name="tax_id" class="form-control" value="{{ $source->tax_id }}">
+        </div>
+    </div><!-- .card-body -->
+    <div class="card-footer clearfix">
+        <div class="float-left">
+        </div>
+        <div class="float-right">
+            <a href="{{ route('admin.sources.index') }}" class="btn btn-outline-secondary" role="button">Regresar</a>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+    </div><!-- .card-footer -->
+</form><!-- .card -->
 @endsection

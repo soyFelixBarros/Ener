@@ -17,8 +17,8 @@ class EventServiceProvider extends ServiceProvider
             'App\Listeners\GetUrlPost', // Obtener el enlace del post
             'App\Listeners\GetTitlePost', // Obtener el titulo del post
             'App\Listeners\CheckingPostExists', //  Comprobando si existe el post
+            'App\Listeners\PublishPostWordpress', // Publicar post en wordpress
             'App\Listeners\GetImagePost', //  Obtener la imagen del post
-            'App\Listeners\SendPostWordpress', // Publicar post en wordpress
         ],
     ];
 

@@ -5,6 +5,7 @@ namespace App\Listeners;
 use Felix\Scraper\Str;
 use Felix\Scraper\Crawler;
 use App\Events\ScraperLink;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -28,13 +29,8 @@ class GetTitlePost implements ShouldQueue
      */
     public function handle(ScraperLink $event)
     {
-        $unixTimestamp = $event->link->updated_at->timestamp;
-        
-        if (!Cache::has($unixTimestamp))
-            return false;
-        
         // Optenemos la url desde cache
-        $post = Cache::get($unixTimestamp);
+        $post = Cache::get($event->link->id);
 
         // Obtenemos el titulo de la noticia
         $data = Crawler::extracting($post["url"], $event->link->source->filter->title);
@@ -47,8 +43,7 @@ class GetTitlePost implements ShouldQueue
         $title = Str::clean($data->text());
 
         // Actualizamos el caché
-        $post['title'] = $title;
-        $expiresAt = now()->addHours(48);
-        Cache::put($unixTimestamp, $post, $expiresAt);
+        $post = Arr::add($post,'title', $title);
+        Cache::put($event->link->id, $post, now()->addMinutes(1));
     }
 }

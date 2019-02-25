@@ -30,7 +30,7 @@ class GetUrlPost implements ShouldQueue
         // Prepara el crawler y ejecutar
         try{
             $data = Crawler::extracting($event->link->url, $event->link->source->filter->link);
-        } catch(Exception $e) { // I guess its InvalidArgumentException in this case
+        } catch(Exception $e) {
             return false;
         }
 
@@ -38,23 +38,10 @@ class GetUrlPost implements ShouldQueue
         $href = $data->attr('href');
         $url = $event->hasSchema($href, $event->link->source->url);
 
-        // Actualziamos la hora y fecha del link
-        $event->link->update([
-            'updated_at' => now()
-        ]);
+        // Limpiamos el cache
+        Cache::flush();
 
-        $unixTimestamp = now()->timestamp; // Usamos la fecha unix como identificador del cache
-        
-        // Ver si existe el cache
-        if (Cache::has($unixTimestamp))
-            return false;
-
-        // Guardamos el la noticia en cache, unas 48 horas
-        $expiresAt = now()->addHours(48);
-
-        // Creamos el cache con su limite de tiempo
-        Cache::add($unixTimestamp, [
-            'url' => $url
-        ], $expiresAt);
+        // Guardamos en cache si no existe
+        return Cache::add($event->link->id, ['url' => $url], now()->addMinutes(1));
     }
 }

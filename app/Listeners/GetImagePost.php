@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\WpApi;
 use Felix\Scraper\Crawler;
 use App\Events\ScraperLink;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Intervention\Image\ImageManagerStatic as ImageManager;
@@ -29,19 +30,20 @@ class GetImagePost implements ShouldQueue
      */
     public function handle(ScraperLink $event)
     {
-        $unixTimestamp = $event->link->updated_at->timestamp;
-        
-        if ( ! Cache::has($unixTimestamp) ) // Si no existe el post
-            return false; // retornar false
-        
         // Optenemos lso datos desde cache
-        $post = Cache::get($unixTimestamp);
+        $post = Cache::get($event->link->id);
         
+        // Si el cache no existe, retornamos falso
+        if (is_null($post)) {
+            return false;
+        }
+
         // Obtenemos la url de la imagen
         $data = Crawler::extracting($post['url'], $event->link->source->filter->image);
         
-        if ($data->count() == 0)
+        if ($data->count() == 0) {
             return false;
+        }
 
         $urlImage = $event->hasSchema( $data->text(), $event->link->source->url ); // Url de la imagen
         $fileName = str_slug($post['title']).'.jpg'; // Generamos un nombre amigable para la imagen
@@ -49,10 +51,8 @@ class GetImagePost implements ShouldQueue
 
         // Subir el la imagen a WordPress
         $media = (new WpApi)->addMedia($fileName, $binaryImage); // Subimos la imagen a WordPress
-        
-        // Actualizamos el caché
-        $post['media_id'] = $media['id'];
-        $expiresAt = now()->addHours(48);
-        Cache::put($unixTimestamp, $post, $expiresAt);
+
+        // Actualizamos el post con el id de la imagen
+        $posts = (new WpApi)->updatePost($post['id'], ['featured_media' => $media['id']]);
     }
 }
